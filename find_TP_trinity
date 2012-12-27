@@ -142,9 +142,13 @@ strong_true_positives_by_spliceforms = []
 weak_false_positives_by_spliceforms = []
 
 number_of_all_genes = 0
+current_comp_name = ""
+
 File.open(trinity_file).each do |line|
+  
   line.chomp!
-  if line =~ /^>/ && current_sequence != ""
+  if line =~ /^>/ && current_sequence != "" && $expressed_isoforms.include?(current_comp_name)
+    if
     number_of_all_genes += 1
     STDERR.puts "#{( number_of_all_genes.to_f / 62059 )*100} %"
     #STDERR.puts "#{( number_of_all_genes.to_f / 66 ).to_f} %"
@@ -178,6 +182,10 @@ File.open(trinity_file).each do |line|
       strong_true_positives_by_spliceforms[number] = 0 unless strong_true_positives_by_spliceforms[number]
       strong_true_positives_by_spliceforms[number] += 1
     end
+  end
+
+  if line =~ /^>/
+    current_comp_name == line.spit(" ")[0].split(">")[1]
     next
   end
   current_sequence += line
