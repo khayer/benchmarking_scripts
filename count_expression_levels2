@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+file = ARGV[0]
+length = 0
+expression_counts = Array.new()
+expression = 0
+dummy = true
+
+File.open(file).each do |line|
+  next if line =~ /-----/ && dummy
+  next if line =~ /intron/
+  next if line =~ /Type/
+  next if line =~ /exon/
+  if line =~ /GENE\./
+    length = 0
+    dummy = false
+    next
+  end
+  #puts line
+  info = line.chomp.split("\t")
+  if info[0] == "transcript"
+    expression = info[-3].to_f
+    #puts expression
+    next
+  end
+
+  #if line =~ /exon/
+  #  location = info[-2].split(":")[1].split("-")
+  #  length += location[1].to_i - location[0].to_i
+  #  exit if location[0].to_i > location[1].to_i
+  #  puts length
+  #end
+  if line =~ /-----/
+    number = expression
+    expression_counts[number.floor] = 0 unless expression_counts[number.floor]
+    expression_counts[number.floor] += 1
+    #puts expression_counts.join(",")
+    #STDIN.gets
+  end
+
+end
+sum = 0
+range = (0..expression_counts.length-1).to_a.reverse!
+helper = Array.new
+range.each do |i|
+  number = expression_counts[i]
+  next unless number
+  sum += number
+  helper[i] = sum
+end
+
+helper.each_with_index do |number,i|
+  next unless number
+  puts "#{i}\t#{number}"
+end
+#expression_counts.each_with_index do |number,i|
+#  next unless number
+#  puts "#{i}\t#{number}"
+#end

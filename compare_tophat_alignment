@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+tophat_sam = ARGV[0]
+truth_sam = ARGV[1]
+
+def within?(num1,num2)
+  num1 = num1.to_i
+  num2 = num2.to_i
+  (num1 - num2).abs <= 10000
+end
+
+truth = Hash.new
+File.open(truth_sam).each do |line|
+  line.chomp!
+  #seq.11149425  163 chr1  16095963  25  100M  = 16096029  165 CTCGGGGGCGGACTCCGGGCGCAGCCTTCGCGTCCGGATCGCGGTGACAAGCGCCTCCGGGGCCAGGAGCTGGGCTGTCTGGCGCAGGGAGAGTGAGGAC  * MD:Z:100  IH:i:1  HI:i:1  NM:i:0  XO:A:F
+  info = line.split("\t")
+  flag = info[1].to_i.to_s(2).split("").reverse()
+  if flag[6] == "1"
+    seq = info[0] + "a"
+  else
+    seq = info[0] + "b"
+  end
+  truth[seq] = [info[1], info[2], info[3], info[5], info[6], info[7], info[8]]
+end
+
+results = Hash.new()
+seen_sequences = []
+# SequenceID TP FN PartiallyCorrect FP MateAlignedCorrectly?
+File.open(tophat_sam).each do |line|
+  line.chomp!
+  info = line.split("\t")
+  #flag = info[1].to_i.to_s(2).split("").reverse()
+  #if flag[6] == "1"
+  #  seq = info[0] + "a"
+  #else
+  #  seq = info[0] + "b"
+  #end
+  #info[0] = seq
+  # Sequence in truth file?
+  if truth[info[0]]
+    if info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2] && info[5] == truth[info[0]][3] && info[7] == truth[info[0]][5]
+      results[info[0]] = [1,0,0,0,1]
+    elsif info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2] && info[5] == truth[info[0]][3]
+      results[info[0]] = [1,0,0,0,0]
+    elsif info[2] == truth[info[0]][1] && within?(info[3],truth[info[0]][2]) && info[7] == truth[info[0]][5]
+      results[info[0]] = [0,0,1,0,1]
+    elsif info[2] == truth[info[0]][1] && within?(info[3],truth[info[0]][2])
+      results[info[0]] = [0,0,1,0,0]
+    elsif info[7] == truth[info[0]][5]
+      results[info[0]] = [0,0,0,1,1]
+    else
+      results[info[0]] = [0,0,0,1,0]
+    end
+  else
+    results[info[0]] = [0,0,0,1,"-"]
+  end
+  seen_sequences << info[0]
+  puts "#{info[0]}\t#{results[info[0]].join("\t")}"
+
+  #if truth[info[0]]
+  #  # Correctly mapped?
+  #  if info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2] && info[5] == truth[info[0]][3]
+  #    results[info[0]] = [1,0,0,0,0]
+  #  elsif info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2]
+  #    results[info[0]] = [0,0,1,0,0]
+  #  else
+  #    results[info[0]] = [0,0,0,1,0]
+  #  end
+  #else
+  #  results[info[0]] = [0,0,0,1,"-"]
+  #end
+  #puts results[info[0]].join(":")
+end
+
+truth.each_key do |key|
+  #puts key
+  next if seen_sequences.include?(key)
+  results[key] = [0,1,0,0,"-"]
+  puts "#{key}\t#{results[key].join("\t")}"
+end
+
+
+
+
