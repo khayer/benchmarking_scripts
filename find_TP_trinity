@@ -129,8 +129,8 @@ File.open(rsem).each do |line|
   $expressed_isoforms << info[0] if iso_pct > 1.00
 end
 
-puts $expressed_isoforms.join("::")
-exit
+#puts $expressed_isoforms.join("::")
+#exit
 
 
 current_sequence = ""
