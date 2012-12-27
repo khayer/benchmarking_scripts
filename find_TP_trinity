@@ -97,8 +97,17 @@ def get_reverse_complement(seq)
   seq_complement
 end
 
+unless ARGV.length == 3
+  puts ""
+  puts "  Usage:" 
+  puts "  find_TP_trinity trinity.fa RSEM.isoform.results truth_sequences_fa"
+  puts ""
+  exit
+end
+
 trinity_file = ARGV[0]
-truth_sequences_file = ARGV[1]
+rsem = ARGV[1]
+truth_sequences_file = ARGV[2]
 
 $truth_sequences = Hash.new()
 key = ""
@@ -110,6 +119,18 @@ File.open(truth_sequences_file).each do |line|
     $truth_sequences[key] = line
   end
 end
+
+$expressed_isoforms = []
+File.open(rsem).each do |line|
+  next unless line =~ /^comp/
+  line.chomp!
+  info = line.split("\t")
+  iso_pct = info[-1].to_f
+  $expressed_isoforms << info[0] if iso_pct > 1.00
+end
+
+puts $expressed_isoforms.join("::")
+
 
 current_sequence = ""
 false_positive = 0
