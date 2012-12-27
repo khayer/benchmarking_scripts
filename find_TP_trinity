@@ -130,6 +130,7 @@ File.open(rsem).each do |line|
 end
 
 puts $expressed_isoforms.join("::")
+exit
 
 
 current_sequence = ""
