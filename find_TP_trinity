@@ -126,7 +126,7 @@ File.open(rsem).each do |line|
   line.chomp!
   info = line.split("\t")
   iso_pct = info[-1].to_f
-  $expressed_isoforms << info[0] if iso_pct > 1.00
+  $expressed_isoforms << info[0] if iso_pct > 10.00
 end
 
 #puts $expressed_isoforms.join("::")
