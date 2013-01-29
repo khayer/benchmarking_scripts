@@ -6,7 +6,6 @@ truth_file = ARGV[1]
 ### Functions
 
 def exons_are_within?(exon_positions,all_actual_exon_positions)
-  #puts exon_positions.length()
   all_actual_exon_positions.each do |actual_exon_position|
     next if actual_exon_position.length != exon_positions.length
     are_within_answer = true
@@ -20,10 +19,8 @@ def exons_are_within?(exon_positions,all_actual_exon_positions)
 end
 
 def are_within?(pos,actual_pos)
-  #puts "#{pos}\t#{actual_pos}"
   l = ( pos > (actual_pos - 1000) && pos < ( actual_pos + 1000 ))
   l
-  #STDIN.gets()
 end
 
 ### Main
