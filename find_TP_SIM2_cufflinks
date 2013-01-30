@@ -20,10 +20,35 @@ usage =<<EOF
 
 EOF
 
-if ARGV.length != 4
+if ARGV.length != 5
   puts usage
   exit
 end
+
+### Functions
+def get_truth_genes(truth)
+  truth_genes = []
+end
+
+def get_genes_that_should_be_in_gtf(ex_levels,num)
+  genes_that_should_be_in_gtf = []
+  File.open(ex_levels).each do |line|
+    next unless line =~ /^GENE/
+    line.chomp!
+    genes_that_should_be_in_gtf << line.split("\t")[0]
+    num -= 1
+    break if num == 0
+  end
+  genes_that_should_be_in_gtf
+end
+
+def get_genes_that_pass_fpkm_value(iso)
+  genes_that_pass_fpkm_value = []
+end
+
+#############
+
+### Main
 
 truth = ARGV[0]
 ex_levels = ARGV[1]
@@ -31,5 +56,9 @@ gtf = ARGV[2]
 iso = ARGV[3]
 num = ARGV[4].to_i
 
+truth_genes = get_truth_genes(truth)
+genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(ex_levels,num)
+genes_that_pass_fpkm_value = get_genes_that_pass_fpkm_value(iso)
 
+########
 
