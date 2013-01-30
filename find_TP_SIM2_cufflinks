@@ -28,6 +28,24 @@ end
 ### Functions
 def get_truth_genes(truth)
   truth_genes = []
+  starts = []
+  stops = []
+  name = ""
+  File.open(truth).each do |line|
+    if line =~ /-------/
+      truth_genes << [name, starts, stops].flatten
+      starts = []
+      stops = []
+      name = ""
+    end
+    name = line.split(" = ")[1] if line =~ /^genes/
+    if line =~ /chr[0-9]+:/
+      boarders = line.split(":")[1].split("-") #chr1:3660633-3661579
+      starts << boarders[0]
+      stops << boarders[1]
+    end
+  end
+  truth_genes
 end
 
 def get_genes_that_should_be_in_gtf(ex_levels,num)
@@ -57,6 +75,9 @@ iso = ARGV[3]
 num = ARGV[4].to_i
 
 truth_genes = get_truth_genes(truth)
+puts truth_genes.join(":")
+puts truth_genes[0]
+puts truth_genes[1].join(":")
 genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(ex_levels,num)
 genes_that_pass_fpkm_value = get_genes_that_pass_fpkm_value(iso)
 
