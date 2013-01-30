@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+usage =<<EOF
+
+      #{$0} truth ex_levels gtf iso num
+
+      ------------------------------------------------------
+      * truth    :: simulated_reads_transcripts_test2.txt
+      * ex_levels:: expression_levels.txt (sorted)
+                    from: create_expression_level_sh
+      * gtf      :: transcripts.gtf
+      * iso      :: isoforms.fpkm_tracking
+      * num      :: num reflects how many genes are used
+                    from ex_levels
+      ------------------------------------------------------
+
+      Finds True Positives in cufflinks data.
+
+                                                   by khayer
+
+EOF
+
+if ARGV.length != 4
+  puts usage
+  exit
+end
+
+truth = ARGV[0]
+ex_levels = ARGV[1]
+gtf = ARGV[2]
+iso = ARGV[3]
+num = ARGV[4].to_i
+
+
+
