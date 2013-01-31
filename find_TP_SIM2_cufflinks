@@ -6,7 +6,7 @@ usage =<<EOF
 
       ------------------------------------------------------
       * truth    :: simulated_reads_transcripts_test2.txt
-      * ex_levels:: expression_levels.txt (sorted)
+      * ex_levels:: expression_levels.txt
                     from: create_expression_level_sh
       * gtf      :: transcripts.gtf
       * iso      :: isoforms.fpkm_tracking
@@ -33,6 +33,7 @@ def get_truth_genes(truth)
   name = ""
   File.open(truth).each do |line|
     if line =~ /-------/
+      #### add CHR
       truth_genes << [name, starts, stops].flatten
       starts = []
       stops = []
@@ -48,12 +49,20 @@ def get_truth_genes(truth)
   truth_genes
 end
 
-def get_genes_that_should_be_in_gtf(ex_levels,num)
-  genes_that_should_be_in_gtf = []
+def get_expression_levels(ex_levels)
+  sorted_expression_levels = Hash.new()
   File.open(ex_levels).each do |line|
     next unless line =~ /^GENE/
     line.chomp!
-    genes_that_should_be_in_gtf << line.split("\t")[0]
+    sorted_expression_levels[line.split("\t")[0]] = line.split("\t")[1].to_f
+  end
+  sorted_expression_levels = sorted_expression_levels.sort_by {|key, value| value}.reverse
+end
+
+def get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
+  genes_that_should_be_in_gtf = []
+  sorted_expression_levels.each do |key, value|
+    genes_that_should_be_in_gtf << key
     num -= 1
     break if num == 0
   end
@@ -62,6 +71,20 @@ end
 
 def get_genes_that_pass_fpkm_value(iso)
   genes_that_pass_fpkm_value = []
+  File.open(iso).each do |line|
+    next unless line =~ /^CUFF/
+    line.chomp!
+    iso_fields = line.split("\t")
+    genes_that_pass_fpkm_value << iso_fields[0] if iso_fields[-1] == "OK"
+  end
+  genes_that_pass_fpkm_value
+end
+
+def get_cufflinks_genes(gtf)
+  cufflinks_genes = []
+  File.open(gtf).each do |line|
+
+  end
 end
 
 #############
@@ -75,11 +98,9 @@ iso = ARGV[3]
 num = ARGV[4].to_i
 
 truth_genes = get_truth_genes(truth)
-puts truth_genes.join(":")
-puts truth_genes[0]
-puts truth_genes[1].join(":")
-genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(ex_levels,num)
+sorted_expression_levels = get_expression_levels(ex_levels)
+genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
 genes_that_pass_fpkm_value = get_genes_that_pass_fpkm_value(iso)
+cufflinks_genes = get_cufflinks_genes(gtf)
 
 ########
-
