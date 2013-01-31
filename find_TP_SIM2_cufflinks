@@ -162,8 +162,8 @@ end
 
 puts "Number of false negatives:"
 puts genes_that_should_be_in_gtf.length
-puts "Number of true positives"
+puts "Number of true positives:"
 puts true_positives
-puts "Total number of transcripts"
+puts "Total number of reported transcripts:"
 puts number_of_cufflinks_transcripts
 ########
