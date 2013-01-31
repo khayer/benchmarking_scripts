@@ -27,25 +27,27 @@ end
 
 ### Functions
 def get_truth_genes(truth)
-  truth_genes = []
-  starts = []
-  stops = []
+  truth_genes = Hash.new
+  exon_positions = []
   name = ""
+  chr = ""
   File.open(truth).each do |line|
+    line.chomp!
     if line =~ /-------/
       #### add CHR
-      truth_genes << [name, starts, stops].flatten
-      starts = []
-      stops = []
+      truth_genes[name]  = [ chr,exon_positions.sort].flatten
+      exon_positions = []
       name = ""
     end
     name = line.split(" = ")[1] if line =~ /^genes/
+    chr = line.split(" = ")[1] if line =~ /^chr\ =\ /
     if line =~ /chr[0-9]+:/
       boarders = line.split(":")[1].split("-") #chr1:3660633-3661579
-      starts << boarders[0]
-      stops << boarders[1]
+      exon_positions << boarders[0].to_i
+      exon_positions << boarders[1].to_i
     end
   end
+  truth_genes[name]  = [ chr,exon_positions.sort].flatten
   truth_genes
 end
 
@@ -81,10 +83,39 @@ def get_genes_that_pass_fpkm_value(iso)
 end
 
 def get_cufflinks_genes(gtf)
-  cufflinks_genes = []
+  cufflinks_genes = Hash.new
+  exon_positions = Array.new
+  info = ""
+  chr = "chr1"
+  name = ""
   File.open(gtf).each do |line|
-
+    next if line =~ /cov\ \"0\.000000\"/
+    line.chomp!
+    info = line.split("\t")
+    if line =~ /\ttranscript\t/
+      cufflinks_genes[name] = [chr,exon_positions.sort ].flatten()
+      chr = info[0]
+      name = info[-1].split("transcript_id \"")[1].split("\";")[0]
+      exon_positions = Array.new
+      next
+    end
+    left_boundary = info[3].to_i
+    exon_positions << left_boundary
+    right_boundary = info[4].to_i
+    exon_positions << right_boundary
   end
+  cufflinks_genes[name] =  [chr,exon_positions.sort ].flatten()
+  cufflinks_genes
+end
+
+def clip_off_ends(truth_genes)
+  genes_without_ends = Hash.new()
+  truth_genes.each do |key, value|
+    next unless value.length > 3
+    new_value = [value[0], value[2..-2]].flatten
+    genes_without_ends[key] = new_value    
+  end
+  genes_without_ends
 end
 
 #############
@@ -102,5 +133,37 @@ sorted_expression_levels = get_expression_levels(ex_levels)
 genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
 genes_that_pass_fpkm_value = get_genes_that_pass_fpkm_value(iso)
 cufflinks_genes = get_cufflinks_genes(gtf)
+number_of_cufflinks_transcripts = cufflinks_genes.length
 
+true_positives = 0
+cufflinks_genes.each do |key,value|
+  unless genes_that_pass_fpkm_value.include?(key)
+    number_of_cufflinks_transcripts -= 1
+    next
+  end
+  if truth_genes.has_value?(value)
+    true_positives += 1 
+    genes_that_should_be_in_gtf.delete(truth_genes.key(value))
+    truth_genes.delete(truth_genes.key(value))
+  end
+end
+
+truth_genes_without_ends = clip_off_ends(truth_genes)
+cufflinks_genes_without_ends = clip_off_ends(cufflinks_genes)
+
+cufflinks_genes_without_ends.each do |key,value|
+  next unless genes_that_pass_fpkm_value.include?(key)
+  if truth_genes_without_ends.has_value?(value)
+    true_positives += 1 
+    genes_that_should_be_in_gtf.delete(truth_genes_without_ends.key(value))
+    truth_genes_without_ends.delete(truth_genes_without_ends.key(value))
+  end
+end
+
+puts "Number of false negatives:"
+puts genes_that_should_be_in_gtf.length
+puts "Number of true positives"
+puts true_positives
+puts "Total number of transcripts"
+puts number_of_cufflinks_transcripts
 ########
