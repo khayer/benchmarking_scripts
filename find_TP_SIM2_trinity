@@ -5,13 +5,14 @@
 def search_in(current_sequence)
   result = [0, ""]
   current_sequence_complement = get_reverse_complement(current_sequence)
-  ind1 = $truth_sequences.index(current_sequence_complement)
-  ind2 = $truth_sequences.index(current_sequence)
+  ind1 = $truth_sequences.key(current_sequence_complement)
+  ind2 = $truth_sequences.key(current_sequence)
   if ind1
     $truth_sequences.delete(ind1)
-    $truth_sequences.delete(ind2)
+    $genes_that_should_be_in_gtf.delete(ind1)
     result = [2, ind1]
   elsif ind2
+    $genes_that_should_be_in_gtf.delete(ind2)
     $truth_sequences.delete(ind2)
     result = [2, ind2]
   else
@@ -136,7 +137,7 @@ ex_levels = ARGV[3]
 num = ARGV[4].to_i
 
 sorted_expression_levels = get_expression_levels(ex_levels)
-genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
+$genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
 $truth_sequences = get_truth_sequences(truth_sequences_file)
 $expressed_isoforms = get_expressed_isoforms(rsem)
 total_number_of_transcripts = $expressed_isoforms.length
