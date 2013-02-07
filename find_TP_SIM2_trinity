@@ -29,6 +29,7 @@ def search_in(current_sequence)
         result = [0, matching_sequence[0]]
       else
         result = [1, matching_sequence[0]]
+        $genes_that_should_be_in_gtf.delete(matching_sequence[0])
         $truth_sequences.delete(matching_sequence[0])
       end
     end
@@ -167,7 +168,7 @@ File.open(trinity_file).each do |line|
       #puts "NEGATIVE"
       false_positive += 1
       #if result[1] != ""
-      number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      #number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
       number = 1
       #puts number
       weak_false_positives_by_spliceforms[number] = 0 unless weak_false_positives_by_spliceforms[number]
@@ -175,8 +176,9 @@ File.open(trinity_file).each do |line|
       #end
     when 1
       #puts "WEAK"
-      weak_true_positive += 1
-      number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      #weak_true_positive += 1
+      #number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      number = 1
       #puts number
       weak_true_positive_by_spliceform[number] = 0 unless weak_true_positive_by_spliceform[number]
       weak_true_positive_by_spliceform[number] += 1
@@ -184,7 +186,8 @@ File.open(trinity_file).each do |line|
       #puts "STRONG"
       strong_true_positive += 1
       weak_true_positive += 1
-      number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      #number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      number = 1
       #puts number
       weak_true_positive_by_spliceform[number] = 0 unless weak_true_positive_by_spliceform[number]
       weak_true_positive_by_spliceform[number] += 1
@@ -204,6 +207,7 @@ end
 puts false_positive
 puts weak_true_positive
 puts strong_true_positive
+puts false_negatives = $genes_that_should_be_in_gtf.length 
 
 puts "=========="
 puts "By number of splice forms:"
