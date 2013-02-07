@@ -148,7 +148,7 @@ File.open(trinity_file).each do |line|
   line.chomp!
   if line =~ /^>/ && current_sequence != "" && $expressed_isoforms.include?(current_comp_name)
     number_of_all_genes += 1
-    STDERR.puts "#{( number_of_all_genes.to_f / 62059 )*100} %"
+    STDERR.puts "#{( number_of_all_genes.to_f / 137509 )*100} %"
     #STDERR.puts "#{( number_of_all_genes.to_f / 66 ).to_f} %"
     result = search_in(current_sequence)
     current_sequence = ""
