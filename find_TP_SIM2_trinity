@@ -77,12 +77,9 @@ def get_expressed_isoforms(rsem)
     line.chomp!
     info = line.split(" ")
     iso_pct = info[-1].to_f
-    if iso_pct > 10.00
-      expressed_isoforms << info[0]
-      total_number_of_transcripts += 1
-    end
+    expressed_isoforms << info[0] if iso_pct > 10.00
   end
-  expressed_isoforms , total_number_of_transcripts
+  expressed_isoforms
 end
 
 def length_diff(seq1,seq2)
@@ -141,8 +138,8 @@ num = ARGV[4].to_i
 sorted_expression_levels = get_expression_levels(ex_levels)
 genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
 $truth_sequences = get_truth_sequences(truth_sequences_file)
-$expressed_isoforms, total_number_of_transcripts = get_expressed_isoforms(rsem)
-puts total_number_of_transcripts
+$expressed_isoforms = get_expressed_isoforms(rsem)
+total_number_of_transcripts = $expressed_isoforms.length
 
 current_sequence = ""
 false_positive = 0
