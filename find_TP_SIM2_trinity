@@ -143,6 +143,7 @@ $truth_sequences = get_truth_sequences(truth_sequences_file)
 $expressed_isoforms = get_expressed_isoforms(rsem)
 total_number_of_transcripts = $expressed_isoforms.length
 
+
 current_sequence = ""
 false_positive = 0
 weak_true_positive = 0
@@ -204,23 +205,24 @@ File.open(trinity_file).each do |line|
   current_sequence += line
 end
 
-puts false_positive
-puts weak_true_positive
-puts strong_true_positive
-puts false_negatives = $genes_that_should_be_in_gtf.length 
+STDERR.puts false_positive
+STDERR.puts weak_true_positive
+STDERR.puts strong_true_positive
+STDERR.puts false_negatives = $genes_that_should_be_in_gtf.length 
 
 puts "=========="
-puts "By number of splice forms:"
-puts "\t\t#{(1..10).to_a.join("\t")}"
-puts "StroTP\t#{strong_true_positives_by_spliceforms.join("\t")}"
-puts "WeakTP\t#{weak_true_positive_by_spliceform.join("\t")}"
-puts "allFP\t#{weak_false_positives_by_spliceforms.join("\t")}"
-puts "=========="
+#puts "By number of splice forms:"
+#puts "\t\t#{(1..10).to_a.join("\t")}"
+#puts "StroTP\t#{strong_true_positives_by_spliceforms.join("\t")}"
+#puts "WeakTP\t#{weak_true_positive_by_spliceform.join("\t")}"
+#puts "allFP\t#{weak_false_positives_by_spliceforms.join("\t")}"
+#puts "=========="
 puts "Strongly True Positives\t#{strong_true_positive}"
 puts "Weak True Positives\t#{weak_true_positive}"
 puts "All False Positives\t#{false_positive}"
+puts "All False Negatives\t#{false_negatives}"
 puts "=========="
-puts "All transcripts\t#{number_of_all_genes}"
+puts "All transcripts\t#{total_number_of_transcripts}"
 
 
 
