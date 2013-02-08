@@ -72,6 +72,7 @@ File.open(sam).each do |line|
   next if line =~ /^@/
   sam_fields = line.split(" ")
   # Get rid if pair did not in same area
+  next if sam_fields[4] == "0"
   sequence_names << sam_fields[0] unless sequence_names.include?(sam_fields[0])
   puts sequence_names
   STDIN.gets
