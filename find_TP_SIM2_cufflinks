@@ -142,6 +142,12 @@ def get_number_of_splice_forms(truth)
   number_of_splice_forms
 end
 
+def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
+  separated_by_spliceform = Array.new(20,0)
+  genes_that_should_be_in_gtf.each do |gene_name|
+    separated_by_spliceform[number_of_splice_forms[gene_name]] += 1
+  end
+end
 
 #############
 
@@ -162,7 +168,7 @@ number_of_cufflinks_transcripts = cufflinks_genes.length
 number_of_splice_forms = get_number_of_splice_forms(truth)
 
 true_positives = 0
-true_positives_by_spliceforms = Array.new(10,0)
+true_positives_by_spliceforms = Array.new(20,0)
 cufflinks_genes.each do |key,value|
   unless genes_that_pass_fpkm_value.include?(key)
     number_of_cufflinks_transcripts -= 1
@@ -184,12 +190,14 @@ cufflinks_genes_without_ends.each do |key,value|
   next unless genes_that_pass_fpkm_value.include?(key)
   if truth_genes_without_ends.has_value?(value)
     true_positives += 1
-    gene_name = truth_genes.key(value)
+    gene_name = truth_genes_without_ends.key(value)
     true_positives_by_spliceforms[number_of_splice_forms[gene_name]] += 1
     genes_that_should_be_in_gtf.delete(gene_name)
     truth_genes_without_ends.delete(gene_name)
   end
 end
+
+genes_that_should_be_in_gtf_by_spliceform = seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
 
 puts "Number of false negatives:"
 puts genes_that_should_be_in_gtf.length
@@ -198,4 +206,5 @@ puts true_positives
 puts "Total number of reported transcripts:"
 puts number_of_cufflinks_transcripts
 puts true_positives_by_spliceforms.join("\t")
+puts genes_that_should_be_in_gtf_by_spliceform.join("\t")
 ########
