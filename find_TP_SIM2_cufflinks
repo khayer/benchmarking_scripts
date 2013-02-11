@@ -157,9 +157,12 @@ def get_number(value,number_of_splice_forms)
   number = 0
   number_of_splice_forms.each do |key,num|
     next unless value[0] == key[0]
-    puts key
-    puts value.join(":")
-    exit
+    puts key.join(":")
+    puts value.join(";")
+    if value[1] >= key[1] && value[-1] <= key[2]
+      number = num
+      break
+    end
   end
   number
 
@@ -185,37 +188,52 @@ number_of_splice_forms = get_number_of_splice_forms(truth)
 
 true_positives = 0
 true_positives_by_spliceforms = []
-cufflinks_genes.each do |key,value|
-  unless genes_that_pass_fpkm_value.include?(key)
-    number_of_cufflinks_transcripts -= 1
-    next
-  end
-  if truth_genes.has_value?(value)
-    true_positives += 1
-    puts value.join("\t")
-    number = get_number(value,number_of_splice_forms)
-    true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
-    true_positives_by_spliceforms[number] += 1
-    gene_name = truth_genes.key(value)
-    genes_that_should_be_in_gtf.delete(gene_name)
-    truth_genes.delete(gene_name)
-  end
-end
+false_positives_by_spliceforms = []
 
 truth_genes_without_ends = clip_off_ends(truth_genes)
 cufflinks_genes_without_ends = clip_off_ends(cufflinks_genes)
 
 cufflinks_genes_without_ends.each do |key,value|
+  next if value.length == 0
+  number = get_number(value,number_of_splice_forms)
   next unless genes_that_pass_fpkm_value.include?(key)
   if truth_genes_without_ends.has_value?(value)
     true_positives += 1
     gene_name = truth_genes_without_ends.key(value)
-    true_positives_by_spliceforms[number_of_splice_forms[gene_name]] = 0 unless true_positives_by_spliceforms[number_of_splice_forms[gene_name]]
-    true_positives_by_spliceforms[number_of_splice_forms[gene_name]] += 1
+    true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
+    true_positives_by_spliceforms[number] += 1
     genes_that_should_be_in_gtf.delete(gene_name)
     truth_genes_without_ends.delete(gene_name)
+    cufflinks_genes.delete(key)
+  else
+    false_positives_by_spliceforms[number] = 0 unless false_positives_by_spliceforms[number]
+    false_positives_by_spliceforms[number] += 1
+    cufflinks_genes.delete(key)
   end
 end
+
+cufflinks_genes.each do |key,value|
+  unless genes_that_pass_fpkm_value.include?(key)
+    number_of_cufflinks_transcripts -= 1
+    next
+  end
+  number = get_number(value,number_of_splice_forms)
+  if truth_genes.has_value?(value)
+    true_positives += 1
+    puts value.join("\t")
+    true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
+    true_positives_by_spliceforms[number] += 1
+    gene_name = truth_genes.key(value)
+    genes_that_should_be_in_gtf.delete(gene_name)
+    truth_genes.delete(gene_name)
+    cufflinks_genes.delete(key)
+  else
+    false_positives_by_spliceforms[number] = 0 unless false_positives_by_spliceforms[number]
+    false_positives_by_spliceforms[number] += 1
+  end
+end
+
+
 
 genes_that_should_be_in_gtf_by_spliceform = seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
 
@@ -229,4 +247,5 @@ puts "By spliceforms:"
 puts (0..19).to_a.join("\t")
 puts true_positives_by_spliceforms.join("\t")
 puts genes_that_should_be_in_gtf_by_spliceform.join("\t")
+puts false_positives_by_spliceforms.join("\t")
 ########
