@@ -130,12 +130,11 @@ def get_number_of_splice_forms(truth)
     current_start = $2.split(",")[0].to_i + 1 if line =~ /(starts.+)=\s(.+)/
     current_end = $2.split(",")[-1].to_i if line =~ /(ends.+)=\s(.+)/
     current_genes << $2 if line =~ /(genes.+)=\s(.+)/
-    if line =~ /strand/ && (current_start < min || current_start > max)
+    if line =~ /(chr.+)=\s(.+)/ && (current_start < min || current_start > max)
+      current_chr = $2
       min = current_start
       max = current_end
-      current_genes.each do |gene|
-        number_of_splice_forms[gene] = current_genes.length
-      end
+      number_of_splice_forms[[current_chr,current_start,current_end]] = current_genes.length
       current_genes = []
     end
   end
@@ -152,6 +151,18 @@ def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
     separated_by_spliceform[number_of_splice_forms[gene_name]] += 1
   end
   separated_by_spliceform
+end
+
+def get_number(value,number_of_splice_forms)
+  number = 0
+  number_of_splice_forms.each do |key,num|
+    next unless value[0] == key[0]
+    puts key
+    puts value.join(":")
+    exit
+  end
+  number
+
 end
 
 #############
@@ -181,9 +192,11 @@ cufflinks_genes.each do |key,value|
   end
   if truth_genes.has_value?(value)
     true_positives += 1
+    puts value.join("\t")
+    number = get_number(value,number_of_splice_forms)
+    true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
+    true_positives_by_spliceforms[number] += 1
     gene_name = truth_genes.key(value)
-    true_positives_by_spliceforms[number_of_splice_forms[gene_name]] = 0 unless true_positives_by_spliceforms[number_of_splice_forms[gene_name]]
-    true_positives_by_spliceforms[number_of_splice_forms[gene_name]] += 1
     genes_that_should_be_in_gtf.delete(gene_name)
     truth_genes.delete(gene_name)
   end
