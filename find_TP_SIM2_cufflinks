@@ -147,9 +147,7 @@ end
 
 def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
   separated_by_spliceform = []
-  puts number_of_splice_forms
   genes_that_should_be_in_gtf.each do |gene_name|
-    puts gene_name
     separated_by_spliceform[number_of_splice_forms[gene_name]] = 0 unless separated_by_spliceform[number_of_splice_forms[gene_name]]
     separated_by_spliceform[number_of_splice_forms[gene_name]] += 1
   end
