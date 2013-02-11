@@ -146,10 +146,11 @@ def get_number_of_splice_forms(truth)
 end
 
 def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
-  separated_by_spliceform = Array.new(20,0)
+  separated_by_spliceform = []
   puts number_of_splice_forms
   genes_that_should_be_in_gtf.each do |gene_name|
     puts gene_name
+    separated_by_spliceform[number_of_splice_forms[gene_name]] = 0 unless separated_by_spliceform[number_of_splice_forms[gene_name]]
     separated_by_spliceform[number_of_splice_forms[gene_name]] += 1
   end
   separated_by_spliceform
@@ -174,7 +175,7 @@ number_of_cufflinks_transcripts = cufflinks_genes.length
 number_of_splice_forms = get_number_of_splice_forms(truth)
 
 true_positives = 0
-true_positives_by_spliceforms = Array.new(20,0)
+true_positives_by_spliceforms = []
 cufflinks_genes.each do |key,value|
   unless genes_that_pass_fpkm_value.include?(key)
     number_of_cufflinks_transcripts -= 1
@@ -183,6 +184,7 @@ cufflinks_genes.each do |key,value|
   if truth_genes.has_value?(value)
     true_positives += 1
     gene_name = truth_genes.key(value)
+    true_positives_by_spliceforms[number_of_splice_forms[gene_name]] = 0 unless true_positives_by_spliceforms[number_of_splice_forms[gene_name]]
     true_positives_by_spliceforms[number_of_splice_forms[gene_name]] += 1
     genes_that_should_be_in_gtf.delete(gene_name)
     truth_genes.delete(gene_name)
@@ -197,6 +199,7 @@ cufflinks_genes_without_ends.each do |key,value|
   if truth_genes_without_ends.has_value?(value)
     true_positives += 1
     gene_name = truth_genes_without_ends.key(value)
+    true_positives_by_spliceforms[number_of_splice_forms[gene_name]] = 0 unless true_positives_by_spliceforms[number_of_splice_forms[gene_name]]
     true_positives_by_spliceforms[number_of_splice_forms[gene_name]] += 1
     genes_that_should_be_in_gtf.delete(gene_name)
     truth_genes_without_ends.delete(gene_name)
