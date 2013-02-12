@@ -148,7 +148,8 @@ def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,tru
   #puts number_of_splice_forms
   genes_that_should_be_in_gtf.each do |gene_name|
     value = truth[gene_name]
-    number = get_number(value,number_of_splice_forms)
+    number = 0
+    number = get_number(value,number_of_splice_forms) unless  value.length == 1
     separated_by_spliceform[number] = 0 unless separated_by_spliceform[number]
     separated_by_spliceform[number] += 1
     #puts number_of_splice_forms[gene_name]
@@ -207,6 +208,7 @@ cufflinks_genes_without_ends.each do |key,value|
     true_positives_by_spliceforms[number] += 1
     genes_that_should_be_in_gtf.delete(gene_name)
     truth_genes_without_ends.delete(gene_name)
+    truth_genes.delete(gene_name)
     cufflinks_genes.delete(key)
   else
     false_positives_by_spliceforms[number] = 0 unless false_positives_by_spliceforms[number]
