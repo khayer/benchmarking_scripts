@@ -157,8 +157,8 @@ def get_number(value,number_of_splice_forms)
   number = 0
   number_of_splice_forms.each do |key,num|
     next unless value[0] == key[0]
-    puts key.join(":")
-    puts value.join(";")
+    #puts key.join(":")
+    #puts value.join(";")
     if value[1] >= key[1] && value[-1] <= key[2]
       number = num
       break
@@ -220,7 +220,7 @@ cufflinks_genes.each do |key,value|
   number = get_number(value,number_of_splice_forms)
   if truth_genes.has_value?(value)
     true_positives += 1
-    puts value.join("\t")
+    #puts value.join("\t")
     true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
     true_positives_by_spliceforms[number] += 1
     gene_name = truth_genes.key(value)
