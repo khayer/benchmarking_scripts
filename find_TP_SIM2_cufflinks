@@ -124,6 +124,7 @@ def get_number_of_splice_forms(truth)
   max = 0
   current_start = 1
   current_end = 1
+  current_chr = ""
   current_genes = []
   File.open(truth).each do |line|
     line.chomp!
@@ -138,17 +139,19 @@ def get_number_of_splice_forms(truth)
       current_genes = []
     end
   end
-  current_genes.each do |gene|
-    number_of_splice_forms[gene] = current_genes.length
-  end
+  number_of_splice_forms[[current_chr,current_start,current_end]] = current_genes.length
   number_of_splice_forms
 end
 
-def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
+def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,truth)
   separated_by_spliceform = []
+  #puts number_of_splice_forms
   genes_that_should_be_in_gtf.each do |gene_name|
-    separated_by_spliceform[number_of_splice_forms[gene_name]] = 0 unless separated_by_spliceform[number_of_splice_forms[gene_name]]
-    separated_by_spliceform[number_of_splice_forms[gene_name]] += 1
+    value = truth[gene_name]
+    number = get_number(value,number_of_splice_forms)
+    separated_by_spliceform[number] = 0 unless separated_by_spliceform[number]
+    separated_by_spliceform[number] += 1
+    #puts number_of_splice_forms[gene_name]
   end
   separated_by_spliceform
 end
@@ -235,7 +238,7 @@ end
 
 
 
-genes_that_should_be_in_gtf_by_spliceform = seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms)
+genes_that_should_be_in_gtf_by_spliceform = seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,truth_genes)
 
 puts "Number of false negatives:"
 puts genes_that_should_be_in_gtf.length
