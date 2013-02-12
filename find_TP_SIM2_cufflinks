@@ -120,26 +120,51 @@ end
 
 def get_number_of_splice_forms(truth)
   number_of_splice_forms = Hash.new
-  min = 700000000
+  min = 0
   max = 0
+  chr = ""
   current_start = 1
   current_end = 1
-  current_chr = ""
+  current_chr = "chr1"
+  last_genes = []
   current_genes = []
+  current_gene = ""
+  dummy = nil
   File.open(truth).each do |line|
     line.chomp!
-    current_start = $2.split(",")[0].to_i + 1 if line =~ /(starts.+)=\s(.+)/
-    current_end = $2.split(",")[-1].to_i if line =~ /(ends.+)=\s(.+)/
-    current_genes << $2 if line =~ /(genes.+)=\s(.+)/
-    if line =~ /(chr.+)=\s(.+)/ && (current_start < min || current_start > max)
-      current_chr = $2
-      min = current_start
-      max = current_end
-      number_of_splice_forms[[current_chr,current_start,current_end]] = current_genes.length
-      current_genes = []
+    #puts current_genes.join("\t")
+    if line =~ /---------/ && dummy
+      #puts current_chr != chr
+      #puts current_start < min
+      #puts current_start > max
+      #puts current_genes.join("\t")
+      if (current_chr != chr || current_start < min || current_start > max )
+        #puts current_genes.join("\t")
+        #puts current_start
+        #puts min
+        #STDIN.gets
+        number_of_splice_forms[[chr,min,max]] = current_genes.length
+        last_genes = current_genes
+        current_genes = []
+        min = current_start
+        max = current_end
+        chr = current_chr
+      end
+
+      current_genes << current_gene
+      last_genes = current_genes
     end
+
+    if line =~ /(starts.+)=\s(.+)/
+      current_start = $2.split(",")[0].to_i + 1
+      dummy = true
+    end
+    current_end = $2.split(",")[-1].to_i if line =~ /(ends.+)=\s(.+)/
+    current_chr = $2 if line =~ /(chr.+)=\s(.+)/
+    current_gene = $2 if line =~ /(genes.+)=\s(.+)/
   end
-  number_of_splice_forms[[current_chr,current_start,current_end]] = current_genes.length
+  #puts current_genes.join(":")
+  number_of_splice_forms[[current_chr,current_start,current_end]] = last_genes.length
   number_of_splice_forms
 end
 
@@ -149,6 +174,9 @@ def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,tru
   genes_that_should_be_in_gtf.each do |gene_name|
     value = truth[gene_name]
     number = 0
+    #puts "ERROR"
+    #puts gene_name
+    #puts value
     number = get_number(value,number_of_splice_forms) unless  value.length == 1
     separated_by_spliceform[number] = 0 unless separated_by_spliceform[number]
     separated_by_spliceform[number] += 1
@@ -189,6 +217,8 @@ genes_that_pass_fpkm_value = get_genes_that_pass_fpkm_value(iso)
 cufflinks_genes = get_cufflinks_genes(gtf)
 number_of_cufflinks_transcripts = cufflinks_genes.length
 number_of_splice_forms = get_number_of_splice_forms(truth)
+#puts number_of_splice_forms
+#exit
 
 true_positives = 0
 true_positives_by_spliceforms = []
@@ -198,11 +228,12 @@ truth_genes_without_ends = clip_off_ends(truth_genes)
 cufflinks_genes_without_ends = clip_off_ends(cufflinks_genes)
 
 cufflinks_genes_without_ends.each do |key,value|
-  next if value.length == 0
+  next if value.length == 1
   number = get_number(value,number_of_splice_forms)
   next unless genes_that_pass_fpkm_value.include?(key)
   if truth_genes_without_ends.has_value?(value)
     true_positives += 1
+    #puts value.join("\t")
     gene_name = truth_genes_without_ends.key(value)
     true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
     true_positives_by_spliceforms[number] += 1
@@ -225,7 +256,6 @@ cufflinks_genes.each do |key,value|
   number = get_number(value,number_of_splice_forms)
   if truth_genes.has_value?(value)
     true_positives += 1
-    #puts value.join("\t")
     true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
     true_positives_by_spliceforms[number] += 1
     gene_name = truth_genes.key(value)
@@ -250,7 +280,10 @@ puts "Total number of reported transcripts:"
 puts number_of_cufflinks_transcripts
 puts "By spliceforms:"
 puts (0..19).to_a.join("\t")
+puts "- True Positives"
 puts true_positives_by_spliceforms.join("\t")
+puts "- False Negatives"
 puts genes_that_should_be_in_gtf_by_spliceform.join("\t")
+puts "- False Positives"
 puts false_positives_by_spliceforms.join("\t")
 ########
