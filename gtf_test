@@ -198,3 +198,5 @@ chr1	Cufflinks	exon	7989127	7990737	644	.	.	gene_id "CUFF.37"; transcript_id "CU
 chr1	Cufflinks	exon	7991129	7991134	644	.	.	gene_id "CUFF.37"; transcript_id "CUFF.37.3"; exon_number "2"; FPKM "0.8323805401"; frac "0.313006"; conf_lo "0.582051"; conf_hi "1.082710"; cov "6.748482";
 chr1	Cufflinks	transcript	7986886	7987463	1000	.	.	gene_id "CUFF.38"; transcript_id "CUFF.38.1"; FPKM "2.5661322775"; frac "1.000000"; conf_lo "1.733569"; conf_hi "3.398696"; cov "15.199211";
 chr1	Cufflinks	exon	7986886	7987463	1000	.	.	gene_id "CUFF.38"; transcript_id "CUFF.38.1"; exon_number "1"; FPKM "2.5661322775"; frac "1.000000"; conf_lo "1.733569"; conf_hi "3.398696"; cov "15.199211";
+chr1  Cufflinks transcript  8678847 8679696 1000  . . gene_id "CUFF.43"; transcript_id "CUFF.43.1"; FPKM "0.4475995814"; frac "1.000000"; conf_lo "0.199316"; conf_hi "0.695883"; cov "3.424184";
+chr1  Cufflinks exon  8678847 8679696 1000  . . gene_id "CUFF.43"; transcript_id "CUFF.43.1"; exon_number "1"; FPKM "0.4475995814"; frac "1.000000"; conf_lo "0.199316"; conf_hi "0.695883"; cov "3.424184";

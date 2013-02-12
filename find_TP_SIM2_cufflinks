@@ -268,8 +268,6 @@ cufflinks_genes.each do |key,value|
   end
 end
 
-
-
 genes_that_should_be_in_gtf_by_spliceform = seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,truth_genes)
 
 puts "Number of false negatives:"
