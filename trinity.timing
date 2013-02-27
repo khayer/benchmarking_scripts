@@ -1,0 +1,5 @@
+Statistics:
+===========
+Trinity Version:      Trinity-r2012-10-05
+Compiler:             Intel
+Trinity Parameters:   --seqType fa --JM 5G --CPU 2 --output trinity/ --left fwd.fa --right rev.fa

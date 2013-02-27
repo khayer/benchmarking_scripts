@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+require 'fileutils'
+
 
 usage =<<EOF
 
@@ -39,10 +41,14 @@ $rsem = "~/Downloads/trinityrnaseq_r2012-10-05/util/RSEM_util/run_RSEM.pl"
 ############
 
 ### Functions
-def run_trinity(fwd, reverse)
+def run_trinity(fwd, rev)
   # Trinity.pl --seqType fa --JM 5G --CPU 2 --output trinity/
   # --left fwd.fa --right rev.fa > trinity.log 2>&1
-  cmd = `#{$trinity} -seqType fa --JM 5G --CPU 2 --output trinity/ --left #{fwd} --right #{rev.fa} > trinity.log 2>&1`
+  `rm -r trinity`
+  cmd = "#{$trinity} --seqType fa --JM 5G --CPU 2 --output trinity/ --left #{fwd} --right #{rev} > trinity.log 2>&1"
+  puts cmd
+  `#{cmd}`
+  puts $?.exitstatus
 end
 
 def run_aligner(ex_levels)
@@ -65,6 +71,27 @@ def get_chromosome_lengths(sam_file)
     chromosome_lengths[chr] = length
   end
   chromosome_lengths
+end
+
+def make_fasta_file(fwd_reads,rev_reads)
+  fwd_fa = File.open("fwd.fa",'w')
+  rev_fa = File.open("rev.fa",'w')
+  fwd_reads.each do |name,sequence|
+    if rev_reads[name]
+      fwd_fa.puts ">#{name}/1"
+      fwd_fa.puts sequence
+      rev_fa.puts ">#{name}/2"
+      rev_fa.puts rev_reads[name]
+    end
+  end
+  fwd_fa.close
+  rev_fa.close
+end
+
+def compute_trinity(fwd_reads,rev_reads,results)
+  #File.delete("trinity")
+  make_fasta_file(fwd_reads,rev_reads)
+  run_trinity("fwd.fa", "rev.fa")
 end
 
 
@@ -95,16 +122,20 @@ File.open(sam).each do |line|
   length = sam_fields[5].split(/\D/).inject{|sum,x| sum.to_i + x.to_i }
   if sam_fields[3].to_i > highest || current_chromosome != sam_fields[2]
     puts "area start #{highest}"
-    puts fwd_reads
-    puts rev_reads
+    puts sam_fields[3]
+    if fwd_reads != {} && rev_reads != {}
+      compute_trinity(fwd_reads,rev_reads,results)
+    end
     fwd_reads = {}
     rev_reads = {}
-    puts length
+    #puts length
+    #puts current_chromosome
     highest = sam_fields[3].to_i + length.to_i
+    #puts "new highest #{highest}"
     current_chromosome = sam_fields[2]
     STDIN.gets
   end
-  highest = sam_fields[3].to_i + length.to_i
+
   sequence_names << sam_fields[0] unless sequence_names.include?(sam_fields[0])
   # is first pair?
   bit_flag = sam_fields[1].to_i
@@ -112,6 +143,11 @@ File.open(sam).each do |line|
     fwd_reads[sam_fields[0]] = sam_fields[9]
   else
     rev_reads[sam_fields[0]] = sam_fields[9]
+  end
+  if sam_fields[7].to_i > sam_fields[3].to_i
+    highest = sam_fields[7].to_i + 100
+  else
+    highest = sam_fields[3].to_i + length.to_i
   end
 end
 
