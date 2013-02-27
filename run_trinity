@@ -53,6 +53,19 @@ def run_rsem(sorted_expression_levels,num)
 
 end
 
+def get_chromosome_lengths(sam_file)
+  chromosome_lengths = {}
+  File.open(sam_file).each do |line|
+    line.chomp!
+    break unless line =~ /^@/
+    next unless line =~ /^@SQ/
+    fields = line.split(":")
+    length = fields[-1]
+    chr = fields[1].split(" ")[0]
+    chromosome_lengths[chr] = length
+  end
+  chromosome_lengths
+end
 
 
 #############
@@ -61,9 +74,15 @@ end
 sam = ARGV[0]
 results = ARGV[1]
 region_start = 0
+
+chromosome_lengths = get_chromosome_lengths(sam)
 current_chromosome = "chrXY"
-fwd_reads = []
-rev_reads = []
+PositiveInfinity = +1.0/0.0
+NegativeInfinity = -1.0/0.0
+smallest = PositiveInfinity
+highest = NegativeInfinity
+fwd_reads = {}
+rev_reads = {}
 sequence_names = []
 
 File.open(sam).each do |line|
@@ -73,9 +92,27 @@ File.open(sam).each do |line|
   sam_fields = line.split(" ")
   # Get rid if pair did not in same area
   next if sam_fields[4] == "0"
+  length = sam_fields[5].split(/\D/).inject{|sum,x| sum.to_i + x.to_i }
+  if sam_fields[3].to_i > highest || current_chromosome != sam_fields[2]
+    puts "area start #{highest}"
+    puts fwd_reads
+    puts rev_reads
+    fwd_reads = {}
+    rev_reads = {}
+    puts length
+    highest = sam_fields[3].to_i + length.to_i
+    current_chromosome = sam_fields[2]
+    STDIN.gets
+  end
+  highest = sam_fields[3].to_i + length.to_i
   sequence_names << sam_fields[0] unless sequence_names.include?(sam_fields[0])
-  puts sequence_names
-  STDIN.gets
+  # is first pair?
+  bit_flag = sam_fields[1].to_i
+  if bit_flag[6] == 1
+    fwd_reads[sam_fields[0]] = sam_fields[9]
+  else
+    rev_reads[sam_fields[0]] = sam_fields[9]
+  end
 end
 
 ########
