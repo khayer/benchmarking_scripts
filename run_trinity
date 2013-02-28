@@ -4,11 +4,12 @@ require 'fileutils'
 
 usage =<<EOF
 
-      #{$0} sorted_sam_file results
+      #{$0} sam results base
 
       ------------------------------------------------------
-      * fwd      :: fwd.fa/fq
-      * rev      :: rev.fa/fq
+      * sam      :: sorted_sam_file
+      * results  :: results.fa
+      * base     :: trinity_base
       ------------------------------------------------------
 
       Run Trinity on forward.fa and reverse.fa
@@ -22,21 +23,10 @@ usage =<<EOF
 
 EOF
 
-if ARGV.length != 2
+if ARGV.length != 3
   puts usage
   exit
 end
-
-### Settings
-$trinity = "~/Downloads/trinityrnaseq_r2012-10-05/Trinity.pl"
-$aligner = "~/Downloads/trinityrnaseq_r2012-10-05/util/alignReads.pl"
-# alignReads.pl --left fwd.fa --right rev.fa --seqType fa
-# --target trinity/Trinity.fasta --aligner bowtie -- -p 2
-# > trinity_realign.log 2>&1
-$rsem = "~/Downloads/trinityrnaseq_r2012-10-05/util/RSEM_util/run_RSEM.pl"
-# run_RSEM.pl --transcript trinity/Trinity.fasta
-# --name_sorted_bam bowtie_out/bowtie_out.nameSorted.PropMapPairsForRSEM.bam
-# --paired > trinity_rsem.log 2>&1
 
 ############
 
@@ -164,8 +154,20 @@ end
 ### Main
 sam = ARGV[0]
 results = ARGV[1]
+base = ARGV[2]
 `rm #{results}`
 region_start = 0
+
+### Settings
+$trinity = "#{base}/Trinity.pl"
+$aligner = "#{base}/util/alignReads.pl"
+# alignReads.pl --left fwd.fa --right rev.fa --seqType fa
+# --target trinity/Trinity.fasta --aligner bowtie -- -p 2
+# > trinity_realign.log 2>&1
+$rsem = "#{base}/util/RSEM_util/run_RSEM.pl"
+# run_RSEM.pl --transcript trinity/Trinity.fasta
+# --name_sorted_bam bowtie_out/bowtie_out.nameSorted.PropMapPairsForRSEM.bam
+# --paired > trinity_rsem.log 2>&1
 
 chromosome_lengths = get_chromosome_lengths(sam)
 current_chromosome = "chrXY"
