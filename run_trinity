@@ -164,7 +164,7 @@ end
 ### Main
 sam = ARGV[0]
 results = ARGV[1]
-File.delete(results)
+`rm #{results}`
 region_start = 0
 
 chromosome_lengths = get_chromosome_lengths(sam)
