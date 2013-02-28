@@ -35,7 +35,7 @@ def run_trinity(fwd, rev)
   # Trinity.pl --seqType fa --JM 5G --CPU 2 --output trinity/
   # --left fwd.fa --right rev.fa > trinity.log 2>&1
   `rm -r trinity`
-  cmd = "#{$trinity} --seqType fa --JM 5G --CPU 2 --output trinity/ --left #{fwd} --right #{rev} > trinity.log 2>&1"
+  cmd = "#{$trinity} --seqType fa --JM 10G --CPU 2 --output trinity/ --left #{fwd} --right #{rev} > trinity.log 2>&1"
   STDERR.puts cmd
   `#{cmd}`
   $?.exitstatus
