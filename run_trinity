@@ -35,7 +35,7 @@ def run_trinity(fwd, rev)
   # Trinity.pl --seqType fa --JM 5G --CPU 2 --output trinity/
   # --left fwd.fa --right rev.fa > trinity.log 2>&1
   `rm -r trinity`
-  cmd = "#{$trinity} --seqType fa --JM 25G --CPU 2 --output trinity/ --left #{fwd} --right #{rev} > trinity.log 2>&1"
+  cmd = "#{$trinity} --seqType fa --JM 9G --CPU 2 --output trinity/ --left #{fwd} --right #{rev} > trinity.log 2>&1"
   STDERR.puts cmd
   `#{cmd}`
   $?.exitstatus
@@ -104,7 +104,7 @@ end
 def compute_trinity(fwd_reads,rev_reads,results)
   #File.delete("trinity")
   counter = make_fasta_file(fwd_reads,rev_reads)
-  return false if counter < 10
+  return false if counter < 100
   exitstatus = run_trinity("fwd.fa", "rev.fa")
   return false if exitstatus != 0
   exitstatus = run_aligner("fwd.fa", "rev.fa")
@@ -126,6 +126,7 @@ def compute_trinity(fwd_reads,rev_reads,results)
         end
       end
       name = line
+      sequence = ""
     else
       sequence += line
     end

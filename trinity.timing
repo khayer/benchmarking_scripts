@@ -2,7 +2,7 @@ Statistics:
 ===========
 Trinity Version:      Trinity-r2012-10-05
 Compiler:             Intel
-Trinity Parameters:   --seqType fa --JM 5G --CPU 2 --output trinity/ --left fwd.fa --right rev.fa
+Trinity Parameters:   --seqType fa --JM 9G --CPU 2 --output trinity/ --left fwd.fa --right rev.fa
 Paired mode
  Input data
   Left.fasta    0 MByte
@@ -12,10 +12,10 @@ Paired mode
 
 Runtime
 =======
-Start:       Thu Feb 28 11:17:40 EST 2013
-End:         Thu Feb 28 11:17:55 EST 2013
-Trinity.pl   15 seconds
-  Inchworm   13 seconds
-  Chrysalis  1 seconds
-  Butterfly  1 seconds
+Start:       Thu Feb 28 16:16:07 EST 2013
+End:         Thu Feb 28 16:17:30 EST 2013
+Trinity.pl   83 seconds
+  Inchworm   64 seconds
+  Chrysalis  5 seconds
+  Butterfly  14 seconds
   Rest       0 seconds
