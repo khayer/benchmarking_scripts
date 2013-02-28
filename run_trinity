@@ -121,8 +121,8 @@ def compute_trinity(fwd_reads,rev_reads,results)
         fields = name.split(" ")
         identifier = fields[0].split(">")[1]
         if valid_isoforms.index(identifier)
-          results.puts name
-          results.puts sequence
+          results_file.puts name
+          results_file.puts sequence
         end
       end
       name = line
