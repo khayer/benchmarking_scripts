@@ -46,17 +46,25 @@ def run_trinity(fwd, rev)
   # --left fwd.fa --right rev.fa > trinity.log 2>&1
   `rm -r trinity`
   cmd = "#{$trinity} --seqType fa --JM 5G --CPU 2 --output trinity/ --left #{fwd} --right #{rev} > trinity.log 2>&1"
-  puts cmd
+  STDERR.puts cmd
   `#{cmd}`
-  puts $?.exitstatus
+  $?.exitstatus
 end
 
-def run_aligner(ex_levels)
-
+def run_aligner(fwd, rev)
+  `rm -r bowtie_out`
+  cmd = "#{$aligner} --left #{fwd} --right #{rev} --target trinity/Trinity.fasta --aligner bowtie --seqType fa --SS_lib_type FR > aligner.log 2>&1"
+  STDERR.puts cmd
+  `#{cmd}`
+  $?.exitstatus
 end
 
-def run_rsem(sorted_expression_levels,num)
-
+def run_rsem()
+  `rm -r RSEM* TRANS.*`
+  cmd = "#{$rsem} --transcripts trinity/Trinity.fasta --name_sorted_bam bowtie_out/bowtie_out.nameSorted.sam.+.sam.PropMapPairsForRSEM.bam --paired > rsem.log 2>&1"
+  STDERR.puts cmd
+  `#{cmd}`
+  $?.exitstatus
 end
 
 def get_chromosome_lengths(sam_file)
@@ -76,8 +84,10 @@ end
 def make_fasta_file(fwd_reads,rev_reads)
   fwd_fa = File.open("fwd.fa",'w')
   rev_fa = File.open("rev.fa",'w')
+  counter = 0
   fwd_reads.each do |name,sequence|
     if rev_reads[name]
+      counter += 1
       fwd_fa.puts ">#{name}/1"
       fwd_fa.puts sequence
       rev_fa.puts ">#{name}/2"
@@ -86,12 +96,66 @@ def make_fasta_file(fwd_reads,rev_reads)
   end
   fwd_fa.close
   rev_fa.close
+  counter
 end
+
+def find_valid_isoforms()
+  valid_isoforms = []
+  File.open("RSEM.isoforms.results").each do |line|
+    line.chomp!
+    next unless line =~ /^comp/
+    fields = line.split("\t")
+    valid_isoforms << fields[0] if fields[-1].to_f >= 50.0
+  end
+  valid_isoforms
+end
+
 
 def compute_trinity(fwd_reads,rev_reads,results)
   #File.delete("trinity")
-  make_fasta_file(fwd_reads,rev_reads)
-  run_trinity("fwd.fa", "rev.fa")
+  counter = make_fasta_file(fwd_reads,rev_reads)
+  return false if counter < 10
+  exitstatus = run_trinity("fwd.fa", "rev.fa")
+  return false if exitstatus != 0
+  exitstatus = run_aligner("fwd.fa", "rev.fa")
+  return false if exitstatus != 0
+  exitstatus = run_rsem()
+  return false if exitstatus != 0
+  valid_isoforms = find_valid_isoforms()
+  results_file = File.open(results,'a')
+  sequence = ""
+  name = ""
+  File.open("trinity/Trinity.fasta").each do |line|
+    if line =~ /^>comp/
+      unless sequence.empty? || name.empty?
+        fields = name.split(" ")
+        identifier = fields[0].split(">")[1]
+        if valid_isoforms.index(identifier)
+          results.puts name
+          results.puts sequence
+        end
+      end
+      name = line
+    else
+      sequence += line
+    end
+  end
+  fields = name.split(" ")
+  identifier = fields[0].split(">")[1]
+  if valid_isoforms.index(identifier)
+    results_file.puts name
+    results_file.puts sequence
+  end
+  results_file.close
+  true
+end
+
+def cleanup()
+  `rm -r trinity`
+  `rm -r bowtie_out`
+  `rm -r RSEM* TRANS.*`
+  `rm fwd.fa rev.fa`
+  `rm aligner.log trinity.log rsem.log`
 end
 
 
@@ -100,6 +164,7 @@ end
 ### Main
 sam = ARGV[0]
 results = ARGV[1]
+File.delete(results)
 region_start = 0
 
 chromosome_lengths = get_chromosome_lengths(sam)
@@ -121,10 +186,13 @@ File.open(sam).each do |line|
   next if sam_fields[4] == "0"
   length = sam_fields[5].split(/\D/).inject{|sum,x| sum.to_i + x.to_i }
   if sam_fields[3].to_i > highest || current_chromosome != sam_fields[2]
-    puts "area start #{highest}"
-    puts sam_fields[3]
     if fwd_reads != {} && rev_reads != {}
-      compute_trinity(fwd_reads,rev_reads,results)
+      result = compute_trinity(fwd_reads,rev_reads,results)
+      if result
+        STDERR.puts "Trinity successful for #{current_chromosome}:#{highest}"
+      else
+        STDERR.puts "Trinity unsuccessful for #{current_chromosome}:#{highest}"
+      end
     end
     fwd_reads = {}
     rev_reads = {}
@@ -133,7 +201,6 @@ File.open(sam).each do |line|
     highest = sam_fields[3].to_i + length.to_i
     #puts "new highest #{highest}"
     current_chromosome = sam_fields[2]
-    STDIN.gets
   end
 
   sequence_names << sam_fields[0] unless sequence_names.include?(sam_fields[0])
@@ -150,5 +217,7 @@ File.open(sam).each do |line|
     highest = sam_fields[3].to_i + length.to_i
   end
 end
+
+cleanup()
 
 ########
