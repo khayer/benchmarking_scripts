@@ -9,7 +9,7 @@ def search_in(current_sequence)
   ind2 = $truth_sequences.key(current_sequence)
   if ind1
     $truth_sequences.delete(ind1)
-    $truth_sequences.delete(ind2)
+    #$truth_sequences.delete(ind2)
     result = [2, ind1]
   elsif ind2
     $truth_sequences.delete(ind2)
@@ -128,7 +128,7 @@ end
 #end
 
 
-
+number_of_transcripts = `grep -c "^>" #{trinity_file}`
 
 current_sequence = ""
 false_positive = 0
@@ -146,7 +146,7 @@ File.open(trinity_file).each do |line|
   line.chomp!
   if line =~ /^>/ && current_sequence != "" #&& $expressed_isoforms.include?(current_comp_name)
     number_of_all_genes += 1
-    STDERR.puts "#{( number_of_all_genes.to_f / 11236 )*100} %"
+    STDERR.puts "#{( number_of_all_genes.to_f / number_of_transcripts.to_f )*100} %"
     #STDERR.puts "#{( number_of_all_genes.to_f / 66 ).to_f} %"
     result = search_in(current_sequence)
     current_sequence = ""
@@ -155,7 +155,13 @@ File.open(trinity_file).each do |line|
       #puts "NEGATIVE"
       false_positive += 1
       #if result[1] != ""
-      number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      #STDERR.puts result.join(":")
+      if result[1] =~ /GENE/
+        number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+      else
+        #STDERR.puts "fdsfdgg"
+        number = 0
+      end
       #puts number
       weak_false_positives_by_spliceforms[number] = 0 unless weak_false_positives_by_spliceforms[number]
       weak_false_positives_by_spliceforms[number] += 1
@@ -180,12 +186,45 @@ File.open(trinity_file).each do |line|
     end
   end
 
+
+
   if line =~ /^>/
     current_comp_name = line.split(" ")[0].split(">")[1]
     current_sequence = ""
     next
   end
   current_sequence += line
+end
+
+result = search_in(current_sequence)
+current_sequence = ""
+case result[0]
+when 0
+  #puts "NEGATIVE"
+  false_positive += 1
+  #if result[1] != ""
+  number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+  #puts number
+  weak_false_positives_by_spliceforms[number] = 0 unless weak_false_positives_by_spliceforms[number]
+  weak_false_positives_by_spliceforms[number] += 1
+  #end
+when 1
+  #puts "WEAK"
+  weak_true_positive += 1
+  number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+  #puts number
+  weak_true_positive_by_spliceform[number] = 0 unless weak_true_positive_by_spliceform[number]
+  weak_true_positive_by_spliceform[number] += 1
+when 2
+  #puts "STRONG"
+  strong_true_positive += 1
+  weak_true_positive += 1
+  number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
+  #puts number
+  weak_true_positive_by_spliceform[number] = 0 unless weak_true_positive_by_spliceform[number]
+  weak_true_positive_by_spliceform[number] += 1
+  strong_true_positives_by_spliceforms[number] = 0 unless strong_true_positives_by_spliceforms[number]
+  strong_true_positives_by_spliceforms[number] += 1
 end
 
 puts false_positive
