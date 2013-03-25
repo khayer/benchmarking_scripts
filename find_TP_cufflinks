@@ -91,7 +91,7 @@ File.open(truth_file).each do |line|
   actual_exon_positions = Array.new
   left_boundaries.each_with_index do |left_boundary,i|
     # +1 since bed-files are 0-based
-    actual_exon_positions << left_boundary.to_i #+ 1
+    actual_exon_positions << left_boundary.to_i + 1
     actual_exon_positions << right_bounderies[i].to_i
   end
   all_actual_exon_positions << [info[0], actual_exon_positions.sort].flatten
