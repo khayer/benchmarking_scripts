@@ -35,7 +35,6 @@ def search_in(current_sequence)
       end
     end
   end
-  result
 
   #if helper
   #ind1 = $truth_sequences.index(current_sequence_complement)
@@ -99,7 +98,7 @@ end
 unless ARGV.length == 2
   puts ""
   puts "  Usage:"
-  puts "  find_TP_trinity contigs truth_sequences_fa"
+  puts "  find_TP_cap3 contigs truth_sequences_fa"
   puts ""
   exit
 end
