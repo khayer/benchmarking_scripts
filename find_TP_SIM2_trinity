@@ -103,7 +103,7 @@ usage =<<EOF
 
 EOF
 
-unless ARGV.length == 5
+unless ARGV.length == 6
   puts usage
   exit
 end
@@ -121,7 +121,6 @@ truth_sequences = get_truth_sequences(truth_sequences_file)
 expressed_isoforms = get_expressed_isoforms(rsem)
 expressed_genes = get_expressed_genes(rsem2)
 total_number_of_transcripts = expressed_isoforms.length
-
 
 current_sequence = ""
 false_positive = 0
