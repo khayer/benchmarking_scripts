@@ -108,7 +108,7 @@ end
 #### MAIN
 usage =<<EOF
 
-      #{$0} tri rsem truth ex_levels num
+      #{$0} tri rsem truth ex_levels num rsem2
 
       ------------------------------------------------------
       * tri       :: trinity.fasta
@@ -118,6 +118,7 @@ usage =<<EOF
                      from: create_expression_level_sh
       * num       :: num reflects how many genes are used
                      from ex_levels
+      * rsem2     :: RSEM.genes.results
       ------------------------------------------------------
 
       Finds True Positives in Trinity data.
@@ -208,7 +209,7 @@ end
 STDERR.puts false_positive
 STDERR.puts weak_true_positive
 STDERR.puts strong_true_positive
-STDERR.puts false_negatives = $genes_that_should_be_in_gtf.length 
+STDERR.puts false_negatives = $genes_that_should_be_in_gtf.length
 
 puts "=========="
 #puts "By number of splice forms:"
