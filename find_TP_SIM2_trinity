@@ -139,8 +139,8 @@ tmp_file_reverse = File.open("tmp_transcripts_reverse",'w')
 File.open(trinity_file).each do |line|
   line.chomp!
   if line =~ /^>/ && current_sequence != "" &&
-      $expressed_isoforms.include?(current_comp_name) &&
-      $expressed_genes.include?(current_comp_name.split("_seq")[0])
+      expressed_isoforms.include?(current_comp_name) &&
+      expressed_genes.include?(current_comp_name.split("_seq")[0])
     number_of_all_genes += 1
     STDERR.puts "#{( number_of_all_genes.to_f / total_number_of_transcripts )*100} %"
     #STDERR.puts "#{( number_of_all_genes.to_f / 66 ).to_f} %"
