@@ -2,41 +2,6 @@
 
 #### METHODS
 
-def search_in(current_sequence)
-  result = [0, ""]
-  current_sequence_complement = get_reverse_complement(current_sequence)
-  ind1 = $truth_sequences.key(current_sequence_complement)
-  ind2 = $truth_sequences.key(current_sequence)
-  if ind1
-    $truth_sequences.delete(ind1)
-    $genes_that_should_be_in_gtf.delete(ind1)
-    result = [2, ind1]
-  elsif ind2
-    $genes_that_should_be_in_gtf.delete(ind2)
-    $truth_sequences.delete(ind2)
-    result = [2, ind2]
-  else
-    begin
-      current_sequence_regexp = Regexp.new current_sequence
-      current_sequence_complement_regexp = Regexp.new current_sequence_complement
-      matching_sequence = $truth_sequences.inject([]) { |res, kv| res << kv if (kv[1] =~ current_sequence_regexp || kv[1] =~ current_sequence_complement_regexp); res  }
-    rescue
-      matching_sequence = $truth_sequences.inject([]) { |res, kv| res << kv unless (kv[1].scan(current_sequence).empty?) && (kv[1].scan(current_sequence_complement).empty?); res  }
-    end
-    matching_sequence.flatten!
-    if matching_sequence[1]
-      if length_diff(matching_sequence[1],current_sequence) > 500
-        result = [0, matching_sequence[0]]
-      else
-        result = [1, matching_sequence[0]]
-        $genes_that_should_be_in_gtf.delete(matching_sequence[0])
-        $truth_sequences.delete(matching_sequence[0])
-      end
-    end
-  end
-  result
-end
-
 def get_expression_levels(ex_levels)
   sorted_expression_levels = Hash.new()
   File.open(ex_levels).each do |line|
@@ -72,7 +37,6 @@ def get_truth_sequences(truth_sequences_file)
 end
 
 def get_expressed_isoforms(rsem)
-  total_number_of_transcripts = 0
   expressed_isoforms = []
   File.open(rsem).each do |line|
     next unless line =~ /^comp/
@@ -82,6 +46,18 @@ def get_expressed_isoforms(rsem)
     expressed_isoforms << info[0] if iso_pct > 10.00
   end
   expressed_isoforms
+end
+
+def get_expressed_isoforms(rsem2)
+  expressed_genes = []
+  File.open(rsem2).each do |line|
+    next unless line =~ /^comp/
+    line.chomp!
+    info = line.split(" ")
+    fpkm = info[-1].to_f
+    expressed_genes << info[0] if fpkm > 100.00
+  end
+  expressed_genes
 end
 
 def length_diff(seq1,seq2)
@@ -137,12 +113,14 @@ rsem = ARGV[1]
 truth_sequences_file = ARGV[2]
 ex_levels = ARGV[3]
 num = ARGV[4].to_i
+rsem2 = ARGV[5]
 
 sorted_expression_levels = get_expression_levels(ex_levels)
-$genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
-$truth_sequences = get_truth_sequences(truth_sequences_file)
-$expressed_isoforms = get_expressed_isoforms(rsem)
-total_number_of_transcripts = $expressed_isoforms.length
+genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
+truth_sequences = get_truth_sequences(truth_sequences_file)
+expressed_isoforms = get_expressed_isoforms(rsem)
+expressed_genes = get_expressed_genes(rsem2)
+total_number_of_transcripts = expressed_isoforms.length
 
 
 current_sequence = ""
@@ -156,46 +134,23 @@ weak_false_positives_by_spliceforms = []
 number_of_all_genes = 0
 current_comp_name = ""
 
-File.open(trinity_file).each do |line|
+tmp_file = File.open("tmp_transcripts",'w')
+tmp_file_reverse = File.open("tmp_transcripts_reverse",'w')
 
+File.open(trinity_file).each do |line|
   line.chomp!
-  if line =~ /^>/ && current_sequence != "" && $expressed_isoforms.include?(current_comp_name)
+  if line =~ /^>/ && current_sequence != "" &&
+      $expressed_isoforms.include?(current_comp_name) &&
+      $expressed_genes.include?(current_comp_name.split("_seq")[0])
     number_of_all_genes += 1
     STDERR.puts "#{( number_of_all_genes.to_f / total_number_of_transcripts )*100} %"
     #STDERR.puts "#{( number_of_all_genes.to_f / 66 ).to_f} %"
-    result = search_in(current_sequence)
+    #result = search_in(current_sequence)
+    tmp_file.puts ">#{current_comp_name}"
+    tmp_file.puts current_sequence
+    tmp_file.puts ">#{current_comp_name}_reverse"
+    tmp_file.puts get_reverse_complement(current_sequence)
     current_sequence = ""
-    case result[0]
-    when 0
-      #puts "NEGATIVE"
-      false_positive += 1
-      #if result[1] != ""
-      #number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
-      number = 1
-      #puts number
-      weak_false_positives_by_spliceforms[number] = 0 unless weak_false_positives_by_spliceforms[number]
-      weak_false_positives_by_spliceforms[number] += 1
-      #end
-    when 1
-      #puts "WEAK"
-      #weak_true_positive += 1
-      #number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
-      number = 1
-      #puts number
-      weak_true_positive_by_spliceform[number] = 0 unless weak_true_positive_by_spliceform[number]
-      weak_true_positive_by_spliceform[number] += 1
-    when 2
-      #puts "STRONG"
-      strong_true_positive += 1
-      weak_true_positive += 1
-      #number = (result[1].split(".")[1].to_i / 1000).floor + 1 #GENE.1802.1
-      number = 1
-      #puts number
-      weak_true_positive_by_spliceform[number] = 0 unless weak_true_positive_by_spliceform[number]
-      weak_true_positive_by_spliceform[number] += 1
-      strong_true_positives_by_spliceforms[number] = 0 unless strong_true_positives_by_spliceforms[number]
-      strong_true_positives_by_spliceforms[number] += 1
-    end
   end
 
   if line =~ /^>/
@@ -206,6 +161,7 @@ File.open(trinity_file).each do |line|
   current_sequence += line
 end
 
+=begin
 STDERR.puts false_positive
 STDERR.puts weak_true_positive
 STDERR.puts strong_true_positive
@@ -224,6 +180,5 @@ puts "All False Positives\t#{false_positive}"
 puts "All False Negatives\t#{false_negatives}"
 puts "=========="
 puts "All transcripts\t#{total_number_of_transcripts}"
-
-
+=end
 
