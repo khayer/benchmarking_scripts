@@ -134,7 +134,7 @@ number_of_all_genes = 0
 current_comp_name = ""
 
 tmp_file = File.open("tmp_transcripts",'w')
-tmp_file_reverse = File.open("tmp_transcripts_reverse",'w')
+#tmp_file_reverse = File.open("tmp_transcripts_reverse",'w')
 
 File.open(trinity_file).each do |line|
   line.chomp!
@@ -147,8 +147,8 @@ File.open(trinity_file).each do |line|
     #result = search_in(current_sequence)
     tmp_file.puts ">#{current_comp_name}"
     tmp_file.puts current_sequence
-    tmp_file.puts ">#{current_comp_name}_reverse"
-    tmp_file.puts get_reverse_complement(current_sequence)
+    #tmp_file.puts ">#{current_comp_name}_reverse"
+    #tmp_file.puts get_reverse_complement(current_sequence)
     current_sequence = ""
   end
 

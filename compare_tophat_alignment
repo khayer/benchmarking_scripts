@@ -46,19 +46,19 @@ out_file_handler = File.open(out_file, "w")
 # SequenceID TP FN PartiallyCorrect FP MateAlignedCorrectly?
 File.open(tophat_sam).each do |line|
   line.chomp!
-  line.gsub!(/NM:i:[1-9]/,"NM:i:0")
-  line.gsub!(/XO:i:[0-9]/,"")
-  line.gsub!(/AS:i:[0-9]/,"")
-  line.gsub!(/XN:i:[0-9]/,"")
-  line.gsub!(/XM:i:[0-9]/,"")
-  line.gsub!(/NH:i:[0-9]/,"")
-  line.gsub!(/XG:i:[0-9]/,"")
-  line.gsub!(/AS:i:-14/,"")
-  line.gsub!(/CP:i:[0-9]+/,"")
-  line.gsub!(/YT:Z:UU/,"")
-  line.gsub!(/CC:Z:=/,"")
-  line.gsub!(/HI:i:[0-9]/,"")
-  line.gsub!(/NM:i:[0-9]/,"")
+  #line.gsub!(/NM:i:[1-9]/,"NM:i:0")
+  #line.gsub!(/XO:i:[0-9]/,"")
+  #line.gsub!(/AS:i:[0-9]/,"")
+  #line.gsub!(/XN:i:[0-9]/,"")
+  #line.gsub!(/XM:i:[0-9]/,"")
+  #line.gsub!(/NH:i:[0-9]/,"")
+  #line.gsub!(/XG:i:[0-9]/,"")
+  #line.gsub!(/AS:i:-14/,"")
+  #line.gsub!(/CP:i:[0-9]+/,"")
+  #line.gsub!(/YT:Z:UU/,"")
+  #line.gsub!(/CC:Z:=/,"")
+  #line.gsub!(/HI:i:[0-9]/,"")
+  #line.gsub!(/NM:i:[0-9]/,"")
   info = line.split(" ")
   #flag = info[1].to_i.to_s(2).split("").reverse()
   #if flag[6] == "1"
@@ -96,25 +96,25 @@ File.open(tophat_sam).each do |line|
   end
   info[10] = "*"
 
-  info << "IH:i:#{truth[info[0]][9]}"
-  info << "HI:i:#{truth[info[0]][10]}"
-  info << "NM:i:0"
-  info << "XO:A:F"
-  info.keep_if { |v| !(v =~ /XS:A/)}
-  info << "XS:A:#{xs_tag}" unless xs_tag == ""
-  info[4] = truth[info[0]][7]
+  #info << "IH:i:#{truth[info[0]][9]}"
+  #info << "HI:i:#{truth[info[0]][10]}"
+  #info << "NM:i:0"
+  #info << "XO:A:F"
+  #info.keep_if { |v| !(v =~ /XS:A/)}
+  #info << "XS:A:#{xs_tag}" unless xs_tag == ""
+  #info[4] = truth[info[0]][7]
   seen_sequences << info[0]
   puts "#{info[0]}\t#{results[info[0]].join("\t")}"
-  if info[8] == truth[info[0]][6]
-    info[0] = info[0].delete("a")
-    info[0] = info[0].delete("b")
-    out_file_handler.puts info.join("\t")
-  else
-    info[8] = truth[info[0]][6]
-    info[0] = info[0].delete("a")
-    info[0] = info[0].delete("b")
-    out_file_handler.puts info.join("\t")
-  end
+  #if info[8] == truth[info[0]][6]
+  #  info[0] = info[0].delete("a")
+  #  info[0] = info[0].delete("b")
+  #  out_file_handler.puts info.join("\t")
+  #else
+  #  info[8] = truth[info[0]][6]
+  #  info[0] = info[0].delete("a")
+  #  info[0] = info[0].delete("b")
+  #  out_file_handler.puts info.join("\t")
+  #end
 
 
   #if truth[info[0]]
