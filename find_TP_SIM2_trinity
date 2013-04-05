@@ -120,7 +120,7 @@ genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_
 truth_sequences = get_truth_sequences(truth_sequences_file)
 expressed_isoforms = get_expressed_isoforms(rsem)
 expressed_genes = get_expressed_genes(rsem2)
-total_number_of_transcripts = expressed_isoforms.length
+total_number_of_transcripts = expressed_genes.length
 
 current_sequence = ""
 false_positive = 0
