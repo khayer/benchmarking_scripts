@@ -118,7 +118,7 @@ File.open(truth_sequences_file).each do |line|
 end
 
 $expressed_isoforms = []
-File.open(rsem).each do |line|
+File.open(trinity_file).each do |line|
   next unless line =~ /^>/
   line.chomp!
   info = line.split("_")
