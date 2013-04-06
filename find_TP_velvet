@@ -129,7 +129,7 @@ File.open(trinity_file).each do |line|
 end
 
 
-number_of_transcripts = `grep -c "^>" #{trinity_file} |  cut -d "_" -f 6 | awk '$1 > #{cut_off} {print}' |  wc -l`
+number_of_transcripts = `grep  "^>" #{trinity_file} |  cut -d "_" -f 6 | awk '$1 > #{cut_off} {print}' |  wc -l`
 
 current_sequence = ""
 false_positive = 0
