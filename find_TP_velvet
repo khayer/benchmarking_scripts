@@ -117,6 +117,8 @@ File.open(truth_sequences_file).each do |line|
   end
 end
 
+
+cut_off = 0.6
 $expressed_isoforms = []
 File.open(trinity_file).each do |line|
   next unless line =~ /^>/
@@ -125,7 +127,7 @@ File.open(trinity_file).each do |line|
   confidence = info[5].to_f
   $expressed_isoforms << line if confidence > cut_off
 end
-cut_off = 0.6
+
 
 number_of_transcripts = `grep -c "^>" #{trinity_file} |  cut -d "_" -f 6 | awk '$1 > #{cut_off} {print}' |  wc -l`
 
