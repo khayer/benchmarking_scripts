@@ -60,13 +60,13 @@ File.open(tophat_sam).each do |line|
   #line.gsub!(/HI:i:[0-9]/,"")
   #line.gsub!(/NM:i:[0-9]/,"")
   info = line.split(" ")
-  #flag = info[1].to_i.to_s(2).split("").reverse()
-  #if flag[6] == "1"
-  #  seq = info[0] + "a"
-  #else
-  #  seq = info[0] + "b"
-  #end
-  #info[0] = seq
+  flag = info[1].to_i.to_s(2).split("").reverse()
+  if flag[6] == "1"
+    seq = info[0] + "a"
+  else
+    seq = info[0] + "b"
+  end
+  info[0] = seq
   # Sequence in truth file?
   xs_tag = ""
   if truth[info[0]]
@@ -77,7 +77,7 @@ File.open(tophat_sam).each do |line|
     rescue
       xs_tag = "0"
     end
-    if (info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2] && info[5] == truth[info[0]][3] && info[7] == truth[info[0]][5] && xs_tag == truth[info[0]][8])
+    if (info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2] && info[5] == truth[info[0]][3] && info[7] == truth[info[0]][5] )#&& xs_tag == truth[info[0]][8])
       results[info[0]] = [1,0,0,0,1]
     elsif info[2] == truth[info[0]][1] && info[3] == truth[info[0]][2] && info[5] == truth[info[0]][3]
       results[info[0]] = [1,0,0,0,0]
