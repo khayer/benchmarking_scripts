@@ -71,7 +71,7 @@ File.open(truth_file).each do |line|
       current_splice_forms = []
     end
   end
-  puts info.join("\t")
+  #puts info.join("\t")
   lengths = info[10].split(",")
   offsets = info[11].split(",")
   actual_exon_positions = Array.new
