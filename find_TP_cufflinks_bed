@@ -328,7 +328,7 @@ end
 
 
 
-/
+=<<EOF
 ### Are all exons correct?
 strongly_true_positives = 0
 strongly_true_positives2 = 0
