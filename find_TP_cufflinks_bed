@@ -170,11 +170,11 @@ all_exon_positions.each do |exon_positions|
       next if exon_positions[0] != actual[0]
       if ((exon_positions[1] >= actual[1]) && (exon_positions[1] < actual[2]))
         #puts actual[3]
-        if actual[3] > 5
-          puts exon_positions.join("\t")
-          puts actual.join("\t")
-          STDIN.gets
-        end
+        #if actual[3] > 5
+        #  puts exon_positions.join("\t")
+        #  puts actual.join("\t")
+        #  STDIN.gets
+        #end
         strongly_false_positives_by_spliceforms[actual[3]] = 0 unless strongly_false_positives_by_spliceforms[actual[3]]
         strongly_false_positives_by_spliceforms[actual[3]] += 1
         break
