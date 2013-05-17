@@ -328,7 +328,7 @@ end
 
 
 
-=<<EOF
+k=<<EOF
 ### Are all exons correct?
 strongly_true_positives = 0
 strongly_true_positives2 = 0
@@ -520,3 +520,5 @@ statistics.each_with_index do |stat,i|
   next unless stat
   puts "#{i}\t#{stat}" #\t#{statistics2[i]}"
 end
+
+EOF
