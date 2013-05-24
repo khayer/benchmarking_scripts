@@ -34,7 +34,6 @@ class GFF
       transcript << fields[4].to_i
     end
     transcript.sort!
-    puts transcript.join(":")
   end
 
 end

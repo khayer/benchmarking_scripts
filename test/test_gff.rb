@@ -21,8 +21,8 @@ class TestGFF < Test::Unit::TestCase
   def test_transcript()
     gff_file = GFF.new("test/data/test.gff")
     gff_file.create_index
-    gff_file.transcript("chr5",136656235,"scaffold15.path1")
-    #assert_equal(gff_file.index[["chr7",148033816]],1929)
+    transcript = gff_file.transcript("chr5",136656235,"scaffold15.path1")
+    assert_equal(transcript,[136656235,136657366,136665422,136665489,136667770,136667855,136670167,136670267,136674645,136674818])
   end
 
 end
