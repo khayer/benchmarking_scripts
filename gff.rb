@@ -33,6 +33,7 @@ class GFF
       transcript << fields[3].to_i
       transcript << fields[4].to_i
     end
+    k.close
     transcript.sort!
   end
 

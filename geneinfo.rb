@@ -10,12 +10,13 @@ class GeneInfo
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     k = File.open(@filename)
+    previous_position = 0
     k.each do |line|
       line.chomp!
-      next unless line =~ /gene/
       fields = line.split("\t")
-      id = fields[-1].split("=")[1].split(";")[0]
-      @index[[fields[0],fields[3].to_i,id]] = k.pos
+      id = fields[-1]
+      @index[[fields[0],fields[2].to_i,id]] = previous_position
+      previous_position = k.pos
     end
     k.close
   end
@@ -25,14 +26,16 @@ class GeneInfo
     pos_in_file = @index[[chr,pos,id]]
     k = File.open(@filename)
     k.pos = pos_in_file
-    k.each do |line|
-      break if line =~ /###/ or line =~ /CDS/
-      next if line =~ /mRNA/
-      line.chomp!
-      fields = line.split("\t")
-      transcript << fields[3].to_i
-      transcript << fields[4].to_i
+    line = k.readline
+    line.chomp!
+    fields = line.split("\t")
+    fields[5].split(",").each do |num|
+      transcript << num.to_i
     end
+    fields[6].split(",").each do |num|
+      transcript << num.to_i
+    end
+    k.close
     transcript.sort!
   end
 
