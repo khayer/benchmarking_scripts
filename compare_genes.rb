@@ -1,7 +1,7 @@
 require "./geneinfo.rb"
 require "./gff.rb"
 
-class Compare
+class CompareGenes
   def initialize(gff_file,geneinfo_file)
     @gff = GFF.new(gff_file).create_index
     @geneinfo = GeneInfo.new(geneinfo_file).create_index
