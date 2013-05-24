@@ -81,10 +81,10 @@ end
 #puts start_end_number_of_splice_forms[1].join("::")
 #puts start_end_number_of_splice_forms[2].join("::")
 
-start_end_number_of_splice_forms.each do |nina|
-  puts nina.join(":") if nina[3] > 2
-end
-exit
+#start_end_number_of_splice_forms.each do |nina|
+#  puts nina.join(":") if nina[3] > 2
+#end
+#exit
 #
 #exit
 

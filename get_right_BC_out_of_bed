@@ -15,10 +15,10 @@ end
 File.open(bed_file).each do |line|
   line.chomp!
   info = line.split("\t")
-  if truth_sequences.include?(info[-1])
+  if truth_sequences.include?(info[3])
     puts line
-    truth_sequences.delete(info[-1])
+    truth_sequences.delete(info[3])
   end
 end
 
-#puts truth_sequences
+STDERR.puts truth_sequences.join("::")
