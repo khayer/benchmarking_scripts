@@ -1,0 +1,1001 @@
+chr7	mm9_gsnap	gene	148033816	148036823	.	+	.	ID=scaffold1.path1;Name=scaffold1
+chr7	mm9_gsnap	mRNA	148033816	148036823	.	+	.	ID=scaffold1.mrna1;Name=scaffold1;Parent=scaffold1.path1;coverage=94.9;identity=99.9
+chr7	mm9_gsnap	exon	148033816	148033836	100	+	.	ID=scaffold1.mrna1.exon1;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 1 21 +
+chr7	mm9_gsnap	exon	148034246	148034362	100	+	.	ID=scaffold1.mrna1.exon2;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 22 138 +
+chr7	mm9_gsnap	exon	148034510	148034710	100	+	.	ID=scaffold1.mrna1.exon3;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 139 339 +
+chr7	mm9_gsnap	exon	148035349	148035470	100	+	.	ID=scaffold1.mrna1.exon4;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 340 461 +
+chr7	mm9_gsnap	exon	148036135	148036275	100	+	.	ID=scaffold1.mrna1.exon5;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 462 602 +
+chr7	mm9_gsnap	exon	148036606	148036823	99	+	.	ID=scaffold1.mrna1.exon6;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 603 821 +
+chr7	mm9_gsnap	CDS	148033818	148033836	100	+	0	ID=scaffold1.mrna1.cds1;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 3 21 +
+chr7	mm9_gsnap	CDS	148034246	148034362	100	+	1	ID=scaffold1.mrna1.cds2;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 22 138 +
+chr7	mm9_gsnap	CDS	148034510	148034710	100	+	1	ID=scaffold1.mrna1.cds3;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 139 339 +
+chr7	mm9_gsnap	CDS	148035349	148035470	100	+	1	ID=scaffold1.mrna1.cds4;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 340 461 +
+chr7	mm9_gsnap	CDS	148036135	148036275	100	+	0	ID=scaffold1.mrna1.cds5;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 462 602 +
+chr7	mm9_gsnap	CDS	148036606	148036661	98	+	0	ID=scaffold1.mrna1.cds6;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 603 659 +
+###
+chr7	mm9_gsnap	gene	148033816	148036823	.	+	.	ID=scaffold2.path1;Name=scaffold2
+chr7	mm9_gsnap	mRNA	148033816	148036823	.	+	.	ID=scaffold2.mrna1;Name=scaffold2;Parent=scaffold2.path1;coverage=97.4;identity=99.7
+chr7	mm9_gsnap	exon	148033816	148033836	100	+	.	ID=scaffold2.mrna1.exon1;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 1 21 +
+chr7	mm9_gsnap	exon	148034246	148034362	100	+	.	ID=scaffold2.mrna1.exon2;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 22 138 +
+chr7	mm9_gsnap	exon	148034510	148034710	100	+	.	ID=scaffold2.mrna1.exon3;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 139 339 +
+chr7	mm9_gsnap	exon	148035091	148035192	99	+	.	ID=scaffold2.mrna1.exon4;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 340 442 +
+chr7	mm9_gsnap	exon	148036135	148036275	100	+	.	ID=scaffold2.mrna1.exon5;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 443 583 +
+chr7	mm9_gsnap	exon	148036606	148036823	99	+	.	ID=scaffold2.mrna1.exon6;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 584 802 +
+chr7	mm9_gsnap	CDS	148033818	148033836	100	+	0	ID=scaffold2.mrna1.cds1;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 3 21 +
+chr7	mm9_gsnap	CDS	148034246	148034362	100	+	1	ID=scaffold2.mrna1.cds2;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 22 138 +
+chr7	mm9_gsnap	CDS	148034510	148034710	100	+	1	ID=scaffold2.mrna1.cds3;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 139 339 +
+chr7	mm9_gsnap	CDS	148035091	148035094	75	+	1	ID=scaffold2.mrna1.cds4;Name=scaffold2;Parent=scaffold2.mrna1;Target=scaffold2 340 344 +
+###
+chr5	mm9_gsnap	gene	124208508	124237535	.	+	.	ID=scaffold3.path1;Name=scaffold3
+chr5	mm9_gsnap	mRNA	124208508	124237535	.	+	.	ID=scaffold3.mrna1;Name=scaffold3;Parent=scaffold3.path1;coverage=97.9;identity=99.8
+chr5	mm9_gsnap	exon	124208508	124208530	100	+	.	ID=scaffold3.mrna1.exon1;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1 23 +
+chr5	mm9_gsnap	exon	124210342	124210376	100	+	.	ID=scaffold3.mrna1.exon2;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 24 58 +
+chr5	mm9_gsnap	exon	124212522	124212615	100	+	.	ID=scaffold3.mrna1.exon3;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 59 152 +
+chr5	mm9_gsnap	exon	124213804	124213856	100	+	.	ID=scaffold3.mrna1.exon4;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 153 205 +
+chr5	mm9_gsnap	exon	124214124	124214239	100	+	.	ID=scaffold3.mrna1.exon5;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 206 321 +
+chr5	mm9_gsnap	exon	124215006	124215060	98	+	.	ID=scaffold3.mrna1.exon6;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 322 377 +
+chr5	mm9_gsnap	exon	124215921	124216019	100	+	.	ID=scaffold3.mrna1.exon7;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 378 476 +
+chr5	mm9_gsnap	exon	124217779	124217822	100	+	.	ID=scaffold3.mrna1.exon8;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 477 520 +
+chr5	mm9_gsnap	exon	124217928	124217993	100	+	.	ID=scaffold3.mrna1.exon9;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 521 586 +
+chr5	mm9_gsnap	exon	124218301	124218376	100	+	.	ID=scaffold3.mrna1.exon10;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 587 662 +
+chr5	mm9_gsnap	exon	124219622	124219747	100	+	.	ID=scaffold3.mrna1.exon11;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 663 788 +
+chr5	mm9_gsnap	exon	124219862	124219951	100	+	.	ID=scaffold3.mrna1.exon12;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 789 878 +
+chr5	mm9_gsnap	exon	124221097	124221150	100	+	.	ID=scaffold3.mrna1.exon13;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 879 932 +
+chr5	mm9_gsnap	exon	124222095	124222156	100	+	.	ID=scaffold3.mrna1.exon14;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 933 994 +
+chr5	mm9_gsnap	exon	124223946	124224057	100	+	.	ID=scaffold3.mrna1.exon15;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 995 1106 +
+chr5	mm9_gsnap	exon	124225712	124225855	100	+	.	ID=scaffold3.mrna1.exon16;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1107 1250 +
+chr5	mm9_gsnap	exon	124226402	124226458	100	+	.	ID=scaffold3.mrna1.exon17;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1251 1307 +
+chr5	mm9_gsnap	exon	124226548	124226649	100	+	.	ID=scaffold3.mrna1.exon18;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1308 1409 +
+chr5	mm9_gsnap	exon	124228041	124228157	99	+	.	ID=scaffold3.mrna1.exon19;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1410 1527 +
+chr5	mm9_gsnap	exon	124228254	124228397	99	+	.	ID=scaffold3.mrna1.exon20;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1528 1672 +
+chr5	mm9_gsnap	exon	124229637	124229735	99	+	.	ID=scaffold3.mrna1.exon21;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1673 1772 +
+chr5	mm9_gsnap	exon	124230959	124231062	100	+	.	ID=scaffold3.mrna1.exon22;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1773 1876 +
+chr5	mm9_gsnap	exon	124231155	124231269	100	+	.	ID=scaffold3.mrna1.exon23;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1877 1991 +
+chr5	mm9_gsnap	exon	124231678	124231797	100	+	.	ID=scaffold3.mrna1.exon24;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 1992 2111 +
+chr5	mm9_gsnap	exon	124232851	124232970	99	+	.	ID=scaffold3.mrna1.exon25;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 2112 2232 +
+chr5	mm9_gsnap	exon	124234190	124234262	100	+	.	ID=scaffold3.mrna1.exon26;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 2233 2305 +
+chr5	mm9_gsnap	exon	124236898	124237070	100	+	.	ID=scaffold3.mrna1.exon27;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 2306 2478 +
+chr5	mm9_gsnap	exon	124237516	124237535	100	+	.	ID=scaffold3.mrna1.exon28;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 2479 2498 +
+chr5	mm9_gsnap	CDS	124208509	124208530	100	+	0	ID=scaffold3.mrna1.cds1;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 2 23 +
+chr5	mm9_gsnap	CDS	124210342	124210376	100	+	1	ID=scaffold3.mrna1.cds2;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 24 58 +
+chr5	mm9_gsnap	CDS	124212522	124212615	100	+	0	ID=scaffold3.mrna1.cds3;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 59 152 +
+chr5	mm9_gsnap	CDS	124213804	124213856	100	+	1	ID=scaffold3.mrna1.cds4;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 153 205 +
+chr5	mm9_gsnap	CDS	124214124	124214239	100	+	0	ID=scaffold3.mrna1.cds5;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 206 321 +
+chr5	mm9_gsnap	CDS	124215006	124215060	98	+	2	ID=scaffold3.mrna1.cds6;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 322 377 +
+chr5	mm9_gsnap	CDS	124215921	124215985	100	+	1	ID=scaffold3.mrna1.cds7;Name=scaffold3;Parent=scaffold3.mrna1;Target=scaffold3 378 442 +
+###
+chr5	mm9_gsnap	gene	124208508	124237535	.	+	.	ID=scaffold4.path1;Name=scaffold4
+chr5	mm9_gsnap	mRNA	124208508	124237535	.	+	.	ID=scaffold4.mrna1;Name=scaffold4;Parent=scaffold4.path1;coverage=97.9;identity=99.8
+chr5	mm9_gsnap	exon	124208508	124208530	100	+	.	ID=scaffold4.mrna1.exon1;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1 23 +
+chr5	mm9_gsnap	exon	124209030	124209107	100	+	.	ID=scaffold4.mrna1.exon2;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 24 101 +
+chr5	mm9_gsnap	exon	124210612	124210725	99	+	.	ID=scaffold4.mrna1.exon3;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 102 216 +
+chr5	mm9_gsnap	exon	124213804	124213856	100	+	.	ID=scaffold4.mrna1.exon4;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 217 269 +
+chr5	mm9_gsnap	exon	124214124	124214239	100	+	.	ID=scaffold4.mrna1.exon5;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 270 385 +
+chr5	mm9_gsnap	exon	124215006	124215060	98	+	.	ID=scaffold4.mrna1.exon6;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 386 441 +
+chr5	mm9_gsnap	exon	124215921	124216019	100	+	.	ID=scaffold4.mrna1.exon7;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 442 540 +
+chr5	mm9_gsnap	exon	124217779	124217822	100	+	.	ID=scaffold4.mrna1.exon8;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 541 584 +
+chr5	mm9_gsnap	exon	124217928	124217993	100	+	.	ID=scaffold4.mrna1.exon9;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 585 650 +
+chr5	mm9_gsnap	exon	124218301	124218376	100	+	.	ID=scaffold4.mrna1.exon10;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 651 726 +
+chr5	mm9_gsnap	exon	124219622	124219747	100	+	.	ID=scaffold4.mrna1.exon11;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 727 852 +
+chr5	mm9_gsnap	exon	124219862	124219951	100	+	.	ID=scaffold4.mrna1.exon12;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 853 942 +
+chr5	mm9_gsnap	exon	124221097	124221150	100	+	.	ID=scaffold4.mrna1.exon13;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 943 996 +
+chr5	mm9_gsnap	exon	124222095	124222156	100	+	.	ID=scaffold4.mrna1.exon14;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 997 1058 +
+chr5	mm9_gsnap	exon	124223946	124224057	100	+	.	ID=scaffold4.mrna1.exon15;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1059 1170 +
+chr5	mm9_gsnap	exon	124225712	124225855	100	+	.	ID=scaffold4.mrna1.exon16;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1171 1314 +
+chr5	mm9_gsnap	exon	124226402	124226458	100	+	.	ID=scaffold4.mrna1.exon17;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1315 1371 +
+chr5	mm9_gsnap	exon	124226548	124226649	100	+	.	ID=scaffold4.mrna1.exon18;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1372 1473 +
+chr5	mm9_gsnap	exon	124228041	124228157	99	+	.	ID=scaffold4.mrna1.exon19;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1474 1591 +
+chr5	mm9_gsnap	exon	124228254	124228397	99	+	.	ID=scaffold4.mrna1.exon20;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1592 1736 +
+chr5	mm9_gsnap	exon	124229637	124229735	99	+	.	ID=scaffold4.mrna1.exon21;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1737 1836 +
+chr5	mm9_gsnap	exon	124230959	124231062	100	+	.	ID=scaffold4.mrna1.exon22;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1837 1940 +
+chr5	mm9_gsnap	exon	124231155	124231269	100	+	.	ID=scaffold4.mrna1.exon23;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1941 2055 +
+chr5	mm9_gsnap	exon	124231678	124231797	100	+	.	ID=scaffold4.mrna1.exon24;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 2056 2175 +
+chr5	mm9_gsnap	exon	124232851	124232970	99	+	.	ID=scaffold4.mrna1.exon25;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 2176 2296 +
+chr5	mm9_gsnap	exon	124234190	124234262	100	+	.	ID=scaffold4.mrna1.exon26;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 2297 2369 +
+chr5	mm9_gsnap	exon	124236898	124237070	100	+	.	ID=scaffold4.mrna1.exon27;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 2370 2542 +
+chr5	mm9_gsnap	exon	124237516	124237535	100	+	.	ID=scaffold4.mrna1.exon28;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 2543 2562 +
+chr5	mm9_gsnap	CDS	124215921	124216019	100	+	0	ID=scaffold4.mrna1.cds1;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 442 540 +
+chr5	mm9_gsnap	CDS	124217779	124217822	100	+	0	ID=scaffold4.mrna1.cds2;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 541 584 +
+chr5	mm9_gsnap	CDS	124217928	124217993	100	+	2	ID=scaffold4.mrna1.cds3;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 585 650 +
+chr5	mm9_gsnap	CDS	124218301	124218376	100	+	2	ID=scaffold4.mrna1.cds4;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 651 726 +
+chr5	mm9_gsnap	CDS	124219622	124219747	100	+	0	ID=scaffold4.mrna1.cds5;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 727 852 +
+chr5	mm9_gsnap	CDS	124219862	124219951	100	+	0	ID=scaffold4.mrna1.cds6;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 853 942 +
+chr5	mm9_gsnap	CDS	124221097	124221150	100	+	0	ID=scaffold4.mrna1.cds7;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 943 996 +
+chr5	mm9_gsnap	CDS	124222095	124222156	100	+	0	ID=scaffold4.mrna1.cds8;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 997 1058 +
+chr5	mm9_gsnap	CDS	124223946	124224057	100	+	2	ID=scaffold4.mrna1.cds9;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1059 1170 +
+chr5	mm9_gsnap	CDS	124225712	124225855	100	+	0	ID=scaffold4.mrna1.cds10;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1171 1314 +
+chr5	mm9_gsnap	CDS	124226402	124226458	100	+	0	ID=scaffold4.mrna1.cds11;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1315 1371 +
+chr5	mm9_gsnap	CDS	124226548	124226649	100	+	0	ID=scaffold4.mrna1.cds12;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1372 1473 +
+chr5	mm9_gsnap	CDS	124228041	124228117	98	+	0	ID=scaffold4.mrna1.cds13;Name=scaffold4;Parent=scaffold4.mrna1;Target=scaffold4 1474 1551 +
+###
+chr15	mm9_gsnap	gene	10994545	11276622	.	+	.	ID=scaffold5.path1;Name=scaffold5
+chr15	mm9_gsnap	mRNA	10994545	11276622	.	+	.	ID=scaffold5.mrna1;Name=scaffold5;Parent=scaffold5.path1;coverage=97.5;identity=99.9
+chr15	mm9_gsnap	exon	10994545	10994912	100	+	.	ID=scaffold5.mrna1.exon1;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1 368 +
+chr15	mm9_gsnap	exon	11001254	11001621	99	+	.	ID=scaffold5.mrna1.exon2;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 369 737 +
+chr15	mm9_gsnap	exon	11081676	11081826	100	+	.	ID=scaffold5.mrna1.exon3;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 738 888 +
+chr15	mm9_gsnap	exon	11145296	11145492	100	+	.	ID=scaffold5.mrna1.exon4;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 889 1085 +
+chr15	mm9_gsnap	exon	11147557	11147640	98	+	.	ID=scaffold5.mrna1.exon5;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1086 1170 +
+chr15	mm9_gsnap	exon	11167289	11167413	100	+	.	ID=scaffold5.mrna1.exon6;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1171 1295 +
+chr15	mm9_gsnap	exon	11171151	11171300	100	+	.	ID=scaffold5.mrna1.exon7;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1296 1445 +
+chr15	mm9_gsnap	exon	11185304	11185447	100	+	.	ID=scaffold5.mrna1.exon8;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1446 1589 +
+chr15	mm9_gsnap	exon	11186664	11186808	100	+	.	ID=scaffold5.mrna1.exon9;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1590 1734 +
+chr15	mm9_gsnap	exon	11187851	11187943	100	+	.	ID=scaffold5.mrna1.exon10;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1735 1827 +
+chr15	mm9_gsnap	exon	11188711	11188856	100	+	.	ID=scaffold5.mrna1.exon11;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1828 1973 +
+chr15	mm9_gsnap	exon	11200316	11200449	100	+	.	ID=scaffold5.mrna1.exon12;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1974 2107 +
+chr15	mm9_gsnap	exon	11207091	11207211	100	+	.	ID=scaffold5.mrna1.exon13;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2108 2228 +
+chr15	mm9_gsnap	exon	11215617	11215861	99	+	.	ID=scaffold5.mrna1.exon14;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2229 2474 +
+chr15	mm9_gsnap	exon	11216466	11216604	99	+	.	ID=scaffold5.mrna1.exon15;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2475 2614 +
+chr15	mm9_gsnap	exon	11221765	11221891	100	+	.	ID=scaffold5.mrna1.exon16;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2615 2741 +
+chr15	mm9_gsnap	exon	11229650	11229860	100	+	.	ID=scaffold5.mrna1.exon17;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2742 2952 +
+chr15	mm9_gsnap	exon	11246958	11247110	99	+	.	ID=scaffold5.mrna1.exon18;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2953 3106 +
+chr15	mm9_gsnap	exon	11257434	11257613	100	+	.	ID=scaffold5.mrna1.exon19;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 3107 3286 +
+chr15	mm9_gsnap	exon	11261473	11261616	100	+	.	ID=scaffold5.mrna1.exon20;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 3287 3430 +
+chr15	mm9_gsnap	exon	11266050	11266209	100	+	.	ID=scaffold5.mrna1.exon21;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 3431 3590 +
+chr15	mm9_gsnap	exon	11275254	11276622	100	+	.	ID=scaffold5.mrna1.exon22;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 3591 4959 +
+chr15	mm9_gsnap	CDS	11187906	11187943	100	+	0	ID=scaffold5.mrna1.cds1;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1790 1827 +
+chr15	mm9_gsnap	CDS	11188711	11188856	100	+	2	ID=scaffold5.mrna1.cds2;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1828 1973 +
+chr15	mm9_gsnap	CDS	11200316	11200449	100	+	1	ID=scaffold5.mrna1.cds3;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 1974 2107 +
+chr15	mm9_gsnap	CDS	11207091	11207211	100	+	0	ID=scaffold5.mrna1.cds4;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2108 2228 +
+chr15	mm9_gsnap	CDS	11215617	11215626	90	+	1	ID=scaffold5.mrna1.cds5;Name=scaffold5;Parent=scaffold5.mrna1;Target=scaffold5 2229 2239 +
+###
+chr15	mm9_gsnap	gene	10994545	11200449	.	+	.	ID=scaffold6.path1;Name=scaffold6
+chr15	mm9_gsnap	mRNA	10994545	11200449	.	+	.	ID=scaffold6.mrna1;Name=scaffold6;Parent=scaffold6.path1;coverage=97.1;identity=99.9
+chr15	mm9_gsnap	exon	10994545	10994912	100	+	.	ID=scaffold6.mrna1.exon1;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1 368 +
+chr15	mm9_gsnap	exon	11001254	11001621	99	+	.	ID=scaffold6.mrna1.exon2;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 369 737 +
+chr15	mm9_gsnap	exon	11081676	11081826	100	+	.	ID=scaffold6.mrna1.exon3;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 738 888 +
+chr15	mm9_gsnap	exon	11145296	11145492	100	+	.	ID=scaffold6.mrna1.exon4;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 889 1085 +
+chr15	mm9_gsnap	exon	11147557	11147640	98	+	.	ID=scaffold6.mrna1.exon5;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1086 1170 +
+chr15	mm9_gsnap	exon	11167289	11167413	100	+	.	ID=scaffold6.mrna1.exon6;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1171 1295 +
+chr15	mm9_gsnap	exon	11171151	11171300	100	+	.	ID=scaffold6.mrna1.exon7;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1296 1445 +
+chr15	mm9_gsnap	exon	11185304	11185447	100	+	.	ID=scaffold6.mrna1.exon8;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1446 1589 +
+chr15	mm9_gsnap	exon	11186664	11186808	100	+	.	ID=scaffold6.mrna1.exon9;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1590 1734 +
+chr15	mm9_gsnap	exon	11187851	11187943	100	+	.	ID=scaffold6.mrna1.exon10;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1735 1827 +
+chr15	mm9_gsnap	exon	11188711	11188856	100	+	.	ID=scaffold6.mrna1.exon11;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1828 1973 +
+chr15	mm9_gsnap	exon	11193039	11193208	99	+	.	ID=scaffold6.mrna1.exon12;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 1974 2144 +
+chr15	mm9_gsnap	exon	11200316	11200449	100	+	.	ID=scaffold6.mrna1.exon13;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 2145 2278 +
+chr15	mm9_gsnap	CDS	10994786	10994912	100	+	0	ID=scaffold6.mrna1.cds1;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 242 368 +
+chr15	mm9_gsnap	CDS	11001254	11001356	99	+	1	ID=scaffold6.mrna1.cds2;Name=scaffold6;Parent=scaffold6.mrna1;Target=scaffold6 369 472 +
+###
+chr15	mm9_gsnap	gene	10994545	11257613	.	+	.	ID=scaffold7.path1;Name=scaffold7
+chr15	mm9_gsnap	mRNA	10994545	11257613	.	+	.	ID=scaffold7.mrna1;Name=scaffold7;Parent=scaffold7.path1;coverage=97.5;identity=99.9
+chr15	mm9_gsnap	exon	10994545	10994912	100	+	.	ID=scaffold7.mrna1.exon1;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1 368 +
+chr15	mm9_gsnap	exon	11001254	11001621	99	+	.	ID=scaffold7.mrna1.exon2;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 369 737 +
+chr15	mm9_gsnap	exon	11081676	11081826	100	+	.	ID=scaffold7.mrna1.exon3;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 738 888 +
+chr15	mm9_gsnap	exon	11145296	11145492	100	+	.	ID=scaffold7.mrna1.exon4;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 889 1085 +
+chr15	mm9_gsnap	exon	11147557	11147640	98	+	.	ID=scaffold7.mrna1.exon5;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1086 1170 +
+chr15	mm9_gsnap	exon	11167289	11167413	100	+	.	ID=scaffold7.mrna1.exon6;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1171 1295 +
+chr15	mm9_gsnap	exon	11171151	11171300	100	+	.	ID=scaffold7.mrna1.exon7;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1296 1445 +
+chr15	mm9_gsnap	exon	11185304	11185447	100	+	.	ID=scaffold7.mrna1.exon8;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1446 1589 +
+chr15	mm9_gsnap	exon	11186664	11186808	100	+	.	ID=scaffold7.mrna1.exon9;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1590 1734 +
+chr15	mm9_gsnap	exon	11187851	11187943	100	+	.	ID=scaffold7.mrna1.exon10;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1735 1827 +
+chr15	mm9_gsnap	exon	11188711	11188856	100	+	.	ID=scaffold7.mrna1.exon11;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1828 1973 +
+chr15	mm9_gsnap	exon	11193039	11193208	99	+	.	ID=scaffold7.mrna1.exon12;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 1974 2144 +
+chr15	mm9_gsnap	exon	11200316	11200449	100	+	.	ID=scaffold7.mrna1.exon13;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 2145 2278 +
+chr15	mm9_gsnap	exon	11207091	11207211	100	+	.	ID=scaffold7.mrna1.exon14;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 2279 2399 +
+chr15	mm9_gsnap	exon	11215617	11215861	99	+	.	ID=scaffold7.mrna1.exon15;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 2400 2645 +
+chr15	mm9_gsnap	exon	11216466	11216604	99	+	.	ID=scaffold7.mrna1.exon16;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 2646 2785 +
+chr15	mm9_gsnap	exon	11221765	11221891	100	+	.	ID=scaffold7.mrna1.exon17;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 2786 2912 +
+chr15	mm9_gsnap	exon	11229650	11229860	100	+	.	ID=scaffold7.mrna1.exon18;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 2913 3123 +
+chr15	mm9_gsnap	exon	11240291	11241400	99	+	.	ID=scaffold7.mrna1.exon19;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 3124 4234 +
+chr15	mm9_gsnap	exon	11246958	11247110	100	+	.	ID=scaffold7.mrna1.exon20;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 4235 4387 +
+chr15	mm9_gsnap	exon	11257434	11257613	100	+	.	ID=scaffold7.mrna1.exon21;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 4388 4567 +
+chr15	mm9_gsnap	CDS	10994786	10994912	100	+	0	ID=scaffold7.mrna1.cds1;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 242 368 +
+chr15	mm9_gsnap	CDS	11001254	11001356	99	+	1	ID=scaffold7.mrna1.cds2;Name=scaffold7;Parent=scaffold7.mrna1;Target=scaffold7 369 472 +
+###
+chr15	mm9_gsnap	gene	101933419	101944488	.	+	.	ID=scaffold8.path1;Name=scaffold8
+chr15	mm9_gsnap	mRNA	101933419	101944488	.	+	.	ID=scaffold8.mrna1;Name=scaffold8;Parent=scaffold8.path1;coverage=98.3;identity=99.8
+chr15	mm9_gsnap	exon	101933419	101933592	99	+	.	ID=scaffold8.mrna1.exon1;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 3235 3409 -
+chr15	mm9_gsnap	exon	101934961	101935069	100	+	.	ID=scaffold8.mrna1.exon2;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 3126 3234 -
+chr15	mm9_gsnap	exon	101935770	101935807	100	+	.	ID=scaffold8.mrna1.exon3;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 3088 3125 -
+chr15	mm9_gsnap	exon	101936675	101936713	100	+	.	ID=scaffold8.mrna1.exon4;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 3049 3087 -
+chr15	mm9_gsnap	exon	101937022	101937060	97	+	.	ID=scaffold8.mrna1.exon5;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 3009 3048 -
+chr15	mm9_gsnap	exon	101937446	101937617	99	+	.	ID=scaffold8.mrna1.exon6;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2836 3008 -
+chr15	mm9_gsnap	exon	101938233	101938355	100	+	.	ID=scaffold8.mrna1.exon7;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2713 2835 -
+chr15	mm9_gsnap	exon	101938442	101938506	100	+	.	ID=scaffold8.mrna1.exon8;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2648 2712 -
+chr15	mm9_gsnap	exon	101939752	101939864	100	+	.	ID=scaffold8.mrna1.exon9;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2535 2647 -
+chr15	mm9_gsnap	exon	101939944	101940004	98	+	.	ID=scaffold8.mrna1.exon10;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2473 2534 -
+chr15	mm9_gsnap	exon	101940902	101941031	100	+	.	ID=scaffold8.mrna1.exon11;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2343 2472 -
+chr15	mm9_gsnap	exon	101941110	101941175	100	+	.	ID=scaffold8.mrna1.exon12;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2277 2342 -
+chr15	mm9_gsnap	exon	101941302	101941415	100	+	.	ID=scaffold8.mrna1.exon13;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 2163 2276 -
+chr15	mm9_gsnap	exon	101941513	101942724	99	+	.	ID=scaffold8.mrna1.exon14;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 950 2162 -
+chr15	mm9_gsnap	exon	101942860	101943007	99	+	.	ID=scaffold8.mrna1.exon15;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 801 949 -
+chr15	mm9_gsnap	exon	101943098	101943663	100	+	.	ID=scaffold8.mrna1.exon16;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 235 800 -
+chr15	mm9_gsnap	exon	101943767	101943856	98	+	.	ID=scaffold8.mrna1.exon17;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 144 234 -
+chr15	mm9_gsnap	exon	101944141	101944266	100	+	.	ID=scaffold8.mrna1.exon18;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 18 143 -
+chr15	mm9_gsnap	exon	101944472	101944488	100	+	.	ID=scaffold8.mrna1.exon19;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 1 17 -
+chr15	mm9_gsnap	CDS	101941623	101942724	99	+	0	ID=scaffold8.mrna1.cds1;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 950 2052 -
+chr15	mm9_gsnap	CDS	101942860	101943007	99	+	2	ID=scaffold8.mrna1.cds2;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 801 949 -
+chr15	mm9_gsnap	CDS	101943098	101943663	100	+	1	ID=scaffold8.mrna1.cds3;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 235 800 -
+chr15	mm9_gsnap	CDS	101943767	101943856	98	+	0	ID=scaffold8.mrna1.cds4;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 144 234 -
+chr15	mm9_gsnap	CDS	101944141	101944266	100	+	1	ID=scaffold8.mrna1.cds5;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 18 143 -
+chr15	mm9_gsnap	CDS	101944472	101944488	100	+	1	ID=scaffold8.mrna1.cds6;Name=scaffold8;Parent=scaffold8.mrna1;Target=scaffold8 1 17 -
+###
+chr11	mm9_gsnap	gene	5029053	5030787	.	-	.	ID=scaffold9.path1;Name=scaffold9
+chr11	mm9_gsnap	mRNA	5029053	5030787	.	-	.	ID=scaffold9.mrna1;Name=scaffold9;Parent=scaffold9.path1;coverage=48.1;identity=99.6
+chr11	mm9_gsnap	exon	5030635	5030787	99	-	.	ID=scaffold9.mrna1.exon1;Name=scaffold9;Parent=scaffold9.mrna1;Target=scaffold9 252 405 +
+chr11	mm9_gsnap	exon	5029625	5029723	100	-	.	ID=scaffold9.mrna1.exon2;Name=scaffold9;Parent=scaffold9.mrna1;Target=scaffold9 406 504 +
+chr11	mm9_gsnap	exon	5029053	5029074	100	-	.	ID=scaffold9.mrna1.exon3;Name=scaffold9;Parent=scaffold9.mrna1;Target=scaffold9 505 526 +
+chr11	mm9_gsnap	CDS	5030635	5030785	99	-	0	ID=scaffold9.mrna1.cds1;Name=scaffold9;Parent=scaffold9.mrna1;Target=scaffold9 254 405 +
+chr11	mm9_gsnap	CDS	5029705	5029723	100	-	2	ID=scaffold9.mrna1.cds2;Name=scaffold9;Parent=scaffold9.mrna1;Target=scaffold9 406 424 +
+###
+chr11	mm9_gsnap	gene	5044277	5052147	.	-	.	ID=scaffold9.path2;Name=scaffold9
+chr11	mm9_gsnap	mRNA	5044277	5052147	.	-	.	ID=scaffold9.mrna2;Name=scaffold9;Parent=scaffold9.path2;coverage=26.0;identity=100.0
+chr11	mm9_gsnap	exon	5052125	5052147	100	-	.	ID=scaffold9.mrna2.exon1;Name=scaffold9;Parent=scaffold9.mrna2;Target=scaffold9 1 23 +
+chr11	mm9_gsnap	exon	5044277	5044411	100	-	.	ID=scaffold9.mrna2.exon2;Name=scaffold9;Parent=scaffold9.mrna2;Target=scaffold9 24 158 +
+chr11	mm9_gsnap	CDS	5052125	5052145	100	-	0	ID=scaffold9.mrna2.cds1;Name=scaffold9;Parent=scaffold9.mrna2;Target=scaffold9 3 23 +
+chr11	mm9_gsnap	CDS	5044277	5044411	100	-	0	ID=scaffold9.mrna2.cds2;Name=scaffold9;Parent=scaffold9.mrna2;Target=scaffold9 24 158 +
+###
+chr4	mm9_gsnap	gene	133783962	133794310	.	-	.	ID=scaffold10.path1;Name=scaffold10
+chr4	mm9_gsnap	mRNA	133783962	133794310	.	-	.	ID=scaffold10.mrna1;Name=scaffold10;Parent=scaffold10.path1;coverage=99.9;identity=99.7
+chr4	mm9_gsnap	exon	133794172	133794310	100	-	.	ID=scaffold10.mrna1.exon1;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 1 139 +
+chr4	mm9_gsnap	exon	133792075	133792232	100	-	.	ID=scaffold10.mrna1.exon2;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 140 297 +
+chr4	mm9_gsnap	exon	133791024	133791108	98	-	.	ID=scaffold10.mrna1.exon3;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 298 383 +
+chr4	mm9_gsnap	exon	133790404	133790508	100	-	.	ID=scaffold10.mrna1.exon4;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 384 488 +
+chr4	mm9_gsnap	exon	133789617	133789679	100	-	.	ID=scaffold10.mrna1.exon5;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 489 551 +
+chr4	mm9_gsnap	exon	133789201	133789302	99	-	.	ID=scaffold10.mrna1.exon6;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 552 654 +
+chr4	mm9_gsnap	exon	133789055	133789116	100	-	.	ID=scaffold10.mrna1.exon7;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 655 716 +
+chr4	mm9_gsnap	exon	133788662	133788768	99	-	.	ID=scaffold10.mrna1.exon8;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 717 824 +
+chr4	mm9_gsnap	exon	133788553	133788583	100	-	.	ID=scaffold10.mrna1.exon9;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 825 855 +
+chr4	mm9_gsnap	exon	133787956	133788128	100	-	.	ID=scaffold10.mrna1.exon10;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 856 1028 +
+chr4	mm9_gsnap	exon	133786095	133786166	100	-	.	ID=scaffold10.mrna1.exon11;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 1029 1100 +
+chr4	mm9_gsnap	exon	133785501	133785577	98	-	.	ID=scaffold10.mrna1.exon12;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 1101 1178 +
+chr4	mm9_gsnap	exon	133785121	133785205	98	-	.	ID=scaffold10.mrna1.exon13;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 1179 1264 +
+chr4	mm9_gsnap	exon	133783962	133784499	100	-	.	ID=scaffold10.mrna1.exon14;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 1265 1802 +
+chr4	mm9_gsnap	CDS	133792075	133792100	100	-	0	ID=scaffold10.mrna1.cds1;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 272 297 +
+chr4	mm9_gsnap	CDS	133791085	133791108	95	-	2	ID=scaffold10.mrna1.cds2;Name=scaffold10;Parent=scaffold10.mrna1;Target=scaffold10 298 322 +
+###
+chr4	mm9_gsnap	gene	133783962	133794310	.	-	.	ID=scaffold11.path1;Name=scaffold11
+chr4	mm9_gsnap	mRNA	133783962	133794310	.	-	.	ID=scaffold11.mrna1;Name=scaffold11;Parent=scaffold11.path1;coverage=99.9;identity=99.7
+chr4	mm9_gsnap	exon	133794172	133794310	100	-	.	ID=scaffold11.mrna1.exon1;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 1 139 +
+chr4	mm9_gsnap	exon	133792075	133792232	100	-	.	ID=scaffold11.mrna1.exon2;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 140 297 +
+chr4	mm9_gsnap	exon	133791786	133791967	99	-	.	ID=scaffold11.mrna1.exon3;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 298 480 +
+chr4	mm9_gsnap	exon	133790404	133790508	99	-	.	ID=scaffold11.mrna1.exon4;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 481 586 +
+chr4	mm9_gsnap	exon	133789617	133789679	100	-	.	ID=scaffold11.mrna1.exon5;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 587 649 +
+chr4	mm9_gsnap	exon	133789201	133789302	99	-	.	ID=scaffold11.mrna1.exon6;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 650 752 +
+chr4	mm9_gsnap	exon	133789055	133789116	100	-	.	ID=scaffold11.mrna1.exon7;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 753 814 +
+chr4	mm9_gsnap	exon	133788662	133788768	99	-	.	ID=scaffold11.mrna1.exon8;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 815 922 +
+chr4	mm9_gsnap	exon	133788553	133788583	100	-	.	ID=scaffold11.mrna1.exon9;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 923 953 +
+chr4	mm9_gsnap	exon	133787956	133788128	100	-	.	ID=scaffold11.mrna1.exon10;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 954 1126 +
+chr4	mm9_gsnap	exon	133786095	133786166	100	-	.	ID=scaffold11.mrna1.exon11;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 1127 1198 +
+chr4	mm9_gsnap	exon	133785501	133785577	98	-	.	ID=scaffold11.mrna1.exon12;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 1199 1276 +
+chr4	mm9_gsnap	exon	133785121	133785205	98	-	.	ID=scaffold11.mrna1.exon13;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 1277 1362 +
+chr4	mm9_gsnap	exon	133783962	133784499	100	-	.	ID=scaffold11.mrna1.exon14;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 1363 1900 +
+chr4	mm9_gsnap	CDS	133794172	133794310	100	-	0	ID=scaffold11.mrna1.cds1;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 1 139 +
+chr4	mm9_gsnap	CDS	133792075	133792232	100	-	1	ID=scaffold11.mrna1.cds2;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 140 297 +
+chr4	mm9_gsnap	CDS	133791960	133791967	87	-	0	ID=scaffold11.mrna1.cds3;Name=scaffold11;Parent=scaffold11.mrna1;Target=scaffold11 298 306 +
+###
+chr7	mm9_gsnap	gene	127565215	127688324	.	+	.	ID=scaffold12.path1;Name=scaffold12
+chr7	mm9_gsnap	mRNA	127565215	127688324	.	+	.	ID=scaffold12.mrna1;Name=scaffold12;Parent=scaffold12.path1;coverage=98.5;identity=99.7
+chr7	mm9_gsnap	exon	127565215	127565309	100	+	.	ID=scaffold12.mrna1.exon1;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 4517 4611 -
+chr7	mm9_gsnap	exon	127567217	127567469	99	+	.	ID=scaffold12.mrna1.exon2;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 4263 4516 -
+chr7	mm9_gsnap	exon	127570644	127570771	99	+	.	ID=scaffold12.mrna1.exon3;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 4134 4262 -
+chr7	mm9_gsnap	exon	127574622	127574763	100	+	.	ID=scaffold12.mrna1.exon4;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3992 4133 -
+chr7	mm9_gsnap	exon	127576857	127577116	99	+	.	ID=scaffold12.mrna1.exon5;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3731 3991 -
+chr7	mm9_gsnap	exon	127579350	127579460	100	+	.	ID=scaffold12.mrna1.exon6;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3620 3730 -
+chr7	mm9_gsnap	exon	127580164	127580281	99	+	.	ID=scaffold12.mrna1.exon7;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3501 3619 -
+chr7	mm9_gsnap	exon	127582683	127582856	100	+	.	ID=scaffold12.mrna1.exon8;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3327 3500 -
+chr7	mm9_gsnap	exon	127596473	127596652	100	+	.	ID=scaffold12.mrna1.exon9;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3147 3326 -
+chr7	mm9_gsnap	exon	127600565	127600699	99	+	.	ID=scaffold12.mrna1.exon10;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3011 3146 -
+chr7	mm9_gsnap	exon	127609199	127609345	99	+	.	ID=scaffold12.mrna1.exon11;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2863 3010 -
+chr7	mm9_gsnap	exon	127618961	127619089	99	+	.	ID=scaffold12.mrna1.exon12;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2733 2862 -
+chr7	mm9_gsnap	exon	127620728	127620883	99	+	.	ID=scaffold12.mrna1.exon13;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2576 2732 -
+chr7	mm9_gsnap	exon	127621222	127621432	100	+	.	ID=scaffold12.mrna1.exon14;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2365 2575 -
+chr7	mm9_gsnap	exon	127623235	127623385	99	+	.	ID=scaffold12.mrna1.exon15;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2213 2364 -
+chr7	mm9_gsnap	exon	127632626	127632724	100	+	.	ID=scaffold12.mrna1.exon16;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2114 2212 -
+chr7	mm9_gsnap	exon	127646850	127647021	99	+	.	ID=scaffold12.mrna1.exon17;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1941 2113 -
+chr7	mm9_gsnap	exon	127663475	127663721	99	+	.	ID=scaffold12.mrna1.exon18;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1693 1940 -
+chr7	mm9_gsnap	exon	127663866	127664070	99	+	.	ID=scaffold12.mrna1.exon19;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1487 1692 -
+chr7	mm9_gsnap	exon	127670512	127670731	100	+	.	ID=scaffold12.mrna1.exon20;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1267 1486 -
+chr7	mm9_gsnap	exon	127671200	127671364	99	+	.	ID=scaffold12.mrna1.exon21;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1101 1266 -
+chr7	mm9_gsnap	exon	127678268	127678393	99	+	.	ID=scaffold12.mrna1.exon22;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 974 1100 -
+chr7	mm9_gsnap	exon	127678623	127678817	100	+	.	ID=scaffold12.mrna1.exon23;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 779 973 -
+chr7	mm9_gsnap	exon	127683533	127683720	100	+	.	ID=scaffold12.mrna1.exon24;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 591 778 -
+chr7	mm9_gsnap	exon	127684088	127684258	100	+	.	ID=scaffold12.mrna1.exon25;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 420 590 -
+chr7	mm9_gsnap	exon	127684624	127684814	100	+	.	ID=scaffold12.mrna1.exon26;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 229 419 -
+chr7	mm9_gsnap	exon	127687511	127687584	100	+	.	ID=scaffold12.mrna1.exon27;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 155 228 -
+chr7	mm9_gsnap	exon	127688171	127688324	100	+	.	ID=scaffold12.mrna1.exon28;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1 154 -
+chr7	mm9_gsnap	CDS	127596539	127596652	100	+	0	ID=scaffold12.mrna1.cds1;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3147 3260 -
+chr7	mm9_gsnap	CDS	127600565	127600699	99	+	0	ID=scaffold12.mrna1.cds2;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3011 3146 -
+chr7	mm9_gsnap	CDS	127609199	127609345	99	+	1	ID=scaffold12.mrna1.cds3;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2863 3010 -
+chr7	mm9_gsnap	CDS	127618961	127619089	99	+	2	ID=scaffold12.mrna1.cds4;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2733 2862 -
+chr7	mm9_gsnap	CDS	127620728	127620883	99	+	0	ID=scaffold12.mrna1.cds5;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2576 2732 -
+chr7	mm9_gsnap	CDS	127621222	127621432	100	+	1	ID=scaffold12.mrna1.cds6;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2365 2575 -
+chr7	mm9_gsnap	CDS	127623235	127623385	99	+	2	ID=scaffold12.mrna1.cds7;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2213 2364 -
+chr7	mm9_gsnap	CDS	127632626	127632724	100	+	1	ID=scaffold12.mrna1.cds8;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 2114 2212 -
+chr7	mm9_gsnap	CDS	127646850	127647021	99	+	1	ID=scaffold12.mrna1.cds9;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1941 2113 -
+chr7	mm9_gsnap	CDS	127663475	127663721	99	+	0	ID=scaffold12.mrna1.cds10;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1693 1940 -
+chr7	mm9_gsnap	CDS	127663866	127664070	99	+	2	ID=scaffold12.mrna1.cds11;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1487 1692 -
+chr7	mm9_gsnap	CDS	127670512	127670731	100	+	1	ID=scaffold12.mrna1.cds12;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1267 1486 -
+chr7	mm9_gsnap	CDS	127671200	127671364	99	+	2	ID=scaffold12.mrna1.cds13;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 1101 1266 -
+chr7	mm9_gsnap	CDS	127678268	127678393	99	+	0	ID=scaffold12.mrna1.cds14;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 974 1100 -
+chr7	mm9_gsnap	CDS	127678623	127678817	100	+	1	ID=scaffold12.mrna1.cds15;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 779 973 -
+chr7	mm9_gsnap	CDS	127683533	127683720	100	+	1	ID=scaffold12.mrna1.cds16;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 591 778 -
+chr7	mm9_gsnap	CDS	127684088	127684258	100	+	0	ID=scaffold12.mrna1.cds17;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 420 590 -
+chr7	mm9_gsnap	CDS	127684624	127684814	100	+	0	ID=scaffold12.mrna1.cds18;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 229 419 -
+chr7	mm9_gsnap	CDS	127687511	127687584	100	+	2	ID=scaffold12.mrna1.cds19;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 155 228 -
+chr7	mm9_gsnap	CDS	127688171	127688322	100	+	1	ID=scaffold12.mrna1.cds20;Name=scaffold12;Parent=scaffold12.mrna1;Target=scaffold12 3 154 -
+###
+chr7	mm9_gsnap	gene	127565215	127688324	.	+	.	ID=scaffold13.path1;Name=scaffold13
+chr7	mm9_gsnap	mRNA	127565215	127688324	.	+	.	ID=scaffold13.mrna1;Name=scaffold13;Parent=scaffold13.path1;coverage=98.5;identity=99.7
+chr7	mm9_gsnap	exon	127565215	127565309	100	+	.	ID=scaffold13.mrna1.exon1;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 4732 4826 -
+chr7	mm9_gsnap	exon	127567217	127567469	99	+	.	ID=scaffold13.mrna1.exon2;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 4478 4731 -
+chr7	mm9_gsnap	exon	127570644	127570771	99	+	.	ID=scaffold13.mrna1.exon3;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 4349 4477 -
+chr7	mm9_gsnap	exon	127574622	127574763	100	+	.	ID=scaffold13.mrna1.exon4;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 4207 4348 -
+chr7	mm9_gsnap	exon	127576857	127577116	99	+	.	ID=scaffold13.mrna1.exon5;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3946 4206 -
+chr7	mm9_gsnap	exon	127579350	127579460	100	+	.	ID=scaffold13.mrna1.exon6;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3835 3945 -
+chr7	mm9_gsnap	exon	127580164	127580281	99	+	.	ID=scaffold13.mrna1.exon7;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3716 3834 -
+chr7	mm9_gsnap	exon	127582683	127582856	100	+	.	ID=scaffold13.mrna1.exon8;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3542 3715 -
+chr7	mm9_gsnap	exon	127596473	127596652	100	+	.	ID=scaffold13.mrna1.exon9;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3362 3541 -
+chr7	mm9_gsnap	exon	127600565	127600699	99	+	.	ID=scaffold13.mrna1.exon10;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3226 3361 -
+chr7	mm9_gsnap	exon	127609199	127609345	99	+	.	ID=scaffold13.mrna1.exon11;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 3078 3225 -
+chr7	mm9_gsnap	exon	127618961	127619089	99	+	.	ID=scaffold13.mrna1.exon12;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 2948 3077 -
+chr7	mm9_gsnap	exon	127620728	127620883	99	+	.	ID=scaffold13.mrna1.exon13;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 2791 2947 -
+chr7	mm9_gsnap	exon	127621222	127621432	100	+	.	ID=scaffold13.mrna1.exon14;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 2580 2790 -
+chr7	mm9_gsnap	exon	127623235	127623385	99	+	.	ID=scaffold13.mrna1.exon15;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 2428 2579 -
+chr7	mm9_gsnap	exon	127658050	127658347	99	+	.	ID=scaffold13.mrna1.exon16;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 2129 2427 -
+chr7	mm9_gsnap	exon	127663475	127663721	99	+	.	ID=scaffold13.mrna1.exon17;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1881 2128 -
+chr7	mm9_gsnap	exon	127663866	127664070	99	+	.	ID=scaffold13.mrna1.exon18;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1675 1880 -
+chr7	mm9_gsnap	exon	127670512	127670731	100	+	.	ID=scaffold13.mrna1.exon19;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1455 1674 -
+chr7	mm9_gsnap	exon	127671200	127671364	100	+	.	ID=scaffold13.mrna1.exon20;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1290 1454 -
+chr7	mm9_gsnap	exon	127677127	127677314	99	+	.	ID=scaffold13.mrna1.exon21;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1101 1289 -
+chr7	mm9_gsnap	exon	127678268	127678393	99	+	.	ID=scaffold13.mrna1.exon22;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 974 1100 -
+chr7	mm9_gsnap	exon	127678623	127678817	100	+	.	ID=scaffold13.mrna1.exon23;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 779 973 -
+chr7	mm9_gsnap	exon	127683533	127683720	100	+	.	ID=scaffold13.mrna1.exon24;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 591 778 -
+chr7	mm9_gsnap	exon	127684088	127684258	100	+	.	ID=scaffold13.mrna1.exon25;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 420 590 -
+chr7	mm9_gsnap	exon	127684624	127684814	100	+	.	ID=scaffold13.mrna1.exon26;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 229 419 -
+chr7	mm9_gsnap	exon	127687511	127687584	100	+	.	ID=scaffold13.mrna1.exon27;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 155 228 -
+chr7	mm9_gsnap	exon	127688171	127688324	100	+	.	ID=scaffold13.mrna1.exon28;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1 154 -
+chr7	mm9_gsnap	CDS	127658125	127658347	99	+	0	ID=scaffold13.mrna1.cds1;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 2129 2352 -
+chr7	mm9_gsnap	CDS	127663475	127663721	99	+	2	ID=scaffold13.mrna1.cds2;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1881 2128 -
+chr7	mm9_gsnap	CDS	127663866	127664070	99	+	1	ID=scaffold13.mrna1.cds3;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1675 1880 -
+chr7	mm9_gsnap	CDS	127670512	127670731	100	+	0	ID=scaffold13.mrna1.cds4;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1455 1674 -
+chr7	mm9_gsnap	CDS	127671200	127671364	100	+	1	ID=scaffold13.mrna1.cds5;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1290 1454 -
+chr7	mm9_gsnap	CDS	127677127	127677314	99	+	1	ID=scaffold13.mrna1.cds6;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1101 1289 -
+chr7	mm9_gsnap	CDS	127678268	127678393	99	+	1	ID=scaffold13.mrna1.cds7;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 974 1100 -
+chr7	mm9_gsnap	CDS	127678623	127678817	100	+	2	ID=scaffold13.mrna1.cds8;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 779 973 -
+chr7	mm9_gsnap	CDS	127683533	127683720	100	+	2	ID=scaffold13.mrna1.cds9;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 591 778 -
+chr7	mm9_gsnap	CDS	127684088	127684258	100	+	1	ID=scaffold13.mrna1.cds10;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 420 590 -
+chr7	mm9_gsnap	CDS	127684624	127684814	100	+	1	ID=scaffold13.mrna1.cds11;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 229 419 -
+chr7	mm9_gsnap	CDS	127687511	127687584	100	+	0	ID=scaffold13.mrna1.cds12;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 155 228 -
+chr7	mm9_gsnap	CDS	127688171	127688324	100	+	2	ID=scaffold13.mrna1.cds13;Name=scaffold13;Parent=scaffold13.mrna1;Target=scaffold13 1 154 -
+###
+chr5	mm9_gsnap	gene	136656235	136674818	.	-	.	ID=scaffold14.path1;Name=scaffold14
+chr5	mm9_gsnap	mRNA	136656235	136674818	.	-	.	ID=scaffold14.mrna1;Name=scaffold14;Parent=scaffold14.path1;coverage=100.0;identity=99.9
+chr5	mm9_gsnap	exon	136674645	136674818	100	-	.	ID=scaffold14.mrna1.exon1;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 1 174 +
+chr5	mm9_gsnap	exon	136673650	136673728	98	-	.	ID=scaffold14.mrna1.exon2;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 175 254 +
+chr5	mm9_gsnap	exon	136670167	136670267	99	-	.	ID=scaffold14.mrna1.exon3;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 255 356 +
+chr5	mm9_gsnap	exon	136667770	136667855	100	-	.	ID=scaffold14.mrna1.exon4;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 357 442 +
+chr5	mm9_gsnap	exon	136665422	136665489	100	-	.	ID=scaffold14.mrna1.exon5;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 443 510 +
+chr5	mm9_gsnap	exon	136656235	136657366	100	-	.	ID=scaffold14.mrna1.exon6;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 511 1642 +
+chr5	mm9_gsnap	CDS	136674645	136674770	100	-	0	ID=scaffold14.mrna1.cds1;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 49 174 +
+chr5	mm9_gsnap	CDS	136673694	136673728	97	-	0	ID=scaffold14.mrna1.cds2;Name=scaffold14;Parent=scaffold14.mrna1;Target=scaffold14 175 210 +
+###
+chr5	mm9_gsnap	gene	136656235	136674818	.	-	.	ID=scaffold15.path1;Name=scaffold15
+chr5	mm9_gsnap	mRNA	136656235	136674818	.	-	.	ID=scaffold15.mrna1;Name=scaffold15;Parent=scaffold15.path1;coverage=98.7;identity=100.0
+chr5	mm9_gsnap	exon	136674645	136674818	100	-	.	ID=scaffold15.mrna1.exon1;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 1 174 +
+chr5	mm9_gsnap	exon	136670167	136670267	100	-	.	ID=scaffold15.mrna1.exon2;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 175 275 +
+chr5	mm9_gsnap	exon	136667770	136667855	100	-	.	ID=scaffold15.mrna1.exon3;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 276 361 +
+chr5	mm9_gsnap	exon	136665422	136665489	100	-	.	ID=scaffold15.mrna1.exon4;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 362 429 +
+chr5	mm9_gsnap	exon	136656235	136657366	100	-	.	ID=scaffold15.mrna1.exon5;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 430 1561 +
+chr5	mm9_gsnap	CDS	136670167	136670187	100	-	0	ID=scaffold15.mrna1.cds1;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 255 275 +
+chr5	mm9_gsnap	CDS	136667770	136667855	100	-	0	ID=scaffold15.mrna1.cds2;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 276 361 +
+chr5	mm9_gsnap	CDS	136665422	136665489	100	-	2	ID=scaffold15.mrna1.cds3;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 362 429 +
+chr5	mm9_gsnap	CDS	136657266	136657366	100	-	1	ID=scaffold15.mrna1.cds4;Name=scaffold15;Parent=scaffold15.mrna1;Target=scaffold15 430 530 +
+###
+chr15	mm9_gsnap	gene	32480002	32626096	.	+	.	ID=scaffold16.path1;Name=scaffold16
+chr15	mm9_gsnap	mRNA	32480002	32626096	.	+	.	ID=scaffold16.mrna1;Name=scaffold16;Parent=scaffold16.path1;coverage=99.2;identity=99.6
+chr15	mm9_gsnap	exon	32480002	32480217	99	+	.	ID=scaffold16.mrna1.exon1;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 9027 9243 -
+chr15	mm9_gsnap	exon	32492246	32492531	100	+	.	ID=scaffold16.mrna1.exon2;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8741 9026 -
+chr15	mm9_gsnap	exon	32498467	32498602	100	+	.	ID=scaffold16.mrna1.exon3;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8605 8740 -
+chr15	mm9_gsnap	exon	32504571	32504775	99	+	.	ID=scaffold16.mrna1.exon4;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8399 8604 -
+chr15	mm9_gsnap	exon	32538978	32539185	99	+	.	ID=scaffold16.mrna1.exon5;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8190 8398 -
+chr15	mm9_gsnap	exon	32548564	32548681	99	+	.	ID=scaffold16.mrna1.exon6;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8071 8189 -
+chr15	mm9_gsnap	exon	32557897	32558078	92	+	.	ID=scaffold16.mrna1.exon7;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7888 8070 -
+chr15	mm9_gsnap	exon	32561009	32561152	99	+	.	ID=scaffold16.mrna1.exon8;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7743 7887 -
+chr15	mm9_gsnap	exon	32570722	32570846	100	+	.	ID=scaffold16.mrna1.exon9;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7618 7742 -
+chr15	mm9_gsnap	exon	32599362	32599385	100	+	.	ID=scaffold16.mrna1.exon10;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7594 7617 -
+chr15	mm9_gsnap	exon	32603072	32603294	92	+	.	ID=scaffold16.mrna1.exon11;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7374 7593 -
+chr15	mm9_gsnap	exon	32608850	32609020	100	+	.	ID=scaffold16.mrna1.exon12;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7203 7373 -
+chr15	mm9_gsnap	exon	32611221	32611376	100	+	.	ID=scaffold16.mrna1.exon13;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7047 7202 -
+chr15	mm9_gsnap	exon	32619051	32626096	100	+	.	ID=scaffold16.mrna1.exon14;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 1 7046 -
+chr15	mm9_gsnap	CDS	32480004	32480217	99	+	0	ID=scaffold16.mrna1.cds1;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 9027 9241 -
+chr15	mm9_gsnap	CDS	32492246	32492531	100	+	2	ID=scaffold16.mrna1.cds2;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8741 9026 -
+chr15	mm9_gsnap	CDS	32498467	32498602	100	+	0	ID=scaffold16.mrna1.cds3;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8605 8740 -
+chr15	mm9_gsnap	CDS	32504571	32504775	99	+	1	ID=scaffold16.mrna1.cds4;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8399 8604 -
+chr15	mm9_gsnap	CDS	32538978	32539185	99	+	0	ID=scaffold16.mrna1.cds5;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8190 8398 -
+chr15	mm9_gsnap	CDS	32548564	32548681	99	+	2	ID=scaffold16.mrna1.cds6;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 8071 8189 -
+chr15	mm9_gsnap	CDS	32557897	32558078	92	+	1	ID=scaffold16.mrna1.cds7;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7888 8070 -
+chr15	mm9_gsnap	CDS	32561009	32561152	99	+	1	ID=scaffold16.mrna1.cds8;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7743 7887 -
+chr15	mm9_gsnap	CDS	32570722	32570846	100	+	2	ID=scaffold16.mrna1.cds9;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7618 7742 -
+chr15	mm9_gsnap	CDS	32599362	32599385	100	+	1	ID=scaffold16.mrna1.cds10;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7594 7617 -
+chr15	mm9_gsnap	CDS	32603072	32603273	98	+	1	ID=scaffold16.mrna1.cds11;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7392 7593 -
+chr15	mm9_gsnap	CDS	32603278	32603294	47	+	2	ID=scaffold16.mrna1.cds12;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7374 7391 -
+chr15	mm9_gsnap	CDS	32608850	32609020	100	+	2	ID=scaffold16.mrna1.cds13;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7203 7373 -
+chr15	mm9_gsnap	CDS	32611221	32611376	100	+	2	ID=scaffold16.mrna1.cds14;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 7047 7202 -
+chr15	mm9_gsnap	CDS	32619051	32626095	100	+	2	ID=scaffold16.mrna1.cds15;Name=scaffold16;Parent=scaffold16.mrna1;Target=scaffold16 2 7046 -
+###
+chr15	mm9_gsnap	gene	32478468	32626096	.	+	.	ID=scaffold17.path1;Name=scaffold17
+chr15	mm9_gsnap	mRNA	32478468	32626096	.	+	.	ID=scaffold17.mrna1;Name=scaffold17;Parent=scaffold17.path1;coverage=98.7;identity=99.6
+chr15	mm9_gsnap	exon	32478468	32478568	99	+	.	ID=scaffold17.mrna1.exon1;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 9514 9615 -
+chr15	mm9_gsnap	exon	32492246	32492531	100	+	.	ID=scaffold17.mrna1.exon2;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 9228 9513 -
+chr15	mm9_gsnap	exon	32498467	32498602	100	+	.	ID=scaffold17.mrna1.exon3;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 9092 9227 -
+chr15	mm9_gsnap	exon	32504571	32504775	99	+	.	ID=scaffold17.mrna1.exon4;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8886 9091 -
+chr15	mm9_gsnap	exon	32538978	32539185	99	+	.	ID=scaffold17.mrna1.exon5;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8677 8885 -
+chr15	mm9_gsnap	exon	32548564	32548681	99	+	.	ID=scaffold17.mrna1.exon6;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8558 8676 -
+chr15	mm9_gsnap	exon	32557897	32558078	92	+	.	ID=scaffold17.mrna1.exon7;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8375 8557 -
+chr15	mm9_gsnap	exon	32561009	32561152	99	+	.	ID=scaffold17.mrna1.exon8;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8230 8374 -
+chr15	mm9_gsnap	exon	32570722	32570869	100	+	.	ID=scaffold17.mrna1.exon9;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8082 8229 -
+chr15	mm9_gsnap	exon	32599160	32599385	99	+	.	ID=scaffold17.mrna1.exon10;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7855 8081 -
+chr15	mm9_gsnap	exon	32603072	32603294	92	+	.	ID=scaffold17.mrna1.exon11;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7635 7854 -
+chr15	mm9_gsnap	exon	32608850	32609020	100	+	.	ID=scaffold17.mrna1.exon12;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7464 7634 -
+chr15	mm9_gsnap	exon	32611221	32611398	100	+	.	ID=scaffold17.mrna1.exon13;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7286 7463 -
+chr15	mm9_gsnap	exon	32612084	32612109	100	+	.	ID=scaffold17.mrna1.exon14;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7260 7285 -
+chr15	mm9_gsnap	exon	32616392	32616603	99	+	.	ID=scaffold17.mrna1.exon15;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7047 7259 -
+chr15	mm9_gsnap	exon	32619051	32626096	100	+	.	ID=scaffold17.mrna1.exon16;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 1 7046 -
+chr15	mm9_gsnap	CDS	32478469	32478568	99	+	0	ID=scaffold17.mrna1.cds1;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 9514 9614 -
+chr15	mm9_gsnap	CDS	32492246	32492531	100	+	2	ID=scaffold17.mrna1.cds2;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 9228 9513 -
+chr15	mm9_gsnap	CDS	32498467	32498602	100	+	0	ID=scaffold17.mrna1.cds3;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 9092 9227 -
+chr15	mm9_gsnap	CDS	32504571	32504775	99	+	1	ID=scaffold17.mrna1.cds4;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8886 9091 -
+chr15	mm9_gsnap	CDS	32538978	32539185	99	+	0	ID=scaffold17.mrna1.cds5;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8677 8885 -
+chr15	mm9_gsnap	CDS	32548564	32548681	99	+	2	ID=scaffold17.mrna1.cds6;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8558 8676 -
+chr15	mm9_gsnap	CDS	32557897	32558078	92	+	1	ID=scaffold17.mrna1.cds7;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8375 8557 -
+chr15	mm9_gsnap	CDS	32561009	32561152	99	+	1	ID=scaffold17.mrna1.cds8;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8230 8374 -
+chr15	mm9_gsnap	CDS	32570722	32570869	100	+	2	ID=scaffold17.mrna1.cds9;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 8082 8229 -
+chr15	mm9_gsnap	CDS	32599160	32599385	99	+	0	ID=scaffold17.mrna1.cds10;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7855 8081 -
+chr15	mm9_gsnap	CDS	32603072	32603273	98	+	2	ID=scaffold17.mrna1.cds11;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7653 7854 -
+chr15	mm9_gsnap	CDS	32603278	32603294	47	+	0	ID=scaffold17.mrna1.cds12;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7635 7652 -
+chr15	mm9_gsnap	CDS	32608850	32609020	100	+	0	ID=scaffold17.mrna1.cds13;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7464 7634 -
+chr15	mm9_gsnap	CDS	32611221	32611398	100	+	0	ID=scaffold17.mrna1.cds14;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7286 7463 -
+chr15	mm9_gsnap	CDS	32612084	32612109	100	+	1	ID=scaffold17.mrna1.cds15;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7260 7285 -
+chr15	mm9_gsnap	CDS	32616392	32616603	99	+	0	ID=scaffold17.mrna1.cds16;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 7047 7259 -
+chr15	mm9_gsnap	CDS	32619051	32626094	100	+	0	ID=scaffold17.mrna1.cds17;Name=scaffold17;Parent=scaffold17.mrna1;Target=scaffold17 3 7046 -
+###
+chr14	mm9_gsnap	gene	121885927	121904461	.	-	.	ID=scaffold18.path1;Name=scaffold18
+chr14	mm9_gsnap	mRNA	121885927	121904461	.	-	.	ID=scaffold18.mrna1;Name=scaffold18;Parent=scaffold18.path1;coverage=94.0;identity=100.0
+chr14	mm9_gsnap	exon	121904441	121904461	100	-	.	ID=scaffold18.mrna1.exon1;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 365 385 -
+chr14	mm9_gsnap	exon	121890896	121890912	100	-	.	ID=scaffold18.mrna1.exon2;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 348 364 -
+chr14	mm9_gsnap	exon	121890451	121890532	100	-	.	ID=scaffold18.mrna1.exon3;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 266 347 -
+chr14	mm9_gsnap	exon	121890215	121890356	100	-	.	ID=scaffold18.mrna1.exon4;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 124 265 -
+chr14	mm9_gsnap	exon	121886216	121886315	100	-	.	ID=scaffold18.mrna1.exon5;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 24 123 -
+chr14	mm9_gsnap	exon	121885927	121885949	100	-	.	ID=scaffold18.mrna1.exon6;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 1 23 -
+chr14	mm9_gsnap	CDS	121904441	121904459	100	-	0	ID=scaffold18.mrna1.cds1;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 365 383 -
+chr14	mm9_gsnap	CDS	121890896	121890912	100	-	1	ID=scaffold18.mrna1.cds2;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 348 364 -
+chr14	mm9_gsnap	CDS	121890451	121890532	100	-	0	ID=scaffold18.mrna1.cds3;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 266 347 -
+chr14	mm9_gsnap	CDS	121890215	121890356	100	-	1	ID=scaffold18.mrna1.cds4;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 124 265 -
+chr14	mm9_gsnap	CDS	121886216	121886315	100	-	2	ID=scaffold18.mrna1.cds5;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 24 123 -
+chr14	mm9_gsnap	CDS	121885929	121885949	100	-	0	ID=scaffold18.mrna1.cds6;Name=scaffold18;Parent=scaffold18.mrna1;Target=scaffold18 3 23 -
+###
+chr14	mm9_gsnap	gene	121885927	121904461	.	-	.	ID=scaffold19.path1;Name=scaffold19
+chr14	mm9_gsnap	mRNA	121885927	121904461	.	-	.	ID=scaffold19.mrna1;Name=scaffold19;Parent=scaffold19.path1;coverage=95.3;identity=99.8
+chr14	mm9_gsnap	exon	121904441	121904461	100	-	.	ID=scaffold19.mrna1.exon1;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 486 506 -
+chr14	mm9_gsnap	exon	121890896	121890912	100	-	.	ID=scaffold19.mrna1.exon2;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 469 485 -
+chr14	mm9_gsnap	exon	121890451	121890532	100	-	.	ID=scaffold19.mrna1.exon3;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 387 468 -
+chr14	mm9_gsnap	exon	121890215	121890356	100	-	.	ID=scaffold19.mrna1.exon4;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 245 386 -
+chr14	mm9_gsnap	exon	121889012	121889131	99	-	.	ID=scaffold19.mrna1.exon5;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 124 244 -
+chr14	mm9_gsnap	exon	121886216	121886315	100	-	.	ID=scaffold19.mrna1.exon6;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 24 123 -
+chr14	mm9_gsnap	exon	121885927	121885949	100	-	.	ID=scaffold19.mrna1.exon7;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 1 23 -
+chr14	mm9_gsnap	CDS	121904441	121904459	100	-	0	ID=scaffold19.mrna1.cds1;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 486 504 -
+chr14	mm9_gsnap	CDS	121890896	121890912	100	-	1	ID=scaffold19.mrna1.cds2;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 469 485 -
+chr14	mm9_gsnap	CDS	121890451	121890532	100	-	0	ID=scaffold19.mrna1.cds3;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 387 468 -
+chr14	mm9_gsnap	CDS	121890215	121890356	100	-	1	ID=scaffold19.mrna1.cds4;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 245 386 -
+chr14	mm9_gsnap	CDS	121889012	121889131	99	-	2	ID=scaffold19.mrna1.cds5;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 124 244 -
+chr14	mm9_gsnap	CDS	121886216	121886315	100	-	0	ID=scaffold19.mrna1.cds6;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 24 123 -
+chr14	mm9_gsnap	CDS	121885927	121885949	100	-	1	ID=scaffold19.mrna1.cds7;Name=scaffold19;Parent=scaffold19.mrna1;Target=scaffold19 1 23 -
+###
+chr13	mm9_gsnap	gene	113388541	113413029	.	-	.	ID=scaffold20.path1;Name=scaffold20
+chr13	mm9_gsnap	mRNA	113388541	113413029	.	-	.	ID=scaffold20.mrna1;Name=scaffold20;Parent=scaffold20.path1;coverage=98.9;identity=99.8
+chr13	mm9_gsnap	exon	113413007	113413029	100	-	.	ID=scaffold20.mrna1.exon1;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 1 23 +
+chr13	mm9_gsnap	exon	113412373	113412515	100	-	.	ID=scaffold20.mrna1.exon2;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 24 166 +
+chr13	mm9_gsnap	exon	113411416	113411568	99	-	.	ID=scaffold20.mrna1.exon3;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 167 320 +
+chr13	mm9_gsnap	exon	113410824	113410978	100	-	.	ID=scaffold20.mrna1.exon4;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 321 475 +
+chr13	mm9_gsnap	exon	113403905	113404034	99	-	.	ID=scaffold20.mrna1.exon5;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 476 606 +
+chr13	mm9_gsnap	exon	113402183	113402349	100	-	.	ID=scaffold20.mrna1.exon6;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 607 773 +
+chr13	mm9_gsnap	exon	113394695	113394840	99	-	.	ID=scaffold20.mrna1.exon7;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 774 920 +
+chr13	mm9_gsnap	exon	113390060	113390330	100	-	.	ID=scaffold20.mrna1.exon8;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 921 1191 +
+chr13	mm9_gsnap	exon	113389826	113389942	100	-	.	ID=scaffold20.mrna1.exon9;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 1192 1308 +
+chr13	mm9_gsnap	exon	113388541	113389239	100	-	.	ID=scaffold20.mrna1.exon10;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 1309 2007 +
+chr13	mm9_gsnap	CDS	113413007	113413028	100	-	0	ID=scaffold20.mrna1.cds1;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 2 23 +
+chr13	mm9_gsnap	CDS	113412373	113412515	100	-	1	ID=scaffold20.mrna1.cds2;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 24 166 +
+chr13	mm9_gsnap	CDS	113411561	113411568	87	-	0	ID=scaffold20.mrna1.cds3;Name=scaffold20;Parent=scaffold20.mrna1;Target=scaffold20 167 175 +
+###
+chr13	mm9_gsnap	gene	113388541	113413029	.	-	.	ID=scaffold21.path1;Name=scaffold21
+chr13	mm9_gsnap	mRNA	113388541	113413029	.	-	.	ID=scaffold21.mrna1;Name=scaffold21;Parent=scaffold21.path1;coverage=98.9;identity=99.8
+chr13	mm9_gsnap	exon	113413007	113413029	100	-	.	ID=scaffold21.mrna1.exon1;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 1 23 +
+chr13	mm9_gsnap	exon	113412373	113412515	100	-	.	ID=scaffold21.mrna1.exon2;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 24 166 +
+chr13	mm9_gsnap	exon	113411416	113411568	99	-	.	ID=scaffold21.mrna1.exon3;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 167 320 +
+chr13	mm9_gsnap	exon	113410824	113410978	100	-	.	ID=scaffold21.mrna1.exon4;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 321 475 +
+chr13	mm9_gsnap	exon	113403905	113404034	99	-	.	ID=scaffold21.mrna1.exon5;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 476 606 +
+chr13	mm9_gsnap	exon	113402183	113402349	100	-	.	ID=scaffold21.mrna1.exon6;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 607 773 +
+chr13	mm9_gsnap	exon	113394695	113394840	99	-	.	ID=scaffold21.mrna1.exon7;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 774 920 +
+chr13	mm9_gsnap	exon	113391620	113391719	99	-	.	ID=scaffold21.mrna1.exon8;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 921 1021 +
+chr13	mm9_gsnap	exon	113390060	113390330	100	-	.	ID=scaffold21.mrna1.exon9;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 1022 1292 +
+chr13	mm9_gsnap	exon	113389826	113389942	100	-	.	ID=scaffold21.mrna1.exon10;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 1293 1409 +
+chr13	mm9_gsnap	exon	113388541	113389239	100	-	.	ID=scaffold21.mrna1.exon11;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 1410 2108 +
+chr13	mm9_gsnap	CDS	113413007	113413028	100	-	0	ID=scaffold21.mrna1.cds1;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 2 23 +
+chr13	mm9_gsnap	CDS	113412373	113412515	100	-	1	ID=scaffold21.mrna1.cds2;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 24 166 +
+chr13	mm9_gsnap	CDS	113411561	113411568	87	-	0	ID=scaffold21.mrna1.cds3;Name=scaffold21;Parent=scaffold21.mrna1;Target=scaffold21 167 175 +
+###
+chr13	mm9_gsnap	gene	93274513	93289444	.	-	.	ID=scaffold22.path1;Name=scaffold22
+chr13	mm9_gsnap	mRNA	93274513	93289444	.	-	.	ID=scaffold22.mrna1;Name=scaffold22;Parent=scaffold22.path1;coverage=98.0;identity=99.6
+chr13	mm9_gsnap	exon	93289422	93289444	100	-	.	ID=scaffold22.mrna1.exon1;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 1143 1165 -
+chr13	mm9_gsnap	exon	93286486	93286647	99	-	.	ID=scaffold22.mrna1.exon2;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 980 1142 -
+chr13	mm9_gsnap	exon	93283742	93283884	99	-	.	ID=scaffold22.mrna1.exon3;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 836 979 -
+chr13	mm9_gsnap	exon	93281433	93281811	100	-	.	ID=scaffold22.mrna1.exon4;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 457 835 -
+chr13	mm9_gsnap	exon	93279956	93280078	99	-	.	ID=scaffold22.mrna1.exon5;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 333 456 -
+chr13	mm9_gsnap	exon	93278077	93278301	99	-	.	ID=scaffold22.mrna1.exon6;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 107 332 -
+chr13	mm9_gsnap	exon	93275615	93275697	100	-	.	ID=scaffold22.mrna1.exon7;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 24 106 -
+chr13	mm9_gsnap	exon	93274513	93274535	100	-	.	ID=scaffold22.mrna1.exon8;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 1 23 -
+chr13	mm9_gsnap	CDS	93289422	93289443	100	-	0	ID=scaffold22.mrna1.cds1;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 1143 1164 -
+chr13	mm9_gsnap	CDS	93286486	93286647	99	-	1	ID=scaffold22.mrna1.cds2;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 980 1142 -
+chr13	mm9_gsnap	CDS	93283742	93283884	99	-	2	ID=scaffold22.mrna1.cds3;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 836 979 -
+chr13	mm9_gsnap	CDS	93281433	93281811	100	-	2	ID=scaffold22.mrna1.cds4;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 457 835 -
+chr13	mm9_gsnap	CDS	93279956	93280078	99	-	0	ID=scaffold22.mrna1.cds5;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 333 456 -
+chr13	mm9_gsnap	CDS	93278077	93278301	99	-	1	ID=scaffold22.mrna1.cds6;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 107 332 -
+chr13	mm9_gsnap	CDS	93275615	93275697	100	-	2	ID=scaffold22.mrna1.cds7;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 24 106 -
+chr13	mm9_gsnap	CDS	93274513	93274535	100	-	1	ID=scaffold22.mrna1.cds8;Name=scaffold22;Parent=scaffold22.mrna1;Target=scaffold22 1 23 -
+###
+chr13	mm9_gsnap	gene	93278845	93289444	.	-	.	ID=scaffold23.path1;Name=scaffold23
+chr13	mm9_gsnap	mRNA	93278845	93289444	.	-	.	ID=scaffold23.mrna1;Name=scaffold23;Parent=scaffold23.path1;coverage=97.3;identity=99.8
+chr13	mm9_gsnap	exon	93289422	93289444	100	-	.	ID=scaffold23.mrna1.exon1;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 844 866 -
+chr13	mm9_gsnap	exon	93286486	93286647	99	-	.	ID=scaffold23.mrna1.exon2;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 681 843 -
+chr13	mm9_gsnap	exon	93283742	93283884	99	-	.	ID=scaffold23.mrna1.exon3;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 537 680 -
+chr13	mm9_gsnap	exon	93281433	93281811	100	-	.	ID=scaffold23.mrna1.exon4;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 158 536 -
+chr13	mm9_gsnap	exon	93278845	93279001	100	-	.	ID=scaffold23.mrna1.exon5;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 1 157 -
+chr13	mm9_gsnap	CDS	93289422	93289443	100	-	0	ID=scaffold23.mrna1.cds1;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 844 865 -
+chr13	mm9_gsnap	CDS	93286486	93286647	99	-	1	ID=scaffold23.mrna1.cds2;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 681 843 -
+chr13	mm9_gsnap	CDS	93283742	93283884	99	-	2	ID=scaffold23.mrna1.cds3;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 537 680 -
+chr13	mm9_gsnap	CDS	93281433	93281811	100	-	2	ID=scaffold23.mrna1.cds4;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 158 536 -
+chr13	mm9_gsnap	CDS	93278846	93279001	100	-	0	ID=scaffold23.mrna1.cds5;Name=scaffold23;Parent=scaffold23.mrna1;Target=scaffold23 2 157 -
+###
+chr9	mm9_gsnap	gene	118835654	118953237	.	+	.	ID=scaffold24.path1;Name=scaffold24
+chr9	mm9_gsnap	mRNA	118835654	118953237	.	+	.	ID=scaffold24.mrna1;Name=scaffold24;Parent=scaffold24.path1;coverage=99.8;identity=100.0
+chr9	mm9_gsnap	exon	118835654	118836058	100	+	.	ID=scaffold24.mrna1.exon1;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 1 405 +
+chr9	mm9_gsnap	exon	118920353	118920507	99	+	.	ID=scaffold24.mrna1.exon2;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 406 561 +
+chr9	mm9_gsnap	exon	118936055	118936156	100	+	.	ID=scaffold24.mrna1.exon3;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 562 663 +
+chr9	mm9_gsnap	exon	118939314	118939370	100	+	.	ID=scaffold24.mrna1.exon4;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 664 720 +
+chr9	mm9_gsnap	exon	118942654	118942746	100	+	.	ID=scaffold24.mrna1.exon5;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 721 813 +
+chr9	mm9_gsnap	exon	118946479	118946664	100	+	.	ID=scaffold24.mrna1.exon6;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 814 999 +
+chr9	mm9_gsnap	exon	118949642	118953237	100	+	.	ID=scaffold24.mrna1.exon7;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 1000 4595 +
+chr9	mm9_gsnap	CDS	118835980	118836058	100	+	0	ID=scaffold24.mrna1.cds1;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 327 405 +
+chr9	mm9_gsnap	CDS	118920353	118920404	98	+	1	ID=scaffold24.mrna1.cds2;Name=scaffold24;Parent=scaffold24.mrna1;Target=scaffold24 406 458 +
+###
+chr15	mm9_gsnap	gene	78733487	78742482	.	+	.	ID=scaffold25.path1;Name=scaffold25
+chr15	mm9_gsnap	mRNA	78733487	78742482	.	+	.	ID=scaffold25.mrna1;Name=scaffold25;Parent=scaffold25.path1;coverage=63.6;identity=99.6
+chr15	mm9_gsnap	exon	78733487	78733565	100	+	.	ID=scaffold25.mrna1.exon1;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 903 981 -
+chr15	mm9_gsnap	exon	78733983	78734104	100	+	.	ID=scaffold25.mrna1.exon2;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 781 902 -
+chr15	mm9_gsnap	exon	78734745	78734768	100	+	.	ID=scaffold25.mrna1.exon3;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 757 780 -
+chr15	mm9_gsnap	exon	78734894	78734984	98	+	.	ID=scaffold25.mrna1.exon4;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 665 756 -
+chr15	mm9_gsnap	exon	78735460	78735605	99	+	.	ID=scaffold25.mrna1.exon5;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 518 664 -
+chr15	mm9_gsnap	exon	78736201	78736312	99	+	.	ID=scaffold25.mrna1.exon6;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 405 517 -
+chr15	mm9_gsnap	exon	78736686	78736767	100	+	.	ID=scaffold25.mrna1.exon7;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 323 404 -
+chr15	mm9_gsnap	exon	78736853	78736933	98	+	.	ID=scaffold25.mrna1.exon8;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 241 322 -
+chr15	mm9_gsnap	exon	78737644	78737760	100	+	.	ID=scaffold25.mrna1.exon9;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 124 240 -
+chr15	mm9_gsnap	exon	78742360	78742482	100	+	.	ID=scaffold25.mrna1.exon10;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 1 123 -
+chr15	mm9_gsnap	CDS	78735594	78735605	100	+	0	ID=scaffold25.mrna1.cds1;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 518 529 -
+chr15	mm9_gsnap	CDS	78736201	78736312	99	+	0	ID=scaffold25.mrna1.cds2;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 405 517 -
+chr15	mm9_gsnap	CDS	78736686	78736767	100	+	2	ID=scaffold25.mrna1.cds3;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 323 404 -
+chr15	mm9_gsnap	CDS	78736853	78736933	98	+	0	ID=scaffold25.mrna1.cds4;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 241 322 -
+chr15	mm9_gsnap	CDS	78737644	78737760	100	+	1	ID=scaffold25.mrna1.cds5;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 124 240 -
+chr15	mm9_gsnap	CDS	78742360	78742481	100	+	1	ID=scaffold25.mrna1.cds6;Name=scaffold25;Parent=scaffold25.mrna1;Target=scaffold25 2 123 -
+###
+chr15	mm9_gsnap	gene	78730216	78730393	.	-	.	ID=scaffold25.path2;Name=scaffold25
+chr15	mm9_gsnap	mRNA	78730216	78730393	.	-	.	ID=scaffold25.mrna2;Name=scaffold25;Parent=scaffold25.path2;coverage=10.8;identity=100.0
+chr15	mm9_gsnap	exon	78730216	78730393	100	-	.	ID=scaffold25.mrna2.exon1;Name=scaffold25;Parent=scaffold25.mrna2;Target=scaffold25 1272 1449 +
+chr15	mm9_gsnap	CDS	78730216	78730392	100	-	0	ID=scaffold25.mrna2.cds1;Name=scaffold25;Parent=scaffold25.mrna2;Target=scaffold25 1273 1449 +
+###
+chr15	mm9_gsnap	gene	78738466	78742482	.	+	.	ID=scaffold26.path1;Name=scaffold26
+chr15	mm9_gsnap	mRNA	78738466	78742482	.	+	.	ID=scaffold26.mrna1;Name=scaffold26;Parent=scaffold26.path1;coverage=99.6;identity=99.6
+chr15	mm9_gsnap	exon	78738466	78738488	100	+	.	ID=scaffold26.mrna1.exon1;Name=scaffold26;Parent=scaffold26.mrna1;Target=scaffold26 211 233 -
+chr15	mm9_gsnap	exon	78740438	78740523	98	+	.	ID=scaffold26.mrna1.exon2;Name=scaffold26;Parent=scaffold26.mrna1;Target=scaffold26 124 210 -
+chr15	mm9_gsnap	exon	78742360	78742482	100	+	.	ID=scaffold26.mrna1.exon3;Name=scaffold26;Parent=scaffold26.mrna1;Target=scaffold26 1 123 -
+chr15	mm9_gsnap	CDS	78738466	78738488	100	+	0	ID=scaffold26.mrna1.cds1;Name=scaffold26;Parent=scaffold26.mrna1;Target=scaffold26 211 233 -
+chr15	mm9_gsnap	CDS	78740438	78740523	98	+	2	ID=scaffold26.mrna1.cds2;Name=scaffold26;Parent=scaffold26.mrna1;Target=scaffold26 124 210 -
+chr15	mm9_gsnap	CDS	78742360	78742480	100	+	2	ID=scaffold26.mrna1.cds3;Name=scaffold26;Parent=scaffold26.mrna1;Target=scaffold26 3 123 -
+###
+chr7	mm9_gsnap	gene	125783499	125803071	.	+	.	ID=scaffold27.path1;Name=scaffold27
+chr7	mm9_gsnap	mRNA	125783499	125803071	.	+	.	ID=scaffold27.mrna1;Name=scaffold27;Parent=scaffold27.path1;coverage=99.8;identity=99.4
+chr7	mm9_gsnap	exon	125783499	125783521	100	+	.	ID=scaffold27.mrna1.exon1;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 1 23 +
+chr7	mm9_gsnap	exon	125785722	125785970	100	+	.	ID=scaffold27.mrna1.exon2;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 24 272 +
+chr7	mm9_gsnap	exon	125788786	125788937	99	+	.	ID=scaffold27.mrna1.exon3;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 273 425 +
+chr7	mm9_gsnap	exon	125791312	125791460	97	+	.	ID=scaffold27.mrna1.exon4;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 426 575 +
+chr7	mm9_gsnap	exon	125792959	125793111	100	+	.	ID=scaffold27.mrna1.exon5;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 576 728 +
+chr7	mm9_gsnap	exon	125796024	125796175	99	+	.	ID=scaffold27.mrna1.exon6;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 729 881 +
+chr7	mm9_gsnap	exon	125798431	125798509	100	+	.	ID=scaffold27.mrna1.exon7;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 882 960 +
+chr7	mm9_gsnap	exon	125800273	125800370	98	+	.	ID=scaffold27.mrna1.exon8;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 961 1059 +
+chr7	mm9_gsnap	exon	125803052	125803071	100	+	.	ID=scaffold27.mrna1.exon9;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 1060 1079 +
+chr7	mm9_gsnap	CDS	125783501	125783521	100	+	0	ID=scaffold27.mrna1.cds1;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 3 23 +
+chr7	mm9_gsnap	CDS	125785722	125785970	100	+	0	ID=scaffold27.mrna1.cds2;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 24 272 +
+chr7	mm9_gsnap	CDS	125788786	125788847	98	+	0	ID=scaffold27.mrna1.cds3;Name=scaffold27;Parent=scaffold27.mrna1;Target=scaffold27 273 335 +
+###
+chr7	mm9_gsnap	gene	125740813	125803071	.	+	.	ID=scaffold28.path1;Name=scaffold28
+chr7	mm9_gsnap	mRNA	125740813	125803071	.	+	.	ID=scaffold28.mrna1;Name=scaffold28;Parent=scaffold28.path1;coverage=98.8;identity=99.6
+chr7	mm9_gsnap	exon	125740813	125741058	100	+	.	ID=scaffold28.mrna1.exon1;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1 246 +
+chr7	mm9_gsnap	exon	125766517	125767332	99	+	.	ID=scaffold28.mrna1.exon2;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 247 1063 +
+chr7	mm9_gsnap	exon	125770668	125770771	99	+	.	ID=scaffold28.mrna1.exon3;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1064 1168 +
+chr7	mm9_gsnap	exon	125772267	125772356	100	+	.	ID=scaffold28.mrna1.exon4;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1169 1258 +
+chr7	mm9_gsnap	exon	125781643	125781742	99	+	.	ID=scaffold28.mrna1.exon5;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1259 1359 +
+chr7	mm9_gsnap	exon	125788786	125788937	100	+	.	ID=scaffold28.mrna1.exon6;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1360 1511 +
+chr7	mm9_gsnap	exon	125791312	125791460	97	+	.	ID=scaffold28.mrna1.exon7;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1512 1661 +
+chr7	mm9_gsnap	exon	125792959	125793111	100	+	.	ID=scaffold28.mrna1.exon8;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1662 1814 +
+chr7	mm9_gsnap	exon	125796024	125796175	99	+	.	ID=scaffold28.mrna1.exon9;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1815 1967 +
+chr7	mm9_gsnap	exon	125798431	125798509	100	+	.	ID=scaffold28.mrna1.exon10;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1968 2046 +
+chr7	mm9_gsnap	exon	125800273	125800370	98	+	.	ID=scaffold28.mrna1.exon11;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 2047 2145 +
+chr7	mm9_gsnap	exon	125803052	125803071	100	+	.	ID=scaffold28.mrna1.exon12;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 2146 2165 +
+chr7	mm9_gsnap	CDS	125766593	125767332	100	+	0	ID=scaffold28.mrna1.cds1;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 324 1063 +
+chr7	mm9_gsnap	CDS	125770668	125770706	97	+	2	ID=scaffold28.mrna1.cds2;Name=scaffold28;Parent=scaffold28.mrna1;Target=scaffold28 1064 1103 +
+###
+chr7	mm9_gsnap	gene	125741039	125803071	.	+	.	ID=scaffold29.path1;Name=scaffold29
+chr7	mm9_gsnap	mRNA	125741039	125803071	.	+	.	ID=scaffold29.mrna1;Name=scaffold29;Parent=scaffold29.path1;coverage=98.8;identity=99.6
+chr7	mm9_gsnap	exon	125741039	125741058	100	+	.	ID=scaffold29.mrna1.exon1;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1 20 +
+chr7	mm9_gsnap	exon	125743698	125743821	100	+	.	ID=scaffold29.mrna1.exon2;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 21 144 +
+chr7	mm9_gsnap	exon	125766517	125767332	99	+	.	ID=scaffold29.mrna1.exon3;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 145 961 +
+chr7	mm9_gsnap	exon	125770668	125770771	99	+	.	ID=scaffold29.mrna1.exon4;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 962 1066 +
+chr7	mm9_gsnap	exon	125772267	125772356	100	+	.	ID=scaffold29.mrna1.exon5;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1067 1156 +
+chr7	mm9_gsnap	exon	125781643	125781742	99	+	.	ID=scaffold29.mrna1.exon6;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1157 1257 +
+chr7	mm9_gsnap	exon	125788786	125788937	100	+	.	ID=scaffold29.mrna1.exon7;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1258 1409 +
+chr7	mm9_gsnap	exon	125791312	125791460	97	+	.	ID=scaffold29.mrna1.exon8;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1410 1559 +
+chr7	mm9_gsnap	exon	125792959	125793111	100	+	.	ID=scaffold29.mrna1.exon9;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1560 1712 +
+chr7	mm9_gsnap	exon	125796024	125796175	99	+	.	ID=scaffold29.mrna1.exon10;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1713 1865 +
+chr7	mm9_gsnap	exon	125798431	125798509	100	+	.	ID=scaffold29.mrna1.exon11;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1866 1944 +
+chr7	mm9_gsnap	exon	125800273	125800370	98	+	.	ID=scaffold29.mrna1.exon12;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 1945 2043 +
+chr7	mm9_gsnap	exon	125803052	125803071	100	+	.	ID=scaffold29.mrna1.exon13;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 2044 2063 +
+chr7	mm9_gsnap	CDS	125766593	125767332	100	+	0	ID=scaffold29.mrna1.cds1;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 222 961 +
+chr7	mm9_gsnap	CDS	125770668	125770706	97	+	2	ID=scaffold29.mrna1.cds2;Name=scaffold29;Parent=scaffold29.mrna1;Target=scaffold29 962 1001 +
+###
+chr13	mm9_gsnap	gene	55132357	55201580	.	-	.	ID=scaffold30.path1;Name=scaffold30
+chr13	mm9_gsnap	mRNA	55132357	55201580	.	-	.	ID=scaffold30.mrna1;Name=scaffold30;Parent=scaffold30.path1;coverage=100.0;identity=99.6
+chr13	mm9_gsnap	exon	55201558	55201580	100	-	.	ID=scaffold30.mrna1.exon1;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 997 1019 -
+chr13	mm9_gsnap	exon	55194488	55194642	100	-	.	ID=scaffold30.mrna1.exon2;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 842 996 -
+chr13	mm9_gsnap	exon	55186971	55187055	100	-	.	ID=scaffold30.mrna1.exon3;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 757 841 -
+chr13	mm9_gsnap	exon	55178764	55178888	99	-	.	ID=scaffold30.mrna1.exon4;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 631 756 -
+chr13	mm9_gsnap	exon	55177663	55177768	99	-	.	ID=scaffold30.mrna1.exon5;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 524 630 -
+chr13	mm9_gsnap	exon	55171083	55171168	100	-	.	ID=scaffold30.mrna1.exon6;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 438 523 -
+chr13	mm9_gsnap	exon	55161627	55161703	98	-	.	ID=scaffold30.mrna1.exon7;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 360 437 -
+chr13	mm9_gsnap	exon	55157336	55157439	100	-	.	ID=scaffold30.mrna1.exon8;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 256 359 -
+chr13	mm9_gsnap	exon	55152102	55152255	99	-	.	ID=scaffold30.mrna1.exon9;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 101 255 -
+chr13	mm9_gsnap	exon	55141906	55141984	100	-	.	ID=scaffold30.mrna1.exon10;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 22 100 -
+chr13	mm9_gsnap	exon	55132357	55132377	100	-	.	ID=scaffold30.mrna1.exon11;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 1 21 -
+chr13	mm9_gsnap	CDS	55201558	55201579	100	-	0	ID=scaffold30.mrna1.cds1;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 997 1018 -
+chr13	mm9_gsnap	CDS	55194488	55194642	100	-	1	ID=scaffold30.mrna1.cds2;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 842 996 -
+chr13	mm9_gsnap	CDS	55186971	55187055	100	-	0	ID=scaffold30.mrna1.cds3;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 757 841 -
+chr13	mm9_gsnap	CDS	55178764	55178888	99	-	1	ID=scaffold30.mrna1.cds4;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 631 756 -
+chr13	mm9_gsnap	CDS	55177663	55177768	99	-	1	ID=scaffold30.mrna1.cds5;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 524 630 -
+chr13	mm9_gsnap	CDS	55171083	55171168	100	-	0	ID=scaffold30.mrna1.cds6;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 438 523 -
+chr13	mm9_gsnap	CDS	55161627	55161703	98	-	2	ID=scaffold30.mrna1.cds7;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 360 437 -
+chr13	mm9_gsnap	CDS	55157336	55157439	100	-	2	ID=scaffold30.mrna1.cds8;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 256 359 -
+chr13	mm9_gsnap	CDS	55152102	55152255	99	-	1	ID=scaffold30.mrna1.cds9;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 101 255 -
+chr13	mm9_gsnap	CDS	55141906	55141984	100	-	0	ID=scaffold30.mrna1.cds10;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 22 100 -
+chr13	mm9_gsnap	CDS	55132358	55132377	100	-	1	ID=scaffold30.mrna1.cds11;Name=scaffold30;Parent=scaffold30.mrna1;Target=scaffold30 2 21 -
+###
+chr13	mm9_gsnap	gene	55129242	55201580	.	-	.	ID=scaffold31.path1;Name=scaffold31
+chr13	mm9_gsnap	mRNA	55129242	55201580	.	-	.	ID=scaffold31.mrna1;Name=scaffold31;Parent=scaffold31.path1;coverage=98.0;identity=99.8
+chr13	mm9_gsnap	exon	55201558	55201580	100	-	.	ID=scaffold31.mrna1.exon1;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1955 1977 -
+chr13	mm9_gsnap	exon	55194488	55194642	100	-	.	ID=scaffold31.mrna1.exon2;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1800 1954 -
+chr13	mm9_gsnap	exon	55186971	55187055	100	-	.	ID=scaffold31.mrna1.exon3;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1715 1799 -
+chr13	mm9_gsnap	exon	55178764	55178888	99	-	.	ID=scaffold31.mrna1.exon4;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1589 1714 -
+chr13	mm9_gsnap	exon	55177663	55177768	99	-	.	ID=scaffold31.mrna1.exon5;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1482 1588 -
+chr13	mm9_gsnap	exon	55171083	55171168	100	-	.	ID=scaffold31.mrna1.exon6;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1396 1481 -
+chr13	mm9_gsnap	exon	55161627	55161703	98	-	.	ID=scaffold31.mrna1.exon7;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1318 1395 -
+chr13	mm9_gsnap	exon	55157336	55157439	100	-	.	ID=scaffold31.mrna1.exon8;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1214 1317 -
+chr13	mm9_gsnap	exon	55152102	55152255	100	-	.	ID=scaffold31.mrna1.exon9;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1060 1213 -
+chr13	mm9_gsnap	exon	55136250	55136427	100	-	.	ID=scaffold31.mrna1.exon10;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 882 1059 -
+chr13	mm9_gsnap	exon	55130777	55130819	100	-	.	ID=scaffold31.mrna1.exon11;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 839 881 -
+chr13	mm9_gsnap	exon	55129242	55130079	100	-	.	ID=scaffold31.mrna1.exon12;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1 838 -
+chr13	mm9_gsnap	CDS	55201558	55201579	100	-	0	ID=scaffold31.mrna1.cds1;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1955 1976 -
+chr13	mm9_gsnap	CDS	55194488	55194642	100	-	1	ID=scaffold31.mrna1.cds2;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1800 1954 -
+chr13	mm9_gsnap	CDS	55186971	55187055	100	-	0	ID=scaffold31.mrna1.cds3;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1715 1799 -
+chr13	mm9_gsnap	CDS	55178764	55178888	99	-	1	ID=scaffold31.mrna1.cds4;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1589 1714 -
+chr13	mm9_gsnap	CDS	55177663	55177768	99	-	1	ID=scaffold31.mrna1.cds5;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1482 1588 -
+chr13	mm9_gsnap	CDS	55171083	55171168	100	-	0	ID=scaffold31.mrna1.cds6;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1396 1481 -
+chr13	mm9_gsnap	CDS	55161627	55161703	98	-	2	ID=scaffold31.mrna1.cds7;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1318 1395 -
+chr13	mm9_gsnap	CDS	55157336	55157439	100	-	2	ID=scaffold31.mrna1.cds8;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1214 1317 -
+chr13	mm9_gsnap	CDS	55152102	55152255	100	-	1	ID=scaffold31.mrna1.cds9;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 1060 1213 -
+chr13	mm9_gsnap	CDS	55136250	55136427	100	-	2	ID=scaffold31.mrna1.cds10;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 882 1059 -
+chr13	mm9_gsnap	CDS	55130777	55130819	100	-	0	ID=scaffold31.mrna1.cds11;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 839 881 -
+chr13	mm9_gsnap	CDS	55129244	55130079	100	-	1	ID=scaffold31.mrna1.cds12;Name=scaffold31;Parent=scaffold31.mrna1;Target=scaffold31 3 838 -
+###
+chr13	mm9_gsnap	gene	55132357	55201580	.	-	.	ID=scaffold32.path1;Name=scaffold32
+chr13	mm9_gsnap	mRNA	55132357	55201580	.	-	.	ID=scaffold32.mrna1;Name=scaffold32;Parent=scaffold32.path1;coverage=100.0;identity=99.8
+chr13	mm9_gsnap	exon	55201558	55201580	100	-	.	ID=scaffold32.mrna1.exon1;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 1628 1650 -
+chr13	mm9_gsnap	exon	55194488	55194642	100	-	.	ID=scaffold32.mrna1.exon2;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 1473 1627 -
+chr13	mm9_gsnap	exon	55186971	55187055	100	-	.	ID=scaffold32.mrna1.exon3;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 1388 1472 -
+chr13	mm9_gsnap	exon	55178764	55178888	99	-	.	ID=scaffold32.mrna1.exon4;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 1262 1387 -
+chr13	mm9_gsnap	exon	55176619	55177355	99	-	.	ID=scaffold32.mrna1.exon5;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 524 1261 -
+chr13	mm9_gsnap	exon	55171083	55171168	100	-	.	ID=scaffold32.mrna1.exon6;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 438 523 -
+chr13	mm9_gsnap	exon	55161627	55161703	98	-	.	ID=scaffold32.mrna1.exon7;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 360 437 -
+chr13	mm9_gsnap	exon	55157336	55157439	100	-	.	ID=scaffold32.mrna1.exon8;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 256 359 -
+chr13	mm9_gsnap	exon	55152102	55152255	99	-	.	ID=scaffold32.mrna1.exon9;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 101 255 -
+chr13	mm9_gsnap	exon	55141906	55141984	100	-	.	ID=scaffold32.mrna1.exon10;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 22 100 -
+chr13	mm9_gsnap	exon	55132357	55132377	100	-	.	ID=scaffold32.mrna1.exon11;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 1 21 -
+chr13	mm9_gsnap	CDS	55176619	55176894	99	-	0	ID=scaffold32.mrna1.cds1;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 524 800 -
+chr13	mm9_gsnap	CDS	55171083	55171168	100	-	1	ID=scaffold32.mrna1.cds2;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 438 523 -
+chr13	mm9_gsnap	CDS	55161627	55161703	98	-	0	ID=scaffold32.mrna1.cds3;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 360 437 -
+chr13	mm9_gsnap	CDS	55157336	55157439	100	-	0	ID=scaffold32.mrna1.cds4;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 256 359 -
+chr13	mm9_gsnap	CDS	55152102	55152255	99	-	2	ID=scaffold32.mrna1.cds5;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 101 255 -
+chr13	mm9_gsnap	CDS	55141906	55141984	100	-	1	ID=scaffold32.mrna1.cds6;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 22 100 -
+chr13	mm9_gsnap	CDS	55132359	55132377	100	-	2	ID=scaffold32.mrna1.cds7;Name=scaffold32;Parent=scaffold32.mrna1;Target=scaffold32 3 21 -
+###
+chr5	mm9_gsnap	gene	35104390	35229176	.	+	.	ID=scaffold33.path1;Name=scaffold33
+chr5	mm9_gsnap	mRNA	35104390	35229176	.	+	.	ID=scaffold33.mrna1;Name=scaffold33;Parent=scaffold33.path1;coverage=98.7;identity=99.7
+chr5	mm9_gsnap	exon	35104390	35104758	100	+	.	ID=scaffold33.mrna1.exon1;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5929 6297 -
+chr5	mm9_gsnap	exon	35125391	35125474	100	+	.	ID=scaffold33.mrna1.exon2;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5845 5928 -
+chr5	mm9_gsnap	exon	35132916	35133036	99	+	.	ID=scaffold33.mrna1.exon3;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5723 5844 -
+chr5	mm9_gsnap	exon	35138541	35138620	100	+	.	ID=scaffold33.mrna1.exon4;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5643 5722 -
+chr5	mm9_gsnap	exon	35142026	35142164	100	+	.	ID=scaffold33.mrna1.exon5;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5504 5642 -
+chr5	mm9_gsnap	exon	35146367	35146508	99	+	.	ID=scaffold33.mrna1.exon6;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5361 5503 -
+chr5	mm9_gsnap	exon	35147151	35147329	99	+	.	ID=scaffold33.mrna1.exon7;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 5181 5360 -
+chr5	mm9_gsnap	exon	35149222	35149426	100	+	.	ID=scaffold33.mrna1.exon8;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4976 5180 -
+chr5	mm9_gsnap	exon	35150518	35150565	100	+	.	ID=scaffold33.mrna1.exon9;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4928 4975 -
+chr5	mm9_gsnap	exon	35154084	35154164	100	+	.	ID=scaffold33.mrna1.exon10;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4847 4927 -
+chr5	mm9_gsnap	exon	35155501	35155841	100	+	.	ID=scaffold33.mrna1.exon11;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4506 4846 -
+chr5	mm9_gsnap	exon	35159792	35159918	100	+	.	ID=scaffold33.mrna1.exon12;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4379 4505 -
+chr5	mm9_gsnap	exon	35161248	35161359	100	+	.	ID=scaffold33.mrna1.exon13;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4267 4378 -
+chr5	mm9_gsnap	exon	35161546	35161683	100	+	.	ID=scaffold33.mrna1.exon14;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4129 4266 -
+chr5	mm9_gsnap	exon	35162600	35162758	99	+	.	ID=scaffold33.mrna1.exon15;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3969 4128 -
+chr5	mm9_gsnap	exon	35162851	35162948	98	+	.	ID=scaffold33.mrna1.exon16;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3870 3968 -
+chr5	mm9_gsnap	exon	35164360	35164477	100	+	.	ID=scaffold33.mrna1.exon17;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3752 3869 -
+chr5	mm9_gsnap	exon	35166551	35166573	100	+	.	ID=scaffold33.mrna1.exon18;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3729 3751 -
+chr5	mm9_gsnap	exon	35167007	35167107	99	+	.	ID=scaffold33.mrna1.exon19;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3627 3728 -
+chr5	mm9_gsnap	exon	35167464	35167610	100	+	.	ID=scaffold33.mrna1.exon20;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3480 3626 -
+chr5	mm9_gsnap	exon	35168596	35168716	99	+	.	ID=scaffold33.mrna1.exon21;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3358 3479 -
+chr5	mm9_gsnap	exon	35169904	35169980	98	+	.	ID=scaffold33.mrna1.exon22;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3280 3357 -
+chr5	mm9_gsnap	exon	35171122	35171273	100	+	.	ID=scaffold33.mrna1.exon23;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3128 3279 -
+chr5	mm9_gsnap	exon	35172326	35172528	100	+	.	ID=scaffold33.mrna1.exon24;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2925 3127 -
+chr5	mm9_gsnap	exon	35175216	35175342	100	+	.	ID=scaffold33.mrna1.exon25;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2798 2924 -
+chr5	mm9_gsnap	exon	35176910	35177037	100	+	.	ID=scaffold33.mrna1.exon26;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2670 2797 -
+chr5	mm9_gsnap	exon	35185440	35185550	100	+	.	ID=scaffold33.mrna1.exon27;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2559 2669 -
+chr5	mm9_gsnap	exon	35188639	35188716	98	+	.	ID=scaffold33.mrna1.exon28;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2480 2558 -
+chr5	mm9_gsnap	exon	35190103	35190326	99	+	.	ID=scaffold33.mrna1.exon29;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2255 2479 -
+chr5	mm9_gsnap	exon	35193868	35193923	100	+	.	ID=scaffold33.mrna1.exon30;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2199 2254 -
+chr5	mm9_gsnap	exon	35194732	35194880	99	+	.	ID=scaffold33.mrna1.exon31;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2049 2198 -
+chr5	mm9_gsnap	exon	35195409	35195545	99	+	.	ID=scaffold33.mrna1.exon32;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1911 2048 -
+chr5	mm9_gsnap	exon	35207295	35207527	99	+	.	ID=scaffold33.mrna1.exon33;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1677 1910 -
+chr5	mm9_gsnap	exon	35209224	35209366	100	+	.	ID=scaffold33.mrna1.exon34;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1534 1676 -
+chr5	mm9_gsnap	exon	35213359	35213566	100	+	.	ID=scaffold33.mrna1.exon35;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1326 1533 -
+chr5	mm9_gsnap	exon	35218555	35218696	100	+	.	ID=scaffold33.mrna1.exon36;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1184 1325 -
+chr5	mm9_gsnap	exon	35219379	35219558	100	+	.	ID=scaffold33.mrna1.exon37;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1004 1183 -
+chr5	mm9_gsnap	exon	35219674	35219850	99	+	.	ID=scaffold33.mrna1.exon38;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 826 1003 -
+chr5	mm9_gsnap	exon	35221452	35221590	100	+	.	ID=scaffold33.mrna1.exon39;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 687 825 -
+chr5	mm9_gsnap	exon	35222453	35222575	99	+	.	ID=scaffold33.mrna1.exon40;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 563 686 -
+chr5	mm9_gsnap	exon	35225499	35225712	99	+	.	ID=scaffold33.mrna1.exon41;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 348 562 -
+chr5	mm9_gsnap	exon	35226621	35226766	100	+	.	ID=scaffold33.mrna1.exon42;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 202 347 -
+chr5	mm9_gsnap	exon	35228001	35228178	100	+	.	ID=scaffold33.mrna1.exon43;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 24 201 -
+chr5	mm9_gsnap	exon	35229154	35229176	100	+	.	ID=scaffold33.mrna1.exon44;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1 23 -
+chr5	mm9_gsnap	CDS	35159853	35159918	100	+	0	ID=scaffold33.mrna1.cds1;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4379 4444 -
+chr5	mm9_gsnap	CDS	35161248	35161359	100	+	0	ID=scaffold33.mrna1.cds2;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4267 4378 -
+chr5	mm9_gsnap	CDS	35161546	35161683	100	+	1	ID=scaffold33.mrna1.cds3;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 4129 4266 -
+chr5	mm9_gsnap	CDS	35162600	35162758	99	+	1	ID=scaffold33.mrna1.cds4;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3969 4128 -
+chr5	mm9_gsnap	CDS	35162851	35162948	98	+	2	ID=scaffold33.mrna1.cds5;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3870 3968 -
+chr5	mm9_gsnap	CDS	35164360	35164477	100	+	2	ID=scaffold33.mrna1.cds6;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3752 3869 -
+chr5	mm9_gsnap	CDS	35166551	35166573	100	+	0	ID=scaffold33.mrna1.cds7;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3729 3751 -
+chr5	mm9_gsnap	CDS	35167007	35167107	99	+	2	ID=scaffold33.mrna1.cds8;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3627 3728 -
+chr5	mm9_gsnap	CDS	35167464	35167610	100	+	2	ID=scaffold33.mrna1.cds9;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3480 3626 -
+chr5	mm9_gsnap	CDS	35168596	35168716	99	+	2	ID=scaffold33.mrna1.cds10;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3358 3479 -
+chr5	mm9_gsnap	CDS	35169904	35169980	98	+	1	ID=scaffold33.mrna1.cds11;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3280 3357 -
+chr5	mm9_gsnap	CDS	35171122	35171273	100	+	1	ID=scaffold33.mrna1.cds12;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 3128 3279 -
+chr5	mm9_gsnap	CDS	35172326	35172528	100	+	0	ID=scaffold33.mrna1.cds13;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2925 3127 -
+chr5	mm9_gsnap	CDS	35175216	35175342	100	+	2	ID=scaffold33.mrna1.cds14;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2798 2924 -
+chr5	mm9_gsnap	CDS	35176910	35177037	100	+	0	ID=scaffold33.mrna1.cds15;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2670 2797 -
+chr5	mm9_gsnap	CDS	35185440	35185550	100	+	2	ID=scaffold33.mrna1.cds16;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2559 2669 -
+chr5	mm9_gsnap	CDS	35188639	35188716	98	+	2	ID=scaffold33.mrna1.cds17;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2480 2558 -
+chr5	mm9_gsnap	CDS	35190103	35190326	99	+	0	ID=scaffold33.mrna1.cds18;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2255 2479 -
+chr5	mm9_gsnap	CDS	35193868	35193923	100	+	0	ID=scaffold33.mrna1.cds19;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2199 2254 -
+chr5	mm9_gsnap	CDS	35194732	35194880	99	+	2	ID=scaffold33.mrna1.cds20;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2049 2198 -
+chr5	mm9_gsnap	CDS	35195409	35195545	99	+	2	ID=scaffold33.mrna1.cds21;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1911 2048 -
+chr5	mm9_gsnap	CDS	35207295	35207527	99	+	2	ID=scaffold33.mrna1.cds22;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1677 1910 -
+chr5	mm9_gsnap	CDS	35209224	35209366	100	+	2	ID=scaffold33.mrna1.cds23;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1534 1676 -
+chr5	mm9_gsnap	CDS	35213359	35213566	100	+	1	ID=scaffold33.mrna1.cds24;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1326 1533 -
+chr5	mm9_gsnap	CDS	35218555	35218696	100	+	2	ID=scaffold33.mrna1.cds25;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1184 1325 -
+chr5	mm9_gsnap	CDS	35219379	35219558	100	+	0	ID=scaffold33.mrna1.cds26;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 1004 1183 -
+chr5	mm9_gsnap	CDS	35219674	35219850	99	+	0	ID=scaffold33.mrna1.cds27;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 826 1003 -
+chr5	mm9_gsnap	CDS	35221452	35221590	100	+	1	ID=scaffold33.mrna1.cds28;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 687 825 -
+chr5	mm9_gsnap	CDS	35222453	35222575	99	+	2	ID=scaffold33.mrna1.cds29;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 563 686 -
+chr5	mm9_gsnap	CDS	35225499	35225712	99	+	0	ID=scaffold33.mrna1.cds30;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 348 562 -
+chr5	mm9_gsnap	CDS	35226621	35226766	100	+	2	ID=scaffold33.mrna1.cds31;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 202 347 -
+chr5	mm9_gsnap	CDS	35228001	35228178	100	+	1	ID=scaffold33.mrna1.cds32;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 24 201 -
+chr5	mm9_gsnap	CDS	35229154	35229175	100	+	2	ID=scaffold33.mrna1.cds33;Name=scaffold33;Parent=scaffold33.mrna1;Target=scaffold33 2 23 -
+###
+chr5	mm9_gsnap	gene	35104390	35229176	.	+	.	ID=scaffold34.path1;Name=scaffold34
+chr5	mm9_gsnap	mRNA	35104390	35229176	.	+	.	ID=scaffold34.mrna1;Name=scaffold34;Parent=scaffold34.path1;coverage=98.7;identity=99.7
+chr5	mm9_gsnap	exon	35104390	35104758	100	+	.	ID=scaffold34.mrna1.exon1;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5946 6314 -
+chr5	mm9_gsnap	exon	35125391	35125474	100	+	.	ID=scaffold34.mrna1.exon2;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5862 5945 -
+chr5	mm9_gsnap	exon	35132916	35133036	99	+	.	ID=scaffold34.mrna1.exon3;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5740 5861 -
+chr5	mm9_gsnap	exon	35138541	35138620	100	+	.	ID=scaffold34.mrna1.exon4;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5660 5739 -
+chr5	mm9_gsnap	exon	35142026	35142164	100	+	.	ID=scaffold34.mrna1.exon5;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5521 5659 -
+chr5	mm9_gsnap	exon	35146367	35146508	99	+	.	ID=scaffold34.mrna1.exon6;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5378 5520 -
+chr5	mm9_gsnap	exon	35147151	35147329	99	+	.	ID=scaffold34.mrna1.exon7;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 5198 5377 -
+chr5	mm9_gsnap	exon	35149222	35149426	100	+	.	ID=scaffold34.mrna1.exon8;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4993 5197 -
+chr5	mm9_gsnap	exon	35150518	35150565	100	+	.	ID=scaffold34.mrna1.exon9;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4945 4992 -
+chr5	mm9_gsnap	exon	35154084	35154164	100	+	.	ID=scaffold34.mrna1.exon10;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4864 4944 -
+chr5	mm9_gsnap	exon	35155501	35155841	100	+	.	ID=scaffold34.mrna1.exon11;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4523 4863 -
+chr5	mm9_gsnap	exon	35159792	35159918	100	+	.	ID=scaffold34.mrna1.exon12;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4396 4522 -
+chr5	mm9_gsnap	exon	35161248	35161359	100	+	.	ID=scaffold34.mrna1.exon13;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4284 4395 -
+chr5	mm9_gsnap	exon	35161546	35161683	100	+	.	ID=scaffold34.mrna1.exon14;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4146 4283 -
+chr5	mm9_gsnap	exon	35162600	35162758	99	+	.	ID=scaffold34.mrna1.exon15;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3986 4145 -
+chr5	mm9_gsnap	exon	35162851	35162948	98	+	.	ID=scaffold34.mrna1.exon16;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3887 3985 -
+chr5	mm9_gsnap	exon	35164360	35164477	100	+	.	ID=scaffold34.mrna1.exon17;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3769 3886 -
+chr5	mm9_gsnap	exon	35166551	35166573	100	+	.	ID=scaffold34.mrna1.exon18;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3746 3768 -
+chr5	mm9_gsnap	exon	35167007	35167107	99	+	.	ID=scaffold34.mrna1.exon19;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3644 3745 -
+chr5	mm9_gsnap	exon	35167464	35167610	100	+	.	ID=scaffold34.mrna1.exon20;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3497 3643 -
+chr5	mm9_gsnap	exon	35168596	35168716	99	+	.	ID=scaffold34.mrna1.exon21;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3375 3496 -
+chr5	mm9_gsnap	exon	35169904	35169980	98	+	.	ID=scaffold34.mrna1.exon22;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3297 3374 -
+chr5	mm9_gsnap	exon	35171122	35171273	100	+	.	ID=scaffold34.mrna1.exon23;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3145 3296 -
+chr5	mm9_gsnap	exon	35172326	35172528	100	+	.	ID=scaffold34.mrna1.exon24;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2942 3144 -
+chr5	mm9_gsnap	exon	35175216	35175342	100	+	.	ID=scaffold34.mrna1.exon25;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2815 2941 -
+chr5	mm9_gsnap	exon	35176910	35177037	100	+	.	ID=scaffold34.mrna1.exon26;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2687 2814 -
+chr5	mm9_gsnap	exon	35185440	35185550	100	+	.	ID=scaffold34.mrna1.exon27;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2576 2686 -
+chr5	mm9_gsnap	exon	35188639	35188716	98	+	.	ID=scaffold34.mrna1.exon28;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2497 2575 -
+chr5	mm9_gsnap	exon	35191380	35191458	100	+	.	ID=scaffold34.mrna1.exon29;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2418 2496 -
+chr5	mm9_gsnap	exon	35191586	35191747	99	+	.	ID=scaffold34.mrna1.exon30;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2255 2417 -
+chr5	mm9_gsnap	exon	35193868	35193923	100	+	.	ID=scaffold34.mrna1.exon31;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2199 2254 -
+chr5	mm9_gsnap	exon	35194732	35194880	99	+	.	ID=scaffold34.mrna1.exon32;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2049 2198 -
+chr5	mm9_gsnap	exon	35195409	35195545	99	+	.	ID=scaffold34.mrna1.exon33;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1911 2048 -
+chr5	mm9_gsnap	exon	35207295	35207527	99	+	.	ID=scaffold34.mrna1.exon34;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1677 1910 -
+chr5	mm9_gsnap	exon	35209224	35209366	100	+	.	ID=scaffold34.mrna1.exon35;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1534 1676 -
+chr5	mm9_gsnap	exon	35213359	35213566	100	+	.	ID=scaffold34.mrna1.exon36;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1326 1533 -
+chr5	mm9_gsnap	exon	35218555	35218696	100	+	.	ID=scaffold34.mrna1.exon37;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1184 1325 -
+chr5	mm9_gsnap	exon	35219379	35219558	100	+	.	ID=scaffold34.mrna1.exon38;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1004 1183 -
+chr5	mm9_gsnap	exon	35219674	35219850	99	+	.	ID=scaffold34.mrna1.exon39;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 826 1003 -
+chr5	mm9_gsnap	exon	35221452	35221590	100	+	.	ID=scaffold34.mrna1.exon40;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 687 825 -
+chr5	mm9_gsnap	exon	35222453	35222575	99	+	.	ID=scaffold34.mrna1.exon41;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 563 686 -
+chr5	mm9_gsnap	exon	35225499	35225712	99	+	.	ID=scaffold34.mrna1.exon42;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 348 562 -
+chr5	mm9_gsnap	exon	35226621	35226766	100	+	.	ID=scaffold34.mrna1.exon43;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 202 347 -
+chr5	mm9_gsnap	exon	35228001	35228178	100	+	.	ID=scaffold34.mrna1.exon44;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 24 201 -
+chr5	mm9_gsnap	exon	35229154	35229176	100	+	.	ID=scaffold34.mrna1.exon45;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1 23 -
+chr5	mm9_gsnap	CDS	35159853	35159918	100	+	0	ID=scaffold34.mrna1.cds1;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4396 4461 -
+chr5	mm9_gsnap	CDS	35161248	35161359	100	+	0	ID=scaffold34.mrna1.cds2;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4284 4395 -
+chr5	mm9_gsnap	CDS	35161546	35161683	100	+	1	ID=scaffold34.mrna1.cds3;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 4146 4283 -
+chr5	mm9_gsnap	CDS	35162600	35162758	99	+	1	ID=scaffold34.mrna1.cds4;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3986 4145 -
+chr5	mm9_gsnap	CDS	35162851	35162948	98	+	2	ID=scaffold34.mrna1.cds5;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3887 3985 -
+chr5	mm9_gsnap	CDS	35164360	35164477	100	+	2	ID=scaffold34.mrna1.cds6;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3769 3886 -
+chr5	mm9_gsnap	CDS	35166551	35166573	100	+	0	ID=scaffold34.mrna1.cds7;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3746 3768 -
+chr5	mm9_gsnap	CDS	35167007	35167107	99	+	2	ID=scaffold34.mrna1.cds8;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3644 3745 -
+chr5	mm9_gsnap	CDS	35167464	35167610	100	+	2	ID=scaffold34.mrna1.cds9;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3497 3643 -
+chr5	mm9_gsnap	CDS	35168596	35168716	99	+	2	ID=scaffold34.mrna1.cds10;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3375 3496 -
+chr5	mm9_gsnap	CDS	35169904	35169980	98	+	1	ID=scaffold34.mrna1.cds11;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3297 3374 -
+chr5	mm9_gsnap	CDS	35171122	35171273	100	+	1	ID=scaffold34.mrna1.cds12;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 3145 3296 -
+chr5	mm9_gsnap	CDS	35172326	35172528	100	+	0	ID=scaffold34.mrna1.cds13;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2942 3144 -
+chr5	mm9_gsnap	CDS	35175216	35175342	100	+	2	ID=scaffold34.mrna1.cds14;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2815 2941 -
+chr5	mm9_gsnap	CDS	35176910	35177037	100	+	0	ID=scaffold34.mrna1.cds15;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2687 2814 -
+chr5	mm9_gsnap	CDS	35185440	35185550	100	+	2	ID=scaffold34.mrna1.cds16;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2576 2686 -
+chr5	mm9_gsnap	CDS	35188639	35188716	98	+	2	ID=scaffold34.mrna1.cds17;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2497 2575 -
+chr5	mm9_gsnap	CDS	35191380	35191458	100	+	0	ID=scaffold34.mrna1.cds18;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2418 2496 -
+chr5	mm9_gsnap	CDS	35191586	35191747	99	+	1	ID=scaffold34.mrna1.cds19;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2255 2417 -
+chr5	mm9_gsnap	CDS	35193868	35193923	100	+	2	ID=scaffold34.mrna1.cds20;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2199 2254 -
+chr5	mm9_gsnap	CDS	35194732	35194880	99	+	1	ID=scaffold34.mrna1.cds21;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 2049 2198 -
+chr5	mm9_gsnap	CDS	35195409	35195545	99	+	1	ID=scaffold34.mrna1.cds22;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1911 2048 -
+chr5	mm9_gsnap	CDS	35207295	35207527	99	+	1	ID=scaffold34.mrna1.cds23;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1677 1910 -
+chr5	mm9_gsnap	CDS	35209224	35209366	100	+	1	ID=scaffold34.mrna1.cds24;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1534 1676 -
+chr5	mm9_gsnap	CDS	35213359	35213566	100	+	0	ID=scaffold34.mrna1.cds25;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1326 1533 -
+chr5	mm9_gsnap	CDS	35218555	35218696	100	+	1	ID=scaffold34.mrna1.cds26;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1184 1325 -
+chr5	mm9_gsnap	CDS	35219379	35219558	100	+	2	ID=scaffold34.mrna1.cds27;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1004 1183 -
+chr5	mm9_gsnap	CDS	35219674	35219850	99	+	2	ID=scaffold34.mrna1.cds28;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 826 1003 -
+chr5	mm9_gsnap	CDS	35221452	35221590	100	+	0	ID=scaffold34.mrna1.cds29;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 687 825 -
+chr5	mm9_gsnap	CDS	35222453	35222575	99	+	1	ID=scaffold34.mrna1.cds30;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 563 686 -
+chr5	mm9_gsnap	CDS	35225499	35225712	99	+	2	ID=scaffold34.mrna1.cds31;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 348 562 -
+chr5	mm9_gsnap	CDS	35226621	35226766	100	+	1	ID=scaffold34.mrna1.cds32;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 202 347 -
+chr5	mm9_gsnap	CDS	35228001	35228178	100	+	0	ID=scaffold34.mrna1.cds33;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 24 201 -
+chr5	mm9_gsnap	CDS	35229154	35229176	100	+	1	ID=scaffold34.mrna1.cds34;Name=scaffold34;Parent=scaffold34.mrna1;Target=scaffold34 1 23 -
+###
+chr5	mm9_gsnap	gene	35104390	35229176	.	+	.	ID=scaffold35.path1;Name=scaffold35
+chr5	mm9_gsnap	mRNA	35104390	35229176	.	+	.	ID=scaffold35.mrna1;Name=scaffold35;Parent=scaffold35.path1;coverage=98.7;identity=99.7
+chr5	mm9_gsnap	exon	35104390	35104758	100	+	.	ID=scaffold35.mrna1.exon1;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5915 6283 -
+chr5	mm9_gsnap	exon	35125391	35125474	100	+	.	ID=scaffold35.mrna1.exon2;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5831 5914 -
+chr5	mm9_gsnap	exon	35132916	35133036	99	+	.	ID=scaffold35.mrna1.exon3;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5709 5830 -
+chr5	mm9_gsnap	exon	35138541	35138620	100	+	.	ID=scaffold35.mrna1.exon4;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5629 5708 -
+chr5	mm9_gsnap	exon	35142026	35142164	100	+	.	ID=scaffold35.mrna1.exon5;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5490 5628 -
+chr5	mm9_gsnap	exon	35146367	35146508	99	+	.	ID=scaffold35.mrna1.exon6;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5347 5489 -
+chr5	mm9_gsnap	exon	35147151	35147329	99	+	.	ID=scaffold35.mrna1.exon7;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 5167 5346 -
+chr5	mm9_gsnap	exon	35149222	35149426	100	+	.	ID=scaffold35.mrna1.exon8;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4962 5166 -
+chr5	mm9_gsnap	exon	35150518	35150565	100	+	.	ID=scaffold35.mrna1.exon9;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4914 4961 -
+chr5	mm9_gsnap	exon	35154084	35154164	100	+	.	ID=scaffold35.mrna1.exon10;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4833 4913 -
+chr5	mm9_gsnap	exon	35155501	35155841	100	+	.	ID=scaffold35.mrna1.exon11;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4492 4832 -
+chr5	mm9_gsnap	exon	35159792	35159918	100	+	.	ID=scaffold35.mrna1.exon12;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4365 4491 -
+chr5	mm9_gsnap	exon	35161248	35161359	100	+	.	ID=scaffold35.mrna1.exon13;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4253 4364 -
+chr5	mm9_gsnap	exon	35161546	35161683	100	+	.	ID=scaffold35.mrna1.exon14;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4115 4252 -
+chr5	mm9_gsnap	exon	35162600	35162758	99	+	.	ID=scaffold35.mrna1.exon15;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3955 4114 -
+chr5	mm9_gsnap	exon	35162851	35162948	98	+	.	ID=scaffold35.mrna1.exon16;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3856 3954 -
+chr5	mm9_gsnap	exon	35164360	35164477	100	+	.	ID=scaffold35.mrna1.exon17;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3738 3855 -
+chr5	mm9_gsnap	exon	35166551	35166573	100	+	.	ID=scaffold35.mrna1.exon18;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3715 3737 -
+chr5	mm9_gsnap	exon	35167007	35167107	99	+	.	ID=scaffold35.mrna1.exon19;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3613 3714 -
+chr5	mm9_gsnap	exon	35167464	35167610	100	+	.	ID=scaffold35.mrna1.exon20;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3466 3612 -
+chr5	mm9_gsnap	exon	35168596	35168716	99	+	.	ID=scaffold35.mrna1.exon21;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3344 3465 -
+chr5	mm9_gsnap	exon	35169904	35169980	98	+	.	ID=scaffold35.mrna1.exon22;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3266 3343 -
+chr5	mm9_gsnap	exon	35171122	35171273	100	+	.	ID=scaffold35.mrna1.exon23;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3114 3265 -
+chr5	mm9_gsnap	exon	35172326	35172528	100	+	.	ID=scaffold35.mrna1.exon24;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2911 3113 -
+chr5	mm9_gsnap	exon	35175216	35175342	100	+	.	ID=scaffold35.mrna1.exon25;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2784 2910 -
+chr5	mm9_gsnap	exon	35176910	35177037	100	+	.	ID=scaffold35.mrna1.exon26;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2656 2783 -
+chr5	mm9_gsnap	exon	35185440	35185550	100	+	.	ID=scaffold35.mrna1.exon27;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2545 2655 -
+chr5	mm9_gsnap	exon	35188639	35188716	98	+	.	ID=scaffold35.mrna1.exon28;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2466 2544 -
+chr5	mm9_gsnap	exon	35190103	35190326	99	+	.	ID=scaffold35.mrna1.exon29;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2241 2465 -
+chr5	mm9_gsnap	exon	35193868	35193923	100	+	.	ID=scaffold35.mrna1.exon30;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2185 2240 -
+chr5	mm9_gsnap	exon	35194732	35194880	99	+	.	ID=scaffold35.mrna1.exon31;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2035 2184 -
+chr5	mm9_gsnap	exon	35206895	35207017	99	+	.	ID=scaffold35.mrna1.exon32;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1911 2034 -
+chr5	mm9_gsnap	exon	35207295	35207527	99	+	.	ID=scaffold35.mrna1.exon33;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1677 1910 -
+chr5	mm9_gsnap	exon	35209224	35209366	100	+	.	ID=scaffold35.mrna1.exon34;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1534 1676 -
+chr5	mm9_gsnap	exon	35213359	35213566	100	+	.	ID=scaffold35.mrna1.exon35;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1326 1533 -
+chr5	mm9_gsnap	exon	35218555	35218696	100	+	.	ID=scaffold35.mrna1.exon36;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1184 1325 -
+chr5	mm9_gsnap	exon	35219379	35219558	100	+	.	ID=scaffold35.mrna1.exon37;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1004 1183 -
+chr5	mm9_gsnap	exon	35219674	35219850	99	+	.	ID=scaffold35.mrna1.exon38;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 826 1003 -
+chr5	mm9_gsnap	exon	35221452	35221590	100	+	.	ID=scaffold35.mrna1.exon39;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 687 825 -
+chr5	mm9_gsnap	exon	35222453	35222575	99	+	.	ID=scaffold35.mrna1.exon40;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 563 686 -
+chr5	mm9_gsnap	exon	35225499	35225712	99	+	.	ID=scaffold35.mrna1.exon41;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 348 562 -
+chr5	mm9_gsnap	exon	35226621	35226766	100	+	.	ID=scaffold35.mrna1.exon42;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 202 347 -
+chr5	mm9_gsnap	exon	35228001	35228178	100	+	.	ID=scaffold35.mrna1.exon43;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 24 201 -
+chr5	mm9_gsnap	exon	35229154	35229176	100	+	.	ID=scaffold35.mrna1.exon44;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1 23 -
+chr5	mm9_gsnap	CDS	35159853	35159918	100	+	0	ID=scaffold35.mrna1.cds1;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4365 4430 -
+chr5	mm9_gsnap	CDS	35161248	35161359	100	+	0	ID=scaffold35.mrna1.cds2;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4253 4364 -
+chr5	mm9_gsnap	CDS	35161546	35161683	100	+	1	ID=scaffold35.mrna1.cds3;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 4115 4252 -
+chr5	mm9_gsnap	CDS	35162600	35162758	99	+	1	ID=scaffold35.mrna1.cds4;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3955 4114 -
+chr5	mm9_gsnap	CDS	35162851	35162948	98	+	2	ID=scaffold35.mrna1.cds5;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3856 3954 -
+chr5	mm9_gsnap	CDS	35164360	35164477	100	+	2	ID=scaffold35.mrna1.cds6;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3738 3855 -
+chr5	mm9_gsnap	CDS	35166551	35166573	100	+	0	ID=scaffold35.mrna1.cds7;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3715 3737 -
+chr5	mm9_gsnap	CDS	35167007	35167107	99	+	2	ID=scaffold35.mrna1.cds8;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3613 3714 -
+chr5	mm9_gsnap	CDS	35167464	35167610	100	+	2	ID=scaffold35.mrna1.cds9;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3466 3612 -
+chr5	mm9_gsnap	CDS	35168596	35168716	99	+	2	ID=scaffold35.mrna1.cds10;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3344 3465 -
+chr5	mm9_gsnap	CDS	35169904	35169980	98	+	1	ID=scaffold35.mrna1.cds11;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3266 3343 -
+chr5	mm9_gsnap	CDS	35171122	35171273	100	+	1	ID=scaffold35.mrna1.cds12;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3114 3265 -
+chr5	mm9_gsnap	CDS	35172326	35172528	100	+	0	ID=scaffold35.mrna1.cds13;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2911 3113 -
+chr5	mm9_gsnap	CDS	35175216	35175342	100	+	2	ID=scaffold35.mrna1.cds14;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2784 2910 -
+chr5	mm9_gsnap	CDS	35176910	35177037	100	+	0	ID=scaffold35.mrna1.cds15;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2656 2783 -
+chr5	mm9_gsnap	CDS	35185440	35185550	100	+	2	ID=scaffold35.mrna1.cds16;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2545 2655 -
+chr5	mm9_gsnap	CDS	35188639	35188716	98	+	2	ID=scaffold35.mrna1.cds17;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2466 2544 -
+chr5	mm9_gsnap	CDS	35190103	35190326	99	+	0	ID=scaffold35.mrna1.cds18;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2241 2465 -
+chr5	mm9_gsnap	CDS	35193868	35193923	100	+	0	ID=scaffold35.mrna1.cds19;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2185 2240 -
+chr5	mm9_gsnap	CDS	35194732	35194880	99	+	2	ID=scaffold35.mrna1.cds20;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 2035 2184 -
+chr5	mm9_gsnap	CDS	35206895	35207017	99	+	2	ID=scaffold35.mrna1.cds21;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1911 2034 -
+chr5	mm9_gsnap	CDS	35207295	35207527	99	+	0	ID=scaffold35.mrna1.cds22;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1677 1910 -
+chr5	mm9_gsnap	CDS	35209224	35209366	100	+	0	ID=scaffold35.mrna1.cds23;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1534 1676 -
+chr5	mm9_gsnap	CDS	35213359	35213566	100	+	2	ID=scaffold35.mrna1.cds24;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1326 1533 -
+chr5	mm9_gsnap	CDS	35218555	35218696	100	+	0	ID=scaffold35.mrna1.cds25;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1184 1325 -
+chr5	mm9_gsnap	CDS	35219379	35219558	100	+	1	ID=scaffold35.mrna1.cds26;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 1004 1183 -
+chr5	mm9_gsnap	CDS	35219674	35219850	99	+	1	ID=scaffold35.mrna1.cds27;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 826 1003 -
+chr5	mm9_gsnap	CDS	35221452	35221590	100	+	2	ID=scaffold35.mrna1.cds28;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 687 825 -
+chr5	mm9_gsnap	CDS	35222453	35222575	99	+	0	ID=scaffold35.mrna1.cds29;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 563 686 -
+chr5	mm9_gsnap	CDS	35225499	35225712	99	+	1	ID=scaffold35.mrna1.cds30;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 348 562 -
+chr5	mm9_gsnap	CDS	35226621	35226766	100	+	0	ID=scaffold35.mrna1.cds31;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 202 347 -
+chr5	mm9_gsnap	CDS	35228001	35228178	100	+	2	ID=scaffold35.mrna1.cds32;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 24 201 -
+chr5	mm9_gsnap	CDS	35229154	35229174	100	+	0	ID=scaffold35.mrna1.cds33;Name=scaffold35;Parent=scaffold35.mrna1;Target=scaffold35 3 23 -
+###
+chr5	mm9_gsnap	gene	35104390	35229176	.	+	.	ID=scaffold36.path1;Name=scaffold36
+chr5	mm9_gsnap	mRNA	35104390	35229176	.	+	.	ID=scaffold36.mrna1;Name=scaffold36;Parent=scaffold36.path1;coverage=99.0;identity=99.7
+chr5	mm9_gsnap	exon	35104390	35104758	100	+	.	ID=scaffold36.mrna1.exon1;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 6050 6418 -
+chr5	mm9_gsnap	exon	35125391	35125474	100	+	.	ID=scaffold36.mrna1.exon2;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5966 6049 -
+chr5	mm9_gsnap	exon	35132916	35133036	99	+	.	ID=scaffold36.mrna1.exon3;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5844 5965 -
+chr5	mm9_gsnap	exon	35138541	35138620	100	+	.	ID=scaffold36.mrna1.exon4;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5764 5843 -
+chr5	mm9_gsnap	exon	35142026	35142164	100	+	.	ID=scaffold36.mrna1.exon5;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5625 5763 -
+chr5	mm9_gsnap	exon	35146367	35146508	99	+	.	ID=scaffold36.mrna1.exon6;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5482 5624 -
+chr5	mm9_gsnap	exon	35147151	35147329	99	+	.	ID=scaffold36.mrna1.exon7;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5302 5481 -
+chr5	mm9_gsnap	exon	35149222	35149426	100	+	.	ID=scaffold36.mrna1.exon8;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5097 5301 -
+chr5	mm9_gsnap	exon	35150518	35150565	100	+	.	ID=scaffold36.mrna1.exon9;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 5049 5096 -
+chr5	mm9_gsnap	exon	35154084	35154164	100	+	.	ID=scaffold36.mrna1.exon10;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 4968 5048 -
+chr5	mm9_gsnap	exon	35155501	35155841	100	+	.	ID=scaffold36.mrna1.exon11;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 4627 4967 -
+chr5	mm9_gsnap	exon	35159792	35159918	99	+	.	ID=scaffold36.mrna1.exon12;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 4499 4626 -
+chr5	mm9_gsnap	exon	35160347	35160465	99	+	.	ID=scaffold36.mrna1.exon13;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 4379 4498 -
+chr5	mm9_gsnap	exon	35161248	35161359	100	+	.	ID=scaffold36.mrna1.exon14;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 4267 4378 -
+chr5	mm9_gsnap	exon	35161546	35161683	100	+	.	ID=scaffold36.mrna1.exon15;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 4129 4266 -
+chr5	mm9_gsnap	exon	35162600	35162758	99	+	.	ID=scaffold36.mrna1.exon16;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3969 4128 -
+chr5	mm9_gsnap	exon	35162851	35162948	98	+	.	ID=scaffold36.mrna1.exon17;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3870 3968 -
+chr5	mm9_gsnap	exon	35164360	35164477	100	+	.	ID=scaffold36.mrna1.exon18;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3752 3869 -
+chr5	mm9_gsnap	exon	35166551	35166573	100	+	.	ID=scaffold36.mrna1.exon19;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3729 3751 -
+chr5	mm9_gsnap	exon	35167007	35167107	99	+	.	ID=scaffold36.mrna1.exon20;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3627 3728 -
+chr5	mm9_gsnap	exon	35167464	35167610	100	+	.	ID=scaffold36.mrna1.exon21;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3480 3626 -
+chr5	mm9_gsnap	exon	35168596	35168716	99	+	.	ID=scaffold36.mrna1.exon22;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3358 3479 -
+chr5	mm9_gsnap	exon	35169904	35169980	98	+	.	ID=scaffold36.mrna1.exon23;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3280 3357 -
+chr5	mm9_gsnap	exon	35171122	35171273	100	+	.	ID=scaffold36.mrna1.exon24;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 3128 3279 -
+chr5	mm9_gsnap	exon	35172326	35172528	100	+	.	ID=scaffold36.mrna1.exon25;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2925 3127 -
+chr5	mm9_gsnap	exon	35175216	35175342	100	+	.	ID=scaffold36.mrna1.exon26;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2798 2924 -
+chr5	mm9_gsnap	exon	35176910	35177037	100	+	.	ID=scaffold36.mrna1.exon27;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2670 2797 -
+chr5	mm9_gsnap	exon	35185440	35185550	100	+	.	ID=scaffold36.mrna1.exon28;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2559 2669 -
+chr5	mm9_gsnap	exon	35188639	35188716	98	+	.	ID=scaffold36.mrna1.exon29;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2480 2558 -
+chr5	mm9_gsnap	exon	35190103	35190326	99	+	.	ID=scaffold36.mrna1.exon30;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2255 2479 -
+chr5	mm9_gsnap	exon	35193868	35193923	100	+	.	ID=scaffold36.mrna1.exon31;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2199 2254 -
+chr5	mm9_gsnap	exon	35194732	35194880	99	+	.	ID=scaffold36.mrna1.exon32;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 2049 2198 -
+chr5	mm9_gsnap	exon	35195409	35195545	99	+	.	ID=scaffold36.mrna1.exon33;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1911 2048 -
+chr5	mm9_gsnap	exon	35207295	35207527	99	+	.	ID=scaffold36.mrna1.exon34;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1677 1910 -
+chr5	mm9_gsnap	exon	35209224	35209366	100	+	.	ID=scaffold36.mrna1.exon35;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1534 1676 -
+chr5	mm9_gsnap	exon	35213359	35213566	100	+	.	ID=scaffold36.mrna1.exon36;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1326 1533 -
+chr5	mm9_gsnap	exon	35218555	35218696	100	+	.	ID=scaffold36.mrna1.exon37;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1184 1325 -
+chr5	mm9_gsnap	exon	35219379	35219558	100	+	.	ID=scaffold36.mrna1.exon38;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1004 1183 -
+chr5	mm9_gsnap	exon	35219674	35219850	99	+	.	ID=scaffold36.mrna1.exon39;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 826 1003 -
+###
