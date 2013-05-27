@@ -13,9 +13,9 @@ class GFF
     k.each do |line|
       line.chomp!
       next unless line =~ /gene/
-      fields = line.split("\t")
+      fields = line.split(" ")
       id = fields[-1].split("=")[1].split(";")[0]
-      @index[[fields[0],fields[3].to_i,id]] = k.pos
+      @index[[fields[0],fields[3].to_i-1,id]] = k.pos
     end
     k.close
   end
@@ -29,8 +29,8 @@ class GFF
       break if line =~ /###/ or line =~ /CDS/
       next if line =~ /mRNA/
       line.chomp!
-      fields = line.split("\t")
-      transcript << fields[3].to_i
+      fields = line.split(" ")
+      transcript << fields[3].to_i-1
       transcript << fields[4].to_i
     end
     k.close

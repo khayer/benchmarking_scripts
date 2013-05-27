@@ -12,7 +12,7 @@ class TestGFF < Test::Unit::TestCase
   def test_create_index()
     gff_file = GFF.new("test/data/test.gff")
     gff_file.create_index
-    assert_equal(gff_file.index[["chr7",148033816,"scaffold1.path1"]],80)
+    assert_equal(gff_file.index[["chr7",148033815,"scaffold1.path1"]],80)
     assert_raise RuntimeError do
       gff_file.create_index
     end
@@ -21,8 +21,8 @@ class TestGFF < Test::Unit::TestCase
   def test_transcript()
     gff_file = GFF.new("test/data/test.gff")
     gff_file.create_index
-    transcript = gff_file.transcript("chr5",136656235,"scaffold15.path1")
-    assert_equal(transcript,[136656235,136657366,136665422,136665489,136667770,136667855,136670167,136670267,136674645,136674818])
+    transcript = gff_file.transcript("chr5",136656234,"scaffold15.path1")
+    assert_equal(transcript,[136656234,136657366,136665421,136665489,136667769,136667855,136670166,136670267,136674644,136674818])
   end
 
 end
