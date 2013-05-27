@@ -35,6 +35,12 @@ class CompareGenes
         if key[0] == info[0] && is_within?(key[1],info[1])
           geneinfo_transcript= @geneinfo.transcript(key[0],key[1],key[2])
           gff_transcript = @gff.transcript(info[0],info[1],info[2])
+          geneinfo_transcript = geneinfo_transcript[1..-2]
+          gff_transcript = gff_transcript[1..-2]
+          #puts info.join("\t") if geneinfo_transcript == gff_transcript
+          #puts geneinfo_transcript.join("\t") if geneinfo_transcript == gff_transcript
+          #puts key.join("\t") if geneinfo_transcript == gff_transcript
+          #puts gff_transcript.join("\t") if geneinfo_transcript == gff_transcript
           stats += 1 if geneinfo_transcript == gff_transcript
         end
       end

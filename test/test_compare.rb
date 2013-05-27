@@ -18,7 +18,7 @@ class TestCompare < Test::Unit::TestCase
   def test_statistics_weak()
     compare_obj = CompareGenes.new("test/data/test.gff","test/data/test_geneinfo.txt")
     stats = compare_obj.statistics_weak()
-    assert_equal(stats,1)
+    assert_equal(stats,3)
   end
 
 end
