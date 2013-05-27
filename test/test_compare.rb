@@ -9,16 +9,13 @@ class TestCompare < Test::Unit::TestCase
     assert_kind_of( GeneInfo, compare_obj.geneinfo )
   end
 
-  def test_statistics()
+  def test_statistics_all()
     compare_obj = CompareGenes.new("test/data/test.gff","test/data/test_geneinfo.txt")
-    stats = compare_obj.statistics()
-    assert_equal(stats,1)
+    compare_obj.gff.create_index()
+    compare_obj.geneinfo.create_index()
+    compare_obj.statistics()
+    assert_equal(compare_obj.strong_TP,[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[3, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[36, 0, 0, 2, 6, 0, 0, 0, 0, 0, 0])
   end
-
-  def test_statistics_weak()
-    compare_obj = CompareGenes.new("test/data/test.gff","test/data/test_geneinfo.txt")
-    stats = compare_obj.statistics_weak()
-    assert_equal(stats,3)
-  end
-
 end
