@@ -10,7 +10,9 @@ class TestCompare < Test::Unit::TestCase
   end
 
   def test_statistics()
-
+    compare_obj = CompareGenes.new("test/data/test.gff","test/data/test_geneinfo.txt")
+    stats = compare_obj.statistics()
+    assert_equal(stats,1)
   end
 
 

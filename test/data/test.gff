@@ -999,3 +999,7 @@ chr5	mm9_gsnap	exon	35218555	35218696	100	+	.	ID=scaffold36.mrna1.exon37;Name=sc
 chr5	mm9_gsnap	exon	35219379	35219558	100	+	.	ID=scaffold36.mrna1.exon38;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 1004 1183 -
 chr5	mm9_gsnap	exon	35219674	35219850	99	+	.	ID=scaffold36.mrna1.exon39;Name=scaffold36;Parent=scaffold36.mrna1;Target=scaffold36 826 1003 -
 ###
+chr1  mm9_gsnap gene  13615980 13650590 . + . ID=scaffold1.path1;Name=scaffold1
+chr1  mm9_gsnap mRNA  13615980 13650590 . + . ID=scaffold1.mrna1;Name=scaffold1;Parent=scaffold1.path1;coverage=94.9;identity=99.9
+chr1  mm9_gsnap exon  13615980 13650590 100 + . ID=scaffold1.mrna1.exon1;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 1 21 +
+###
