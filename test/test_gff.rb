@@ -1,5 +1,5 @@
-require "./gff.rb"
 require "test/unit"
+require 'benchmarking_scripts'
 
 class TestGFF < Test::Unit::TestCase
 

@@ -1,5 +1,5 @@
-require "./geneinfo.rb"
 require "test/unit"
+require 'benchmarking_scripts'
 
 class TestGeneInfo < Test::Unit::TestCase
 

@@ -1,5 +1,5 @@
-require "./compare_genes.rb"
 require "test/unit"
+require 'benchmarking_scripts'
 
 class TestCompare < Test::Unit::TestCase
 
