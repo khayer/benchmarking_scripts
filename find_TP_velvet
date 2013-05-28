@@ -95,7 +95,7 @@ end
 
 #### MAIN
 
-unless ARGV.length > 1
+unless ARGV.length == 2
   puts ""
   puts "  Usage:"
   puts "  find_TP_cap3 contigs truth_sequences_fa"
