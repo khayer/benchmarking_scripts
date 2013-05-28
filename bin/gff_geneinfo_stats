@@ -18,6 +18,11 @@ EOF
 gff = ARGV[0]
 geneinfo = ARGV[1]
 
+unless ARGV.length == 2
+  STDERR.puts usage
+  exit
+end
+
 compare_obj = CompareGenes.new(gff,geneinfo)
 compare_obj.gff.create_index()
 compare_obj.geneinfo.create_index()
