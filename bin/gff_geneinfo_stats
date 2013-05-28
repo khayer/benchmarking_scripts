@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
-require "./compare_genes.rb"
+require "benchmarking_scripts"
 
 usage =<<EOF
 
-      #{$0} in.gff truth_geneinfo 
+      #{$0} in.gff truth_geneinfo
 
       ------------------------------------------------------
       * in.gff   :: produced by gmap
@@ -18,11 +18,17 @@ EOF
 gff = ARGV[0]
 geneinfo = ARGV[1]
 
+unless ARGV.length == 2
+  STDERR.puts usage
+  exit
+end
+
 compare_obj = CompareGenes.new(gff,geneinfo)
 compare_obj.gff.create_index()
 compare_obj.geneinfo.create_index()
 compare_obj.statistics()
-puts [0..11].join("\t")
-puts compare_obj.strong_TP.join("\t")
-puts compare_obj.weak_TP.join("\t")
-puts compare_obj.all_FP.join("\t")
+puts (["#splice_forms"] + (0..10).to_a).join("\t")
+puts "---------------------------------------------------------------------------------------------------------"
+puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
+puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
+puts (["# All FP"] + compare_obj.all_FP).join("\t")
