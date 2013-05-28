@@ -11,3 +11,7 @@ task :build do
   system "gem build benchmarking_scripts.gemspec"
   system "gem install benchmarking_scripts*.gem"
 end
+
+task :release => :build do
+  system "gem push benchmarking_scripts*.gem"
+end
