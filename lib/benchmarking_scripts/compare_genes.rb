@@ -40,7 +40,6 @@ class CompareGenes
         end
       end
     end
-    @strong_TP
   end
 
   def statistics_weak()
@@ -61,7 +60,6 @@ class CompareGenes
         end
       end
     end
-    @weak_TP
   end
 
   def statistics_fp()
@@ -78,6 +76,6 @@ class CompareGenes
       end
     end
     @all_FP[0] += @gff.index.length
-    @all_FP
+    nil
   end
 end

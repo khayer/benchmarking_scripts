@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.description = "Helps to evaluate results of various algorithms"
   s.authors     = ["Katharina Hayer"]
   s.email       = 'katharinaehayer@gmail.com'
-  s.files       = ["lib/benchmarking_scripts.rb"]
+  s.files       = Dir.glob("lib/**/*")
   s.homepage    =
     'https://github.com/khayer/benchmarking_scripts'
-  s.executables << 'gff_geneinfo_stats'
+  s.executables = Dir.glob("bin/**/*").map{|f| File.basename(f)}
 end
