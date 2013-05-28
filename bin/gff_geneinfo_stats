@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
-require "./compare_genes.rb"
+require "benchmarking_scripts"
 
 usage =<<EOF
 
-      #{$0} in.gff truth_geneinfo 
+      #{$0} in.gff truth_geneinfo
 
       ------------------------------------------------------
       * in.gff   :: produced by gmap

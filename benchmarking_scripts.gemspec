@@ -9,5 +9,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/benchmarking_scripts.rb"]
   s.homepage    =
     'https://github.com/khayer/benchmarking_scripts'
-  s.executables << `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f).to_s}
+  s.executables << 'gff_geneinfo_stats'
 end
