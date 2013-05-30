@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+require "benchmarking_scripts"
+
+usage =<<EOF
+
+      #{$0} in.gff truth_geneinfo
+
+      ------------------------------------------------------
+      * in.gff   :: produced by gmap
+      ------------------------------------------------------
+
+      Finds True Positives in gff files.
+
+                                                   by khayer
+
+EOF
+
+gtf = ARGV[0]
+geneinfo = ARGV[1]
+
+unless ARGV.length == 2
+  STDERR.puts usage
+  exit
+end
+
+compare_obj = CompareGenesGTF.new(geneinfo,gtf)
+compare_obj.compare_file.create_index()
+compare_obj.geneinfo.create_index()
+compare_obj.statistics()
+puts (["#splice_forms"] + (0..10).to_a).join("\t")
+puts "---------------------------------------------------------------------------------------------------------"
+puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
+puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
+puts (["# All FP"] + compare_obj.all_FP).join("\t")
