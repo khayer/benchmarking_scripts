@@ -12,10 +12,9 @@ class GTF
     k = File.open(@filename)
     k.each do |line|
       line.chomp!
-      next unless line =~ /\ transcript\ /
+      next unless line =~ /\stranscript\s/
       fields = line.split("\t")
-      id = fileds[-1].split("transcript_id ")[1].split(";")[0]
-      puts id
+      id = fields[-1].split("transcript_id ")[1].split(";")[0]
       @index[[fields[0],fields[3].to_i-1,id]] = k.pos
     end
     k.close
@@ -27,7 +26,7 @@ class GTF
     k = File.open(@filename)
     k.pos = pos_in_file
     k.each do |line|
-      break if line =~ /###/ or line =~ /CDS/
+      break if line =~ /\stranscript\s/
       next if line =~ /mRNA/
       line.chomp!
       fields = line.split(" ")
