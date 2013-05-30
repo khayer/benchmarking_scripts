@@ -15,7 +15,7 @@ usage =<<EOF
 
 EOF
 
-gff = ARGV[0]
+gtf = ARGV[0]
 geneinfo = ARGV[1]
 
 unless ARGV.length == 2
@@ -23,7 +23,7 @@ unless ARGV.length == 2
   exit
 end
 
-compare_obj = CompareGenesGFF.new(geneinfo,gff)
+compare_obj = CompareGenesGTF.new(geneinfo,gtf)
 compare_obj.compare_file.create_index()
 compare_obj.geneinfo.create_index()
 compare_obj.statistics()
