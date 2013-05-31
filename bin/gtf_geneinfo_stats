@@ -5,12 +5,11 @@ require 'optparse'
 options = {}
 
 opt_parser = OptionParser.new do |opt|
-  opt.banner = "Usage: #{$0} COMMAND [OPTIONS]"
+  opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
   opt.separator  ""
-  opt.separator  "Commands"
-  opt.separator  "     start: start server"
-  opt.separator  "     stop: stop server"
-  opt.separator  "     restart: restart server"
+  opt.separator  "CMD"
+  opt.separator  "     gff: if file1 is gff format"
+  opt.separator  "     gtf: if file1 is gtf format"
   opt.separator  ""
   opt.separator  "Options"
 
@@ -23,37 +22,41 @@ opt_parser = OptionParser.new do |opt|
   end
 
   opt.on("-h","--help","help") do
-    puts opt_parser
+    STDERR.puts opt_parser
     exit
   end
 end
 
 opt_parser.parse!
 
-transcripts = ARGV[1]
-geneinfo = ARGV[2]
 
 case ARGV[0]
 when "gff"
   if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
     compare_obj = CompareGenesGFF.new(geneinfo,transcripts)
   else
-    STDERR.puts "Please specify files"
+    STDERR.puts "\nPlease specify files"
+    STDERR.puts opt_parser
     exit
   end
 when "gtf"
   if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
     compare_obj = CompareGenesGTF.new(geneinfo,transcripts)
   else
     STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
     exit
   end
 when ""
-  puts "Please pick a runmode"
-  puts opt_parser
+  STDERR.puts "Please pick a runmode"
+  STDERR.puts opt_parser
   exit
 else
-  puts opt_parser
+  STDERR.puts opt_parser
   exit
 end
 
@@ -65,19 +68,4 @@ puts "--------------------------------------------------------------------------
 puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
 puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
 puts (["# All FP"] + compare_obj.all_FP).join("\t")
-
-usage =<<EOF
-
-      #{$0} in.gff truth_geneinfo
-
-      ------------------------------------------------------
-      * in.gff   :: produced by gmap
-      ------------------------------------------------------
-
-      Finds True Positives in gff files.
-
-                                                   by khayer
-
-EOF
-
 
