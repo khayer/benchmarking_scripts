@@ -1,20 +1,28 @@
 module Logging
-  # This is the magical bit that gets mixed into your classes
+  # found this on http://stackoverflow.com/questions/917566/ruby-share-logger-instance-among-module-classes
+  @out = STDERR
+  @level = Logger::DEBUG
+
   def logger
     @logger ||= Logging.logger_for(self.class.name)
   end
 
+  def configure()
+    @out = options['logout']
+    @level = options['log_level']
+  end
+
   @loggers = {}
 
-  # Global, memoized, lazy initialized instance of a logger
   class << self
     def logger_for(classname)
       @loggers[classname] ||= configure_logger_for(classname)
     end
 
     def configure_logger_for(classname)
-      logger = Logger.new(STDERR)
+      logger = Logger.new(@out)
       logger.progname = classname
+      logger.level = @level
       logger
     end
   end
