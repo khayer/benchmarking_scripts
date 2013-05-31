@@ -2,7 +2,7 @@
 require "benchmarking_scripts"
 require 'optparse'
 
-options = {}
+options = {:logout => STDERR}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -13,12 +13,12 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  ""
   opt.separator  "Options"
 
-  opt.on("-e","--environment ENVIRONMENT","which environment you want server run") do |environment|
-    options[:environment] = environment
+  opt.on("-l","--log_file LEVEL","Can also by STDOUT or STDERR") do |file|
+    options[:logout] = file if file
   end
 
-  opt.on("-d","--daemon","runing on daemon mode?") do
-    options[:daemon] = true
+  opt.on("-d","--debug","running in debug mode?") do
+    options[:debug] = true
   end
 
   opt.on("-h","--help","help") do
@@ -28,7 +28,15 @@ opt_parser = OptionParser.new do |opt|
 end
 
 opt_parser.parse!
-
+options_for_logger = {}
+if options[:debug]
+  options_for_logger["log_level"] = Logger::DEBUG
+else
+  options_for_logger["log_level"] = Logger::INFO
+end
+options_for_logger["logout"] = options[:logout]
+STDERR.puts options_for_logger
+Logging.configure(options_for_logger)
 
 case ARGV[0]
 when "gff"
