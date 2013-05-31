@@ -1,5 +1,4 @@
-require "test/unit"
-require 'benchmarking_scripts'
+require "./test/test_helper"
 
 class TestCompare < Test::Unit::TestCase
 
@@ -16,7 +15,7 @@ class TestCompare < Test::Unit::TestCase
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.weak_TP,[3, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[36, 0, 0, 2, 6, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[28, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0])
   end
 
   def test_initialize_GTF

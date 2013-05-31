@@ -11,8 +11,11 @@ class CompareGenes
 
   # Statistics for strong true positives
   def statistics()
+    logger.info("Statistics for strong true positives started!")
     statistics_strong
+    logger.info("Statistics for weak true positives started!")
     statistics_weak
+    logger.info("Statistics for false positives started!")
     statistics_fp
   end
 

@@ -22,7 +22,9 @@ unless ARGV.length == 2
   STDERR.puts usage
   exit
 end
-
+Logging.configure({ "logout" => "nina_test.log", "log_level" => Logger::WARN })
+logger.warn("started")
+logger.debug("nina")
 compare_obj = CompareGenesGFF.new(geneinfo,gff)
 compare_obj.compare_file.create_index()
 compare_obj.geneinfo.create_index()
