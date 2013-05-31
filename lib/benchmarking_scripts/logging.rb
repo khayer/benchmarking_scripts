@@ -7,7 +7,7 @@ module Logging
     @logger ||= Logging.logger_for(self.class.name)
   end
 
-  def configure()
+  def configure(options)
     @out = options['logout']
     @level = options['log_level']
   end

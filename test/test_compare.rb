@@ -1,5 +1,4 @@
-require "test/unit"
-require 'benchmarking_scripts'
+require "./test/test_helper"
 
 class TestCompare < Test::Unit::TestCase
 

@@ -18,7 +18,7 @@ class GFF
       id = fields[-1].split("=")[1].split(";")[0]
       @index[[fields[0],fields[3].to_i-1,id]] = k.pos
     end
-    logger.warn("Indexing of #{@index.length} transcripts complete")
+    logger.info("Indexing of #{@index.length} transcripts complete")
     k.close
   end
 
