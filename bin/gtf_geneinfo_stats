@@ -1,29 +1,73 @@
 #!/usr/bin/env ruby
 require "benchmarking_scripts"
+require 'optparse'
 
-usage =<<EOF
+options = {:logout => STDERR}
 
-      #{$0} in.gff truth_geneinfo
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
+  opt.separator  ""
+  opt.separator  "CMD"
+  opt.separator  "     gff: if file1 is gff format"
+  opt.separator  "     gtf: if file1 is gtf format"
+  opt.separator  ""
+  opt.separator  "Options"
 
-      ------------------------------------------------------
-      * in.gff   :: produced by gmap
-      ------------------------------------------------------
+  opt.on("-l","--log_file LEVEL","Can also by STDOUT or STDERR") do |file|
+    options[:logout] = file if file
+  end
 
-      Finds True Positives in gff files.
+  opt.on("-d","--debug","running in debug mode?") do
+    options[:debug] = true
+  end
 
-                                                   by khayer
+  opt.on("-h","--help","help") do
+    STDERR.puts opt_parser
+    exit
+  end
+end
 
-EOF
+opt_parser.parse!
+options_for_logger = {}
+if options[:debug]
+  options_for_logger["log_level"] = Logger::DEBUG
+else
+  options_for_logger["log_level"] = Logger::INFO
+end
+options_for_logger["logout"] = options[:logout]
+STDERR.puts options_for_logger
+Logging.configure(options_for_logger)
 
-gtf = ARGV[0]
-geneinfo = ARGV[1]
-
-unless ARGV.length == 2
-  STDERR.puts usage
+case ARGV[0]
+when "gff"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesGFF.new(geneinfo,transcripts)
+  else
+    STDERR.puts "\nPlease specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gtf"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesGTF.new(geneinfo,transcripts)
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when ""
+  STDERR.puts "Please pick a runmode"
+  STDERR.puts opt_parser
+  exit
+else
+  STDERR.puts opt_parser
   exit
 end
 
-compare_obj = CompareGenesGTF.new(geneinfo,gtf)
 compare_obj.compare_file.create_index()
 compare_obj.geneinfo.create_index()
 compare_obj.statistics()
@@ -32,3 +76,4 @@ puts "--------------------------------------------------------------------------
 puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
 puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
 puts (["# All FP"] + compare_obj.all_FP).join("\t")
+
