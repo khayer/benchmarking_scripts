@@ -9,6 +9,7 @@ class GFF
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
+    logger.info("Creating index for #{@filename}")
     k = File.open(@filename)
     k.each do |line|
       line.chomp!
@@ -17,6 +18,7 @@ class GFF
       id = fields[-1].split("=")[1].split(";")[0]
       @index[[fields[0],fields[3].to_i-1,id]] = k.pos
     end
+    logger.info("Indexing of #{@index.length} transcripts complete")
     k.close
   end
 
