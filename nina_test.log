@@ -1,6 +1,0 @@
-# Logfile created on 2013-05-31 13:11:12 -0400 by logger.rb/31641
-W, [2013-05-31T13:11:12.282814 #68107]  WARN -- Object: started
-W, [2013-05-31T13:11:12.377882 #68107]  WARN -- GFF: Indexing of 39 transcripts complete
-W, [2013-05-31T13:46:22.100571 #80516]  WARN -- GFF: Indexing of 39 transcripts complete
-W, [2013-05-31T13:46:26.432711 #80516]  WARN -- GFF: Indexing of 39 transcripts complete
-W, [2013-05-31T13:46:26.434756 #80516]  WARN -- GFF: Indexing of 39 transcripts complete
