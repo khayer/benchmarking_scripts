@@ -1,5 +1,6 @@
 class GTF
 
+
   def initialize(filename)
     @filename = filename
     @index = Hash.new()
@@ -9,14 +10,17 @@ class GTF
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
+    logger.info("Creating index for #{@filename}")
     k = File.open(@filename)
     k.each do |line|
       line.chomp!
+      next if line =~ /"0.000000"/
       next unless line =~ /\stranscript\s/
       fields = line.split("\t")
       id = fields[-1].split("transcript_id ")[1].split(";")[0]
       @index[[fields[0],fields[3].to_i-1,id]] = k.pos
     end
+    logger.info("Indexing of #{@index.length} transcripts complete")
     k.close
   end
 
