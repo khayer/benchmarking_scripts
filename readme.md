@@ -38,7 +38,7 @@ Please see the files in _/test/data_ for an example.
 
 ### Usage of the executables ###
 
-## stats ##
+#### stats ####
 
     Usage: stats CMD file1 file2 [OPTIONS]
 
