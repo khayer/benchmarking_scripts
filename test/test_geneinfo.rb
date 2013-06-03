@@ -2,7 +2,7 @@ require "./test/test_helper"
 
 class TestGeneInfo < Test::Unit::TestCase
 
-  def test_initialize
+  def test_initialize()
     geneinfo_info = GeneInfo.new("test/data/test_geneinfo.txt")
     assert_equal("test/data/test_geneinfo.txt",geneinfo_info.filename)
     assert_equal({},geneinfo_info.index)
