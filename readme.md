@@ -32,9 +32,9 @@ Also you can install the executables with rake.
     cd benchmarking_scripts
     git pull
 
-### Format ###
+### Format of files ###
 
-Please see the test files in _/test/data_ for examples.
+Please see the files in _/test/data_ for an example.
 
 
 
