@@ -36,8 +36,17 @@ Also you can install the executables with rake.
 
 Please see the files in _/test/data_ for an example.
 
+### Usage of the executables ###
 
+## stats ##
 
+    Usage: stats CMD file1 file2 [OPTIONS]
 
+    CMD
+        gff: if file1 is gff format
+        gtf: if file1 is gtf format
 
-
+    Options
+      -l, --log_file LEVEL             Can also by STDOUT or STDERR
+      -d, --debug                      running in debug mode?
+      -h, --help                       help
