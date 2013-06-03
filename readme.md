@@ -24,12 +24,17 @@ You can test the code with [rake](http://rake.rubyforge.org/).
 
 Also you can install the executables with rake.
 
+    cd benchmarking_scripts
     rake build
 
 ### Updating ###
 
     cd benchmarking_scripts
     git pull
+
+### Format ###
+
+Please see the test files in _/test/data_ for examples.
 
 
 
