@@ -1,28 +1,22 @@
-class FeatureQuantifications
-
-  def initialize(filename)
-    @filename = filename
-    @index = Hash.new()
-  end
-
-  attr_accessor :filename, :index
+class FeatureQuantifications < FileFormats
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     logger.info("Creating index for #{@filename}")
     k = File.open(@filename)
     last_gene = "unknown"
-    #id = "unknown"
-    #fields = []
+    last_position = 0
     k.each do |line|
       line.chomp!
       if line =~ /GENE/
         last_gene = line.split("\t")[0]
+        last_position = k.pos
       end
       if line =~ /transcript/
-        fields = line.split(" ")
-        id = fields[-1].split("=")[1].split(";")[0]
-        last_position = k.pos
+        fields = line.split("\t")
+        chr = fields[1].split(":")[0]
+        pos_chr = fields[1].split(":")[1].split("-")[0].to_i
+        @index[[chr,pos_chr,last_gene,fields[-1.to_i]]] = last_position
       end
     #  if line =~ /mRNA/
     #    coverage = line.split("coverage=")[1].split(";")[0].to_f
@@ -31,24 +25,23 @@ class FeatureQuantifications
     #  end
     end
     #logger.info("Indexing of #{@index.length} transcripts complete")
-    #k.close
+    k.close
   end
 
-  def transcript(chr,pos,id)
-    #transcript = []
-    #pos_in_file = @index[[chr,pos,id]]
-    #k = File.open(@filename)
-    #k.pos = pos_in_file
-    #k.each do |line|
-    #  break if line =~ /###/ or line =~ /CDS/
-    #  next if line =~ /mRNA/
-    #  line.chomp!
-    #  fields = line.split(" ")
-    #  transcript << fields[3].to_i-1
-    #  transcript << fields[4].to_i
-    #end
-    #k.close
-    #transcript.sort!
+  def transcript(chr,pos,id,frag_count)
+    transcript = []
+    pos_in_file = @index[[chr,pos,id,frag_count]]
+    k = File.open(@filename)
+    k.pos = pos_in_file
+    k.each do |line|
+      break if line =~ /GENE/
+      next unless line =~ /exon/
+      line.chomp!
+      transcript << line.split("-")[0].split(":")[1].to_i
+      transcript << line.split("-")[1].split(" ")[0].to_i
+    end
+    k.close
+    transcript.sort!
   end
 
   def fpkm_for_transcript(transcript,fragment,mio_reads=50)

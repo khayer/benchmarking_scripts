@@ -1,12 +1,4 @@
-class GTF
-
-
-  def initialize(filename)
-    @filename = filename
-    @index = Hash.new()
-  end
-
-  attr_accessor :filename, :index
+class GTF < FileFormats
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}

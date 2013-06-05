@@ -7,6 +7,7 @@ require 'benchmarking_scripts/logging'
 include Logging
 require 'benchmarking_scripts/functions'
 include Functions
+require 'benchmarking_scripts/file_formats'
 require 'benchmarking_scripts/gff'
 require 'benchmarking_scripts/gtf'
 require 'benchmarking_scripts/geneinfo'

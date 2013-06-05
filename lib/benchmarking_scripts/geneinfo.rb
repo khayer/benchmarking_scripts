@@ -1,11 +1,4 @@
-class GeneInfo
-
-  def initialize(filename)
-    @filename = filename
-    @index = Hash.new()
-  end
-
-  attr_accessor :filename, :index
+class GeneInfo < FileFormats
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
