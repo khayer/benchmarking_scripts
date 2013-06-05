@@ -18,6 +18,7 @@ class FeatureQuantifications
       line.chomp!
       if line =~ /GENE/
         last_gene = line.split("\t")[0]
+      end
       if line =~ /transcript/
         fields = line.split(" ")
         id = fields[-1].split("=")[1].split(";")[0]
@@ -48,6 +49,11 @@ class FeatureQuantifications
     #end
     #k.close
     #transcript.sort!
+  end
+
+  def fpkm_for_transcript(transcript,fragment,mio_reads=50)
+    trans_length = calc_length(transcript)
+    fpkm(fragment,trans_length)
   end
 
 end
