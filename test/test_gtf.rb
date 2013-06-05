@@ -24,4 +24,11 @@ class TestGTF < Test::Unit::TestCase
     assert_equal(transcript,[182656179,182656509,182663296,182663438,182666822,182666981,182668593,182668768,182675201,182675388,182682289,182684324])
   end
 
+  def test_fpkm_value()
+    gtf_file = GTF.new("test/data/test.gtf")
+    gtf_file.create_index
+    fpkm_value_out = gtf_file.fpkm_value("chr1",182656179,'"CUFF.670.1"')
+    assert_equal(fpkm_value_out,2.2703220482)
+  end
+
 end
