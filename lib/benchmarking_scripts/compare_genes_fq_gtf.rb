@@ -1,3 +1,4 @@
+require 'gnuplot'
 class CompareGenesFQGTF < CompareGenes
 
   def initialize(feature_quant_file,gtf_file)
@@ -52,6 +53,59 @@ class CompareGenesFQGTF < CompareGenes
       end
     end
   end
+
+  def plot_fpkm(filename)
+    Gnuplot.open do |gp|
+      Gnuplot::Plot.new( gp ) do |plot|
+
+        plot.output filename
+        plot.terminal 'png'
+        plot.title "20FYGD_mut Chr18, window_length=50SNP, Homozygosity Score (Wik + TLF)"
+        plot.ylabel "Homozygosity score"
+        plot.xlabel " "
+        plot.xtics 'format "%.0sMbp"'
+        plot.xtics 'nomirror'
+        plot.ytics 'nomirror'
+
+        #horizontal lines
+        plot.arrow 'from 0,0.1 to 50000000,0.1 nohead lt 0 lc 0'
+        plot.arrow 'from 0,0.4 to 50000000,0.4 nohead lt 0 lc 2'
+        plot.arrow 'from 0,0.9 to 50000000,0.9 nohead lt 0 lc 0'
+
+        x1 = []
+        y1 = []
+        @fpkm_values.each do |pair|
+          x1 << pair[0]
+          y1 << pair[1]
+        end
+        #x2 = f2.get_xdata
+        #y2 = f2.get_ydata
+
+        #scale
+        #if y1.max > 1
+        #  y1 = y1.map{|y| y * (i/y1.max)}
+        #end
+    #
+        #if y2.max > 1
+        #  y2 = y2.map{|y| y * (i/y2.max)}
+        #end
+
+        plot.data = [
+
+          Gnuplot::DataSet.new( [x1, y1] ) do |ds|
+            ds.with= "lines lc 2"
+            ds.notitle
+          end,
+
+          #Gnuplot::DataSet.new([x2, y2]) do |ds|
+          #  ds.with = "lines lc 3"
+          #  ds.notitle
+          #end
+        ]
+
+      end
+    end
+
 #
   #def statistics_fp()
   #  @compare_file.index.each_key do |info|
