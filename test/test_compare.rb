@@ -45,8 +45,10 @@ class TestCompare < Test::Unit::TestCase
     compare_obj.compare_file.create_index()
     compare_obj.truth_genefile.create_index()
     compare_obj.statistics()
+    compare_obj.statistics_fpkm()
     assert_equal(compare_obj.strong_TP,[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.weak_TP,[70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.all_FP,[4816, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   end
+
 end
