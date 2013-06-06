@@ -10,4 +10,8 @@ module Functions
     end
     length
   end
+
+  def is_within?(pos1, pos2, boundry=1000000)
+    (pos1 - pos2).abs() < boundry
+  end
 end
