@@ -1,12 +1,4 @@
-class GTF
-
-
-  def initialize(filename)
-    @filename = filename
-    @index = Hash.new()
-  end
-
-  attr_accessor :filename, :index
+class GTF < FileFormats
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -31,7 +23,7 @@ class GTF
     k.pos = pos_in_file
     k.each do |line|
       break if line =~ /\stranscript\s/
-      next if line =~ /mRNA/
+      #next if line =~ /mRNA/
       line.chomp!
       fields = line.split(" ")
       transcript << fields[3].to_i-1
@@ -40,5 +32,20 @@ class GTF
     k.close
     transcript.sort!
   end
+
+  def fpkm_value(chr,pos,id)
+    pos_in_file = @index[[chr,pos,id]]
+    k = File.open(@filename)
+    k.pos = pos_in_file
+    fpkm_value_out = 0
+    k.each do |line|
+      logger.debug(line)
+      fields = line.split("\t")
+      fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
+      break
+    end
+    fpkm_value_out.to_f
+  end
+
 
 end
