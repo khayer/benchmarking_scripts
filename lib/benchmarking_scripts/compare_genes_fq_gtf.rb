@@ -60,9 +60,9 @@ class CompareGenesFQGTF < CompareGenes
 
         plot.output filename
         plot.terminal 'png'
-        plot.title "20FYGD_mut Chr18, window_length=50SNP, Homozygosity Score (Wik + TLF)"
-        plot.ylabel "Homozygosity score"
-        plot.xlabel " "
+        plot.title "FPKM"
+        plot.ylabel "cufflinks"
+        plot.xlabel "truth"
         plot.xtics 'format "%.0sMbp"'
         plot.xtics 'nomirror'
         plot.ytics 'nomirror'
@@ -93,9 +93,9 @@ class CompareGenesFQGTF < CompareGenes
         plot.data = [
 
           Gnuplot::DataSet.new( [x1, y1] ) do |ds|
-            ds.with= "lines lc 2"
+            ds.with= "points lc 2"
             ds.notitle
-          end,
+          end
 
           #Gnuplot::DataSet.new([x2, y2]) do |ds|
           #  ds.with = "lines lc 3"
@@ -105,6 +105,7 @@ class CompareGenesFQGTF < CompareGenes
 
       end
     end
+  end
 
 #
   #def statistics_fp()

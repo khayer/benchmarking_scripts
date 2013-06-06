@@ -45,7 +45,7 @@ class TestCompare < Test::Unit::TestCase
     compare_obj.compare_file.create_index()
     compare_obj.truth_genefile.create_index()
     compare_obj.statistics_fpkm()
-    compare_obj.plot_fpkm(test.png)
+    compare_obj.plot_fpkm("test.png")
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[71, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.weak_TP,[567, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
