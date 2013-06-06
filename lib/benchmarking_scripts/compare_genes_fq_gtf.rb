@@ -7,7 +7,7 @@ class CompareGenesFQGTF < CompareGenes
     @fpkm_values = []
   end
 
-  private
+
   #def statistics_strong()
   #  @compare_file.index.each_key do |info|
   #    @truth_genefile.index.each_key do |key|
@@ -36,10 +36,12 @@ class CompareGenesFQGTF < CompareGenes
           gff_transcript = @compare_file.transcript(info[0],info[1],info[2])
           truth_genefile_transcript = truth_genefile_transcript[1..-2]
           gff_transcript = gff_transcript[1..-2]
+          next if truth_genefile_transcript == []
           if truth_genefile_transcript == gff_transcript
-            fpkm1 = @compare_file.fpkm_value(info[0],info[1],info[2])
-            fpkm2 = @truth_genefile.fpkm_value(key[0],key[1],key[2])
-            @fpkm_values = [fpkm1,fpkm2]
+            frag_counts = @truth_genefile.frag_count(key[0],key[1],key[2])
+            fpkm1 = @truth_genefile.fpkm_value(truth_genefile_transcript,frag_counts)
+            fpkm2 = @compare_file.fpkm_value(info[0],info[1],info[2])
+            @fpkm_values << [fpkm1,fpkm2]
             logger.debug("NINA")
             logger.debug(fpkm1)
             logger.debug(fpkm2)

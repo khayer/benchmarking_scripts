@@ -5,6 +5,7 @@ module Functions
 
   def calc_length(transcript)
     length = 0
+    logger.debug(transcript.join("::"))
     (0..transcript.length-1).step(2).to_a.each do |i|
       length += transcript[i+1]-transcript[i]
     end
