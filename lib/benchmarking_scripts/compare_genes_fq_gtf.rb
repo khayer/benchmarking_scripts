@@ -63,7 +63,7 @@ class CompareGenesFQGTF < CompareGenes
         plot.title "FPKM"
         plot.ylabel "cufflinks"
         plot.xlabel "truth"
-        plot.xtics 'format "%.0sMbp"'
+        #plot.xtics 'format "%.0sMbp"'
         plot.xtics 'nomirror'
         plot.ytics 'nomirror'
 
