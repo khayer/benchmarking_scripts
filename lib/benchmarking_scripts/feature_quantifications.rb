@@ -16,7 +16,7 @@ class FeatureQuantifications < FileFormats
         fields = line.split("\t")
         chr = fields[1].split(":")[0]
         pos_chr = fields[1].split(":")[1].split("-")[0].to_i
-        @index[[chr,pos_chr,last_gene,fields[-1.to_i]]] = last_position
+        @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i]
       end
     #  if line =~ /mRNA/
     #    coverage = line.split("coverage=")[1].split(";")[0].to_f
@@ -28,9 +28,10 @@ class FeatureQuantifications < FileFormats
     k.close
   end
 
-  def transcript(chr,pos,id,frag_count)
+  def transcript(chr,pos,id)
     transcript = []
-    pos_in_file = @index[[chr,pos,id,frag_count]]
+    value = @index[[chr,pos,id]]
+    pos_in_file = value[0]
     k = File.open(@filename)
     k.pos = pos_in_file
     k.each do |line|
@@ -42,6 +43,11 @@ class FeatureQuantifications < FileFormats
     end
     k.close
     transcript.sort!
+  end
+
+  def frag_count(chr,pos,id)
+    value = @index[[chr,pos,id]]
+    frag_counts = value[1]
   end
 
   def fpkm_for_transcript(transcript,fragment,mio_reads=50)
