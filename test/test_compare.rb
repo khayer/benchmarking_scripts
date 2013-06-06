@@ -47,9 +47,9 @@ class TestCompare < Test::Unit::TestCase
     compare_obj.statistics_fpkm()
     compare_obj.statistics()
 
-    assert_equal(compare_obj.strong_TP,[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.weak_TP,[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[4885, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.strong_TP,[113, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[785, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[1072, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   end
 
 end
