@@ -29,7 +29,7 @@ class TestFeatureQuantifications < Test::Unit::TestCase
     feature_quant_file.create_index
     transcript = feature_quant_file.transcript("chr1",127573573,"GENE.886")
     fc = feature_quant_file.frag_count("chr1",127573573,"GENE.886")
-    assert_equal(feature_quant_file.fpkm_for_transcript(transcript,fc),12.348343877930779)
+    assert_equal(feature_quant_file.fpkm_value(transcript,fc),12.348343877930779)
   end
 
 end

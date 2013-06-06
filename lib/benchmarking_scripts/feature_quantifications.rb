@@ -50,7 +50,7 @@ class FeatureQuantifications < FileFormats
     frag_counts = value[1]
   end
 
-  def fpkm_for_transcript(transcript,fragment,mio_reads=50)
+  def fpkm_value(transcript,fragment,mio_reads=50)
     trans_length = calc_length(transcript)
     fpkm(fragment,trans_length)
   end

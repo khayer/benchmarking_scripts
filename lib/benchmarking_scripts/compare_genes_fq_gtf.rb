@@ -4,6 +4,7 @@ class CompareGenesFQGTF < CompareGenes
     super()
     @truth_genefile = FeatureQuantifications.new(feature_quant_file)
     @compare_file = GTF.new(gtf_file)
+    @fpkm_values = []
   end
 
   private
@@ -27,25 +28,27 @@ class CompareGenesFQGTF < CompareGenes
   #  end
   #end
 #
-  #def statistics_weak()
-  #  @compare_file.index.each_key do |info|
-  #    @truth_genefile.index.each_key do |key|
-  #      if key[0] == info[0] && is_within?(key[1],info[1])
-  #        truth_genefile_transcript= @truth_genefile.transcript(key[0],key[1],key[2])
-  #        gff_transcript = @compare_file.transcript(info[0],info[1],info[2])
-  #        truth_genefile_transcript = truth_genefile_transcript[1..-2]
-  #        gff_transcript = gff_transcript[1..-2]
-  #        if truth_genefile_transcript == gff_transcript
-  #          @weak_TP[0] += 1
-  #          #number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
-  #          #@weak_TP[number_of_spliceforms] += 1
-  #          @compare_file.index.delete(info)
-  #          break
-  #        end
-  #      end
-  #    end
-  #  end
-  #end
+  def statistics_fpkm()
+    @compare_file.index.each_key do |info|
+      @truth_genefile.index.each_key do |key|
+        if key[0] == info[0] && is_within?(key[1],info[1])
+          truth_genefile_transcript= @truth_genefile.transcript(key[0],key[1],key[2])
+          gff_transcript = @compare_file.transcript(info[0],info[1],info[2])
+          truth_genefile_transcript = truth_genefile_transcript[1..-2]
+          gff_transcript = gff_transcript[1..-2]
+          if truth_genefile_transcript == gff_transcript
+            fpkm1 = @compare_file.fpkm_value(info[0],info[1],info[2])
+            fpkm2 = @truth_genefile.fpkm_value(key[0],key[1],key[2])
+            @fpkm_values = [fpkm1,fpkm2]
+            logger.debug("NINA")
+            logger.debug(fpkm1)
+            logger.debug(fpkm2)
+            break
+          end
+        end
+      end
+    end
+  end
 #
   #def statistics_fp()
   #  @compare_file.index.each_key do |info|
