@@ -15,7 +15,7 @@ class FeatureQuantifications < FileFormats
       if line =~ /transcript/
         fields = line.split("\t")
         chr = fields[1].split(":")[0]
-        pos_chr = fields[1].split(":")[1].split("-")[0].to_i
+        pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
         @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i]
       end
     #  if line =~ /mRNA/
@@ -38,7 +38,7 @@ class FeatureQuantifications < FileFormats
       break if line =~ /GENE/
       next unless line =~ /exon/
       line.chomp!
-      transcript << line.split("-")[0].split(":")[1].to_i
+      transcript << line.split("-")[0].split(":")[1].to_i-1
       transcript << line.split("-")[1].split(" ")[0].to_i
     end
     k.close
@@ -50,7 +50,7 @@ class FeatureQuantifications < FileFormats
     frag_counts = value[1]
   end
 
-  def fpkm_for_transcript(transcript,fragment,mio_reads=50)
+  def fpkm_value(transcript,fragment,mio_reads=50)
     trans_length = calc_length(transcript)
     fpkm(fragment,trans_length)
   end

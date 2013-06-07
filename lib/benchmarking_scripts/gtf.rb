@@ -39,7 +39,6 @@ class GTF < FileFormats
     k.pos = pos_in_file
     fpkm_value_out = 0
     k.each do |line|
-      logger.debug(line)
       fields = line.split("\t")
       fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
       break
