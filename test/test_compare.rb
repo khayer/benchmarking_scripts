@@ -56,7 +56,7 @@ class TestCompare < Test::Unit::TestCase
     compare_obj.truth_genefile.create_index()
     compare_obj.statistics_fpkm()
     compare_obj.plot_fpkm("test/data/test.png")
-    assert_equal(File.size("test/data/test.png"),3068)
+    assert_equal(File.size("test/data/test.png"),3048)
   end
 
 end
