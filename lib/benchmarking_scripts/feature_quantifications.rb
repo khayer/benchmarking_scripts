@@ -62,6 +62,10 @@ class FeatureQuantifications < FileFormats
           last_highest_end = pos_chr_end
         end
         if pos_chr > last_highest || chr != last_chr
+          #if current_number_of_spliceforms == 6
+          #  puts current_transcripts.join("::")
+          #  exit
+          #end
           dummy = current_transcripts.delete_at(-1)
           current_transcripts.each do |transcript|
             @number_of_spliceforms[transcript] = current_number_of_spliceforms

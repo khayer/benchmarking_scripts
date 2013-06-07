@@ -20,7 +20,6 @@ class CompareGenesFQGTF < CompareGenes
           #logger.debug("NINA")
           #logger.debug(gff_transcript.join("TT"))
           #logger.debug(truth_genefile_transcript.join("TT"))
-
           if truth_genefile_transcript == gff_transcript
             frag_counts = @truth_genefile.frag_count(key[0],key[1],key[2])
             fpkm1 = @truth_genefile.fpkm_value(truth_genefile_transcript,frag_counts)
