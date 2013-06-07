@@ -46,8 +46,8 @@ class TestCompare < Test::Unit::TestCase
     compare_obj.truth_genefile.create_index()
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[71, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.weak_TP,[567, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[328, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[569, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[326, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   end
 
   def test_statistics_all_FQ_GTF_plot()
