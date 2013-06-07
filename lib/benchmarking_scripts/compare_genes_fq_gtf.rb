@@ -43,12 +43,14 @@ class CompareGenesFQGTF < CompareGenes
         plot.xlabel "truth"
         plot.xtics 'nomirror'
         plot.ytics 'nomirror'
+        plot.xrange "[0:10]"
+        plot.yrange "[0:10]"
 
         x = []
         y = []
         @fpkm_values.each do |pair|
-          x << pair[0]
-          y << pair[1]
+          x << Math.log(pair[0])
+          y << Math.log(pair[1])
         end
 
         plot.data = [
