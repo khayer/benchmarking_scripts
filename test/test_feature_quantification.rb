@@ -37,6 +37,7 @@ class TestFeatureQuantifications < Test::Unit::TestCase
   def test_find_number_of_spliceforms()
     feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
     feature_quant_file.create_index
+    feature_quant_file.calculate_coverage
     feature_quant_file.find_number_of_spliceforms()
     num_splice_forms = feature_quant_file.number_of_spliceforms[["chr1",4763278,"GENE.5"]]
     assert_equal(num_splice_forms,3)

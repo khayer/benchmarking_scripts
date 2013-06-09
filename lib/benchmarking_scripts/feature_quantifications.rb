@@ -3,6 +3,7 @@ class FeatureQuantifications < FileFormats
   def initialize(filename)
     super(filename)
     @number_of_spliceforms = Hash.new()
+    @coverage = Hash.new()
   end
 
   attr_accessor :number_of_spliceforms
@@ -87,6 +88,14 @@ class FeatureQuantifications < FileFormats
     end
     #logger.info("Indexing of #{@index.length} transcripts complete")
     k.close
+  end
+
+  def calculate_coverage()
+    @index.each_pair do |key,value|
+      @coverage[key] = fpkm_value(transcript(key[0],key[1],key[2]),value[1])
+    end
+    puts @coverage
+    exit
   end
 
   def transcript(chr,pos,id)
