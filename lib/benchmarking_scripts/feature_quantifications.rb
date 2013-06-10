@@ -5,9 +5,10 @@ class FeatureQuantifications < FileFormats
     @number_of_spliceforms = Hash.new()
     @coverage = Hash.new()
     @m = 0
+    @false_negatives = Hash.new()
   end
 
-  attr_accessor :number_of_spliceforms, :coverage, :m
+  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -113,6 +114,13 @@ class FeatureQuantifications < FileFormats
     k.close
     @m = @m/1000000
     logger.info("M is #{@m}")
+  end
+
+  def determine_false_negatives(cutoff=500)
+    fn = @coverage.values.sort.reverse[0..cutoff]
+    @coverage.each_pair do |key,value|
+      @false_negatives[key] = value if fn.include?(value)
+    end
   end
 
   def frag_count(chr,pos,id)

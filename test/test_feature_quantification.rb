@@ -46,4 +46,14 @@ class TestFeatureQuantifications < Test::Unit::TestCase
     assert_equal(num_splice_forms,2)
   end
 
+  def test_determine_false_negatives()
+    feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
+    feature_quant_file.create_index
+    feature_quant_file.calculate_coverage(50)
+    feature_quant_file.determine_false_negatives
+    assert_equal(feature_quant_file.false_negatives[["chr1", 34906803, "GENE.172"]],1309.1195418754473)
+  end
+
+
+
 end
