@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-tophat_sam = ARGV[0]
-fasta_forward = ARGV[1]
-fasta_reverse = ARGV[2]
-
