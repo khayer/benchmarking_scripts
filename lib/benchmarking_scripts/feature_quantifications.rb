@@ -26,13 +26,8 @@ class FeatureQuantifications < FileFormats
         pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
         @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i]
       end
-    #  if line =~ /mRNA/
-    #    coverage = line.split("coverage=")[1].split(";")[0].to_f
-    #    identity = line.split("identity=")[1].split(";")[0].to_f
-    #    @index[[fields[0],fields[3].to_i-1,id]] = last_position if identity >= 95.0 && coverage >= 95.0
-    #  end
     end
-    #logger.info("Indexing of #{@index.length} transcripts complete")
+    logger.info("Indexing of #{@index.length} transcripts complete")
     k.close
   end
 
