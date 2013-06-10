@@ -1,5 +1,12 @@
 class GeneInfo < FileFormats
 
+  def initialize(filename)
+    super(filename)
+    @false_negatives = Hash.new()
+  end
+
+  attr_accessor :false_negatives
+
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     k = File.open(@filename)
@@ -31,5 +38,10 @@ class GeneInfo < FileFormats
     k.close
     transcript.sort!
   end
+
+  def determine_false_negatives()
+    @false_negatives = @index
+  end
+
 
 end
