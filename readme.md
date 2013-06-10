@@ -50,3 +50,7 @@ Please see the files in _/test/data_ for an example.
       -l, --log_file LEVEL             Can also by STDOUT or STDERR
       -d, --debug                      running in debug mode?
       -h, --help                       help
+
+##### Example #####
+
+    stats gtffq test/data/test_fq.gtf test/data/test_feature_quant.txt
