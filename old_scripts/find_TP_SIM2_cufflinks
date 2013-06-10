@@ -1,0 +1,287 @@
+#!/usr/bin/env ruby
+
+usage =<<EOF
+
+      #{$0} truth ex_levels gtf iso num
+
+      ------------------------------------------------------
+      * truth    :: simulated_reads_transcripts_test2.txt
+      * ex_levels:: expression_levels.txt
+                    from: create_expression_level_sh
+      * gtf      :: transcripts.gtf
+      * iso      :: isoforms.fpkm_tracking
+      * num      :: num reflects how many genes are used
+                    from ex_levels
+      ------------------------------------------------------
+
+      Finds True Positives in cufflinks data.
+
+                                                   by khayer
+
+EOF
+
+if ARGV.length != 5
+  puts usage
+  exit
+end
+
+### Functions
+def get_truth_genes(truth)
+  truth_genes = Hash.new
+  exon_positions = []
+  name = ""
+  chr = ""
+  File.open(truth).each do |line|
+    line.chomp!
+    if line =~ /-------/
+      #### add CHR
+      truth_genes[name]  = [ chr,exon_positions.sort].flatten
+      exon_positions = []
+      name = ""
+    end
+    name = line.split(" = ")[1] if line =~ /^genes/
+    chr = line.split(" = ")[1] if line =~ /^chr\ =\ /
+    if line =~ /chr[0-9]+:/
+      boarders = line.split(":")[1].split("-") #chr1:3660633-3661579
+      exon_positions << boarders[0].to_i
+      exon_positions << boarders[1].to_i
+    end
+  end
+  truth_genes[name]  = [chr,exon_positions.sort].flatten
+  truth_genes
+end
+
+def get_expression_levels(ex_levels)
+  sorted_expression_levels = Hash.new()
+  File.open(ex_levels).each do |line|
+    next unless line =~ /^GENE/
+    line.chomp!
+    sorted_expression_levels[line.split("\t")[0]] = line.split("\t")[1].to_f
+  end
+  sorted_expression_levels = sorted_expression_levels.sort_by {|key, value| value}.reverse
+end
+
+def get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
+  genes_that_should_be_in_gtf = []
+  sorted_expression_levels.each do |key, value|
+    genes_that_should_be_in_gtf << key
+    num -= 1
+    break if num == 0
+  end
+  genes_that_should_be_in_gtf
+end
+
+def get_genes_that_pass_fpkm_value(iso)
+  genes_that_pass_fpkm_value = []
+  File.open(iso).each do |line|
+    next unless line =~ /^CUFF/
+    line.chomp!
+    iso_fields = line.split("\t")
+    genes_that_pass_fpkm_value << iso_fields[0] if iso_fields[-1] == "OK"
+  end
+  genes_that_pass_fpkm_value
+end
+
+def get_cufflinks_genes(gtf)
+  cufflinks_genes = Hash.new
+  exon_positions = Array.new
+  info = ""
+  chr = "chr1"
+  name = ""
+  File.open(gtf).each do |line|
+    next if line =~ /cov\ \"0\.000000\"/
+    line.chomp!
+    info = line.split("\t")
+    if line =~ /\ttranscript\t/
+      cufflinks_genes[name] = [chr,exon_positions.sort ].flatten()
+      chr = info[0]
+      name = info[-1].split("transcript_id \"")[1].split("\";")[0]
+      exon_positions = Array.new
+      next
+    end
+    left_boundary = info[3].to_i
+    exon_positions << left_boundary
+    right_boundary = info[4].to_i
+    exon_positions << right_boundary
+  end
+  cufflinks_genes[name] =  [chr,exon_positions.sort ].flatten()
+  cufflinks_genes
+end
+
+def clip_off_ends(truth_genes)
+  genes_without_ends = Hash.new()
+  truth_genes.each do |key, value|
+    next unless value.length > 3
+    new_value = [value[0], value[2..-2]].flatten
+    genes_without_ends[key] = new_value
+  end
+  genes_without_ends
+end
+
+def get_number_of_splice_forms(truth)
+  number_of_splice_forms = Hash.new
+  min = 0
+  max = 0
+  chr = ""
+  current_start = 1
+  current_end = 1
+  current_chr = "chr1"
+  last_genes = []
+  current_genes = []
+  current_gene = ""
+  dummy = nil
+  File.open(truth).each do |line|
+    line.chomp!
+    #puts current_genes.join("\t")
+    if line =~ /---------/ && dummy
+      #puts current_chr != chr
+      #puts current_start < min
+      #puts current_start > max
+      #puts current_genes.join("\t")
+      if (current_chr != chr || current_start < min || current_start > max )
+        #puts current_genes.join("\t")
+        #puts current_start
+        #puts min
+        #STDIN.gets
+        number_of_splice_forms[[chr,min,max]] = current_genes.length
+        last_genes = current_genes
+        current_genes = []
+        min = current_start
+        max = current_end
+        chr = current_chr
+      end
+
+      current_genes << current_gene
+      last_genes = current_genes
+    end
+
+    if line =~ /(starts.+)=\s(.+)/
+      current_start = $2.split(",")[0].to_i + 1
+      dummy = true
+    end
+    current_end = $2.split(",")[-1].to_i if line =~ /(ends.+)=\s(.+)/
+    current_chr = $2 if line =~ /(chr.+)=\s(.+)/
+    current_gene = $2 if line =~ /(genes.+)=\s(.+)/
+  end
+  #puts current_genes.join(":")
+  number_of_splice_forms[[current_chr,current_start,current_end]] = last_genes.length
+  number_of_splice_forms
+end
+
+def seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,truth)
+  separated_by_spliceform = []
+  #puts number_of_splice_forms
+  genes_that_should_be_in_gtf.each do |gene_name|
+    value = truth[gene_name]
+    number = 0
+    #puts "ERROR"
+    #puts gene_name
+    #puts value
+    number = get_number(value,number_of_splice_forms) unless  value.length == 1
+    separated_by_spliceform[number] = 0 unless separated_by_spliceform[number]
+    separated_by_spliceform[number] += 1
+    #puts number_of_splice_forms[gene_name]
+  end
+  separated_by_spliceform
+end
+
+def get_number(value,number_of_splice_forms)
+  number = 0
+  number_of_splice_forms.each do |key,num|
+    next unless value[0] == key[0]
+    #puts key.join(":")
+    #puts value.join(";")
+    if value[1] >= key[1] && value[-1] <= key[2]
+      number = num
+      break
+    end
+  end
+  number
+
+end
+
+#############
+
+### Main
+
+truth = ARGV[0]
+ex_levels = ARGV[1]
+gtf = ARGV[2]
+iso = ARGV[3]
+num = ARGV[4].to_i
+
+truth_genes = get_truth_genes(truth)
+sorted_expression_levels = get_expression_levels(ex_levels)
+genes_that_should_be_in_gtf = get_genes_that_should_be_in_gtf(sorted_expression_levels,num)
+genes_that_pass_fpkm_value = get_genes_that_pass_fpkm_value(iso)
+cufflinks_genes = get_cufflinks_genes(gtf)
+number_of_cufflinks_transcripts = cufflinks_genes.length
+number_of_splice_forms = get_number_of_splice_forms(truth)
+#puts number_of_splice_forms
+#exit
+
+true_positives = 0
+true_positives_by_spliceforms = []
+false_positives_by_spliceforms = []
+
+truth_genes_without_ends = clip_off_ends(truth_genes)
+cufflinks_genes_without_ends = clip_off_ends(cufflinks_genes)
+
+cufflinks_genes_without_ends.each do |key,value|
+  next if value.length == 1
+  number = get_number(value,number_of_splice_forms)
+  next unless genes_that_pass_fpkm_value.include?(key)
+  if truth_genes_without_ends.has_value?(value)
+    true_positives += 1
+    #puts value.join("\t")
+    gene_name = truth_genes_without_ends.key(value)
+    true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
+    true_positives_by_spliceforms[number] += 1
+    genes_that_should_be_in_gtf.delete(gene_name)
+    truth_genes_without_ends.delete(gene_name)
+    truth_genes.delete(gene_name)
+    cufflinks_genes.delete(key)
+  else
+    false_positives_by_spliceforms[number] = 0 unless false_positives_by_spliceforms[number]
+    false_positives_by_spliceforms[number] += 1
+    cufflinks_genes.delete(key)
+  end
+end
+
+cufflinks_genes.each do |key,value|
+  unless genes_that_pass_fpkm_value.include?(key)
+    number_of_cufflinks_transcripts -= 1
+    next
+  end
+  number = get_number(value,number_of_splice_forms)
+  if truth_genes.has_value?(value)
+    true_positives += 1
+    true_positives_by_spliceforms[number] = 0 unless true_positives_by_spliceforms[number]
+    true_positives_by_spliceforms[number] += 1
+    gene_name = truth_genes.key(value)
+    genes_that_should_be_in_gtf.delete(gene_name)
+    truth_genes.delete(gene_name)
+    cufflinks_genes.delete(key)
+  else
+    false_positives_by_spliceforms[number] = 0 unless false_positives_by_spliceforms[number]
+    false_positives_by_spliceforms[number] += 1
+  end
+end
+
+genes_that_should_be_in_gtf_by_spliceform = seperate_splice_forms(genes_that_should_be_in_gtf,number_of_splice_forms,truth_genes)
+
+puts "Number of false negatives:"
+puts genes_that_should_be_in_gtf.length
+puts "Number of true positives:"
+puts true_positives
+puts "Total number of reported transcripts:"
+puts number_of_cufflinks_transcripts
+puts "By spliceforms:"
+puts (0..19).to_a.join("\t")
+puts "- True Positives"
+puts true_positives_by_spliceforms.join("\t")
+puts "- False Negatives"
+puts genes_that_should_be_in_gtf_by_spliceform.join("\t")
+puts "- False Positives"
+puts false_positives_by_spliceforms.join("\t")
+########
