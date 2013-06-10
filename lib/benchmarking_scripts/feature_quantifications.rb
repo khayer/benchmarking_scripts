@@ -4,9 +4,10 @@ class FeatureQuantifications < FileFormats
     super(filename)
     @number_of_spliceforms = Hash.new()
     @coverage = Hash.new()
+    @m = 0
   end
 
-  attr_accessor :number_of_spliceforms, :coverage
+  attr_accessor :number_of_spliceforms, :coverage, :m
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -75,9 +76,9 @@ class FeatureQuantifications < FileFormats
     k.close
   end
 
-  def calculate_coverage()
+  def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
-      @coverage[key] = fpkm_value(transcript(key[0],key[1],key[2]),value[1])
+      @coverage[key] = fpkm_value(transcript(key[0],key[1],key[2]),value[1],mio_reads)
     end
   end
 
@@ -98,14 +99,31 @@ class FeatureQuantifications < FileFormats
     transcript.sort!
   end
 
+  def calculate_M()
+    raise "M was already definied!" unless @m == 0
+    logger.info("Calculating M for #{@filename}")
+    k = File.open(@filename)
+    k.each do |line|
+      line.chomp!
+      if line =~ /transcript/
+        fields = line.split("\t")
+        @m += fields[-1].to_i
+      end
+    end
+    k.close
+    @m = @m/1000000
+    logger.info("M is #{@m}")
+  end
+
   def frag_count(chr,pos,id)
     value = @index[[chr,pos,id]]
     frag_counts = value[1]
   end
 
-  def fpkm_value(transcript,fragment,mio_reads=50)
+  def fpkm_value(transcript,fragment,mio_reads=@m)
     trans_length = calc_length(transcript)
-    fpkm(fragment,trans_length)
+    raise "M needs to be definied!" if mio_reads == 0
+    fpkm(fragment,trans_length,mio_reads)
   end
 
 end

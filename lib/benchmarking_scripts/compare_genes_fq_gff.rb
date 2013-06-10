@@ -5,8 +5,12 @@ class CompareGenesFQGFF < CompareGenes
     super()
     @truth_genefile = FeatureQuantifications.new(feature_quant_file)
     @compare_file = GFF.new(gtf_file)
-    #@fpkm_values = []
+    @strong_TP_by_cov = []
+    @weak_TP_by_cov = []
+    @all_FP_by_cov = []
   end
+
+  attr_accessor :strong_TP_by_cov, :weak_TP_by_cov, :all_FP_by_cov
 
   #def statistics_fpkm()
   #  @compare_file.index.each_key do |info|
