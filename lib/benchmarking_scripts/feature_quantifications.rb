@@ -116,7 +116,7 @@ class FeatureQuantifications < FileFormats
     logger.info("M is #{@m}")
   end
 
-  def determine_false_negatives(cutoff=5000)
+  def determine_false_negatives(cutoff=500)
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
       @false_negatives[key] = value if fn.include?(value)

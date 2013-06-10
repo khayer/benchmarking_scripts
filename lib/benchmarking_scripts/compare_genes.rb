@@ -4,9 +4,10 @@ class CompareGenes
     @strong_TP = Array.new(11,0)
     @weak_TP = Array.new(11,0)
     @all_FP = Array.new(11,0)
+    @false_negatives = Array.new(11,0)
   end
 
-  attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP
+  attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP, :false_negatives
 
   # Statistics for strong true positives
   def statistics()
@@ -16,6 +17,8 @@ class CompareGenes
     statistics_weak
     logger.info("Statistics for false positives started!")
     statistics_fp
+    logger.info("Statistics for false negatives started!")
+    statistics_fn
   end
 
   private
@@ -49,6 +52,7 @@ class CompareGenes
               end
             end
             @compare_file.index.delete(info)
+            @truth_genefile.false_negatives.delete(key)
             break
           end
         end
@@ -57,6 +61,7 @@ class CompareGenes
   end
 
   def statistics_weak()
+    logger.debug("Index is now #{@compare_file.index.length()}")
     @compare_file.index.each_key do |info|
       @truth_genefile.index.each_key do |key|
         if key[0] == info[0] && is_within?(key[1],info[1])
@@ -72,7 +77,7 @@ class CompareGenes
               @weak_TP[number_of_spliceforms] += 1
             end
             if @truth_genefile.kind_of?(FeatureQuantifications)
-              number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+              number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
               @weak_TP[number_of_spliceforms] += 1
               coverage = Math.log(@truth_genefile.coverage[key])
               coverage = 0 if coverage < 0
@@ -84,6 +89,7 @@ class CompareGenes
               end
             end
             @compare_file.index.delete(info)
+            @truth_genefile.false_negatives.delete(key)
             break
           end
         end
@@ -92,10 +98,12 @@ class CompareGenes
   end
 
   def statistics_fp()
+    logger.debug("Index is now #{@compare_file.index.length()}")
     @compare_file.index.each_key do |info|
       @truth_genefile.index.each_key do |key|
+
         if key[0] == info[0] && is_within?(key[1],info[1])
-          truth_genefile_transcript = @truth_genefile.transcript(key[0],key[1],key[2])
+          #puts "NOW" if key[2] = "GENE.217.0"
           @all_FP[0] += 1
           if @truth_genefile.kind_of?(GeneInfo)
             number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
@@ -121,4 +129,27 @@ class CompareGenes
     @all_FP[0] += @compare_file.index.length
     nil
   end
+
+  def statistics_fn()
+    @truth_genefile.false_negatives.each_pair do |key,value|
+      @false_negatives[0] += 1
+      if @truth_genefile.kind_of?(GeneInfo)
+        number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+        @false_negatives[number_of_spliceforms] += 1
+      end
+      if @truth_genefile.kind_of?(FeatureQuantifications)
+        number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+        @false_negatives[number_of_spliceforms] += 1
+        coverage = Math.log(@truth_genefile.coverage[key])
+        coverage = 0 if coverage < 0
+        coverage = coverage.floor
+        while coverage >= 0
+          @false_negatives_by_cov[coverage] = 0 unless @false_negatives_by_cov[coverage]
+          @false_negatives_by_cov[coverage] += 1
+          coverage -= 1
+        end
+      end
+    end
+  end
+
 end
