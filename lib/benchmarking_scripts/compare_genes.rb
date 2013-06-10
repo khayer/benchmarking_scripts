@@ -21,6 +21,24 @@ class CompareGenes
     statistics_fn
   end
 
+  def to_s()
+    puts (["#splice_forms"] + (0..10).to_a).join("\t")
+    puts "---------------------------------------------------------------------------------------------------------"
+    puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
+    puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
+    puts (["# All FP"] + compare_obj.all_FP).join("\t")
+    puts (["# All FN"] + compare_obj.false_negatives).join("\t")
+    if @truth_genefile.kind_of?(FeatureQuantifications)
+      puts ""
+      puts (["coverage"] + (0..10).to_a).join("\t")
+      puts "---------------------------------------------------------------------------------------------------------"
+      puts (["#Strong TP"] + compare_obj.strong_TP_by_cov).join("\t")
+      puts (["# Weak TP"] + compare_obj.weak_TP_by_cov).join("\t")
+      puts (["# All FP"] + compare_obj.all_FP_by_cov).join("\t")
+      puts (["# All FN"] + compare_obj.false_negatives_by_cov).join("\t")
+    end
+  end
+
   private
   def statistics_strong()
     @compare_file.index.each_key do |info|

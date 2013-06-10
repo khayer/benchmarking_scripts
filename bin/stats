@@ -71,9 +71,4 @@ end
 compare_obj.compare_file.create_index()
 compare_obj.geneinfo.create_index()
 compare_obj.statistics()
-puts (["#splice_forms"] + (0..10).to_a).join("\t")
-puts "---------------------------------------------------------------------------------------------------------"
-puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
-puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
-puts (["# All FP"] + compare_obj.all_FP).join("\t")
-
+compare_obj.to_s
