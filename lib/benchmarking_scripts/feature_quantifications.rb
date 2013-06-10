@@ -58,10 +58,6 @@ class FeatureQuantifications < FileFormats
           last_highest_end = pos_chr_end
         end
         if pos_chr > last_highest || chr != last_chr
-          #if current_number_of_spliceforms == 6
-          #  puts current_transcripts.join("::")
-          #  exit
-          #end
           dummy = current_transcripts.delete_at(-1)
           current_transcripts.each do |transcript|
             @number_of_spliceforms[transcript] = current_number_of_spliceforms
@@ -75,13 +71,7 @@ class FeatureQuantifications < FileFormats
       current_transcripts.each do |transcript|
         @number_of_spliceforms[transcript] = current_number_of_spliceforms+1
       end
-    #  if line =~ /mRNA/
-    #    coverage = line.split("coverage=")[1].split(";")[0].to_f
-    #    identity = line.split("identity=")[1].split(";")[0].to_f
-    #    @index[[fields[0],fields[3].to_i-1,id]] = last_position if identity >= 95.0 && coverage >= 95.0
-    #  end
     end
-    #logger.info("Indexing of #{@index.length} transcripts complete")
     k.close
   end
 
