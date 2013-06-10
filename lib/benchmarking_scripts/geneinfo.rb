@@ -40,7 +40,7 @@ class GeneInfo < FileFormats
   end
 
   def determine_false_negatives()
-    @false_negatives = @index
+    @false_negatives = @index.dup
   end
 
 

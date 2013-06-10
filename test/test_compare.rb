@@ -36,7 +36,7 @@ class TestCompare < Test::Unit::TestCase
     assert_equal(compare_obj.strong_TP,[7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.weak_TP,[735, 735, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.all_FP,[33, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.false_negatives,[33, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.false_negatives,[9266, 266, 2000, 3000, 4000, 0, 0, 0, 0, 0, 0])
   end
 
   def test_initialize_FQ_GTF
