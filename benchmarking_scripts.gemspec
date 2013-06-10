@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'benchmarking_scripts'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2013-05-28'
   s.summary     = "Benchmarking Scripts"
   s.description = "Helps to evaluate results of various algorithms"
