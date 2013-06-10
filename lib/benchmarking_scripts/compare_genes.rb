@@ -21,21 +21,21 @@ class CompareGenes
     statistics_fn
   end
 
-  def to_s()
+  def print_result()
     puts (["#splice_forms"] + (0..10).to_a).join("\t")
     puts "---------------------------------------------------------------------------------------------------------"
-    puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
-    puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
-    puts (["# All FP"] + compare_obj.all_FP).join("\t")
-    puts (["# All FN"] + compare_obj.false_negatives).join("\t")
+    puts (["#Strong TP"] + @strong_TP).join("\t")
+    puts (["# Weak TP"] + @weak_TP).join("\t")
+    puts (["# All FP"] + @all_FP).join("\t")
+    puts (["# All FN"] + @false_negatives).join("\t")
     if @truth_genefile.kind_of?(FeatureQuantifications)
       puts ""
-      puts (["coverage"] + (0..10).to_a).join("\t")
+      puts (["log(coverage)"] + (0..10).to_a).join("\t")
       puts "---------------------------------------------------------------------------------------------------------"
-      puts (["#Strong TP"] + compare_obj.strong_TP_by_cov).join("\t")
-      puts (["# Weak TP"] + compare_obj.weak_TP_by_cov).join("\t")
-      puts (["# All FP"] + compare_obj.all_FP_by_cov).join("\t")
-      puts (["# All FN"] + compare_obj.false_negatives_by_cov).join("\t")
+      puts (["#Strong TP"] + @strong_TP_by_cov).join("\t")
+      puts (["# Weak TP"] + @weak_TP_by_cov).join("\t")
+      puts (["# All FP"] + @all_FP_by_cov).join("\t")
+      puts (["# All FN"] + @false_negatives_by_cov).join("\t")
     end
   end
 
