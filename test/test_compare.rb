@@ -43,7 +43,9 @@ class TestCompare < Test::Unit::TestCase
   def test_statistics_all_FQ_GTF()
     compare_obj = CompareGenesFQGTF.new("test/data/test_feature_quant.txt","test/data/test_fq.gtf")
     compare_obj.compare_file.create_index()
+    compare_obj.compare_file.calculate_coverage()
     compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.calculate_coverage()
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[71, 37, 19, 10, 4, 0, 1, 0, 0, 0, 0])
@@ -54,10 +56,12 @@ class TestCompare < Test::Unit::TestCase
   def test_statistics_all_FQ_GTF_plot()
     compare_obj = CompareGenesFQGTF.new("test/data/test_feature_quant.txt","test/data/test_fq.gtf")
     compare_obj.compare_file.create_index()
+    compare_obj.compare_file.calculate_coverage()
     compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.calculate_coverage()
     compare_obj.statistics_fpkm()
     compare_obj.plot_fpkm("test/data/test.png")
-    assert_equal(File.size("test/data/test.png"),5268)
+    assert_equal(File.size("test/data/test.png"),4602)
   end
 
   def test_initialize_FQ_GFF

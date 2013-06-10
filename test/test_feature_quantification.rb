@@ -32,8 +32,6 @@ class TestFeatureQuantifications < Test::Unit::TestCase
     assert_equal(feature_quant_file.fpkm_value(transcript,fc),12.33915953886203)
   end
 
-
-
   def test_find_number_of_spliceforms()
     feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
     feature_quant_file.create_index

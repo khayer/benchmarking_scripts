@@ -6,7 +6,7 @@ class FeatureQuantifications < FileFormats
     @coverage = Hash.new()
   end
 
-  attr_accessor :number_of_spliceforms
+  attr_accessor :number_of_spliceforms, :coverage
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -94,8 +94,6 @@ class FeatureQuantifications < FileFormats
     @index.each_pair do |key,value|
       @coverage[key] = fpkm_value(transcript(key[0],key[1],key[2]),value[1])
     end
-    puts @coverage
-    exit
   end
 
   def transcript(chr,pos,id)
