@@ -33,6 +33,21 @@ class CompareGenes
               @strong_TP[number_of_spliceforms] += 1
               @weak_TP[number_of_spliceforms] += 1
             end
+            if @truth_genefile.kind_of?(FeatureQuantifications)
+              number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+              @strong_TP[number_of_spliceforms] += 1
+              @weak_TP[number_of_spliceforms] += 1
+              coverage = Math.log(@truth_genefile.coverage[key])
+              coverage = 0 if coverage < 0
+              coverage = coverage.floor
+              while coverage >= 0
+                @strong_TP_by_cov[coverage] = 0 unless @strong_TP_by_cov[coverage]
+                @strong_TP_by_cov[coverage] += 1
+                @weak_TP_by_cov[coverage] = 0 unless @weak_TP_by_cov[coverage]
+                @weak_TP_by_cov[coverage] += 1
+                coverage -= 1
+              end
+            end
             @compare_file.index.delete(info)
             break
           end
@@ -56,6 +71,18 @@ class CompareGenes
               number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
               @weak_TP[number_of_spliceforms] += 1
             end
+            if @truth_genefile.kind_of?(FeatureQuantifications)
+              number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+              @weak_TP[number_of_spliceforms] += 1
+              coverage = Math.log(@truth_genefile.coverage[key])
+              coverage = 0 if coverage < 0
+              coverage = coverage.floor
+              while coverage >= 0
+                @weak_TP_by_cov[coverage] = 0 unless @weak_TP_by_cov[coverage]
+                @weak_TP_by_cov[coverage] += 1
+                coverage -= 1
+              end
+            end
             @compare_file.index.delete(info)
             break
           end
@@ -68,11 +95,23 @@ class CompareGenes
     @compare_file.index.each_key do |info|
       @truth_genefile.index.each_key do |key|
         if key[0] == info[0] && is_within?(key[1],info[1])
-          truth_genefile_transcript= @truth_genefile.transcript(key[0],key[1],key[2])
+          truth_genefile_transcript = @truth_genefile.transcript(key[0],key[1],key[2])
           @all_FP[0] += 1
           if @truth_genefile.kind_of?(GeneInfo)
             number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
             @all_FP[number_of_spliceforms] += 1
+          end
+          if @truth_genefile.kind_of?(FeatureQuantifications)
+            number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+            @all_FP[number_of_spliceforms] += 1
+            coverage = Math.log(@truth_genefile.coverage[key])
+            coverage = 0 if coverage < 0
+            coverage = coverage.floor
+            while coverage >= 0
+              @all_FP_by_cov[coverage] = 0 unless @all_FP_by_cov[coverage]
+              @all_FP_by_cov[coverage] += 1
+              coverage -= 1
+            end
           end
           @compare_file.index.delete(info)
           break

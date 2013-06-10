@@ -6,7 +6,12 @@ class CompareGenesFQGTF < CompareGenes
     @truth_genefile = FeatureQuantifications.new(feature_quant_file)
     @compare_file = GTF.new(gtf_file)
     @fpkm_values = []
+    @strong_TP_by_cov = []
+    @weak_TP_by_cov = []
+    @all_FP_by_cov = []
   end
+
+  attr_accessor :strong_TP_by_cov, :weak_TP_by_cov, :all_FP_by_cov
 
   def statistics_fpkm()
     @compare_file.index.each_key do |info|
@@ -17,15 +22,19 @@ class CompareGenesFQGTF < CompareGenes
           truth_genefile_transcript = truth_genefile_transcript[1..-2]
           next if truth_genefile_transcript == []
           gff_transcript = gff_transcript[1..-2]
-          #logger.debug("NINA")
-          #logger.debug(gff_transcript.join("TT"))
-          #logger.debug(truth_genefile_transcript.join("TT"))
-
           if truth_genefile_transcript == gff_transcript
-            frag_counts = @truth_genefile.frag_count(key[0],key[1],key[2])
-            fpkm1 = @truth_genefile.fpkm_value(truth_genefile_transcript,frag_counts)
-            fpkm2 = @compare_file.fpkm_value(info[0],info[1],info[2])
-            @fpkm_values << [fpkm1,fpkm2]
+            fpkm1 = @truth_genefile.coverage[key]
+            fpkm2 = @compare_file.coverage[info]
+            #if fpkm1 < 1
+            #  puts "KEY"
+            #  puts key
+            #  puts fpkm1
+            #  puts "Info"
+            #  puts info
+            #  puts fpkm2
+            #  STDIN.gets
+            #end
+            @fpkm_values << [key,fpkm1,fpkm2]
             break
           end
         end
@@ -44,12 +53,14 @@ class CompareGenesFQGTF < CompareGenes
         plot.xlabel "truth"
         plot.xtics 'nomirror'
         plot.ytics 'nomirror'
+        #plot.xrange "[0:10]"
+        #plot.yrange "[0:10]"
 
         x = []
         y = []
         @fpkm_values.each do |pair|
-          x << pair[0]
-          y << pair[1]
+          x << Math.log(pair[1])
+          y << Math.log(pair[2])
         end
 
         plot.data = [

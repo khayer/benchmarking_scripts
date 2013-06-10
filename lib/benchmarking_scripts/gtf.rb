@@ -1,5 +1,12 @@
 class GTF < FileFormats
 
+  def initialize(filename)
+    super(filename)
+    @coverage = Hash.new()
+  end
+
+  attr_accessor :coverage
+
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     logger.info("Creating index for #{@filename}")
@@ -33,6 +40,12 @@ class GTF < FileFormats
     transcript.sort!
   end
 
+  def calculate_coverage()
+    @index.each_pair do |key,value|
+      @coverage[key] = fpkm_value(key[0],key[1],key[2])
+    end
+  end
+
   def fpkm_value(chr,pos,id)
     pos_in_file = @index[[chr,pos,id]]
     k = File.open(@filename)
@@ -45,6 +58,5 @@ class GTF < FileFormats
     end
     fpkm_value_out.to_f
   end
-
 
 end
