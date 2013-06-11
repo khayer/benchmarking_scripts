@@ -2,7 +2,8 @@
 require "benchmarking_scripts"
 require 'optparse'
 
-options = {:logout => STDERR}
+options = {:logout => STDERR,
+  :png_file => "fpkm.png"}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -17,6 +18,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-l","--log_file LEVEL","Can also by STDOUT or STDERR") do |file|
     options[:logout] = file if file
+  end
+
+  opt.on("-p","--png_file FILE","Default is fpkm.png") do |file|
+    options[:png_file] = file if file
   end
 
   opt.on("-d","--debug","running in debug mode?") do
@@ -112,3 +117,9 @@ end
 
 compare_obj.statistics()
 compare_obj.print_result
+
+if ARGV[0] == "gtffq"
+  compare_obj.statistics_fpkm()
+  compare_obj.plot_fpkm(options[:png_file])
+end
+
