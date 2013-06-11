@@ -47,7 +47,7 @@ else
   options_for_logger["log_level"] = Logger::INFO
 end
 options_for_logger["logout"] = options[:logout]
-STDERR.puts options_for_logger
+#STDERR.puts options_for_logger
 Logging.configure(options_for_logger)
 
 case ARGV[0]
