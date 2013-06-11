@@ -56,7 +56,9 @@ class CompareGenes
             end
             if @truth_genefile.kind_of?(FeatureQuantifications)
               number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+              @strong_TP[number_of_spliceforms] = 0 unless @strong_TP[number_of_spliceforms]
               @strong_TP[number_of_spliceforms] += 1
+              @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
               @weak_TP[number_of_spliceforms] += 1
               coverage = Math.log(@truth_genefile.coverage[key])
               coverage = 0 if coverage < 0
@@ -96,6 +98,7 @@ class CompareGenes
             end
             if @truth_genefile.kind_of?(FeatureQuantifications)
               number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
+              @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
               @weak_TP[number_of_spliceforms] += 1
               coverage = Math.log(@truth_genefile.coverage[key])
               coverage = 0 if coverage < 0
@@ -129,6 +132,7 @@ class CompareGenes
           end
           if @truth_genefile.kind_of?(FeatureQuantifications)
             number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+            @all_FP[number_of_spliceforms] = 0 unless @all_FP[number_of_spliceforms]
             @all_FP[number_of_spliceforms] += 1
             coverage = Math.log(@truth_genefile.coverage[key])
             coverage = 0 if coverage < 0
