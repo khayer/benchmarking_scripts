@@ -1,4 +1,3 @@
-require 'gnuplot'
 class CompareGenesFQGFF < CompareGenes
 
   def initialize(feature_quant_file,gtf_file)
