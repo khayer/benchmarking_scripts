@@ -12,7 +12,8 @@ class CompareGenesFQGTF < CompareGenes
     @false_negatives_by_cov = []
   end
 
-  attr_accessor :strong_TP_by_cov, :weak_TP_by_cov, :all_FP_by_cov, :false_negatives_by_cov
+  attr_accessor :fpkm_values, :strong_TP_by_cov, :weak_TP_by_cov,
+    :all_FP_by_cov, :false_negatives_by_cov
 
   def statistics_fpkm()
     @compare_file.index.each_key do |info|

@@ -84,6 +84,7 @@ when "gtffq"
     compare_obj.truth_genefile.calculate_coverage()
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.determine_false_negatives()
+    compare_obj.statistics_fpkm()
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
@@ -119,7 +120,7 @@ compare_obj.statistics()
 compare_obj.print_result
 
 if ARGV[0] == "gtffq"
-  compare_obj.statistics_fpkm()
+  puts compare_obj.fpkm_values
   compare_obj.plot_fpkm(options[:png_file])
 end
 
