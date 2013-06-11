@@ -26,15 +26,6 @@ class CompareGenesFQGTF < CompareGenes
           if truth_genefile_transcript == gff_transcript
             fpkm1 = @truth_genefile.coverage[key]
             fpkm2 = @compare_file.coverage[info]
-            #if fpkm1 < 1
-            #  puts "KEY"
-            #  puts key
-            #  puts fpkm1
-            #  puts "Info"
-            #  puts info
-            #  puts fpkm2
-            #  STDIN.gets
-            #end
             @fpkm_values << [key,fpkm1,fpkm2]
             break
           end
@@ -54,9 +45,6 @@ class CompareGenesFQGTF < CompareGenes
         plot.xlabel "truth"
         plot.xtics 'nomirror'
         plot.ytics 'nomirror'
-        #plot.xrange "[0:10]"
-        #plot.yrange "[0:10]"
-
         x = []
         y = []
         @fpkm_values.each do |pair|
