@@ -40,13 +40,19 @@ Please see the files in _/test/data_ for an example.
 
 #### stats ####
 
-    Usage: stats CMD file1 file2 [OPTIONS]
+    Usage: /Users/kat/.rbenv/versions/1.9.2-p290/bin/stats CMD file1 file2 [OPTIONS]
 
     CMD
-        gff: if file1 is gff format
-        gtf: if file1 is gtf format
-
+         gff: if file1 is gff format and file2 is geneinfo
+         gtf: if file1 is gtf format and file2 is geneinfo
+       gfffq: if file1 is gff format and file2 is feature_quant
+       gtffq: if file1 is gtf format and file2 is feature_quant
+    
     Options
-      -l, --log_file LEVEL             Can also by STDOUT or STDERR
-      -d, --debug                      running in debug mode?
-      -h, --help                       help
+        -l, --log_file LEVEL             Can also by STDOUT or STDERR
+        -d, --debug                      running in debug mode?
+        -h, --help                       help
+
+##### Example #####
+
+    stats gtffq test/data/test_fq.gtf test/data/test_feature_quant.txt
