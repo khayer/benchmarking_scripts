@@ -3,7 +3,8 @@ require "benchmarking_scripts"
 require 'optparse'
 
 options = {:logout => STDERR,
-  :png_file => "fpkm.png"}
+  :png_file => "fpkm.png",
+  :fpkm_values => "fpkm_values.txt"}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -22,6 +23,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-p","--png_file FILE","Default is fpkm.png") do |file|
     options[:png_file] = file if file
+  end
+
+  opt.on("-f","--fpkm_values FILE","Default is fpkm_values.txt") do |file|
+    options[:fpkm_values] = file if file
   end
 
   opt.on("-d","--debug","running in debug mode?") do
@@ -120,7 +125,12 @@ compare_obj.statistics()
 compare_obj.print_result
 
 if ARGV[0] == "gtffq"
-  puts compare_obj.fpkm_values
+  fpkm_file = File.open(options[:fpkm_values],'w')
+  fpkm_file.puts "Chromosome\tPosition\tGeneID\ttruth\tcufflinks"
+  compare_obj.fpkm_values.each do |values|
+    fpkm_file.puts values.join("\t")
+  end
+  fpkm_file.close
   compare_obj.plot_fpkm(options[:png_file])
 end
 
