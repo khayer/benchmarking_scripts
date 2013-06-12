@@ -1,5 +1,5 @@
 class BenchmatkingScripts
-  $num_of_spliceforms = 11 # 10+1
+
 end
 
 require 'logger'
