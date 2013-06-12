@@ -161,6 +161,7 @@ class CompareGenes
       end
       if @truth_genefile.kind_of?(FeatureQuantifications)
         number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+        @false_negatives[number_of_spliceforms] = 0 unless @false_negatives[number_of_spliceforms]
         @false_negatives[number_of_spliceforms] += 1
         coverage = Math.log(@truth_genefile.coverage[key])
         coverage = 0 if coverage < 0
