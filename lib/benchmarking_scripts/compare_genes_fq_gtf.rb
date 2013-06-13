@@ -46,12 +46,17 @@ class CompareGenesFQGTF < CompareGenes
         plot.xlabel "truth"
         plot.xtics 'nomirror'
         plot.ytics 'nomirror'
+        plot.grid 'xtics'
+        plot.grid 'ytics'
         x = []
         y = []
         @fpkm_values.each do |pair|
-          x << Math.log(pair[1])
-          y << Math.log(pair[2])
+          x << Math.log(pair[1]+1)
+          y << Math.log(pair[2]+1)
         end
+        max_value = [x.max,y.max].max
+        plot.xrange "[-0.5:#{max_value}]"
+        plot.yrange "[-0.5:#{max_value}]"
 
         plot.data = [
           Gnuplot::DataSet.new( [x, y] ) do |ds|
