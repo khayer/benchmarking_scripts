@@ -1,0 +1,8 @@
+chr7	mm9_gsnap	gene	148033816	148035470	.	+	.	ID=scaffold1.path1;Name=scaffold1
+chr7	mm9_gsnap	mRNA	148033816	148035470	.	+	.	ID=scaffold1.mrna1;Name=scaffold1;Parent=scaffold1.path1;coverage=95.9;identity=99.9
+chr7	mm9_gsnap	exon	148033816	148033836	100	+	.	ID=scaffold1.mrna1.exon1;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 1 21 +
+chr7	mm9_gsnap	exon	148034246	148034361	100	+	.	ID=scaffold1.mrna1.exon2;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 22 138 +
+chr7	mm9_gsnap	exon	148034363	148034710	100	+	.	ID=scaffold1.mrna1.exon3;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 139 339 +
+chr7	mm9_gsnap	exon	148035349	148035470	100	+	.	ID=scaffold1.mrna1.exon4;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 340 461 +
+chr7	mm9_gsnap	CDS	148033818	148033836	100	+	0	ID=scaffold1.mrna1.cds1;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 3 21 +
+chr7	mm9_gsnap	CDS	148034246	148034362	100	+	1	ID=scaffold1.mrna1.cds2;Name=scaffold1;Parent=scaffold1.mrna1;Target=scaffold1 22 138 +

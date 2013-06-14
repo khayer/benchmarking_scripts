@@ -112,7 +112,7 @@ class FeatureQuantifications < FileFormats
       end
     end
     k.close
-    @m = @m/1000000
+    @m = @m.to_f/1000000
     logger.info("M is #{@m}")
   end
 

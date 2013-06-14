@@ -42,6 +42,16 @@ class CompareGenesFQGTF < CompareGenes
     end
   end
 
+  def plot_fn_rate(filename)
+    x = []
+    y = []
+    @false_negatives_by_cov.each_with_index do |false_negatives,i|
+      x << i
+      y << false_negatives/(false_negatives+@weak_TP_by_cov[i])
+    end
+
+  end
+
   def plot_fpkm(filename)
     max_value = 0
     Gnuplot.open do |gp|
