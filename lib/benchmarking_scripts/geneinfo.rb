@@ -20,7 +20,6 @@ class GeneInfo < FileFormats
       previous_position = k.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
-    logger.debug(@index)
     k.close
   end
 
