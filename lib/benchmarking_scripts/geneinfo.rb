@@ -9,6 +9,7 @@ class GeneInfo < FileFormats
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
+    logger.info("Creating index for #{@filename}")
     k = File.open(@filename)
     previous_position = 0
     k.each do |line|
@@ -18,6 +19,8 @@ class GeneInfo < FileFormats
       @index[[fields[0],fields[2].to_i,id]] = previous_position
       previous_position = k.pos
     end
+    logger.info("Indexing of #{@index.length} transcripts complete")
+    logger.debug(@index)
     k.close
   end
 
