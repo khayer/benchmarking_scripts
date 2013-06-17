@@ -101,7 +101,6 @@ when "gfffq"
     geneinfo = ARGV[2]
     compare_obj = CompareGenesFQGFF.new(geneinfo,transcripts)
     compare_obj.compare_file.create_index()
-    compare_obj.compare_file.calculate_coverage()
     compare_obj.truth_genefile.create_index()
     compare_obj.truth_genefile.calculate_M()
     compare_obj.truth_genefile.calculate_coverage()
