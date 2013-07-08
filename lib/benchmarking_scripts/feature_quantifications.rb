@@ -26,7 +26,8 @@ class FeatureQuantifications < FileFormats
         fields = line.split("\t")
         chr = fields[1].split(":")[0]
         pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
-        @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i]
+        num_of_fragments = fields[-1].to_f
+        @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i] #if num_of_fragments > 0.0
       end
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
@@ -79,7 +80,8 @@ class FeatureQuantifications < FileFormats
 
   def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
-      @coverage[key] = fpkm_value(transcript(key[0],key[1],key[2]),value[1],mio_reads)
+      cov = fpkm_value(transcript(key[0],key[1],key[2]),value[1],mio_reads)
+      @coverage[key] = cov #if cov > 0
     end
   end
 
@@ -120,6 +122,13 @@ class FeatureQuantifications < FileFormats
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
       @false_negatives[key] = value if fn.include?(value)
+    end
+  end
+
+  def print_false_negatives()
+    fn = @coverage.values.sort.reverse
+    fn.each do |value|
+      puts "#{value}"
     end
   end
 
