@@ -53,7 +53,7 @@ class CompareGenesFQGTF < CompareGenes
     y = []
     @false_negatives_by_cov.each_with_index do |false_negatives,i|
       x << i
-      y << false_negatives/(false_negatives+@weak_TP_by_cov[i])
+      y << false_negatives.to_f/(false_negatives.to_f+@weak_TP_by_cov[i].to_f)
     end
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|
@@ -66,9 +66,9 @@ class CompareGenesFQGTF < CompareGenes
         plot.ytics 'nomirror'
         plot.grid 'xtics'
         plot.grid 'ytics'
-        max_value = [x.max,y.max].max
-        plot.xrange "[-0.5:#{max_value}]"
-        plot.yrange "[-0.5:#{max_value}]"
+        #max_value = [x.max,y.max].max
+        #plot.xrange "[-0.5:#{max_value}]"
+        #plot.yrange "[-0.01:0.3]"
         plot.data = [
           Gnuplot::DataSet.new( [x, y] ) do |ds|
             ds.with= "points lc 2"
