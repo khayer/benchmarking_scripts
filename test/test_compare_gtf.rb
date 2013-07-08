@@ -16,8 +16,8 @@ class TestCompareGTF < Test::Unit::TestCase
     compare_obj.truth_genefile.determine_false_negatives()
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.weak_TP,[735, 735, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[33, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.false_negatives,[9266, 266, 2000, 3000, 4000, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[736, 736, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[32, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.false_negatives,[9265, 265, 2000, 3000, 4000, 0, 0, 0, 0, 0, 0])
   end
 end
