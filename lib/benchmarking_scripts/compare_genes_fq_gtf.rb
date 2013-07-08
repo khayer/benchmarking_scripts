@@ -18,29 +18,35 @@ class CompareGenesFQGTF < CompareGenes
     :all_FP_by_cov, :false_negatives_by_cov
 
   def statistics_fpkm()
+    compare_transcripts = Hash.new
     @compare_file.index.each_key do |info|
-      @truth_genefile.index.each_key do |key|
-        if key[0] == info[0] && is_within?(key[1],info[1])
-          truth_genefile_transcript = @truth_genefile.transcript(key[0],key[1],key[2])
-          gff_transcript = @compare_file.transcript(info[0],info[1],info[2])
-          truth_genefile_transcript = truth_genefile_transcript[1..-2]
-          next if truth_genefile_transcript == []
-          gff_transcript = gff_transcript[1..-2]
-          if truth_genefile_transcript == gff_transcript
-            fpkm1 = @truth_genefile.coverage[key]
-            fpkm2 = @compare_file.coverage[info]
-            @fpkm_values << [key,fpkm1,fpkm2]
-            if @truth_genefile.number_of_spliceforms[key] > 1
-              @fpkm_values_else_spliceform << [key,fpkm1,fpkm2]
-            else
-              @fpkm_values_1_spliceform << [key,fpkm1,fpkm2]
-            end
-            break
-          end
+      compare_transcripts[info] = @compare_file.transcript(info[0],info[1],info[2])[1..-2]
+    end
+    truth_transcripts = Hash.new
+    @truth_genefile.index.each_key do |key|
+      truth_transcripts[key] = @truth_genefile.transcript(key[0],key[1],key[2])[1..-2]
+    end
+    truth_transcripts.each_pair do |key, value|
+      if compare_transcripts.has_value?(value)
+        fpkm1 = @truth_genefile.coverage[key]
+        compare_key = compare_transcripts.key(value)
+        fpkm2 = @compare_file.coverage[compare_key]
+        @fpkm_values << [key,fpkm1,fpkm2]
+        compare_transcripts.delete(compare_key)
+        if @truth_genefile.number_of_spliceforms[key] > 1
+          @fpkm_values_else_spliceform << [key,fpkm1,fpkm2]
+        else
+          @fpkm_values_1_spliceform << [key,fpkm1,fpkm2]
         end
       end
     end
+    compare_transcripts.each_pair do |key, value|
+      fpkm1 = 0 #@truth_genefile.coverage[key]
+      fpkm2 = @compare_file.coverage[key]
+      @fpkm_values << [key,fpkm1,fpkm2]
+    end
   end
+
 
   def plot_fn_rate(filename)
     x = []
