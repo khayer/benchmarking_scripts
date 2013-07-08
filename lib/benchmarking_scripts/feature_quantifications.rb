@@ -79,7 +79,8 @@ class FeatureQuantifications < FileFormats
 
   def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
-      @coverage[key] = fpkm_value(transcript(key[0],key[1],key[2]),value[1],mio_reads)
+      cov = fpkm_value(transcript(key[0],key[1],key[2]),value[1],mio_reads)
+      @coverage[key] = cov #if cov > 0
     end
   end
 
@@ -116,10 +117,17 @@ class FeatureQuantifications < FileFormats
     logger.info("M is #{@m}")
   end
 
-  def determine_false_negatives(cutoff=500)
+  def determine_false_negatives(cutoff=5000)
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
       @false_negatives[key] = value if fn.include?(value)
+    end
+  end
+
+  def print_false_negatives()
+    fn = @coverage.values.sort.reverse
+    fn.each do |value|
+      puts "#{value}"
     end
   end
 

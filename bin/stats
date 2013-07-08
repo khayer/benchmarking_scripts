@@ -86,7 +86,7 @@ when "gtffq"
     compare_obj.compare_file.calculate_coverage()
     compare_obj.truth_genefile.create_index()
     #compare_obj.truth_genefile.calculate_M()
-    compare_obj.truth_genefile.calculate_coverage(123)
+    compare_obj.truth_genefile.calculate_coverage(200)
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.determine_false_negatives()
     compare_obj.statistics_fpkm()
