@@ -55,6 +55,29 @@ class CompareGenesFQGTF < CompareGenes
       x << i
       y << false_negatives/(false_negatives+@weak_TP_by_cov[i])
     end
+    Gnuplot.open do |gp|
+      Gnuplot::Plot.new( gp ) do |plot|
+        plot.output filename
+        plot.terminal 'png'
+        plot.title "False Negative Rate by Coverage"
+        plot.ylabel "FNR"
+        plot.xlabel "coverage log"
+        plot.xtics 'nomirror'
+        plot.ytics 'nomirror'
+        plot.grid 'xtics'
+        plot.grid 'ytics'
+        max_value = [x.max,y.max].max
+        plot.xrange "[-0.5:#{max_value}]"
+        plot.yrange "[-0.5:#{max_value}]"
+        plot.data = [
+          Gnuplot::DataSet.new( [x, y] ) do |ds|
+            ds.with= "points lc 2"
+            ds.notitle
+          end
+        ]
+      end
+    end
+
 
   end
 

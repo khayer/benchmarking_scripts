@@ -131,5 +131,6 @@ if ARGV[0] == "gtffq"
   end
   fpkm_file.close
   compare_obj.plot_fpkm(options[:png_file])
+  compare_obj.plot_fn_rate("fn_rate_#{options[:png_file]}")
 end
 
