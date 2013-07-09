@@ -51,9 +51,12 @@ class CompareGenesFQGTF < CompareGenes
   def plot_fn_rate(filename)
     x = []
     y = []
+    num_of_fn = @truth_genefile.number_of_false_negatives
     @false_negatives_by_cov.each_with_index do |false_negatives,i|
       x << i
-      y << false_negatives.to_f/(false_negatives.to_f+@weak_TP_by_cov[i].to_f)
+      num_of_must_haves = (false_negatives.to_f+@weak_TP_by_cov[i].to_f)
+      num_of_must_haves = num_of_fn if num_of_must_haves > num_of_fn
+      y << false_negatives.to_f/num_of_must_haves
     end
     Gnuplot.open do |gp|
       Gnuplot::Plot.new( gp ) do |plot|

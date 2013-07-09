@@ -6,9 +6,10 @@ class FeatureQuantifications < FileFormats
     @coverage = Hash.new()
     @m = 0
     @false_negatives = Hash.new()
+    @number_of_false_negatives = nil
   end
 
-  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives
+  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -119,6 +120,7 @@ class FeatureQuantifications < FileFormats
   end
 
   def determine_false_negatives(cutoff=500)
+    @number_of_false_negatives = cutoff
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
       @false_negatives[key] = value if fn.include?(value)
