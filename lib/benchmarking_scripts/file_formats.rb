@@ -2,6 +2,7 @@ class FileFormats
   def initialize(filename)
     @filename = filename
     @index = Hash.new()
+    @filehandle = File.open(@filename)
   end
 
   attr_accessor :filename, :index
