@@ -68,7 +68,7 @@ class CompareGenesFQGTF < CompareGenes
         plot.grid 'ytics'
         plot.data = [
           Gnuplot::DataSet.new( [x, y] ) do |ds|
-            ds.with= "points lc 2"
+            ds.with = "linespoints"
             ds.notitle
           end
         ]
