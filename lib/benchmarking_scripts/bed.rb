@@ -9,23 +9,23 @@ class Bed < FileFormats
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     logger.info("Creating index for #{@filename}")
-    k = File.open(@filename)
-    k.each do |line|
+    previous_position = 0
+    @filehandle.rewind
+    @filehandle.each do |line|
       line.chomp!
       fields = line.split("\t")
       id = fields[3]
-      @index[[fields[0],fields[1].to_i,id]] = k.pos
+      @index[[fields[0],fields[1].to_i,id]] = previous_position
+      previous_position = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
-    k.close
   end
 
   def transcript(key)
     transcript = []
     pos_in_file = @index[key]
-    k = File.open(@filename)
-    k.pos = pos_in_file
-    line = k.readline
+    @filehandle.pos = pos_in_file
+    line = @filehandle.readline
     fields = line.split("\t")
     lengths = fields[10].split(",")
     offset = fields[11].split(",")
@@ -34,7 +34,6 @@ class Bed < FileFormats
       transcript << current_start
       transcript << current_start + current_length.to_i
     end
-    k.close
     transcript.sort!
   end
 
@@ -44,17 +43,8 @@ class Bed < FileFormats
     end
   end
 
-  def fpkm_value(key)
-    pos_in_file = @index[key]
-    k = File.open(@filename)
-    k.pos = pos_in_file
-    fpkm_value_out = 0
-    k.each do |line|
-      fields = line.split("\t")
-      fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
-      break
-    end
-    fpkm_value_out.to_f
+  def determine_false_negatives()
+    @false_negatives = @index.dup
   end
 
 end

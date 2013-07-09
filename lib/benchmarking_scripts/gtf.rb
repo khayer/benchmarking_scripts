@@ -17,7 +17,7 @@ class GTF < FileFormats
       next unless line =~ /\stranscript\s/
       fields = line.split("\t")
       id = fields[-1].split("transcript_id ")[1].split(";")[0]
-      @index[[fields[0],fields[3].to_i-1,id]] = k.pos
+      @index[[fields[0],fields[3].to_i-1,id]] = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
   end
@@ -25,9 +25,8 @@ class GTF < FileFormats
   def transcript(key)
     transcript = []
     pos_in_file = @index[key]
-    k = File.open(@filename)
-    k.pos = pos_in_file
-    k.each do |line|
+    @filehandle.pos = pos_in_file
+    @filehandle.each do |line|
       break if line =~ /\stranscript\s/
       #next if line =~ /mRNA/
       line.chomp!
@@ -35,7 +34,6 @@ class GTF < FileFormats
       transcript << fields[3].to_i-1
       transcript << fields[4].to_i
     end
-    k.close
     transcript.sort!
   end
 
@@ -47,10 +45,9 @@ class GTF < FileFormats
 
   def fpkm_value(key)
     pos_in_file = @index[key]
-    k = File.open(@filename)
-    k.pos = pos_in_file
+    @filehandle.pos = pos_in_file
     fpkm_value_out = 0
-    k.each do |line|
+    @filehandle.each do |line|
       fields = line.split("\t")
       fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
       break
