@@ -29,11 +29,14 @@ class Bed < FileFormats
     fields = line.split("\t")
     lengths = fields[10].split(",")
     offset = fields[11].split(",")
+    start = fields[1].to_i
     lengths.each_with_index do |current_length, i|
       current_start = start + offset[i].to_i
       transcript << current_start
       transcript << current_start + current_length.to_i
     end
+    ende = fields[7].to_i
+    raise "Endposition (#{ende}) does not match calculated end position (#{transcript[-1]})" unless ende == transcript[-1]
     transcript.sort!
   end
 
