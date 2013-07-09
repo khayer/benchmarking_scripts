@@ -3,7 +3,7 @@
 bed_file = ARGV[0]
 gtf_file = ARGV[1]
 gtf_handle = File.open(gtf_file,'w')
-origin = "SIM1_PLUS"
+origin = "Spike-In-Data"
 coding = "CDS"
 exon = "exon"
 
@@ -11,13 +11,21 @@ File.open(bed_file).each do |line|
   line.chomp!
   info = line.split("\t")
   chr = info[0]
-  starts = info[5].split(",")
-  ends = info[6].split(",")
-  id = info[7]
-  strand = info[1]
+  lengths = info[10].split(",")
+  offset = info[11].split(",")
+  id = info[3]
+  strand = info[5]
+  start = info[1].to_i
+  ende = info[2].to_i
+  starts = []
+  ends = []
+  lengths.each_with_index do |current_length, i|
+    current_start = start + offset[i].to_i
+    starts << current_start
+    ends << current_start + current_length.to_i
+  end
   starts.each_with_index do |start,i|
     #gtf_handle.puts "#{chr}\t#{origin}\tCDS\t#{start}\t#{ends[i]}\t0.000000\t#{strand}\t.\tgene_id \"#{id}\"; transcript_id \"#{id}\""
     gtf_handle.puts "#{chr}\t#{origin}\texon\t#{start.to_i+1}\t#{ends[i]}\t0.000000\t#{strand}\t.\tgene_id \"#{id}\"; transcript_id \"#{id}\""
   end
 end
-
