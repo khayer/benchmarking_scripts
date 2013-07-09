@@ -13,11 +13,11 @@ class CompareGenes
 
   # Statistics for strong true positives
   def statistics()
-    @compare_file.index.each_key do |info|
-      @compare_transcripts[info] = @compare_file.transcript(info[0],info[1],info[2])
+    @compare_file.index.each_key do |key|
+      @compare_transcripts[key] = @compare_file.transcript(key)
     end
     @truth_genefile.index.each_key do |key|
-      @truth_transcripts[key] = @truth_genefile.transcript(key[0],key[1],key[2])
+      @truth_transcripts[key] = @truth_genefile.transcript(key)
     end
     logger.info("Statistics for strong true positives started!")
     statistics_strong
@@ -65,7 +65,7 @@ class CompareGenes
           @weak_TP[number_of_spliceforms] += 1
         end
         if @truth_genefile.kind_of?(FeatureQuantifications)
-          number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+          number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
           @strong_TP[number_of_spliceforms] = 0 unless @strong_TP[number_of_spliceforms]
           @strong_TP[number_of_spliceforms] += 1
           @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
@@ -127,7 +127,7 @@ class CompareGenes
             @all_FP[number_of_spliceforms] += 1
           end
           if @truth_genefile.kind_of?(FeatureQuantifications)
-            number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+            number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
             @all_FP[number_of_spliceforms] = 0 unless @all_FP[number_of_spliceforms]
             @all_FP[number_of_spliceforms] += 1
             coverage = Math.log(@truth_genefile.coverage[key]+1)
@@ -156,7 +156,7 @@ class CompareGenes
         @false_negatives[number_of_spliceforms] += 1
       end
       if @truth_genefile.kind_of?(FeatureQuantifications)
-        number_of_spliceforms = @truth_genefile.number_of_spliceforms[[key[0],key[1],key[2]]]
+        number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
         @false_negatives[number_of_spliceforms] = 0 unless @false_negatives[number_of_spliceforms]
         @false_negatives[number_of_spliceforms] += 1
         coverage = Math.log(@truth_genefile.coverage[key]+1)

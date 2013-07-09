@@ -18,14 +18,14 @@ class TestFeatureQuantifications < Test::Unit::TestCase
   def test_transcript()
     feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
     feature_quant_file.create_index
-    transcript = feature_quant_file.transcript("chr1",127573572,"GENE.886")
+    transcript = feature_quant_file.transcript(["chr1",127573572,"GENE.886"])
     assert_equal(transcript,[127573572, 127574769, 127768946, 127770438])
   end
   def test_fpkm_for_transcript()
     feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
     feature_quant_file.create_index
-    transcript = feature_quant_file.transcript("chr1",127573572,"GENE.886")
-    fc = feature_quant_file.frag_count("chr1",127573572,"GENE.886")
+    transcript = feature_quant_file.transcript(["chr1",127573572,"GENE.886"])
+    fc = feature_quant_file.frag_count(["chr1",127573572,"GENE.886"])
     assert_equal(feature_quant_file.fpkm_value(transcript,fc,50),12.33915953886203)
   end
   def test_find_number_of_spliceforms()

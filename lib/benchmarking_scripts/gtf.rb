@@ -23,9 +23,9 @@ class GTF < FileFormats
     k.close
   end
 
-  def transcript(chr,pos,id)
+  def transcript(key)
     transcript = []
-    pos_in_file = @index[[chr,pos,id]]
+    pos_in_file = @index[key]
     k = File.open(@filename)
     k.pos = pos_in_file
     k.each do |line|
@@ -42,12 +42,12 @@ class GTF < FileFormats
 
   def calculate_coverage()
     @index.each_pair do |key,value|
-      @coverage[key] = fpkm_value(key[0],key[1],key[2])
+      @coverage[key] = fpkm_value(key)
     end
   end
 
-  def fpkm_value(chr,pos,id)
-    pos_in_file = @index[[chr,pos,id]]
+  def fpkm_value(key)
+    pos_in_file = @index[key]
     k = File.open(@filename)
     k.pos = pos_in_file
     fpkm_value_out = 0

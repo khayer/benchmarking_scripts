@@ -80,14 +80,14 @@ class FeatureQuantifications < FileFormats
 
   def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
-      cov = fpkm_value(transcript(key[0],key[1],key[2]),value[1],mio_reads)
+      cov = fpkm_value(transcript(key),value[1],mio_reads)
       @coverage[key] = cov #if cov > 0
     end
   end
 
-  def transcript(chr,pos,id)
+  def transcript(key)
     transcript = []
-    value = @index[[chr,pos,id]]
+    value = @index[key]
     pos_in_file = value[0]
     k = File.open(@filename)
     k.pos = pos_in_file
@@ -132,8 +132,8 @@ class FeatureQuantifications < FileFormats
     end
   end
 
-  def frag_count(chr,pos,id)
-    value = @index[[chr,pos,id]]
+  def frag_count(key)
+    value = @index[key]
     frag_counts = value[1]
   end
 

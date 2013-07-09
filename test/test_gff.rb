@@ -18,7 +18,7 @@ class TestGFF < Test::Unit::TestCase
   def test_transcript()
     gff_file = GFF.new("test/data/test.gff")
     gff_file.create_index
-    transcript = gff_file.transcript("chr5",136656234,"scaffold15.path1")
+    transcript = gff_file.transcript(["chr5",136656234,"scaffold15.path1"])
     assert_equal(transcript,[136656234,136657366,136665421,136665489,136667769,136667855,136670166,136670267,136674644,136674818])
   end
 
@@ -40,7 +40,7 @@ class TestGFF < Test::Unit::TestCase
   def test_transcript_short()
     gff_file = GFF.new("test/data/test_short.gff")
     gff_file.create_index
-    transcript = gff_file.transcript("chr7",148033815,"scaffold1.path1")
+    transcript = gff_file.transcript(["chr7",148033815,"scaffold1.path1"])
     assert_equal(transcript,[148033815,148033836,148034245,148034361,148034362,148034710,148035348,148035470])
   end
 

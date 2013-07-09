@@ -19,12 +19,12 @@ class CompareGenesFQGTF < CompareGenes
 
   def statistics_fpkm()
     compare_transcripts = Hash.new
-    @compare_file.index.each_key do |info|
-      compare_transcripts[info] = @compare_file.transcript(info[0],info[1],info[2])[1..-2]
+    @compare_file.index.each_key do |key|
+      compare_transcripts[key] = @compare_file.transcript(key)[1..-2]
     end
     truth_transcripts = Hash.new
     @truth_genefile.index.each_key do |key|
-      truth_transcripts[key] = @truth_genefile.transcript(key[0],key[1],key[2])[1..-2]
+      truth_transcripts[key] = @truth_genefile.transcript(key)[1..-2]
     end
     truth_transcripts.each_pair do |key, value|
       if compare_transcripts.has_value?(value)
@@ -41,7 +41,7 @@ class CompareGenesFQGTF < CompareGenes
       end
     end
     compare_transcripts.each_pair do |key, value|
-      fpkm1 = 0 #@truth_genefile.coverage[key]
+      fpkm1 = 0
       fpkm2 = @compare_file.coverage[key]
       @fpkm_values << [key,fpkm1,fpkm2]
     end
@@ -66,9 +66,6 @@ class CompareGenesFQGTF < CompareGenes
         plot.ytics 'nomirror'
         plot.grid 'xtics'
         plot.grid 'ytics'
-        #max_value = [x.max,y.max].max
-        #plot.xrange "[-0.5:#{max_value}]"
-        #plot.yrange "[-0.01:0.3]"
         plot.data = [
           Gnuplot::DataSet.new( [x, y] ) do |ds|
             ds.with= "points lc 2"

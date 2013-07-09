@@ -24,9 +24,9 @@ class GFF < FileFormats
     k.close
   end
 
-  def transcript(chr,pos,id)
+  def transcript(key)
     transcript = []
-    pos_in_file = @index[[chr,pos,id]]
+    pos_in_file = @index[key]
     k = File.open(@filename)
     k.pos = pos_in_file
     k.each do |line|
