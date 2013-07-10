@@ -10,25 +10,23 @@ class GeneInfo < FileFormats
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     logger.info("Creating index for #{@filename}")
-    k = File.open(@filename)
     previous_position = 0
-    k.each do |line|
+    @filehandle.rewind
+    @filehandle.each do |line|
       line.chomp!
       fields = line.split(" ")
       id = fields[-1]
       @index[[fields[0],fields[2].to_i,id]] = previous_position
-      previous_position = k.pos
+      previous_position = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
-    k.close
   end
 
   def transcript(key)
     transcript = []
     pos_in_file = @index[key]
-    k = File.open(@filename)
-    k.pos = pos_in_file
-    line = k.readline
+    @filehandle.pos = pos_in_file
+    line = @filehandle.readline
     line.chomp!
     fields = line.split(" ")
     fields[5].split(",").each do |num|
@@ -37,7 +35,6 @@ class GeneInfo < FileFormats
     fields[6].split(",").each do |num|
       transcript << num.to_i
     end
-    k.close
     transcript.sort!
   end
 

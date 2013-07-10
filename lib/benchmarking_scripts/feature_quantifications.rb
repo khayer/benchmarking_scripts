@@ -14,14 +14,14 @@ class FeatureQuantifications < FileFormats
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
     logger.info("Creating index for #{@filename}")
-    k = File.open(@filename)
     last_gene = "unknown"
     last_position = 0
-    k.each do |line|
+    @filehandle.rewind
+    @filehandle.each do |line|
       line.chomp!
       if line =~ /GENE/
         last_gene = line.split("\t")[0]
-        last_position = k.pos
+        last_position = @filehandle.pos
       end
       if line =~ /transcript/
         fields = line.split("\t")
@@ -32,12 +32,10 @@ class FeatureQuantifications < FileFormats
       end
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
-    k.close
   end
 
   def find_number_of_spliceforms()
     logger.info("Searching for number of spliceforms for #{@filename}")
-    k = File.open(@filename)
     last_gene = "unknown"
     last_chr = ""
     last_highest_end = 0
@@ -45,11 +43,12 @@ class FeatureQuantifications < FileFormats
     last_position = 0
     current_number_of_spliceforms = 0
     current_transcripts = []
-    k.each do |line|
+    @filehandle.rewind
+    @filehandle.each do |line|
       line.chomp!
       if line =~ /GENE/
         last_gene = line.split("\t")[0]
-        last_position = k.pos
+        last_position = @filehandle.pos
       end
       if line =~ /transcript/
         fields = line.split("\t")
@@ -76,7 +75,6 @@ class FeatureQuantifications < FileFormats
         @number_of_spliceforms[transcript] = current_number_of_spliceforms+1
       end
     end
-    k.close
   end
 
   def calculate_coverage(mio_reads=@m)
@@ -90,31 +88,28 @@ class FeatureQuantifications < FileFormats
     transcript = []
     value = @index[key]
     pos_in_file = value[0]
-    k = File.open(@filename)
-    k.pos = pos_in_file
-    k.each do |line|
+    @filehandle.pos = pos_in_file
+    @filehandle.each do |line|
       break if line =~ /GENE/
       next unless line =~ /exon/
       line.chomp!
       transcript << line.split("-")[0].split(":")[1].to_i-1
       transcript << line.split("-")[1].split(" ")[0].to_i
     end
-    k.close
     transcript.sort!
   end
 
   def calculate_M()
     raise "M was already definied!" unless @m == 0
     logger.info("Calculating M for #{@filename}")
-    k = File.open(@filename)
-    k.each do |line|
+    @filehandle.rewind
+    @filehandle.each do |line|
       line.chomp!
       if line =~ /transcript/
         fields = line.split("\t")
         @m += fields[-1].to_i
       end
     end
-    k.close
     @m = @m.to_f/1000000
     logger.info("M is #{@m}")
   end
