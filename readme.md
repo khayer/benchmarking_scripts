@@ -40,16 +40,20 @@ Please see the files in _/test/data_ for an example.
 
 #### stats ####
 
-    Usage: /Users/kat/.rbenv/versions/1.9.2-p290/bin/stats CMD file1 file2 [OPTIONS]
+    Usage: /Users/hayer/.rbenv/versions/1.9.3-p327/bin/stats CMD file1 file2 [OPTIONS]
 
     CMD
          gff: if file1 is gff format and file2 is geneinfo
          gtf: if file1 is gtf format and file2 is geneinfo
        gfffq: if file1 is gff format and file2 is feature_quant
        gtffq: if file1 is gtf format and file2 is feature_quant
-    
+      gffbed: if file1 is gff format and file2 is bed
+      gtfbed: if file1 is gtf format and file2 is bed
+
     Options
-        -l, --log_file LEVEL             Can also by STDOUT or STDERR
+        -l, --log_file LEVEL             Can also be STDOUT or STDERR
+        -p, --png_file FILE              Default is fpkm.png
+        -f, --fpkm_values FILE           Default is fpkm_values.txt
         -d, --debug                      running in debug mode?
         -h, --help                       help
 

@@ -14,10 +14,12 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  "     gtf: if file1 is gtf format and file2 is geneinfo"
   opt.separator  "   gfffq: if file1 is gff format and file2 is feature_quant"
   opt.separator  "   gtffq: if file1 is gtf format and file2 is feature_quant"
+  opt.separator  "  gffbed: if file1 is gff format and file2 is bed"
+  opt.separator  "  gtfbed: if file1 is gtf format and file2 is bed"
   opt.separator  ""
   opt.separator  "Options"
 
-  opt.on("-l","--log_file LEVEL","Can also by STDOUT or STDERR") do |file|
+  opt.on("-l","--log_file LEVEL","Can also be STDOUT or STDERR") do |file|
     options[:logout] = file if file
   end
 
@@ -71,6 +73,34 @@ when "gtf"
     compare_obj = CompareGenesGTF.new(geneinfo,transcripts)
     compare_obj.compare_file.create_index()
     compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.determine_false_negatives()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gtfbed"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesBedGTF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
+    compare_obj.truth_genefile.determine_false_negatives()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gffbed"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesBedGFF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.determine_false_negatives()
   else
     STDERR.puts "Please specify files"
