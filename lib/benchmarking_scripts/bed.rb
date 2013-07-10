@@ -38,7 +38,6 @@ class Bed < FileFormats
       transcript << current_start + current_length.to_i
     end
     ende = fields[2].to_i
-    puts transcript.join(",")
     raise "Endposition (#{ende}) does not match calculated end position (#{transcript[-1]})" unless ende == transcript[-1]
     transcript.sort!
   end

@@ -92,6 +92,7 @@ class CompareGenes
         end
         compare_key = @compare_transcripts.key(value)
         @compare_transcripts.delete(compare_key)
+        @truth_transcripts.delete(key)
         @truth_genefile.false_negatives.delete(key)
       end
     end
@@ -125,6 +126,7 @@ class CompareGenes
         end
         compare_key = @compare_transcripts.key(value)
         @compare_transcripts.delete(compare_key)
+        @truth_transcripts.delete(key)
         @truth_genefile.false_negatives.delete(key)
       end
     end
@@ -159,6 +161,7 @@ class CompareGenes
             end
           end
           @compare_transcripts.delete(compare_key)
+          @truth_transcripts.delete(key)
           break
         end
       end
