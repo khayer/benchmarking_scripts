@@ -2,19 +2,33 @@
 require "benchmarking_scripts"
 require 'optparse'
 
-options = {:logout => STDERR}
+options = {:logout => STDERR,
+  :png_file => "fpkm.png",
+  :fpkm_values => "fpkm_values.txt"}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
   opt.separator  ""
   opt.separator  "CMD"
-  opt.separator  "     gff: if file1 is gff format"
-  opt.separator  "     gtf: if file1 is gtf format"
+  opt.separator  "     gff: if file1 is gff format and file2 is geneinfo"
+  opt.separator  "     gtf: if file1 is gtf format and file2 is geneinfo"
+  opt.separator  "   gfffq: if file1 is gff format and file2 is feature_quant"
+  opt.separator  "   gtffq: if file1 is gtf format and file2 is feature_quant"
+  opt.separator  "  gffbed: if file1 is gff format and file2 is bed"
+  opt.separator  "  gtfbed: if file1 is gtf format and file2 is bed"
   opt.separator  ""
   opt.separator  "Options"
 
-  opt.on("-l","--log_file LEVEL","Can also by STDOUT or STDERR") do |file|
+  opt.on("-l","--log_file LEVEL","Can also be STDOUT or STDERR") do |file|
     options[:logout] = file if file
+  end
+
+  opt.on("-p","--png_file FILE","Default is fpkm.png") do |file|
+    options[:png_file] = file if file
+  end
+
+  opt.on("-f","--fpkm_values FILE","Default is fpkm_values.txt") do |file|
+    options[:fpkm_values] = file if file
   end
 
   opt.on("-d","--debug","running in debug mode?") do
@@ -35,7 +49,7 @@ else
   options_for_logger["log_level"] = Logger::INFO
 end
 options_for_logger["logout"] = options[:logout]
-STDERR.puts options_for_logger
+#STDERR.puts options_for_logger
 Logging.configure(options_for_logger)
 
 case ARGV[0]
@@ -44,6 +58,9 @@ when "gff"
     transcripts = ARGV[1]
     geneinfo = ARGV[2]
     compare_obj = CompareGenesGFF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.determine_false_negatives()
   else
     STDERR.puts "\nPlease specify files"
     STDERR.puts opt_parser
@@ -54,6 +71,71 @@ when "gtf"
     transcripts = ARGV[1]
     geneinfo = ARGV[2]
     compare_obj = CompareGenesGTF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.determine_false_negatives()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gtfbed"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesBedGTF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
+    compare_obj.truth_genefile.determine_false_negatives()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gffbed"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesBedGFF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
+    compare_obj.truth_genefile.determine_false_negatives()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gtffq"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesFQGTF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.compare_file.calculate_coverage()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.calculate_M()
+    compare_obj.truth_genefile.calculate_coverage()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
+    compare_obj.truth_genefile.determine_false_negatives(5000)
+    compare_obj.statistics_fpkm()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "gfffq"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesFQGFF.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.calculate_M()
+    compare_obj.truth_genefile.calculate_coverage()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
+    compare_obj.truth_genefile.determine_false_negatives()
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
@@ -68,12 +150,17 @@ else
   exit
 end
 
-compare_obj.compare_file.create_index()
-compare_obj.geneinfo.create_index()
 compare_obj.statistics()
-puts (["#splice_forms"] + (0..10).to_a).join("\t")
-puts "---------------------------------------------------------------------------------------------------------"
-puts (["#Strong TP"] + compare_obj.strong_TP).join("\t")
-puts (["# Weak TP"] + compare_obj.weak_TP).join("\t")
-puts (["# All FP"] + compare_obj.all_FP).join("\t")
+compare_obj.print_result
+
+if ARGV[0] == "gtffq"
+  fpkm_file = File.open(options[:fpkm_values],'w')
+  fpkm_file.puts "Chromosome\tPosition\tGeneID\ttruth\tcufflinks"
+  compare_obj.fpkm_values.each do |values|
+    fpkm_file.puts values.join("\t")
+  end
+  fpkm_file.close
+  compare_obj.plot_fpkm(options[:png_file])
+  compare_obj.plot_fn_rate("fn_rate_#{options[:png_file]}")
+end
 

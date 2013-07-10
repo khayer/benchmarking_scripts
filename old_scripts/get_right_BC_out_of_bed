@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+bc_file = ARGV[0]
+bed_file = ARGV[1]
+
+truth_sequences = []
+File.open(bc_file).each do |line|
+  line.chomp!
+  truth_sequences << line
+end
+
+#puts truth_sequences.length()
+#puts truth_sequences.uniq!.length()
+
+
+File.open(bed_file).each do |line|
+  line.chomp!
+  info = line.split("\t")
+  if truth_sequences.include?(info[3])
+    puts line
+    truth_sequences.delete(info[3])
+  end
+end
+
+STDERR.puts truth_sequences.join("::")
