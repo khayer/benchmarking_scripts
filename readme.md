@@ -60,3 +60,5 @@ Please see the files in _/test/data_ for an example.
 ##### Example #####
 
     stats gtffq test/data/test_fq.gtf test/data/test_feature_quant.txt
+
+    stats gffbed test/data/test_bed.gff test/data/test.bed
