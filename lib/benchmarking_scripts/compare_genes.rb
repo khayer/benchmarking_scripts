@@ -25,10 +25,20 @@ class CompareGenes
     statistics_strong
     logger.info("Statistics for weak true positives started!")
     @truth_transcripts.each_pair do |key, value|
-      @truth_transcripts[key] = value[1..-2]
+      inner_trans = value[1..-2]
+      if inner_trans.length >= 2
+        @truth_transcripts[key] = inner_trans
+      else
+        @truth_transcripts.delete(key)
+      end
     end
     @compare_transcripts.each_pair do |key, value|
-      @compare_transcripts[key] = value[1..-2]
+      inner_trans = value[1..-2]
+      if inner_trans.length >= 2
+        @compare_transcripts[key] = inner_trans
+      else
+        @compare_transcripts.delete(key)
+      end
     end
     statistics_weak
     logger.info("Statistics for false positives started!")
