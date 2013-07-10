@@ -17,7 +17,7 @@ class Bed < FileFormats
       line.chomp!
       fields = line.split("\t")
       id = fields[3]
-      @index[[fields[0],fields[6].to_i,id]] = previous_position
+      @index[[fields[0],fields[1].to_i,id]] = previous_position
       previous_position = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
@@ -31,13 +31,14 @@ class Bed < FileFormats
     fields = line.split("\t")
     lengths = fields[10].split(",")
     offset = fields[11].split(",")
-    start = fields[6].to_i
+    start = fields[1].to_i
     lengths.each_with_index do |current_length, i|
       current_start = start + offset[i].to_i
       transcript << current_start
       transcript << current_start + current_length.to_i
     end
-    ende = fields[7].to_i
+    ende = fields[2].to_i
+    puts transcript.join(",")
     raise "Endposition (#{ende}) does not match calculated end position (#{transcript[-1]})" unless ende == transcript[-1]
     transcript.sort!
   end
@@ -53,7 +54,7 @@ class Bed < FileFormats
       line.chomp!
       fields = line.split("\t")
       id = fields[3]
-      key = [fields[0],fields[6].to_i,id]
+      key = [fields[0],fields[1].to_i,id]
       trans = transcript(key)
       logger.debug("#{fields[0]}\t#{last_chr}\t#{trans[0]}\t#{last_highest}")
       if fields[0] != last_chr || trans[0] > last_highest
