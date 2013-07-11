@@ -7,9 +7,11 @@ class CompareGenes
     @false_negatives = Array.new(11,0)
     @compare_transcripts = Hash.new
     @truth_transcripts = Hash.new
+    @false_positves_one_exon = 0
   end
 
-  attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP, :false_negatives
+  attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP,
+    :false_negatives, :false_positves_one_exon
 
   # Statistics for strong true positives
   def statistics()
@@ -38,6 +40,7 @@ class CompareGenes
         @compare_transcripts[key] = inner_trans
       else
         @compare_transcripts.delete(key)
+        @false_positves_one_exon += 1
       end
     end
     statistics_weak
@@ -54,6 +57,7 @@ class CompareGenes
     puts (["# Weak TP"] + @weak_TP).join("\t")
     puts (["# All FP"] + @all_FP).join("\t")
     puts (["# All FN"] + @false_negatives).join("\t")
+    puts "False positives one exon:\t#{@false_positves_one_exon}"
     if @truth_genefile.kind_of?(FeatureQuantifications)
       puts ""
       puts (["log(coverage)"] + (0..10).to_a).join("\t")
