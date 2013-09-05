@@ -30,6 +30,7 @@ class TestCompareFQGTF < Test::Unit::TestCase
   def test_statistics_plot()
     compare_obj = CompareGenesFQGTF.new("test/data/test_feature_quant.txt","test/data/test_fq.gtf")
     compare_obj.compare_file.create_index()
+    assert_equal(compare_obj.compare_file.index[["chr2",146047732,'"GENE.15706"']],1586)
     compare_obj.compare_file.calculate_coverage()
     compare_obj.truth_genefile.create_index()
     compare_obj.truth_genefile.calculate_coverage(237)
@@ -42,16 +43,17 @@ class TestCompareFQGTF < Test::Unit::TestCase
   def test_statistics_plot_with_M()
     compare_obj = CompareGenesFQGTF.new("test/data/test_feature_quant.txt","test/data/test_fq.gtf")
     compare_obj.compare_file.create_index()
+
     compare_obj.compare_file.calculate_coverage()
     compare_obj.truth_genefile.create_index()
     compare_obj.truth_genefile.calculate_M()
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.calculate_coverage()
     compare_obj.statistics_fpkm()
-    compare_obj.fpkm_values.each do |values|
-        puts values.join("\t")
-        break if values[0] == "chr2"
-    end
+    #compare_obj.fpkm_values.each do |values|
+    #    puts values.join("\t")
+    #    break if values[0] == "chr2"
+    #end
     compare_obj.plot_fpkm("test/data/test2.png")
     assert_equal(File.size("test/data/test2.png"),5322)
   end
