@@ -48,6 +48,10 @@ class TestCompareFQGTF < Test::Unit::TestCase
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.calculate_coverage()
     compare_obj.statistics_fpkm()
+    compare_obj.fpkm_values.each do |values|
+        puts values.join("\t")
+        break if values[0] == "chr2"
+    end
     compare_obj.plot_fpkm("test/data/test2.png")
     assert_equal(File.size("test/data/test2.png"),5322)
   end

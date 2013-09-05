@@ -31,6 +31,10 @@ class CompareGenesFQGTF < CompareGenes
         fpkm1 = @truth_genefile.coverage[key]
         compare_key = compare_transcripts.key(value)
         fpkm2 = @compare_file.coverage[compare_key]
+        if key[0] != compare_key[0]
+          puts "YES it happens!"
+          next
+        end
         @fpkm_values << [key,fpkm1,fpkm2]
         truth_transcripts.delete(key)
         compare_transcripts.delete(compare_key)
@@ -52,6 +56,10 @@ class CompareGenesFQGTF < CompareGenes
         fpkm1 = @truth_genefile.coverage[key]
         compare_key = compare_transcripts.key(value)
         fpkm2 = @compare_file.coverage[compare_key]
+        if key[0] != compare_key[0]
+          puts "YES it happens!"
+          next
+        end
         @fpkm_values << [key,fpkm1,fpkm2]
         truth_transcripts.delete(key)
         compare_transcripts.delete(compare_key)
