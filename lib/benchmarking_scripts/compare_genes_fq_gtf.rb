@@ -36,7 +36,7 @@ class CompareGenesFQGTF < CompareGenes
         compare_key = compare_transcripts.key(value)
         fpkm2 = @compare_file.coverage[compare_key]
         if key[0] != compare_key[0]
-          puts "YES it happens! #{key} & #{compare_key}"
+          #puts "YES it happens! #{key} & #{compare_key}"
           next
         end
         @fpkm_values << [key,fpkm1,fpkm2]
@@ -61,7 +61,7 @@ class CompareGenesFQGTF < CompareGenes
         compare_key = compare_transcripts.key(value)
         fpkm2 = @compare_file.coverage[compare_key]
         if key[0] != compare_key[0]
-          puts "YES it happens! #{key} & #{compare_key}"
+          #puts "YES it happens! #{key} & #{compare_key}"
           next
         end
         @fpkm_values << [key,fpkm1,fpkm2]
