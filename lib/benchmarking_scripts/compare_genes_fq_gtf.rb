@@ -20,18 +20,52 @@ class CompareGenesFQGTF < CompareGenes
   def statistics_fpkm()
     compare_transcripts = Hash.new
     @compare_file.index.each_key do |key|
-      compare_transcripts[key] = @compare_file.transcript(key)[1..-2]
+      compare_transcripts[key] = @compare_file.transcript(key)
+      #puts "compare_ :#{compare_transcripts[key].join('||')}" if compare_transcripts[key][0] == "146047732"
     end
     truth_transcripts = Hash.new
     @truth_genefile.index.each_key do |key|
-      truth_transcripts[key] = @truth_genefile.transcript(key)[1..-2]
+      truth_transcripts[key] = @truth_genefile.transcript(key)
+      #puts "truth :#{truth_transcripts[key].join('||')}" if truth_transcripts[key].length == 2
+    end
+    truth_transcripts.each_pair do |key, value|
+      #puts value.join("||") if value.length == 2
+      if compare_transcripts.has_value?(value)
+        #puts "WUHU" if value.length == 2
+        fpkm1 = @truth_genefile.coverage[key]
+        compare_key = compare_transcripts.key(value)
+        fpkm2 = @compare_file.coverage[compare_key]
+        if key[0] != compare_key[0]
+          #puts "YES it happens! #{key} & #{compare_key}"
+          next
+        end
+        @fpkm_values << [key,fpkm1,fpkm2]
+        truth_transcripts.delete(key)
+        compare_transcripts.delete(compare_key)
+        if @truth_genefile.number_of_spliceforms[key] > 1
+          @fpkm_values_else_spliceform << [key,fpkm1,fpkm2]
+        else
+          @fpkm_values_1_spliceform << [key,fpkm1,fpkm2]
+        end
+      end
+    end
+    compare_transcripts.each_key do |key|
+      compare_transcripts[key] = compare_transcripts[key][1..-2]
+    end
+    truth_transcripts.each_key do |key|
+      truth_transcripts[key] = truth_transcripts[key][1..-2]
     end
     truth_transcripts.each_pair do |key, value|
       if compare_transcripts.has_value?(value)
         fpkm1 = @truth_genefile.coverage[key]
         compare_key = compare_transcripts.key(value)
         fpkm2 = @compare_file.coverage[compare_key]
+        if key[0] != compare_key[0]
+          #puts "YES it happens! #{key} & #{compare_key}"
+          next
+        end
         @fpkm_values << [key,fpkm1,fpkm2]
+        truth_transcripts.delete(key)
         compare_transcripts.delete(compare_key)
         if @truth_genefile.number_of_spliceforms[key] > 1
           @fpkm_values_else_spliceform << [key,fpkm1,fpkm2]
