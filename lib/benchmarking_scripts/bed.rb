@@ -4,9 +4,10 @@ class Bed < FileFormats
     super(filename)
     @false_negatives = {}
     @number_of_spliceforms = Hash.new()
+    @coverage = Hash.new()
   end
 
-  attr_accessor :false_negatives, :number_of_spliceforms
+  attr_accessor :false_negatives, :number_of_spliceforms, :coverage
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -79,7 +80,24 @@ class Bed < FileFormats
     logger.debug(@number_of_spliceforms)
   end
 
+  def calculate_coverage()
+    @index.each_pair do |key,value|
+      @coverage[key] = fpkm_value(key)
+    end
+  end
 
+  def fpkm_value(key)
+    pos_in_file = @index[key]
+    @filehandle.pos = pos_in_file
+    fpkm_value_out = 0
+    @filehandle.each do |line|
+      fields = line.split("\t")
+      fpkm_value_out = fields[4]
+      break
+    end
+    #logger.info("fpkm_value is #{fpkm_value_out} for key #{key}")
+    fpkm_value_out.to_f
+  end
 
   def determine_false_negatives()
     @false_negatives = @index.dup
