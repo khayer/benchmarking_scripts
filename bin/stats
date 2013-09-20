@@ -172,7 +172,7 @@ end
 compare_obj.statistics()
 compare_obj.print_result
 
-if ARGV[0] == "gtffq"
+if ARGV[0] == "gtffq" || ARGV[0] == "bedfq"
   fpkm_file = File.open(options[:fpkm_values],'w')
   fpkm_file.puts "Chromosome\tPosition\tGeneID\ttruth\tcufflinks"
   compare_obj.fpkm_values.each do |values|
