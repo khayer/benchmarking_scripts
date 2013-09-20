@@ -16,7 +16,7 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  "   gtffq: if file1 is gtf format and file2 is feature_quant"
   opt.separator  "  gffbed: if file1 is gff format and file2 is bed"
   opt.separator  "  gtfbed: if file1 is gtf format and file2 is bed"
-  opt.separator  "   bedfq: if file1 is gtf format and file2 is feature_quant"
+  opt.separator  "   bedfq: if file1 is bed format and file2 is feature_quant"
   opt.separator  ""
   opt.separator  "Options"
 
