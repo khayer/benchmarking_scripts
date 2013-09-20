@@ -4,7 +4,7 @@ class CompareGenesFQBED < CompareGenes
   def initialize(feature_quant_file,bed_file)
     super()
     @truth_genefile = FeatureQuantifications.new(feature_quant_file)
-    @compare_file = BED.new(bed_file)
+    @compare_file = Bed.new(bed_file)
     @fpkm_values = []
     @fpkm_values_1_spliceform = []
     @fpkm_values_else_spliceform = []
