@@ -6,6 +6,10 @@ $logger = Logger.new(STDERR)
 
 # Splice Junctions:
 # ----------------
+$donor = Array.new(12)
+$donor_rev = Array.new(12)
+$acceptor = Array.new(12)
+$acceptor_rev = Array.new(12)
 # The Canonical:
 #  GTAG
 $donor[0] = "GT";
@@ -184,11 +188,18 @@ def read_gene_info_file(config_file)
   gene_info={}
   File.open(config_file).each do |line|
     line.chomp!
-    chr, strand, start,stop,num_exon, 
-    exon_starts, exon_ends, name = line.split("\t")
-
-    
+    chr, strand, start,stop,num_exon,
+    exon_starts, exon_stops, name = line.split("\t")
+    exon_starts = exon_starts.split(",").map { |e| e.to_i }
+    exon_stops = exon_stops.split(",").map { |e| e.to_i }
     for i in 0...num_exon.to_i-1
+      if exon_starts[i+1]-exon_stops[i] < 20
+        puts name
+        puts exon_starts[i+1]
+        puts exon_stops[i]
+        exit
+      end
+    end
 
   end
 end
@@ -213,8 +224,8 @@ def run(argv)
   setup_logger(options[:log_level])
   $logger.debug(options)
   $logger.debug(argv)
-  $logger.debug("Reading gtf file")
-  gene_info = read_gtf_file(argv[0])
+  $logger.debug("Reading gene_info file")
+  gene_info = read_gene_info_file(argv[0])
   $logger.debug("Processing ...")
   outfile = File.open(options[:out_file], "w")
   gene_info = process(gene_info,argv[1],outfile)
