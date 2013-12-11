@@ -184,8 +184,13 @@ def get_gene_length(info)
   length
 end
 
-def read_gene_info_file(config_file)
+def read_gene_info_file(config_file,fasta)
   gene_info={}
+  fai_index = read_index("#{fasta}.fai")
+  puts fai_index
+  #fasta_file = File.open("/Users/hayer/Downloads/mm9_ucsc.fa").read
+  fasta_file = File.open(fasta).readlines.map {|e| e.strip }.join("")
+  #fasta_file = nina
   File.open(config_file).each do |line|
     line.chomp!
     chr, strand, start,stop,num_exon,
@@ -197,6 +202,8 @@ def read_gene_info_file(config_file)
         puts name
         puts exon_starts[i+1]
         puts exon_stops[i]
+        sequence = fasta_file[fai_index[chr][:start]+exon_stops[i]..fai_index[chr][:stop]+exon_starts[i+1]]
+        puts sequence
         exit
       end
     end
@@ -225,7 +232,7 @@ def run(argv)
   $logger.debug(options)
   $logger.debug(argv)
   $logger.debug("Reading gene_info file")
-  gene_info = read_gene_info_file(argv[0])
+  gene_info = read_gene_info_file(argv[0],argv[1])
   $logger.debug("Processing ...")
   outfile = File.open(options[:out_file], "w")
   gene_info = process(gene_info,argv[1],outfile)
