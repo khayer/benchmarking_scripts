@@ -180,6 +180,20 @@ def get_gene_length(info)
   length
 end
 
+def read_gene_info_file(config_file)
+  gene_info={}
+  File.open(config_file).each do |line|
+    line.chomp!
+    chr, strand, start,stop,num_exon, 
+    exon_starts, exon_ends, name = line.split("\t")
+
+    
+    for i in 0...num_exon.to_i-1
+
+  end
+end
+
+
 def process(gene_info,fasta_file,outfile)
   fai_index = read_index("#{fasta_file}.fai")
   puts "\tlength\tgccontent"
