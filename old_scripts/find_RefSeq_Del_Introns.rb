@@ -204,7 +204,7 @@ def read_gene_info_file(config_file,fasta)
         puts exon_stops[i]
         sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]].delete("\n")[exon_stops[i]...exon_starts[i+1]]
         puts sequence
-        exit
+        STDIN.gets
       end
     end
 
