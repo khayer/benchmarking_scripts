@@ -214,14 +214,12 @@ def read_gene_info_file(config_file,fasta)
             splice_signal_num_donor = $donor.index(sequence[0..1])
             splice_signal_num_acceptor = $acceptor.index(sequence[-2..-1])
           end
-
-
         end
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
           splice_signal_num = splice_signal_num_acceptor
         end
         puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
-        STDIN.gets
+        #STDIN.gets
       end
     end
 
@@ -250,9 +248,9 @@ def run(argv)
   $logger.debug(argv)
   $logger.debug("Reading gene_info file")
   gene_info = read_gene_info_file(argv[0],argv[1])
-  $logger.debug("Processing ...")
-  outfile = File.open(options[:out_file], "w")
-  gene_info = process(gene_info,argv[1],outfile)
+  #$logger.debug("Processing ...")
+  #outfile = File.open(options[:out_file], "w")
+  #gene_info = process(gene_info,argv[1],outfile)
 
 end
 
