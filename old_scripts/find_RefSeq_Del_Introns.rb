@@ -202,7 +202,7 @@ def read_gene_info_file(config_file,fasta)
         puts name
         puts exon_starts[i+1]
         puts exon_stops[i]
-        sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]][exon_stops[i]..exon_starts[i]]
+        sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]][exon_stops[i]..exon_starts[i+1]]
         puts sequence
         exit
       end
