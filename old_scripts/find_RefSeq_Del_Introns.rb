@@ -189,7 +189,7 @@ def read_gene_info_file(config_file,fasta)
   fai_index = read_index("#{fasta}.fai")
   puts fai_index
   #fasta_file = File.open("/Users/hayer/Downloads/mm9_ucsc.fa").read
-  fasta_file = File.open(fasta).readlines.map {|e| e.strip }.join("")
+  fasta_file = File.open(fasta).read  #lines.map {|e| e.strip }.join("")
   #fasta_file = nina
   File.open(config_file).each do |line|
     line.chomp!
@@ -202,7 +202,7 @@ def read_gene_info_file(config_file,fasta)
         puts name
         puts exon_starts[i+1]
         puts exon_stops[i]
-        sequence = fasta_file[fai_index[chr][:start]+exon_stops[i]..fai_index[chr][:stop]+exon_starts[i+1]]
+        sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]][exon_stops[i]..exon_starts[i]]
         puts sequence
         exit
       end
