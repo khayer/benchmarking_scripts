@@ -208,11 +208,23 @@ def read_gene_info_file(config_file,fasta)
         if sequence.length >= 4
           if strand == "-"
             #reverse case
-            splice_signal_num_donor = $donor_rev.index(sequence[-2..-1].capitalize )
-            splice_signal_num_acceptor = $acceptor_rev.index(sequence[0..1].capitalize )
+            for i in 0...donor_rev.length
+              if sequence[-2..-1].capitalize == $donor_rev[i] &&
+                sequence[0..1].capitalize == $acceptor_rev[i]
+                splice_signal_num_donor = i
+                splice_signal_num_acceptor = i
+              end
+            end
           else
-            splice_signal_num_donor = $donor.index(sequence[0..1].capitalize )
-            splice_signal_num_acceptor = $acceptor.index(sequence[-2..-1].capitalize )
+            for i in 0...donor_rev.length
+              if sequence[0..1].capitalize == $donor[i] &&
+                sequence[-2..-1].capitalize == $acceptor[i]
+                splice_signal_num_donor = i
+                splice_signal_num_acceptor = i
+              end
+            end
+            #splice_signal_num_donor = $donor.index(sequence[0..1].capitalize)
+            #splice_signal_num_acceptor = $acceptor.index(sequence[-2..-1].capitalize)
           end
         end
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
