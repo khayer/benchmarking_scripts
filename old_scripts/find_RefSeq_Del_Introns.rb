@@ -236,7 +236,6 @@ def read_gene_info_file(config_file,fasta)
           splice_signal_num = splice_signal_num_acceptor
         end
         $logger.debug(splice_signal_num)
-        exit
         if splice_signal_num == -1
           puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
         end
