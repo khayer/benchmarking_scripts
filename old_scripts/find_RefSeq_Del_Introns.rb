@@ -198,14 +198,14 @@ def read_gene_info_file(config_file,fasta)
     exon_starts = exon_starts.split(",").map { |e| e.to_i }
     exon_stops = exon_stops.split(",").map { |e| e.to_i }
     for i in 0...num_exon.to_i-1
-      if exon_starts[i+1]-exon_stops[i] < 20
+      if exon_starts[i+1]-exon_stops[i] < 2000
         #puts name
         #puts exon_starts[i+1]
         #puts exon_stops[i]
         sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]].delete("\n")[exon_stops[i]...exon_starts[i+1]]
         #puts sequence
         splice_signal_num = -1
-        #if sequence.length >= 4
+        if sequence.length >= 4
           if strand == "-"
             #reverse case
             splice_signal_num_donor = $donor_rev.index(sequence[-2..-1])
@@ -214,7 +214,7 @@ def read_gene_info_file(config_file,fasta)
             splice_signal_num_donor = $donor.index(sequence[0..1])
             splice_signal_num_acceptor = $acceptor.index(sequence[-2..-1])
           end
-        #end
+        end
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
           splice_signal_num = splice_signal_num_acceptor
         end
