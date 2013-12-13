@@ -205,6 +205,8 @@ def read_gene_info_file(config_file,fasta)
         #puts exon_stops[i]
         sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]].delete("\n")[exon_stops[i]...exon_starts[i+1]]
         #puts sequence
+        splice_signal_num_donor = nil
+        splice_signal_num_acceptor = nil
         splice_signal_num = -1
         if sequence.length >= 4
           if strand == "-"
