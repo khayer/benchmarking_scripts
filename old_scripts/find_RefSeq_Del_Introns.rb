@@ -212,22 +212,16 @@ def read_gene_info_file(config_file,fasta)
           if strand == "-"
             #reverse case
             for i in 0...$donor_rev.length
-              puts "STRAND -"
-              puts sequence[-2..-1].capitalize
-              puts sequence[0..1].capitalize
-              if sequence[-2..-1].capitalize == $donor_rev[i] &&
-                sequence[0..1].capitalize == $acceptor_rev[i]
+              if sequence[-2..-1].upcase == $donor_rev[i] &&
+                sequence[0..1].upcase == $acceptor_rev[i]
                 splice_signal_num_donor = i
                 splice_signal_num_acceptor = i
               end
             end
           else
             for i in 0...$donor_rev.length
-              puts "STRAND +"
-              puts sequence[-2..-1].capitalize
-              puts sequence[0..1].capitalize
-              if sequence[0..1].capitalize == $donor[i] &&
-                sequence[-2..-1].capitalize == $acceptor[i]
+              if sequence[0..1].upcase == $donor[i] &&
+                sequence[-2..-1].upcase == $acceptor[i]
                 splice_signal_num_donor = i
                 splice_signal_num_acceptor = i
               end
