@@ -198,7 +198,7 @@ def read_gene_info_file(config_file,fasta)
     exon_starts = exon_starts.split(",").map { |e| e.to_i }
     exon_stops = exon_stops.split(",").map { |e| e.to_i }
     for i in 0...num_exon.to_i-1
-      if exon_starts[i+1]-exon_stops[i] < 2000
+      #if exon_starts[i+1]-exon_stops[i] < 2000
         #puts name
         #puts exon_starts[i+1]
         #puts exon_stops[i]
@@ -218,9 +218,11 @@ def read_gene_info_file(config_file,fasta)
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
           splice_signal_num = splice_signal_num_acceptor
         end
-        puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
+        if splice_signal_num == -1
+          puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
+        end
         #STDIN.gets
-      end
+      #end
     end
 
   end
