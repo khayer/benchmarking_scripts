@@ -212,6 +212,9 @@ def read_gene_info_file(config_file,fasta)
           if strand == "-"
             #reverse case
             for i in 0...$donor_rev.length
+              puts "STRAND -"
+              puts sequence[-2..-1].capitalize
+              puts sequence[0..1].capitalize
               if sequence[-2..-1].capitalize == $donor_rev[i] &&
                 sequence[0..1].capitalize == $acceptor_rev[i]
                 splice_signal_num_donor = i
@@ -220,6 +223,9 @@ def read_gene_info_file(config_file,fasta)
             end
           else
             for i in 0...$donor_rev.length
+              puts "STRAND +"
+              puts sequence[-2..-1].capitalize
+              puts sequence[0..1].capitalize
               if sequence[0..1].capitalize == $donor[i] &&
                 sequence[-2..-1].capitalize == $acceptor[i]
                 splice_signal_num_donor = i
@@ -230,9 +236,13 @@ def read_gene_info_file(config_file,fasta)
             #splice_signal_num_acceptor = $acceptor.index(sequence[-2..-1].capitalize)
           end
         end
+
+
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
           splice_signal_num = splice_signal_num_acceptor
         end
+        $logger.debug(splice_signal_num)
+        exit
         if splice_signal_num == -1
           puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
         end
