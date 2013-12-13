@@ -187,7 +187,7 @@ end
 def read_gene_info_file(config_file,fasta)
   gene_info={}
   fai_index = read_index("#{fasta}.fai")
-  puts fai_index
+  $logger.debug("FAI index: #{fai_index}")
   #fasta_file = File.open("/Users/hayer/Downloads/mm9_ucsc.fa").read
   fasta_file = File.open(fasta).read  #lines.map {|e| e.strip }.join("")
   #fasta_file = nina
