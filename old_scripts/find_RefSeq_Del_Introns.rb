@@ -212,7 +212,7 @@ def read_gene_info_file(config_file,fasta)
         splice_signal_num_donor = nil
         splice_signal_num_acceptor = nil
         splice_signal_num = -1
-        if sequence.length >= 4
+        if sequence && sequence.length >= 4
           if strand == "-"
             #reverse case
             for i in 0...$donor_rev.length
