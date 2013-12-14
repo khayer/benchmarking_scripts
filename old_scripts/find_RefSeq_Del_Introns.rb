@@ -190,6 +190,10 @@ def read_gene_info_file(config_file,fasta)
   $logger.debug("FAI index: #{fai_index}")
   #fasta_file = File.open("/Users/hayer/Downloads/mm9_ucsc.fa").read
   fasta_file = File.open(fasta).read  #lines.map {|e| e.strip }.join("")
+  seq_hash = {}
+  fai_index.each_pair do |name, index|
+    seq_hash[name] = fasta_file[fai_index[chr][index[:start]]..fai_index[chr][index[:stop]]].delete("\n")
+  end
   #fasta_file = nina
   File.open(config_file).each do |line|
     line.chomp!
@@ -203,7 +207,7 @@ def read_gene_info_file(config_file,fasta)
         #puts name
         #puts exon_starts[i+1]
         #puts exon_stops[i]
-        sequence = fasta_file[fai_index[chr][:start]..fai_index[chr][:stop]].delete("\n")[exon_stops[i]...exon_starts[i+1]]
+        sequence = seq_hash[chr][exon_stops[i]...exon_starts[i+1]]
         #puts sequence
         splice_signal_num_donor = nil
         splice_signal_num_acceptor = nil
