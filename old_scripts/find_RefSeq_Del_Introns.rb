@@ -192,7 +192,7 @@ def read_gene_info_file(config_file,fasta)
   fasta_file = File.open(fasta).read  #lines.map {|e| e.strip }.join("")
   seq_hash = {}
   fai_index.each_pair do |name, index|
-    seq_hash[name] = fasta_file[fai_index[chr][index[:start]]..fai_index[chr][index[:stop]]].delete("\n")
+    seq_hash[name] = fasta_file[index[:start]..index[:stop]].delete("\n")
   end
   #fasta_file = nina
   File.open(config_file).each do |line|
