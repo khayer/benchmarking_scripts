@@ -259,8 +259,8 @@ def read_gene_info_file(config_file,fasta)
           introns_novel[[chr,exon_stops[i],exon_starts[i+1],strand]] ||= 0
           introns_novel[[chr,exon_stops[i],exon_starts[i+1],strand]] += 1
         end
-        all_introns[[chr,exon_stops[i],exon_starts[i+1]]] ||= 0
-        all_introns[[chr,exon_stops[i],exon_starts[i+1]]] += 1
+        all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] ||= 0
+        all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] += 1
         #STDIN.gets
       #end
     end
@@ -269,7 +269,7 @@ def read_gene_info_file(config_file,fasta)
   puts "Special: #{introns_novel.keys.length}"
   k = File.open("introns.txt", "w")
   all_introns.keys.each do |el|
-    k.puts el.join("\t")
+    k.puts "#{el[0]}:#{el[1]}-#{el[2]}\t#{el[3]}"
   end
   k.close()
 end
