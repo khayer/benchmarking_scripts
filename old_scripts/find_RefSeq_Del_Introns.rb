@@ -12,63 +12,75 @@ $acceptor = Array.new(12)
 $acceptor_rev = Array.new(12)
 # The Canonical:
 #  GTAG
+#rev: CT AC
 $donor[0] = "GT";
 $donor_rev[0] = "AC";
 $acceptor[0] = "AG";
 $acceptor_rev[0] = "CT";
 # Other Characterized:
 #  GCAG
+# rev: CT GC
 $donor[1] = "GC";
 $donor_rev[1] = "GC";
 $acceptor[1] = "AG";
 $acceptor_rev[1] = "CT";
 #  GCTG
+# rev: CA GC
 $donor[2] = "GC";
 $donor_rev[2] = "GC";
 $acceptor[2] = "TG";
 $acceptor_rev[2] = "CA";
 #  GCAA
+# rev: TT GC
 $donor[3] = "GC";
 $donor_rev[3] = "GC";
 $acceptor[3] = "AA";
 $acceptor_rev[3] = "TT";
 #  GCCG
+# rev: CG GC
 $donor[4] = "GC";
 $donor_rev[4] = "GC";
 $acceptor[4] = "CG";
 $acceptor_rev[4] = "CG";
 #  GTTG
+# rev: CA AC
 $donor[5] = "GT";
 $donor_rev[5] = "AC";
 $acceptor[5] = "TG";
 $acceptor_rev[5] = "CA";
 #  GTAA
+# rev: TT AC
 $donor[6] = "GT";
 $donor_rev[6] = "AC";
 $acceptor[6] = "AA";
 $acceptor_rev[6] = "TT";
 # U12-dependent:
 #  ATAC
+#rev: GT AT
 $donor[7] = "AT";
 $donor_rev[7] = "AT";
 $acceptor[7] = "AC";
 $acceptor_rev[7] = "GT";
 #  ATAA
+#rev: TT AT
 $donor[8] = "AT";
 $donor_rev[8] = "AT";
 $acceptor[8] = "AA";
 $acceptor_rev[8] = "TT";
 #  ATAG
+# rev: CT AT
 $donor[9] = "AT";
 $donor_rev[9] = "AT";
 $acceptor[9] = "AG";
 $acceptor_rev[9] = "CT";
 #  ATAT
+# rev: ATAT
 $donor[10] = "AT";
 $donor_rev[10] = "AT";
 $acceptor[10] = "AT";
 $acceptor_rev[10] = "AT";
 #  TAGA
+# rev: TC TA
 $donor[11] = "TA";
 $donor_rev[11] = "TA";
 $acceptor[11] = "GA";
@@ -244,20 +256,23 @@ def read_gene_info_file(config_file,fasta)
         $logger.debug(splice_signal_num)
         if splice_signal_num == -1
           puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
-          introns_novel[[chr,exon_stops[i],exon_starts[i+1]]] ||= 0
-          introns_novel[[chr,exon_stops[i],exon_starts[i+1]]] += 0
+          introns_novel[[chr,exon_stops[i],exon_starts[i+1],strand]] ||= 0
+          introns_novel[[chr,exon_stops[i],exon_starts[i+1],strand]] += 1
         end
         all_introns[[chr,exon_stops[i],exon_starts[i+1]]] ||= 0
         all_introns[[chr,exon_stops[i],exon_starts[i+1]]] += 1
         #STDIN.gets
       #end
     end
-
   end
   puts "All introns: #{all_introns.keys.length}"
   puts "Special: #{introns_novel.keys.length}"
+  File.open("introns.txt", "w").each do |line|
+    all_introns.keys.each do |el|
+      line.puts el.join("\t")
+    end
+  end
 end
-
 
 def process(gene_info,fasta_file,outfile)
   fai_index = read_index("#{fasta_file}.fai")
