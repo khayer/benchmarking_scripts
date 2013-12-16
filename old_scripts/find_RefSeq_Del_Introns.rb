@@ -215,19 +215,19 @@ def read_gene_info_file(config_file,fasta)
         if sequence && sequence.length >= 4
           if strand == "-"
             #reverse case
-            for i in 0...$donor_rev.length
-              if sequence[-2..-1].upcase == $donor_rev[i] &&
-                sequence[0..1].upcase == $acceptor_rev[i]
-                splice_signal_num_donor = i
-                splice_signal_num_acceptor = i
+            for k in 0...$donor_rev.length
+              if sequence[-2..-1].upcase == $donor_rev[k] &&
+                sequence[0..1].upcase == $acceptor_rev[k]
+                splice_signal_num_donor = k
+                splice_signal_num_acceptor = k
               end
             end
           else
-            for i in 0...$donor_rev.length
-              if sequence[0..1].upcase == $donor[i] &&
-                sequence[-2..-1].upcase == $acceptor[i]
-                splice_signal_num_donor = i
-                splice_signal_num_acceptor = i
+            for k in 0...$donor_rev.length
+              if sequence[0..1].upcase == $donor[k] &&
+                sequence[-2..-1].upcase == $acceptor[k]
+                splice_signal_num_donor = k
+                splice_signal_num_acceptor = k
               end
             end
             #splice_signal_num_donor = $donor.index(sequence[0..1].capitalize)
