@@ -267,11 +267,11 @@ def read_gene_info_file(config_file,fasta)
   end
   puts "All introns: #{all_introns.keys.length}"
   puts "Special: #{introns_novel.keys.length}"
-  File.open("introns.txt", "w").each do |line|
-    all_introns.keys.each do |el|
-      line.puts el.join("\t")
-    end
+  k = File.open("introns.txt", "w")
+  all_introns.keys.each do |el|
+    k.puts el.join("\t")
   end
+  k.close()
 end
 
 def process(gene_info,fasta_file,outfile)
