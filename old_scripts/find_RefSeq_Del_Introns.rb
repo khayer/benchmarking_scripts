@@ -255,14 +255,17 @@ def read_gene_info_file(config_file,fasta)
 
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
           splice_signal_num = splice_signal_num_acceptor
-          signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] ||= 0
-          signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] += 1
+
         end
         #$logger.debug(splice_signal_num)
         if splice_signal_num == -1
           puts "#{name}\t#{exon_stops[i]}\t#{exon_starts[i+1]}\t#{sequence}\t#{strand}\t#{splice_signal_num}"
           introns_novel[[chr,exon_stops[i],exon_starts[i+1]]] ||= 0
           introns_novel[[chr,exon_stops[i],exon_starts[i+1]]] += 1
+        end
+        if all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] && (splice_signal_num >= 0)
+          signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] ||= 0
+          signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] += 1
         end
         all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] ||= 0
         all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] += 1
