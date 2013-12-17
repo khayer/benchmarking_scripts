@@ -198,6 +198,7 @@ def get_gene_length(info)
 end
 
 def read_gene_info_file(config_file,fasta)
+  signal_hash={}
   gene_info={}
   all_introns={}
   introns_novel={}
@@ -235,6 +236,7 @@ def read_gene_info_file(config_file,fasta)
                 sequence[0..1].upcase == $acceptor_rev[k]
                 splice_signal_num_donor = k
                 splice_signal_num_acceptor = k
+
               end
             end
           else
@@ -253,6 +255,8 @@ def read_gene_info_file(config_file,fasta)
 
         if splice_signal_num_donor == splice_signal_num_acceptor && splice_signal_num_acceptor
           splice_signal_num = splice_signal_num_acceptor
+          signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] ||= 0
+          signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] += 1
         end
         #$logger.debug(splice_signal_num)
         if splice_signal_num == -1
@@ -268,6 +272,7 @@ def read_gene_info_file(config_file,fasta)
   end
   puts "All introns: #{all_introns.keys.length}"
   puts "Special: #{introns_novel.keys.length}"
+  puts signal_hash
   k = File.open("introns.txt", "w")
   all_introns.keys.each do |el|
     k.puts "#{el[0]}:#{el[1]+1}-#{el[2]}\t#{el[3]}"
