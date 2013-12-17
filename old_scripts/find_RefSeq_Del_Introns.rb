@@ -214,7 +214,7 @@ def read_gene_info_file(config_file,fasta)
     chr, strand, start,stop,num_exon,
     exon_starts, exon_stops, name = line.split("\t")
     exon_starts = exon_starts.split(",").map { |e| e.to_i }
-    exon_stops = exon_stops.split(",").map { |e| (e.to_i) +1 }
+    exon_stops = exon_stops.split(",").map { |e| e.to_i }
     $logger.debug(name)
     for i in 0...num_exon.to_i-1
       #if exon_starts[i+1]-exon_stops[i] < 2000
@@ -269,7 +269,7 @@ def read_gene_info_file(config_file,fasta)
   puts "Special: #{introns_novel.keys.length}"
   k = File.open("introns.txt", "w")
   all_introns.keys.each do |el|
-    k.puts "#{el[0]}:#{el[1]}-#{el[2]}\t#{el[3]}"
+    k.puts "#{el[0]}:#{el[1]+1}-#{el[2]}\t#{el[3]}"
   end
   k.close()
 end
