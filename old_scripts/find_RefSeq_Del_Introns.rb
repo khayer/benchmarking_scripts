@@ -263,7 +263,7 @@ def read_gene_info_file(config_file,fasta)
           introns_novel[[chr,exon_stops[i],exon_starts[i+1]]] ||= 0
           introns_novel[[chr,exon_stops[i],exon_starts[i+1]]] += 1
         end
-        if all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] && (splice_signal_num >= 0)
+        if !all_introns[[chr,exon_stops[i],exon_starts[i+1],strand]] && (splice_signal_num >= 0)
           signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] ||= 0
           signal_hash["#{$donor[splice_signal_num]},#{$acceptor[splice_signal_num]}"] += 1
         end
