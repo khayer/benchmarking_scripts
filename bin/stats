@@ -61,7 +61,7 @@ options_for_logger["logout"] = options[:logout]
 Logging.configure(options_for_logger)
 
 if options[:exclude]
-  File.open(options[:exclude]) do |line|
+  File.open(options[:exclude]).each do |line|
     line.chomp!
     $EXCLUDE_GENES << line
   end
