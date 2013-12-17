@@ -2,9 +2,12 @@
 require "benchmarking_scripts"
 require 'optparse'
 
+$EXCLUDE_GENES = []
+
 options = {:logout => STDERR,
   :png_file => "fpkm.png",
-  :fpkm_values => "fpkm_values.txt"}
+  :fpkm_values => "fpkm_values.txt",
+  :exclude => ""}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -32,6 +35,10 @@ opt_parser = OptionParser.new do |opt|
     options[:fpkm_values] = file if file
   end
 
+  opt.on("-e","--exclude FILE","File with gene names to ignore.") do |file|
+    options[:exclude] = file
+  end
+
   opt.on("-d","--debug","running in debug mode?") do
     options[:debug] = true
   end
@@ -52,6 +59,13 @@ end
 options_for_logger["logout"] = options[:logout]
 #STDERR.puts options_for_logger
 Logging.configure(options_for_logger)
+
+if options[:exclude]
+  File.open(options[:exclude]) do |line|
+    line.chomp!
+    $EXCLUDE_GENES << line
+  end
+end
 
 case ARGV[0]
 when "gff"
