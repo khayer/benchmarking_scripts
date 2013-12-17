@@ -213,7 +213,7 @@ def read_gene_info_file(config_file,fasta)
     line.chomp!
     chr, strand, start,stop,num_exon,
     exon_starts, exon_stops, name = line.split("\t")
-    exon_starts = exon_starts.split(",").map { |e| e.to_i +1 }
+    exon_starts = exon_starts.split(",").map { |e| (e.to_i) +1 }
     exon_stops = exon_stops.split(",").map { |e| e.to_i }
     $logger.debug(name)
     for i in 0...num_exon.to_i-1
