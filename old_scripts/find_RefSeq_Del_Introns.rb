@@ -132,40 +132,6 @@ def setup_options(args)
   options
 end
 
-def add_gene(gene_info,name,chromosome,starts,stops)
-  gene_info[name] = {:chr => chromosome, :starts => starts,
-    :stops => stops, :gc_content => 0.5}
-end
-
-
-def read_gtf_file(gtf_file)
-  gene_info = {}
-  last_name = nil
-  starts = []
-  stops = []
-  chromosome = nil
-  identifier = ""
-  File.open(gtf_file).each do |line|
-    line.chomp!
-    next unless line =~ /exon/
-    chr,d,d,start,stop,d,d,d,identifier = line.split("\t")
-    identifier = /\w*-\w*/.match(identifier)[0]
-    last_name = identifier unless last_name
-    if last_name != identifier
-      add_gene(gene_info,last_name,chromosome,starts,stops)
-      starts = []
-      stops = []
-      last_name = identifier
-    end
-    starts << start.to_i
-    stops << stop.to_i
-    chromosome = chr
-
-  end
-  add_gene(gene_info,identifier,chromosome,starts,stops)
-  gene_info
-end
-
 def read_index(fai_file)
   fai_index = {}
   File.open(fai_file).each do |line|
@@ -177,24 +143,6 @@ def read_index(fai_file)
     fai_index[chr] = {:start => start, :stop => start+length+bias-1}
   end
   fai_index
-end
-
-def calculate_gc_content(fai_index,fasta_file,info)
-  sequence = ""
-
-  info[:starts].each_with_index do |start,i|
-    sequence += fasta_file[fai_index[info[:chr]][:start]..fai_index[info[:chr]][:stop]][start..info[:stops][i]]
-  end
-  gc_count = sequence.count("GgCc")
-  gc_content = gc_count/sequence.length.to_f
-end
-
-def get_gene_length(info)
-  length = 0
-  info[:starts].each_with_index do |start,i|
-    length += info[:stops][i] - start
-  end
-  length
 end
 
 def read_gene_info_file(config_file,fasta)
@@ -236,7 +184,6 @@ def read_gene_info_file(config_file,fasta)
                 sequence[0..1].upcase == $acceptor_rev[k]
                 splice_signal_num_donor = k
                 splice_signal_num_acceptor = k
-
               end
             end
           else
