@@ -63,7 +63,7 @@ Logging.configure(options_for_logger)
 if options[:exclude]
   File.open(options[:exclude]).each do |line|
     line.chomp!
-    $EXCLUDE_GENES << line
+    $EXCLUDE_GENES << /#{line}\D/
   end
 end
 

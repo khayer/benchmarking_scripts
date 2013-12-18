@@ -18,7 +18,7 @@ class Bed < FileFormats
       line.chomp!
       fields = line.split("\t")
       id = fields[3]
-      @index[[fields[0],fields[1].to_i,id]] = previous_position unless $EXCLUDE_GENES.include?(id)
+      @index[[fields[0],fields[1].to_i,id]] = previous_position if ($EXCLUDE_GENES.select {|e| id.match(e)}).empty?
       previous_position = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
