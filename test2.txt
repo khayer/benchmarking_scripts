@@ -5,3 +5,4 @@
 # All FP	549	549	0	0	0	0	0	0	0	0	0
 # All FN	9968	968	2000	3000	4000	0	0	0	0	0	0
 False positives one exon:	28
+(Total number of reported transcripts:	896)

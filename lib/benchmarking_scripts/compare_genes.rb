@@ -6,6 +6,7 @@ class CompareGenes
     @all_FP = Array.new(11,0)
     @false_negatives = Array.new(11,0)
     @compare_transcripts = Hash.new
+    @compare_transcripts_old = Hash.new
     @truth_transcripts = Hash.new
     @false_positves_one_exon = 0
   end
@@ -13,16 +14,31 @@ class CompareGenes
   attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP,
     :false_negatives, :false_positves_one_exon
 
+  def in_truth_transcripts(key)
+    in_truth_transcript = false
+    match_keys = @truth_transcripts.keys.keep_if {|e| e[0] == key[0] && e[1] <= key[1]}
+    match_keys.each do |match_key|
+      trans = @truth_transcripts[match_key]
+      in_truth_transcript = true if key[1] >= trans[0] && key[1] <= trans[-1]
+      break if in_truth_transcript
+    end
+    in_truth_transcript
+  end
+
   # Statistics for strong true positives
   def statistics()
-    @compare_file.index.each_key do |key|
-      @compare_transcripts[key] = @compare_file.transcript(key)
-    end
-    logger.debug("Compare Transcripts: #{@compare_transcripts}")
     @truth_genefile.index.each_key do |key|
       @truth_transcripts[key] = @truth_genefile.transcript(key)
     end
     logger.debug("Truth Transcripts: #{@truth_transcripts}")
+    @compare_file.index.each_key do |key|
+      @compare_transcripts_old[key] = @compare_file.transcript(key)
+      if in_truth_transcripts(key)
+        @compare_transcripts[key] = @compare_file.transcript(key)
+        logger.debug(key)
+      end
+    end
+    logger.debug("Compare Transcripts: #{@compare_transcripts}")
     logger.info("Statistics for strong true positives started!")
     statistics_strong
     logger.info("Statistics for weak true positives started!")
@@ -58,6 +74,7 @@ class CompareGenes
     puts (["# All FP"] + @all_FP).join("\t")
     puts (["# All FN"] + @false_negatives).join("\t")
     puts "False positives one exon:\t#{@false_positves_one_exon}"
+    puts "(Total number of reported transcripts:\t#{@compare_transcripts_old.length})"
     if @truth_genefile.kind_of?(FeatureQuantifications)
       puts ""
       puts (["log(coverage)"] + (0..10).to_a).join("\t")
