@@ -60,7 +60,7 @@ options_for_logger["logout"] = options[:logout]
 #STDERR.puts options_for_logger
 Logging.configure(options_for_logger)
 
-if options[:exclude]
+if options[:exclude] != ""
   File.open(options[:exclude]).each do |line|
     line.chomp!
     $EXCLUDE_GENES << /#{line}\D/
