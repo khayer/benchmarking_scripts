@@ -49,7 +49,11 @@ class GTF < FileFormats
     fpkm_value_out = 0
     @filehandle.each do |line|
       fields = line.split("\t")
-      fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
+      begin
+        fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
+      rescue
+        fpkm_value_out = fields[-1].split("RPKM ")[1].split(";")[0].delete("\"")
+      end
       break
     end
     #logger.info("fpkm_value is #{fpkm_value_out} for key #{key}")
