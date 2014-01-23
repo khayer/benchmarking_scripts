@@ -94,7 +94,9 @@ class CompareGenes
         @weak_TP[0] += 1
         if @truth_genefile.kind_of?(GeneInfo)
           number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+          @strong_TP[number_of_spliceforms] = 0 unless @strong_TP[number_of_spliceforms]
           @strong_TP[number_of_spliceforms] += 1
+          @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
           @weak_TP[number_of_spliceforms] += 1
         end
         if @truth_genefile.kind_of?(Bed)
@@ -135,6 +137,7 @@ class CompareGenes
         @weak_TP[0] += 1
         if @truth_genefile.kind_of?(GeneInfo)
           number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+          @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
           @weak_TP[number_of_spliceforms] += 1
         end
         if @truth_genefile.kind_of?(Bed)
@@ -171,6 +174,7 @@ class CompareGenes
           @all_FP[0] += 1
           if @truth_genefile.kind_of?(GeneInfo)
             number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+            @all_FP[number_of_spliceforms] = 0 unless @all_FP[number_of_spliceforms]
             @all_FP[number_of_spliceforms] += 1
           end
           if @truth_genefile.kind_of?(Bed)
@@ -206,6 +210,7 @@ class CompareGenes
       @false_negatives[0] += 1
       if @truth_genefile.kind_of?(GeneInfo)
         number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+        @false_negatives[number_of_spliceforms] = 0 unless @false_negatives[number_of_spliceforms]
         @false_negatives[number_of_spliceforms] += 1
       end
       if @truth_genefile.kind_of?(Bed)
