@@ -188,6 +188,7 @@ when "htseqfq"
     compare_obj.statistics_counts()
     compare_obj.print_counts("counts.txt")
     compare_obj.plot_counts("counts.png")
+    exit
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
