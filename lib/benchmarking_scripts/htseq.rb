@@ -13,13 +13,11 @@ class HTSeq < FileFormats
     last_position = 0
     id = "unknown"
     fields = []
-    @filehandle.rewind
     @filehandle.each do |line|
       line.chomp!
       next unless line =~ /^GENE/
       name,num = line.split("\t")
       @index[name] = num
-      end
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
   end
@@ -33,5 +31,4 @@ class HTSeq < FileFormats
       @counts[key] = value
     end
   end
-
 end
