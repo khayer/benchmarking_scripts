@@ -186,7 +186,7 @@ when "htseqfq"
     compare_obj.truth_genefile.create_index()
     compare_obj.truth_genefile.calculate_coverage(10)
     compare_obj.statistics_counts()
-    compare_obj.plot_counts(counts.png)
+    compare_obj.plot_counts("counts.png")
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
