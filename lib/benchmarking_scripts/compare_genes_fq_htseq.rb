@@ -34,7 +34,7 @@ class CompareGenesFQHTSeq < CompareGenes
         plot.grid 'ytics'
         x = []
         y = []
-        @counts.each do |pair|
+        @counts.each_value do |pair|
           x << pair[0].to_i
           y << pair[1].to_i
         end
