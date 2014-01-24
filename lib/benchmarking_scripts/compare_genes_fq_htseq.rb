@@ -13,13 +13,14 @@ class CompareGenesFQHTSeq < CompareGenes
   def statistics_counts()
     @truth_genefile.index.each_key do |key|
       name = key[-1]
-      logger.debug("Name: #{name} and counts: #{compare_file.counts[name]}, #{truth_genefile.counts[key]} ")
-      @counts[name] = [compare_file.counts[name],truth_genefile.counts[key]]
+      #logger.debug("Name: #{name} and counts: #{compare_file.counts[name]}, #{truth_genefile.counts[key]} ")
+      @counts[name] = [truth_genefile.counts[key],compare_file.counts[name]]
     end
   end
 
   def print_counts(filename)
     out_file = File.open(filename,'w')
+    out_file.puts("Gene\tTruth\tHTSeq")
     @counts.each_pair do |key,value|
       out_file.puts "#{key}\t#{value[0]}\t#{value[1]}"
     end
