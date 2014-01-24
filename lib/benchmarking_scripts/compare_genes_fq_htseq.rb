@@ -18,6 +18,14 @@ class CompareGenesFQHTSeq < CompareGenes
     end
   end
 
+  def print_counts(filename)
+    out_file = File.open(filename,'w')
+    @counts.each_pair do |key,value|
+      out_file.puts "#{key}\t#{value[0]}\t#{value[1]}"
+    end
+    out_file.close
+  end
+
   def plot_counts(filename)
     max_value = 0
     Gnuplot.open do |gp|
@@ -25,7 +33,7 @@ class CompareGenesFQHTSeq < CompareGenes
 
         plot.output filename
         plot.terminal 'png'
-        plot.title "FPKM"
+        plot.title "Counts"
         plot.ylabel "htseq"
         plot.xlabel "truth"
         plot.xtics 'nomirror'
