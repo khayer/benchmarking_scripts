@@ -13,6 +13,7 @@ class CompareGenesFQHTSeq < CompareGenes
   def statistics_counts()
     @truth_genefile.index.each_key do |key|
       name = key[-1]
+      logger.debug("Name: #{name} and counts: #{compare_file.counts[name]}, #{truth_genefile.counts[key]} ")
       @counts[name] = [compare_file.counts[name],truth_genefile.counts[key]]
     end
   end
@@ -34,8 +35,8 @@ class CompareGenesFQHTSeq < CompareGenes
         x = []
         y = []
         @counts.each do |pair|
-          x << pair[0]
-          y << pair[1]
+          x << pair[0].to_i
+          y << pair[1].to_i
         end
         max_value = [x.max,y.max].max
         plot.xrange "[0:#{max_value}]"
