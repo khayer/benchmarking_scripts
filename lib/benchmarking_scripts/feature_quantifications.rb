@@ -7,9 +7,10 @@ class FeatureQuantifications < FileFormats
     @m = 0
     @false_negatives = Hash.new()
     @number_of_false_negatives = nil
+    @counts = Hash.new()
   end
 
-  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives
+  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives, :counts
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -80,6 +81,7 @@ class FeatureQuantifications < FileFormats
   def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
       cov = fpkm_value(transcript(key),value[1],mio_reads)
+      @counts[key] = value[1]
       @coverage[key] = cov #if cov > 0
     end
   end
