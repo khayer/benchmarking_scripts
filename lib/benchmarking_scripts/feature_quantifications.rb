@@ -81,7 +81,7 @@ class FeatureQuantifications < FileFormats
   def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
       cov = fpkm_value(transcript(key),value[1],mio_reads)
-      @counts[key] = value[1]
+      @counts[key] = value[1].to_i
       @coverage[key] = cov #if cov > 0
     end
   end
