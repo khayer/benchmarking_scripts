@@ -5,7 +5,7 @@ class CompareGenesFQHTSeq < CompareGenes
     super()
     @truth_genefile = FeatureQuantifications.new(feature_quant_file)
     @compare_file = HTSeq.new(htseq_file)
-    @counts = []
+    @counts = Hash.new
   end
 
   attr_accessor :counts
