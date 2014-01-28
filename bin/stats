@@ -20,6 +20,7 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  "  gffbed: if file1 is gff format and file2 is bed"
   opt.separator  "  gtfbed: if file1 is gtf format and file2 is bed"
   opt.separator  "   bedfq: if file1 is bed format and file2 is feature_quant"
+  opt.separator  "  bedbed: if file1 is bed format and file2 is bed"
   opt.separator  " htseqfq: if file1 is htseq format and file2 is feature_quant"
   opt.separator  ""
   opt.separator  "Options"
@@ -171,6 +172,20 @@ when "bedfq"
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.determine_false_negatives(5000)
     compare_obj.statistics_fpkm()
+  else
+    STDERR.puts "Please specify files"
+    STDERR.puts opt_parser
+    exit
+  end
+when "bedbed"
+  if ARGV.length >= 3
+    transcripts = ARGV[1]
+    geneinfo = ARGV[2]
+    compare_obj = CompareGenesBedBed.new(geneinfo,transcripts)
+    compare_obj.compare_file.create_index()
+    compare_obj.truth_genefile.create_index()
+    compare_obj.truth_genefile.find_number_of_spliceforms()
+    compare_obj.truth_genefile.determine_false_negatives()
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
