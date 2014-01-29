@@ -47,9 +47,9 @@ class CompareGenesFQHTSeq < CompareGenes
           x << pair[0].to_i
           y << pair[1].to_i
         end
-        max_value = [x.max,y.max].max
-        plot.xrange "[0:#{max_value}]"
-        plot.yrange "[0:#{max_value}]"
+        #max_value = [x.max,y.max].max
+        #plot.xrange "[0:#{max_value}]"
+        #plot.yrange "[0:#{max_value}]"
 
         plot.data = [
           Gnuplot::DataSet.new( [x, y] ) do |ds|
