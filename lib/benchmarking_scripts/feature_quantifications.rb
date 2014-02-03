@@ -41,7 +41,6 @@ class FeatureQuantifications < FileFormats
     last_chr = ""
     last_highest_end = 0
     last_highest = 0
-    last_position = 0
     current_number_of_spliceforms = 0
     current_transcripts = []
     @filehandle.rewind
@@ -49,7 +48,6 @@ class FeatureQuantifications < FileFormats
       line.chomp!
       if line =~ /GENE/
         last_gene = line.split("\t")[0]
-        last_position = @filehandle.pos
       end
       if line =~ /transcript/
         fields = line.split("\t")
@@ -69,8 +67,8 @@ class FeatureQuantifications < FileFormats
           current_transcripts = [dummy]
           current_number_of_spliceforms = 0
           last_chr = chr
-          last_highest = last_highest_end
         end
+        last_highest = last_highest_end
       end
       current_transcripts.each do |transcript|
         @number_of_spliceforms[transcript] = current_number_of_spliceforms+1
