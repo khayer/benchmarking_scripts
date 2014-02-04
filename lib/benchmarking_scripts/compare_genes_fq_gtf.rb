@@ -73,7 +73,7 @@ class CompareGenesFQGTF < CompareGenes
           @fpkm_values_1_spliceform << [key,fpkm1,fpkm2]
         end
       else
-        logger.info("It happens for #{key}")
+        #logger.info("It happens for #{key}")
         fpkm1 = @truth_genefile.coverage[key]
         fpkm2 = 0
         @fpkm_values << [key,fpkm1,fpkm2]
