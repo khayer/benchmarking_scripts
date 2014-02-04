@@ -79,6 +79,11 @@ class CompareGenesFQGTF < CompareGenes
       fpkm2 = @compare_file.coverage[key]
       @fpkm_values << [key,fpkm1,fpkm2]
     end
+    truth_transcripts.each_pair do |key, value|
+      fpkm1 = @truth_genefile.coverage[key]
+      fpkm2 = 0
+      @fpkm_values << [key,fpkm1,fpkm2]
+    end
   end
 
 
