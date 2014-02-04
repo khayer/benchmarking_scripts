@@ -72,16 +72,21 @@ class CompareGenesFQGTF < CompareGenes
         else
           @fpkm_values_1_spliceform << [key,fpkm1,fpkm2]
         end
+      else
+        logger.info("It happens for #{key}")
+        fpkm1 = @truth_genefile.coverage[key]
+        fpkm2 = 0
+        @fpkm_values << [key,fpkm1,fpkm2]
+        if @truth_genefile.number_of_spliceforms[key] > 1
+          @fpkm_values_else_spliceform << [key,fpkm1,fpkm2]
+        else
+          @fpkm_values_1_spliceform << [key,fpkm1,fpkm2]
+        end
       end
     end
     compare_transcripts.each_pair do |key, value|
       fpkm1 = 0
       fpkm2 = @compare_file.coverage[key]
-      @fpkm_values << [key,fpkm1,fpkm2]
-    end
-    truth_transcripts.each_pair do |key, value|
-      fpkm1 = @truth_genefile.coverage[key]
-      fpkm2 = 0
       @fpkm_values << [key,fpkm1,fpkm2]
     end
   end
