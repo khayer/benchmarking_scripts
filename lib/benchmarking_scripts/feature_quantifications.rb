@@ -68,6 +68,7 @@ class FeatureQuantifications < FileFormats
           current_number_of_spliceforms = 0
           #if chr != last_chr
           last_highest = pos_chr_end
+          last_highest_end = pos_chr_end
           last_chr = chr
         else
           last_highest = last_highest_end
