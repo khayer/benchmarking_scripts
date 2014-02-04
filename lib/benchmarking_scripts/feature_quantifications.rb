@@ -66,10 +66,12 @@ class FeatureQuantifications < FileFormats
           end
           current_transcripts = [dummy]
           current_number_of_spliceforms = 0
-          last_chr = chr
+          #if chr != last_chr
           last_highest = pos_chr_end
+          last_chr = chr
+        else
+          last_highest = last_highest_end
         end
-        last_highest = last_highest_end
       end
       current_transcripts.each do |transcript|
         @number_of_spliceforms[transcript] = current_number_of_spliceforms+1
