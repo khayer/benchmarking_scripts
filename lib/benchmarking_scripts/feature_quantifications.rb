@@ -67,6 +67,7 @@ class FeatureQuantifications < FileFormats
           current_transcripts = [dummy]
           current_number_of_spliceforms = 0
           last_chr = chr
+          last_highest = 0
         end
         last_highest = last_highest_end
       end
