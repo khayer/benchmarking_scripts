@@ -27,7 +27,7 @@ def setup_logger(loglevel)
 end
 
 def setup_options(args)
-  options = {:out_file =>  "STDOUT",:file_format => 'gtf'}
+  options = {:out_file =>  "STDOUT",:file_format => 'gtf', :log_level => "info"}
 
   opt_parser = OptionParser.new do |opts|
     opts.banner = "Usage: find_TP_cap3 [options] contigs truth_sequences_fa geneinfo.gtf"
@@ -175,6 +175,7 @@ end
 
 def get_truth_sequences(truth_sequences_file)
   key = ""
+  $logger.info("Adding sequences...")
   File.open(truth_sequences_file).each do |line|
     line.chomp!
     if line =~ /^>/
@@ -183,6 +184,7 @@ def get_truth_sequences(truth_sequences_file)
       $truth_sequences[key] = line.upcase
     end
   end
+  $logger.info("Done: Adding sequences...")
 end
 
 def cut_truth_sequences(genes_anno)
