@@ -195,7 +195,7 @@ def cut_truth_sequences(genes_anno)
     seq_length = pre_cut_seq.length
     start = transcript[1]-transcript[0]-50
     stop = seq_length-(transcript[-1]-transcript[-2]-50)
-    $truth_sequences[key[-1]] = pre_cut_seq[start..stop]
+    $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
     $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
   end
   $logger.info("Done with cutting!")
@@ -205,7 +205,7 @@ def search(current_sequence)
   gene_name = ""
   complement = get_reverse_complement(current_sequence)
   $truth_sequences.each_pair do |key,value|
-    reg_val = Regexp.new value
+    reg_val = value
     gene_name = key if complement.match(reg_val)
     gene_name = key if current_sequence.match(reg_val)
     if gene_name != ""
