@@ -186,7 +186,7 @@ def get_truth_sequences(truth_sequences_file)
 end
 
 def cut_truth_sequences(genes_anno)
-  genes_anno.each_pair do |key, value|
+  genes_anno.index.each_key do |key|
     transcript = genes_anno.transcript(key)
     pre_cut_seq = $truth_sequences[key[-1]]
     seq_length = pre_cut_seq.length
