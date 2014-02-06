@@ -270,7 +270,8 @@ def run(argv)
       $logger.info("#{( number_of_all_genes.to_f / number_of_transcripts.to_f )*100} %")
       $logger.info("false_positive: #{false_positive}; True_positives: #{weak_true_positive_by_spliceform[0]}")
       gene_name = search(current_sequence)
-      if gene_name.empty?
+      $logger.info("GENE_NAME #{gene_name}")
+      if gene_name == ""
         false_positive += 1
       else
         weak_true_positive_by_spliceform[$number_of_spliceforms[gene_name]] = 0 unless weak_true_positive_by_spliceform[$number_of_spliceforms[gene_name]]
