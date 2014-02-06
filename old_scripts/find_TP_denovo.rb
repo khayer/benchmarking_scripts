@@ -170,6 +170,7 @@ def read_anno(geneinfo,file_format)
     raise "File format #{file_format} not supported yet!"
   end
   genes_anno.find_number_of_spliceforms()
+  genes_anno
 end
 
 def get_truth_sequences(truth_sequences_file)
