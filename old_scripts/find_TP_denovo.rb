@@ -207,11 +207,15 @@ end
 def search(current_sequence)
   gene_name = ""
   complement = get_reverse_complement(current_sequence)
+  $logger.debug("New round for #{current_sequence[0..100]}...")
   $truth_sequences.each_pair do |key,value|
     reg_val = value
     $logger.debug("value #{value}")
+
     gene_name = key if complement =~ reg_val
     gene_name = key if current_sequence =~ reg_val
+    $logger.info("GENE_NAME #{gene_name}")
+    STDIN.gets
     if gene_name != ""
       $truth_sequences.delete(key)
       break
