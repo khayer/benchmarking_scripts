@@ -193,13 +193,15 @@ def cut_truth_sequences(genes_anno)
   $logger.info("Cutting sequences ...")
   genes_anno.index.each_key do |key|
     transcript = genes_anno.transcript(key)
-    pre_cut_seq = $truth_sequences[key[-1]]
-    seq_length = pre_cut_seq.length
-    start = transcript[1]-transcript[0]-25
-    stop = seq_length-(transcript[-1]-transcript[-2]-25)
-    $logger.debug("key[-1] #{key[-1]}")
-    $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
-    $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
+    if transcript.length > 2
+      pre_cut_seq = $truth_sequences[key[-1]]
+      seq_length = pre_cut_seq.length
+      start = transcript[1]-transcript[0]-25
+      stop = seq_length-(transcript[-1]-transcript[-2]-25)
+      $logger.debug("key[-1] #{key[-1]}")
+      $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
+      $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
+    end
   end
   $logger.info("Done with cutting!")
 end
@@ -210,12 +212,12 @@ def search(current_sequence)
   $logger.debug("New round for #{current_sequence[0..100]}...")
   $truth_sequences.each_pair do |key,value|
     reg_val = value
-    $logger.debug("value #{value}")
+    #$logger.debug("value #{value}")
 
     gene_name = key if complement =~ reg_val
     gene_name = key if current_sequence =~ reg_val
-    $logger.info("GENE_NAME #{gene_name}")
-    STDIN.gets
+    #$logger.info("GENE_NAME #{gene_name}")
+    #STDIN.gets
     if gene_name != ""
       $truth_sequences.delete(key)
       break
