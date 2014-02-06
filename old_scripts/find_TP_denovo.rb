@@ -206,8 +206,8 @@ def search(current_sequence)
   complement = get_reverse_complement(current_sequence)
   $truth_sequences.each_pair do |key,value|
     reg_val = value
-    gene_name = key if complement.match(reg_val)
-    gene_name = key if current_sequence.match(reg_val)
+    gene_name = key if complement =~ reg_val
+    gene_name = key if current_sequence =~ reg_val
     if gene_name != ""
       $truth_sequences.delete(key)
       break
