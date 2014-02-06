@@ -11,6 +11,7 @@ require "benchmarking_scripts"
 $logger = Logger.new(STDERR)
 $truth_sequences = Hash.new()
 $number_of_spliceforms = Hash.new()
+$EXCLUDE_GENES = []
 
 # Initialize logger
 def setup_logger(loglevel)
