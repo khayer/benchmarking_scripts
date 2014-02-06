@@ -186,6 +186,7 @@ def get_truth_sequences(truth_sequences_file)
 end
 
 def cut_truth_sequences(genes_anno)
+  $logger.info("Cutting sequences ...")
   genes_anno.index.each_key do |key|
     transcript = genes_anno.transcript(key)
     pre_cut_seq = $truth_sequences[key[-1]]
@@ -195,6 +196,7 @@ def cut_truth_sequences(genes_anno)
     $truth_sequences[key[-1]] = pre_cut_seq[start..stop]
     $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
   end
+  $logger.info("Done with cutting!")
 end
 
 def search(current_sequence)
@@ -259,7 +261,7 @@ def run(argv)
     line.chomp!
     if line =~ /^>/ && current_sequence != "" #&& $expressed_isoforms.include?(current_comp_name)
       number_of_all_genes += 1
-      $logger.info "#{( number_of_all_genes.to_f / number_of_transcripts.to_f )*100} %"
+      $logger.info("#{( number_of_all_genes.to_f / number_of_transcripts.to_f )*100} %")
       gene_name = search(current_sequence)
       if gene_name.empty?
         false_positive += 1
