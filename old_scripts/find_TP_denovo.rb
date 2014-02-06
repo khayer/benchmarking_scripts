@@ -169,6 +169,7 @@ def read_anno(geneinfo,file_format)
   else
     raise "File format #{file_format} not supported yet!"
   end
+  genes_anno.create_index()
   genes_anno.find_number_of_spliceforms()
   genes_anno
 end
