@@ -195,8 +195,8 @@ def cut_truth_sequences(genes_anno)
     transcript = genes_anno.transcript(key)
     pre_cut_seq = $truth_sequences[key[-1]]
     seq_length = pre_cut_seq.length
-    start = transcript[1]-transcript[0]-50
-    stop = seq_length-(transcript[-1]-transcript[-2]-50)
+    start = transcript[1]-transcript[0]-25
+    stop = seq_length-(transcript[-1]-transcript[-2]-25)
     $logger.debug("key[-1] #{key[-1]}")
     $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
     $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
@@ -255,7 +255,7 @@ def run(argv)
   false_positive = 0
   weak_true_positive = 0
   strong_true_positive = 0
-  weak_true_positive_by_spliceform = []
+  weak_true_positive_by_spliceform = [0]
   #strong_true_positives_by_spliceforms = []
   #weak_false_positives_by_spliceforms = []
 
@@ -268,12 +268,14 @@ def run(argv)
     if line =~ /^>/ && current_sequence != "" #&& $expressed_isoforms.include?(current_comp_name)
       number_of_all_genes += 1
       $logger.info("#{( number_of_all_genes.to_f / number_of_transcripts.to_f )*100} %")
+      $logger.info("false_positive: #{false_positive}; True_positives: #{weak_true_positive_by_spliceform[0]}")
       gene_name = search(current_sequence)
       if gene_name.empty?
         false_positive += 1
       else
         weak_true_positive_by_spliceform[$number_of_spliceforms[gene_name]] = 0 unless weak_true_positive_by_spliceform[$number_of_spliceforms[gene_name]]
         weak_true_positive_by_spliceform[$number_of_spliceforms[gene_name]] += 1
+        weak_true_positive_by_spliceform[0] += 1
       end
     end
     #  #STDERR.puts "#{( number_of_all_genes.to_f / 66 ).to_f} %"
@@ -315,14 +317,19 @@ def run(argv)
     #  end
     #end
 
-
-
     if line =~ /^>/
       current_comp_name = line.split(" ")[0].split(">")[1]
       current_sequence = ""
       next
     end
     current_sequence += line.upcase
+  end
+
+  false_negatives[0] = 0
+  $truth_sequences.each_pair do | key,value|
+    false_negatives[0] += 1
+    false_negatives[$number_of_spliceforms[key]] = 0 unless false_negatives[$number_of_spliceforms[key]]
+    false_negatives[$number_of_spliceforms[key]] += 1
   end
 
   #result = search_in(current_sequence)
@@ -362,10 +369,10 @@ def run(argv)
 
   puts "=========="
   puts "By number of splice forms:"
-  puts "\t\t#{(1..10).to_a.join("\t")}"
+  puts "\t#{(0..10).to_a.join("\t")}"
   #puts "StroTP\t#{strong_true_positives_by_spliceforms.join("\t")}"
   puts "WeakTP\t#{weak_true_positive_by_spliceform.join("\t")}"
-  #puts "allFP\t#{weak_false_positives_by_spliceforms.join("\t")}"
+  puts "allFN\t#{false_negatives.join("\t")}"
   puts "=========="
   #puts "Strongly True Positives\t#{strong_true_positive}"
   #puts "Weak True Positives\t#{weak_true_positive}"
