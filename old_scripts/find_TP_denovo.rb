@@ -213,7 +213,7 @@ def cut_truth_sequences(genes_anno)
   $logger.info("Done with cutting!")
 end
 
-def search(current_sequence)
+def search(current_sequence, genes_anno)
   gene_name = ""
   complement = get_reverse_complement(current_sequence)
   $logger.debug("New round for #{current_sequence[0..100]}...")
