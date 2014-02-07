@@ -172,6 +172,10 @@ def read_anno(geneinfo,file_format)
   end
   genes_anno.create_index()
   genes_anno.find_number_of_spliceforms()
+  genes_anno.calculate_M()
+  #compare_obj.truth_genefile.calculate_coverage(50)
+  genes_anno.calculate_coverage()
+  genes_anno.determine_false_negatives(5000)
   genes_anno
 end
 
@@ -223,6 +227,7 @@ def search(current_sequence)
     #STDIN.gets
     if gene_name != ""
       $truth_sequences.delete(key)
+      genes_anno.false_negatives.delete(key)
       break
     end
   end
@@ -246,6 +251,7 @@ def run(argv)
   genes_anno = read_anno(geneinfo,options[:file_format])
   get_truth_sequences(truth_sequences_file)
   cut_truth_sequences(genes_anno)
+
 
 
   #$expressed_isoforms = []
@@ -278,7 +284,7 @@ def run(argv)
       number_of_all_genes += 1
       $logger.info("#{( number_of_all_genes.to_f / number_of_transcripts.to_f )*100} %")
       $logger.info("false_positive: #{false_positive}; True_positives: #{weak_true_positive_by_spliceform[0]}")
-      gene_name = search(current_sequence)
+      gene_name = search(current_sequence,genes_anno)
       $logger.info("GENE_NAME #{gene_name}")
       if gene_name == ""
         false_positive += 1
@@ -335,8 +341,8 @@ def run(argv)
     current_sequence += line.upcase
   end
 
-  false_negatives[0] = 0
-  $truth_sequences.each_pair do | key,value|
+  false_negatives = [0]
+  genes_anno.false_negatives.each_pair do |key,value|
     false_negatives[0] += 1
     false_negatives[$number_of_spliceforms[key]] = 0 unless false_negatives[$number_of_spliceforms[key]]
     false_negatives[$number_of_spliceforms[key]] += 1
