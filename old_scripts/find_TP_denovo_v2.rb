@@ -126,7 +126,7 @@ def cut_truth_sequences(genes_anno)
       seq_length = pre_cut_seq.length
       start = transcript[1]-transcript[0]-25
       stop = seq_length-(transcript[-1]-transcript[-2]-25)
-      $logger.debug("key[-1] #{key[-1]}")
+      #$logger.debug("key[-1] #{key[-1]}")
       $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
       $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
     else
@@ -197,8 +197,8 @@ def run(argv)
   query_hand = File.open(query, "w") 
   
   $truth_sequences.each_pair do |key,value|
-    puts ">#{key}"
-    puts value
+    query.puts ">#{key}"
+    query.puts value
   end
   query_hand.close()
   result_runblastn = run_blastn(query,index_home,title)
