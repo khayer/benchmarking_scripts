@@ -197,8 +197,8 @@ def run(argv)
   query_hand = File.open(query, "w") 
   
   $truth_sequences.each_pair do |key,value|
-    query.puts ">#{key}"
-    query.puts value
+    query_hand.puts ">#{key}"
+    query_hand.puts value
   end
   query_hand.close()
   result_runblastn = run_blastn(query,index_home,title)
