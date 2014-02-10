@@ -158,6 +158,13 @@ def search(current_sequence, genes_anno)
   gene_name
 end
 
+def run_makeblastdb(sequences, index_home, title)
+  k = `makeblastdb -dbtype nucl -in #{sequences} -input_type fasta -title #{title} -out #{index_home}/#{title}`
+end
+
+def run_blastn(query,index_home,title)
+  k = `./blastn -db #{index_home}/#{title} -query #{query} -evalue 0.0000001 -outfmt 6 > test_12345`
+end
 #### MAIN
 
 def run(argv)
@@ -172,9 +179,26 @@ def run(argv)
   truth_sequences_file = ARGV[1]
   geneinfo = ARGV[2]
 
+
+  sequences = contig_file
+  index_home = "~/index"
+  title = contig_file.split(".")[0]
+  result_makeblastdb = run_makeblastdb(sequences, index_home, title)
+
   genes_anno = read_anno(geneinfo,options[:file_format])
   get_truth_sequences(truth_sequences_file)
   cut_truth_sequences(genes_anno)
+  query = "query.fasta"
+  query_hand = File.open(query, "w") 
+  
+  $truth_sequences.each_pair do |key,value|
+    puts ">#{key}"
+    puts value
+  end
+  query_hand.close()
+  result_runblastn = run_blastn(query,index_home,title)
+  exit
+  
 
 
   number_of_transcripts = `grep -c "^>" #{contig_file}`
