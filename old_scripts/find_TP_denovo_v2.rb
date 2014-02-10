@@ -159,11 +159,15 @@ def search(current_sequence, genes_anno)
 end
 
 def run_makeblastdb(sequences, index_home, title)
-  k = `makeblastdb -dbtype nucl -in #{sequences} -input_type fasta -title #{title} -out #{index_home}/#{title}`
+  cmd = "makeblastdb -dbtype nucl -in #{sequences} -input_type fasta -title #{title} -out #{index_home}/#{title}"
+  $logger.debug("Cmd: #{cmd}")
+  k = `#{cmd}`
 end
 
 def run_blastn(query,index_home,title)
-  k = `blastn -db #{index_home}/#{title} -query #{query} -evalue 0.0000001 -outfmt 6 > test_12345`
+  cmd = "blastn -db #{index_home}/#{title} -query #{query} -evalue 0.0000001 -outfmt 6 > test_12345"
+  $logger.debug("Cmd: #{cmd}")
+  k = `#{cmd}`
 end
 #### MAIN
 
