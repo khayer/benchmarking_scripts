@@ -163,7 +163,7 @@ def run_makeblastdb(sequences, index_home, title)
 end
 
 def run_blastn(query,index_home,title)
-  k = `./blastn -db #{index_home}/#{title} -query #{query} -evalue 0.0000001 -outfmt 6 > test_12345`
+  k = `blastn -db #{index_home}/#{title} -query #{query} -evalue 0.0000001 -outfmt 6 > test_12345`
 end
 #### MAIN
 
@@ -184,6 +184,7 @@ def run(argv)
   index_home = "~/index"
   title = contig_file.split(".")[0]
   result_makeblastdb = run_makeblastdb(sequences, index_home, title)
+  $logger.info("Result: #{result_makeblastdb}")
 
   genes_anno = read_anno(geneinfo,options[:file_format])
   get_truth_sequences(truth_sequences_file)
