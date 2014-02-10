@@ -127,10 +127,10 @@ def cut_truth_sequences(genes_anno)
       start = transcript[1]-transcript[0]-25
       stop = seq_length-(transcript[-1]-transcript[-2]-25)
       #$logger.debug("key[-1] #{key[-1]}")
-      $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
+      $truth_sequences[key[-1]] = pre_cut_seq[start..stop]
       $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
     else
-      $truth_sequences[key[-1]] = Regexp.new $truth_sequences[key[-1]]
+      $truth_sequences[key[-1]] = $truth_sequences[key[-1]]
       $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
     end
   end
