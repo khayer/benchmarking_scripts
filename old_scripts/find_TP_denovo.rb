@@ -344,8 +344,8 @@ def run(argv)
   false_negatives = [0]
   genes_anno.false_negatives.each_pair do |key,value|
     false_negatives[0] += 1
-    false_negatives[$number_of_spliceforms[key]] = 0 unless false_negatives[$number_of_spliceforms[key]]
-    false_negatives[$number_of_spliceforms[key]] += 1
+    false_negatives[$number_of_spliceforms[key[-1]]] = 0 unless false_negatives[$number_of_spliceforms[key[-1]]]
+    false_negatives[$number_of_spliceforms[key[-1]]] += 1
   end
 
   #result = search_in(current_sequence)
