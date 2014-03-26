@@ -126,11 +126,11 @@ def cut_truth_sequences(genes_anno)
       seq_length = pre_cut_seq.length
       start = transcript[1]-transcript[0]-25
       stop = seq_length-(transcript[-1]-transcript[-2]-25)
-      $logger.debug("key[-1] #{key[-1]}")
-      $truth_sequences[key[-1]] = Regexp.new pre_cut_seq[start..stop]
+      #$logger.debug("key[-1] #{key[-1]}")
+      $truth_sequences[key[-1]] = pre_cut_seq[start..stop]
       $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
     else
-      $truth_sequences[key[-1]] = Regexp.new $truth_sequences[key[-1]]
+      $truth_sequences[key[-1]] = $truth_sequences[key[-1]]
       $number_of_spliceforms[key[-1]] = genes_anno.number_of_spliceforms[key]
     end
   end
@@ -158,6 +158,17 @@ def search(current_sequence, genes_anno)
   gene_name
 end
 
+def run_makeblastdb(sequences, index_home, title)
+  cmd = "makeblastdb -dbtype nucl -in #{sequences} -input_type fasta -title #{title} -out #{index_home}/#{title}"
+  $logger.debug("Cmd: #{cmd}")
+  k = `#{cmd}`
+end
+
+def run_blastn(query,index_home,title)
+  cmd = "blastn -db #{index_home}/#{title} -query #{query} -evalue 0.0000001 -outfmt 6 > test_12345"
+  $logger.debug("Cmd: #{cmd}")
+  k = `#{cmd}`
+end
 #### MAIN
 
 def run(argv)
@@ -172,9 +183,27 @@ def run(argv)
   truth_sequences_file = ARGV[1]
   geneinfo = ARGV[2]
 
+
+  sequences = contig_file
+  index_home = "~/index"
+  title = contig_file.split(".")[0]
+  result_makeblastdb = run_makeblastdb(sequences, index_home, title)
+  $logger.info("Result: #{result_makeblastdb}")
+
   genes_anno = read_anno(geneinfo,options[:file_format])
   get_truth_sequences(truth_sequences_file)
   cut_truth_sequences(genes_anno)
+  query = "query.fasta"
+  query_hand = File.open(query, "w") 
+  
+  $truth_sequences.each_pair do |key,value|
+    query_hand.puts ">#{key}"
+    query_hand.puts value
+  end
+  query_hand.close()
+  result_runblastn = run_blastn(query,index_home,title)
+  exit
+  
 
 
   number_of_transcripts = `grep -c "^>" #{contig_file}`
@@ -219,8 +248,8 @@ def run(argv)
   false_negatives = [0]
   genes_anno.false_negatives.each_pair do |key,value|
     false_negatives[0] += 1
-    false_negatives[$number_of_spliceforms[key[-1]]] = 0 unless false_negatives[$number_of_spliceforms[key[-1]]]
-    false_negatives[$number_of_spliceforms[key[-1]]] += 1
+    false_negatives[$number_of_spliceforms[key]] = 0 unless false_negatives[$number_of_spliceforms[key]]
+    false_negatives[$number_of_spliceforms[key]] += 1
   end
 
   puts "=========="
