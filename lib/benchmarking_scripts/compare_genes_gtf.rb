@@ -4,6 +4,10 @@ class CompareGenesGTF < CompareGenes
     super()
     @truth_genefile = GeneInfo.new(geneinfo_file)
     @compare_file = GTF.new(gtf_file)
+    @false_positives_per_gene = []
+    @already_counted = []
   end
+
+
 
 end

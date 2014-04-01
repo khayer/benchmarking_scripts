@@ -62,7 +62,10 @@ class CompareGenes
     statistics_weak
     logger.info("Statistics for false positives started!")
     statistics_fp
+    logger.info("#{@already_counted}")
+    logger.info("#{@false_positives_per_gene}")
     logger.info("Statistics for false negatives started!")
+
     statistics_fn
   end
 
@@ -84,9 +87,29 @@ class CompareGenes
       puts (["# All FP"] + @all_FP_by_cov).join("\t")
       puts (["# All FN"] + @false_negatives_by_cov).join("\t")
     end
+    if @truth_genefile.kind_of?(GeneInfo)
+      puts ""
+      puts (["false_positives_per_gene"] + @false_positives_per_gene).join("\t")
+    end
   end
 
   private
+  def in_region(already_counted, value2)
+    within = false
+    return within if already_counted.empty?
+    already_counted.each do |el|
+      next unless el[0] == value2[0]
+      if el[1] <= value2[1] && el[2] >= value2[1]
+        within = true 
+      end
+      if el[1] >= value2[1] && el[1] <= value2[-1]
+        within = true
+      end
+    end
+    within 
+  end
+
+
   def statistics_strong()
     @truth_transcripts.each_pair do |key, value|
       if @compare_transcripts.has_value?(value)
@@ -176,6 +199,11 @@ class CompareGenes
             number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
             @all_FP[number_of_spliceforms] = 0 unless @all_FP[number_of_spliceforms]
             @all_FP[number_of_spliceforms] += 1
+            unless in_region(@already_counted, [key[0],value[0],value[-1]])
+              @false_positives_per_gene[number_of_spliceforms] = 0 unless  @false_positives_per_gene[number_of_spliceforms]
+              @false_positives_per_gene[number_of_spliceforms] += 1
+              @already_counted << [key[0],value[0],value[-1]]  
+            end 
           end
           if @truth_genefile.kind_of?(Bed)
             number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
