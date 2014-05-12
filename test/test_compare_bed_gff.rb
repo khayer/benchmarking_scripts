@@ -27,7 +27,7 @@ class TestCompareBedGFF < Test::Unit::TestCase
     assert_equal(compare_obj.all_FP,[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.false_negatives,[8, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0])
     #assert_equal(compare_obj.all_TN,[8, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_MCC,[0.4472135954999579, 0.4082482904638631, 0.5, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_MCC[0],0.4472135954999579)
   end
 
 end

@@ -83,6 +83,7 @@ class CompareGenes
     puts (["# All FP"] + @all_FP).join("\t")
     puts (["# All FN"] + @false_negatives).join("\t")
     puts (["# All TN"] + @all_TN).join("\t")
+    puts (["# All MCC"] + @all_MCC).join("\t")
     puts "False positives one exon:\t#{@false_positves_one_exon}"
     puts "(Total number of reported transcripts:\t#{@compare_transcripts_old.length})"
     if @truth_genefile.kind_of?(FeatureQuantifications)
