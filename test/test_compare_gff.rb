@@ -16,7 +16,7 @@ class TestCompareGFF < Test::Unit::TestCase
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.weak_TP,[3, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[28, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[6, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0])
     assert_equal(compare_obj.false_negatives,[9998, 1000, 2000, 3000, 3998, 0, 0, 0, 0, 0, 0])
   end
 

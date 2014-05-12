@@ -17,13 +17,13 @@ class TestCompareFQGTF < Test::Unit::TestCase
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.truth_genefile.determine_false_negatives()
     compare_obj.statistics()
-    assert_equal(compare_obj.strong_TP,[72, 37, 20, 10, 4, 0, 1, 0, 0, 0, 0])
-    assert_equal(compare_obj.weak_TP,[567, 320, 147, 57, 21, 11, 3, 4, 0, 4, 0])
-    assert_equal(compare_obj.all_FP,[258, 91, 34, 4, 0, 0, 0, 1, 0, 0, 0])
-    assert_equal(compare_obj.false_negatives,[65, 23, 16, 12, 8, 0, 2, 0, 0, 4, 0])
+    assert_equal(compare_obj.strong_TP,[72, 36, 18, 11, 6, 0, 1, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[567, 316, 138, 57, 29, 15, 4, 4, 0, 4, 0])
+    assert_equal(compare_obj.all_FP,[123, 86, 25, 7, 1, 1, 2, 1, 0, 0, 0])
+    assert_equal(compare_obj.false_negatives,[65, 22, 14, 11, 6, 6, 2, 0, 0, 4, 0])
     assert_equal(compare_obj.strong_TP_by_cov,[72, 67, 63, 36, 13, 6, 1])
     assert_equal(compare_obj.weak_TP_by_cov,[567, 438, 208, 71, 22, 10, 1])
-    assert_equal(compare_obj.all_FP_by_cov,[130, 66, 28, 14])
+    assert_equal(compare_obj.all_FP_by_cov,[123, 66, 28, 14])
     assert_equal(compare_obj.false_negatives_by_cov,[65, 65, 34, 10, 1])
   end
 
@@ -37,7 +37,7 @@ class TestCompareFQGTF < Test::Unit::TestCase
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.statistics_fpkm()
     compare_obj.plot_fpkm("test/data/test.png")
-    assert_equal(File.size("test/data/test.png"),5899)
+    assert_equal(compare_obj.fpkm_values[-5],[["chr1", 174153665, "\"CUFF.759.1\""], 0, 2.0306902012])
   end
 
   def test_statistics_plot_with_M()
@@ -55,6 +55,6 @@ class TestCompareFQGTF < Test::Unit::TestCase
     #    break if values[0] == "chr2"
     #end
     compare_obj.plot_fpkm("test/data/test2.png")
-    assert_equal(File.size("test/data/test2.png"),4889)
+    assert_equal(compare_obj.fpkm_values[-1],[["chr1", 174430377, "\"CUFF.763.1\""], 0, 1.518001898])
   end
 end

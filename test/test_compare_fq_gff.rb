@@ -19,13 +19,13 @@ class TestCompareFQGFF < Test::Unit::TestCase
     compare_obj.truth_genefile.determine_false_negatives()
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.statistics()
-    assert_equal(compare_obj.strong_TP,[6, 4, 1, 1, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.weak_TP,[45, 21, 11, 11, 0, 2, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[3534, 77, 28, 7, 1, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.false_negatives,[462, 241, 130, 48, 24, 5, 5, 1, 0, 8, 0])
+    assert_equal(compare_obj.strong_TP,[6, 3, 1, 1, 1, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[45, 19, 11, 11, 2, 2, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[112, 77, 27, 8, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.false_negatives,[462, 239, 120, 46, 28, 14, 6, 1, 0, 8, 0])
     assert_equal(compare_obj.strong_TP_by_cov,[6, 6, 6, 6, 5, 3, 2])
     assert_equal(compare_obj.weak_TP_by_cov,[45, 43, 39, 24, 16, 5, 2])
-    assert_equal(compare_obj.all_FP_by_cov,[113, 55, 48, 21, 9])
+    assert_equal(compare_obj.all_FP_by_cov,[112, 55, 48, 21, 9])
     assert_equal(compare_obj.false_negatives_by_cov,[462, 462, 462, 276, 109, 33, 14, 2])
   end
 

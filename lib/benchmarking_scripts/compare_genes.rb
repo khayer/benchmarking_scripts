@@ -9,10 +9,12 @@ class CompareGenes
     @compare_transcripts_old = Hash.new
     @truth_transcripts = Hash.new
     @false_positves_one_exon = 0
+    @all_TN = Array.new(11,0)
+    @all_MCC = Array.new(11,0)
   end
 
   attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP,
-    :false_negatives, :false_positves_one_exon
+    :false_negatives, :false_positves_one_exon, :all_TN, :all_MCC
 
   def in_truth_transcripts(key)
     in_truth_transcript = false
@@ -67,6 +69,10 @@ class CompareGenes
     logger.info("Statistics for false negatives started!")
 
     statistics_fn
+
+    estimate_true_negatives()
+    calculate_MCC()
+
   end
 
   def print_result()
@@ -76,6 +82,7 @@ class CompareGenes
     puts (["# Weak TP"] + @weak_TP).join("\t")
     puts (["# All FP"] + @all_FP).join("\t")
     puts (["# All FN"] + @false_negatives).join("\t")
+    puts (["# All TN"] + @all_TN).join("\t")
     puts "False positives one exon:\t#{@false_positves_one_exon}"
     puts "(Total number of reported transcripts:\t#{@compare_transcripts_old.length})"
     if @truth_genefile.kind_of?(FeatureQuantifications)
@@ -100,13 +107,13 @@ class CompareGenes
     already_counted.each do |el|
       next unless el[0] == value2[0]
       if el[1] <= value2[1] && el[2] >= value2[1]
-        within = true 
+        within = true
       end
       if el[1] >= value2[1] && el[1] <= value2[-1]
         within = true
       end
     end
-    within 
+    within
   end
 
 
@@ -202,8 +209,8 @@ class CompareGenes
             unless in_region(@already_counted, [key[0],value[0],value[-1]])
               @false_positives_per_gene[number_of_spliceforms] = 0 unless  @false_positives_per_gene[number_of_spliceforms]
               @false_positives_per_gene[number_of_spliceforms] += 1
-              @already_counted << [key[0],value[0],value[-1]]  
-            end 
+              @already_counted << [key[0],value[0],value[-1]]
+            end
           end
           if @truth_genefile.kind_of?(Bed)
             number_of_spliceforms = @truth_genefile.number_of_spliceforms[key]
@@ -259,6 +266,24 @@ class CompareGenes
           coverage -= 1
         end
       end
+    end
+  end
+
+  def estimate_true_negatives()
+    @weak_TP.each_with_index do |tp,i|
+      @all_TN[i] = FIXNUM_MAX
+    end
+  end
+
+  def calculate_MCC()
+    @weak_TP.each_with_index do |tp,i|
+      tp ||= 0
+      tn = @all_TN[i]
+      tn ||= 0
+      fp = @all_FP[i]
+      fp ||= 0
+      fn = @false_negatives[i]
+      @all_MCC[i] = mcc(tp,tn,fp,fn)
     end
   end
 
