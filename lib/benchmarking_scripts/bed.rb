@@ -1,3 +1,5 @@
+$EXCLUDE_GENES ||= []
+
 class Bed < FileFormats
 
   def initialize(filename)
