@@ -168,6 +168,7 @@ def read_fpkm_values(fpkm_values)
     end
   end
   puts "counter_bad: #{counter_bad}; counter_good: #{counter_good}"
+  puts "percentage bad #{counter_bad.to_f/(counter_bad+counter_good).to_f}"
 end
 
 
