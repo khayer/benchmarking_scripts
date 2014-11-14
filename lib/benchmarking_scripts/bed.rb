@@ -59,6 +59,7 @@ class Bed < FileFormats
       key = [fields[0],fields[1].to_i,id]
       trans = transcript(key)
       #logger.debug("#{fields[0]}\t#{last_chr}\t#{trans[0]}\t#{last_highest}")
+
       if fields[0] != last_chr || trans[0] > last_highest
         #logger.debug("YES")
         if current_number_of_spliceforms >= 1
