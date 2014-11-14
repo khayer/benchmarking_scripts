@@ -58,12 +58,13 @@ class Bed < FileFormats
       id = fields[3]
       key = [fields[0],fields[1].to_i,id]
       trans = transcript(key)
-      logger.debug("#{fields[0]}\t#{last_chr}\t#{trans[0]}\t#{last_highest}")
+      #logger.debug("#{fields[0]}\t#{last_chr}\t#{trans[0]}\t#{last_highest}")
       if fields[0] != last_chr || trans[0] > last_highest
-        logger.debug("YES")
+        #logger.debug("YES")
         if current_number_of_spliceforms >= 1
           current_transcripts.each do |key2|
             @number_of_spliceforms[key2] = current_number_of_spliceforms
+            logger.debug("#{key2}\t#{current_number_of_spliceforms}") if current_number_of_spliceforms>5
           end
         end
         current_number_of_spliceforms = 0
