@@ -11,6 +11,8 @@ class CompareGenes
     @false_positves_one_exon = 0
     @all_TN = Array.new(11,0)
     @all_MCC = Array.new(11,0)
+    @all_FDR = Array.new(11,0)
+    @all_FNR = Array.new(11,0)
   end
 
   attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP,
@@ -72,6 +74,8 @@ class CompareGenes
 
     estimate_true_negatives()
     calculate_MCC()
+    calculate_FDR()
+    calculate_FNR()
 
   end
 
@@ -84,6 +88,8 @@ class CompareGenes
     puts (["# All FN"] + @false_negatives).join("\t")
     puts (["# All TN"] + @all_TN).join("\t")
     puts (["# All MCC"] + @all_MCC).join("\t")
+    puts (["# All FDR"] + @all_FDR).join("\t")
+    puts (["# All FNR"] + @all_FNR).join("\t")
     puts "False positives one exon:\t#{@false_positves_one_exon}"
     puts "(Total number of reported transcripts:\t#{@compare_transcripts_old.length})"
     if @truth_genefile.kind_of?(FeatureQuantifications)
@@ -285,6 +291,22 @@ class CompareGenes
       fp ||= 0
       fn = @false_negatives[i]
       @all_MCC[i] = mcc(tp,tn,fp,fn)
+    end
+  end
+
+  def calculate_FNR()
+    @weak_TP.each_with_index do |tp,i|
+      fn = @false_negatives[i]
+      fn ||= 0
+      @all_FNR[i] = fnr(fn,tp)
+    end
+  end
+
+  def calculate_FDR()
+    @weak_TP.each_with_index do |tp,i|
+      fp = @all_FP[i]
+      fp ||= 0
+      @all_FDR[i] = fdr(fp,tp)
     end
   end
 

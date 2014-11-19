@@ -29,4 +29,20 @@ module Functions
     fn = fn.to_f
     (tp*tn-fp*fn)/Math.sqrt((tp+fp)*(tp+fn)*(tn+fp)*(tn+fn))
   end
+
+  # false negative rate (FNR)
+  # FNR=FN/(FN+TP)
+  def fnr(fn,tp)
+    fn = fn.to_f
+    tp = tp.to_f
+    fn/(fn+tp)
+  end
+
+  # false discovery rate (FDR)
+  # FDR = FP/(FP+TP) = 1-PPV
+  def fdr(fp,tp)
+    fp = fp.to_f
+    tp = tp.to_f
+    fp/(fp+tp)
+  end
 end
