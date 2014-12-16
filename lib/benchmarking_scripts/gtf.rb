@@ -27,6 +27,7 @@ class GTF < FileFormats
     pos_in_file = @index[key]
     @filehandle.pos = pos_in_file
     @filehandle.each do |line|
+      next if line == ""
       break if line =~ /\stranscript\s/
       #next if line =~ /mRNA/
       line.chomp!
@@ -48,6 +49,7 @@ class GTF < FileFormats
     @filehandle.pos = pos_in_file
     fpkm_value_out = 0
     @filehandle.each do |line|
+      next if line == ""
       fields = line.split("\t")
       begin
         fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
