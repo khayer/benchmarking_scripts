@@ -52,9 +52,9 @@ class GTF < FileFormats
       next if line == ""
       fields = line.split("\t")
       begin
-        fpkm_value_out = fields[-1].split("FPKM ")[1].split(";")[0].delete("\"")
+        fpkm_value_out = fields[9].split("FPKM ")[1].split(";")[0].delete("\"")
       rescue
-        fpkm_value_out = fields[-1].split("RPKM ")[1].split(";")[0].delete("\"")
+        fpkm_value_out = fields[9].split("RPKM ")[1].split(";")[0].delete("\"")
       end
       break
     end
