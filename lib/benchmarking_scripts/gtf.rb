@@ -54,7 +54,11 @@ class GTF < FileFormats
       begin
         fpkm_value_out = fields[8].split("FPKM ")[1].split(";")[0].delete("\"")
       rescue
-        fpkm_value_out = fields[8].split("RPKM ")[1].split(";")[0].delete("\"")
+        begin
+          fpkm_value_out = fields[8].split("RPKM ")[1].split(";")[0].delete("\"")
+        rescue
+          fpkm_value_out = fields[8].split("Abundance ")[1].split(";")[0].delete("\"")
+        end
       end
       break
     end
