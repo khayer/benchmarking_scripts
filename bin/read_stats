@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+require "benchmarking_scripts"
+require 'optparse'
+
+
+# Algorithm Aligner GenomeGuided  Annotation  FDR FNR Number of Spliceforms DataSet
+options = {:logout => STDERR, :aligner => nil,
+  :aligner_genome_guided => false}
+
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: #{$0} [options] Algorithm GenomeGuided Annotation DataSet StatsFile"
+  opt.separator  ""
+  opt.separator  "     Algorithm : e.g. cufflinks"
+  opt.separator  "  GenomeGuided : Was the assembly genome guided? true/false"
+  opt.separator  "    Annotation : Did the assembly use annotation? true/false"
+  opt.separator  "       DataSet : Name of the data set"
+  opt.separator  "     StatsFile : file produced with stats binary"
+  opt.separator  ""
+  opt.on("-l","--log_file LEVEL","Can also be STDOUT or STDERR") do |file|
+    options[:logout] = file if file
+  end
+
+  opt.on("-a","--aligner NAME","Name of the aligner. Default: NONE") do |name|
+    options[:aligner] = name if name
+  end
+
+  opt.on("-g","--aligner_genome_guided","Was the assembly genome guided? Default: FALSE") do |file|
+    options[:aligner_genome_guided] = true
+  end
+
+  #opt.on("-e","--exclude FILE","File with gene names to ignore.") do |file|
+  #  options[:exclude] = file
+  #end
+#
+  opt.on("-d","--debug","running in debug mode?") do
+    options[:debug] = true
+  end
+
+  opt.on("-h","--help","help") do
+    STDERR.puts opt_parser
+    exit
+  end
+end
+
+
+
+opt_parser.parse!
+options_for_logger = {}
+if options[:debug]
+  options_for_logger["log_level"] = Logger::DEBUG
+else
+  options_for_logger["log_level"] = Logger::INFO
+end
+options_for_logger["logout"] = options[:logout]
+#STDERR.puts options_for_logger
+
+Logging.configure(options_for_logger)
+logger.info("Arguments are: #{ARGV.join(",")}")
+logger.info("Options are: #{options}")
+
+abort("Not enough arguments! (Please run with -h flag for details)") if ARGV.length != 4
+
