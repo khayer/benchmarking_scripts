@@ -55,8 +55,20 @@ options_for_logger["logout"] = options[:logout]
 #STDERR.puts options_for_logger
 
 Logging.configure(options_for_logger)
-logger.info("Arguments are: #{ARGV.join(",")}")
+logger.info("Arguments are: #{ARGV.join(";")}")
 logger.info("Options are: #{options}")
 
-abort("Not enough arguments! (Please run with -h flag for details)") if ARGV.length != 4
+abort("Not enough arguments! (Please run with -h flag for details)") if ARGV.length != 5
 
+algorithm = ARGV[0]
+genome_guided = ARGV[1] == "true"
+logger.debug("GenomeGuided? #{genome_guided}")
+annotation = ARGV[2] == "true"
+logger.debug("Annotation? #{annotation}")
+data_set = ARGV[3]
+stats_file = ARGV[4]
+
+File.open(stats_file).each do |line|
+  line.chomp!
+  puts line
+end
