@@ -120,7 +120,7 @@ class CompareGenes
       if el[1] >= value2[1] && el[1] <= value2[-1]
         within = true
       end
-      puts within
+      #puts within
     end
 
     within
