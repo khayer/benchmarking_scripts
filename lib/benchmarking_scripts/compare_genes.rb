@@ -112,14 +112,17 @@ class CompareGenes
     within = false
     return within if already_counted.empty?
     already_counted.each do |el|
+      #puts "VALUE2: #{value2.join(":")} El: #{el.join(":")}"
       next unless el[0] == value2[0]
-      if el[1] <= value2[1] && el[2] >= value2[1]
+      if el[1] <= value2[1] && el[2] >= value2[-1]
         within = true
       end
       if el[1] >= value2[1] && el[1] <= value2[-1]
         within = true
       end
+      puts within
     end
+
     within
   end
 

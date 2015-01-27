@@ -68,7 +68,76 @@ logger.debug("Annotation? #{annotation}")
 data_set = ARGV[3]
 stats_file = ARGV[4]
 
+results_by_spliceform = {}
 File.open(stats_file).each do |line|
   line.chomp!
-  puts line
+  fields = line.split("\t")
+  if fields[0] == "# Weak TP" # /Weak/
+
+    for i in 1..fields.length
+
+      if fields[i].to_i != 0
+        results_by_spliceform[i-1] = []
+        results_by_spliceform[i-1] << fields[i].to_i
+        #puts (i-1).to_s + ":" + fields[i].to_s
+      end
+
+    end
+
+    next
+  end
+
+
+  if fields[0] == "# All FP"
+
+    for i in 1..fields.length
+
+      if fields[i].to_i != 0
+        #puts (i-1).to_s + ":" + fields[i].to_s
+        results_by_spliceform[i-1] ||= [0]
+        results_by_spliceform[i-1] << fields[i].to_i
+      end
+
+    end
+    next
+  end
+
+  if fields[0] == "# All FN"
+
+    for i in 1..fields.length
+
+      if fields[i].to_i != 0
+        #puts (i-1).to_s + ":" + fields[i].to_s
+        results_by_spliceform[i-1] ||= [0,0]
+        results_by_spliceform[i-1] << fields[i].to_i
+      end
+
+    end
+    next
+  end
+  if fields[0] == "# All FDR"
+
+    for i in 1..fields.length
+      if results_by_spliceform[i-1]
+        results_by_spliceform[i-1] << fields[i].to_f
+      end
+
+    end
+    next
+  end
+
+  if fields[0] == "# All FNR"
+
+    for i in 1..fields.length
+
+      if results_by_spliceform[i-1]
+        results_by_spliceform[i-1] << fields[i].to_f
+      end
+
+    end
+    break
+  end
+
 end
+
+puts results_by_spliceform
