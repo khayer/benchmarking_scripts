@@ -5,7 +5,7 @@ require 'optparse'
 
 # Algorithm Aligner GenomeGuided  Annotation  FDR FNR Number of Spliceforms DataSet
 options = {:logout => STDERR, :aligner => "none",
-  :aligner_genome_guided => false}
+  :aligner_genome_guided => false, :zero=> false}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} [options] Algorithm GenomeGuided Annotation DataSet StatsFile"
@@ -26,6 +26,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-g","--aligner_genome_guided","Was the assembly genome guided? Default: FALSE") do |file|
     options[:aligner_genome_guided] = true
+  end
+
+  opt.on("-z","--zero","Do not seperate by spliceforms!") do |file|
+    options[:zero] = true
   end
 
   #opt.on("-e","--exclude FILE","File with gene names to ignore.") do |file|
@@ -81,7 +85,7 @@ File.open(stats_file).each do |line|
         results_by_spliceform[i-1] << fields[i].to_i
         #puts (i-1).to_s + ":" + fields[i].to_s
       end
-
+      break if options[:zero]
     end
 
     next
@@ -97,6 +101,7 @@ File.open(stats_file).each do |line|
         results_by_spliceform[i-1] ||= [0]
         results_by_spliceform[i-1] << fields[i].to_i
       end
+      break if options[:zero]
 
     end
     next
@@ -111,6 +116,7 @@ File.open(stats_file).each do |line|
         results_by_spliceform[i-1] ||= [0,0]
         results_by_spliceform[i-1] << fields[i].to_i
       end
+      break if options[:zero]
 
     end
     next
@@ -121,6 +127,7 @@ File.open(stats_file).each do |line|
       if results_by_spliceform[i-1]
         results_by_spliceform[i-1] << fields[i].to_f
       end
+      break if options[:zero]
 
     end
     next
@@ -133,6 +140,7 @@ File.open(stats_file).each do |line|
       if results_by_spliceform[i-1]
         results_by_spliceform[i-1] << fields[i].to_f
       end
+      break if options[:zero]
 
     end
     break
