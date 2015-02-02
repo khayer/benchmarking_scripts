@@ -143,5 +143,10 @@ end
 results_by_spliceform.keys.sort.each do |num_of_splice|
   fdr = results_by_spliceform[num_of_splice][-2]
   fnr = results_by_spliceform[num_of_splice][-1]
-  puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}"
+  tp = results_by_spliceform[num_of_splice][0].to_f
+  fp = results_by_spliceform[num_of_splice][1].to_f
+  fn = results_by_spliceform[num_of_splice][2].to_f
+  precision = tp/(tp+fp)
+  recall = tp / (tp+fn)
+  puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}"
 end
