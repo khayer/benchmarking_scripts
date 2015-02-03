@@ -156,5 +156,13 @@ results_by_spliceform.keys.sort.each do |num_of_splice|
   fn = results_by_spliceform[num_of_splice][2].to_f
   precision = tp/(tp+fp)
   recall = tp / (tp+fn)
-  puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}"
+  case num_of_splice
+  when 1,2,3,4,5
+    splice_event = "Skipped Exons"
+  when 6,7,8,9
+    splice_event = "Different exon starts/ends"
+  when 10,11,12,13
+    splice_event = "Truncation"
+  end
+  puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
 end
