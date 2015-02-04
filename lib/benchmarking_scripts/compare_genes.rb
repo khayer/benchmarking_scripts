@@ -209,7 +209,7 @@ class CompareGenes
   def statistics_fp()
     @compare_transcripts.each_pair do |compare_key, value|
       @truth_genefile.index.each_key do |key|
-        if key[0] == compare_key[0] && (is_within?(key[1],compare_key[1],5000000)
+        if key[0] == compare_key[0] && is_within?(key[1],compare_key[1],5000000)
           #puts "NOW" if key[2] = "GENE.217.0"
           @all_FP[0] += 1
           if @truth_genefile.kind_of?(GeneInfo)
