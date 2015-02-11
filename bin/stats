@@ -3,11 +3,13 @@ require "benchmarking_scripts"
 require 'optparse'
 
 $EXCLUDE_GENES = []
+# has to be in gtf format
+$ANNOTATION = nil
 
 options = {:logout => STDERR,
   :png_file => "fpkm.png",
   :fpkm_values => "fpkm_values.txt",
-  :exclude => ""}
+  :exclude => "", :annotation => "" }
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -70,6 +72,15 @@ if options[:exclude] != ""
   File.open(options[:exclude]).each do |line|
     line.chomp!
     $EXCLUDE_GENES << /#{line}\D/
+  end
+end
+
+if options[:annotation] != ""
+  gtf_file = GeneInfo.new(options[:annotation])
+  gtf_file.create_index()
+  $ANNOTATION = {}
+  gtf_file.index.each_key do |key|
+    $ANNOTATION[key] = gtf_file.transcript(key)[1..-2]
   end
 end
 

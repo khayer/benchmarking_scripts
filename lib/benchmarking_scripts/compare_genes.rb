@@ -66,7 +66,7 @@ class CompareGenes
     statistics_weak
     logger.info("Statistics for false positives started!")
     statistics_fp
-    logger.info("#{@already_counted}")
+    logger.debug("#{@already_counted}")
     logger.info("#{@false_positives_per_gene}")
     logger.info("Statistics for false negatives started!")
 
@@ -134,6 +134,11 @@ class CompareGenes
         @weak_TP[0] += 1
         if @truth_genefile.kind_of?(GeneInfo)
           number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+          if $ANNOTATION
+            if $ANNOTATION[key]
+              number_of_spliceforms += 13
+            end
+          end
           @strong_TP[number_of_spliceforms] = 0 unless @strong_TP[number_of_spliceforms]
           @strong_TP[number_of_spliceforms] += 1
           @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
@@ -177,6 +182,11 @@ class CompareGenes
         @weak_TP[0] += 1
         if @truth_genefile.kind_of?(GeneInfo)
           number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+          if $ANNOTATION
+            if $ANNOTATION[key]
+              number_of_spliceforms += 13
+            end
+          end
           @weak_TP[number_of_spliceforms] = 0 unless @weak_TP[number_of_spliceforms]
           @weak_TP[number_of_spliceforms] += 1
         end
@@ -209,11 +219,16 @@ class CompareGenes
   def statistics_fp()
     @compare_transcripts.each_pair do |compare_key, value|
       @truth_genefile.index.each_key do |key|
-        if key[0] == compare_key[0] && is_within?(key[1],compare_key[1],5000000)
+        if key[0] == compare_key[0] && is_within?(key[1],compare_key[1],1000)
           #puts "NOW" if key[2] = "GENE.217.0"
           @all_FP[0] += 1
           if @truth_genefile.kind_of?(GeneInfo)
             number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+            if $ANNOTATION
+              if $ANNOTATION.has_value?(value)
+                number_of_spliceforms += 13
+              end
+            end
             @all_FP[number_of_spliceforms] = 0 unless @all_FP[number_of_spliceforms]
             @all_FP[number_of_spliceforms] += 1
             unless in_region(@already_counted, [key[0],value[0],value[-1]])
@@ -255,6 +270,11 @@ class CompareGenes
       @false_negatives[0] += 1
       if @truth_genefile.kind_of?(GeneInfo)
         number_of_spliceforms = (key[2].split(".")[1].to_f / 1000).ceil
+        if $ANNOTATION
+          if $ANNOTATION[key]
+            number_of_spliceforms += 13
+          end
+        end
         @false_negatives[number_of_spliceforms] = 0 unless @false_negatives[number_of_spliceforms]
         @false_negatives[number_of_spliceforms] += 1
       end
