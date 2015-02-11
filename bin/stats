@@ -41,6 +41,10 @@ opt_parser = OptionParser.new do |opt|
     options[:exclude] = file
   end
 
+  opt.on("-a","--annotation FILE","File with annotation given to the algorithm") do |file|
+    options[:annotation] = file
+  end
+
   opt.on("-d","--debug","running in debug mode?") do
     options[:debug] = true
   end
