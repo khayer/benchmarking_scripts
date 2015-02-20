@@ -14,6 +14,7 @@ class GTF < FileFormats
     @filehandle.each do |line|
       line.chomp!
       next if line =~ /cov "0.000000"/
+      next if line =~ /FPKM "0.00000"/
       next unless line =~ /\stranscript\s/
       fields = line.split("\t")
       id = fields[-1].split("transcript_id ")[1].split(";")[0]
