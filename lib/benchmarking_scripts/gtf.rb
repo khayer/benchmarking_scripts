@@ -18,6 +18,14 @@ class GTF < FileFormats
       fields = line.split("\t")
       id = fields[-1].split("transcript_id ")[1].split(";")[0]
       @index[[fields[0],fields[3].to_i-1,id]] = @filehandle.pos
+
+      begin
+        fpkm_value_out = fields[8].split("FPKM ")[1].split(";")[0].delete("\"")
+        @coverage[[fields[0],fields[3].to_i-1,id]] = fpkm_value_out.to_f
+      rescue
+
+      end
+
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
   end
@@ -40,7 +48,7 @@ class GTF < FileFormats
 
   def calculate_coverage()
     @index.each_pair do |key,value|
-      @coverage[key] = fpkm_value(key)
+      @coverage[key] ||= fpkm_value(key)
     end
   end
 
