@@ -13,6 +13,9 @@ class CompareGenes
     @all_MCC = Array.new(11,0)
     @all_FDR = Array.new(11,0)
     @all_FNR = Array.new(11,0)
+    if $PRINT_TP
+      @tp_file_handler = File.open("tps.txt",'w')
+    end
   end
 
   attr_accessor :compare_file, :truth_genefile, :strong_TP, :weak_TP, :all_FP,
@@ -160,6 +163,9 @@ class CompareGenes
           coverage = Math.log(@truth_genefile.coverage[key]+1)
           coverage = 0 if coverage < 0
           coverage = coverage.floor
+          if $PRINT_TP
+            @tp_file_handler.puts(key.join("\t"))
+          end
           while coverage >= 0
             @strong_TP_by_cov[coverage] = 0 unless @strong_TP_by_cov[coverage]
             @strong_TP_by_cov[coverage] += 1
