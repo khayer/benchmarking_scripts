@@ -73,6 +73,9 @@ data_set = ARGV[3]
 stats_file = ARGV[4]
 
 results_by_spliceform = {}
+# Placeholder
+results_by_spliceform[0] = 0
+
 File.open(stats_file).each do |line|
   line.chomp!
   fields = line.split("\t")
