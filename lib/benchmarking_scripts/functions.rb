@@ -7,6 +7,10 @@ module Functions
     #(fragment.to_f/number_mio_of_reads.to_f).to_f
   end
 
+  def x_cov(fragment,trans_length)
+    (fragment.to_f*200.0)/(trans_length.to_f)
+  end
+
   def calc_length(transcript)
     length = 0
     #logger.debug(transcript.join("::"))
