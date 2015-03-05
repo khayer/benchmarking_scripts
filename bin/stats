@@ -10,7 +10,8 @@ $PRINT_TP = false
 options = {:logout => STDERR,
   :png_file => "fpkm.png",
   :fpkm_values => "fpkm_values.txt",
-  :exclude => "", :annotation => "", :print_TP => false }
+  :exclude => "", :annotation => "", :print_TP => false,
+  :saved_truth => nil }
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -46,6 +47,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-a","--annotation FILE","File with annotation given to the algorithm") do |file|
     options[:annotation] = file
+  end
+
+  opt.on("-s","--saved_truth FILE","File in marshal format to load") do |file|
+    options[:saved_truth] = file
   end
 
   opt.on("-t","--print_TP","Print all TP's?") do
@@ -155,13 +160,18 @@ when "gtffq"
     compare_obj = CompareGenesFQGTF.new(geneinfo,transcripts)
     compare_obj.compare_file.create_index()
     compare_obj.compare_file.calculate_coverage()
-    compare_obj.truth_genefile.create_index()
-    compare_obj.truth_genefile.calculate_M()
-    #compare_obj.truth_genefile.calculate_coverage(50)
-    compare_obj.truth_genefile.calculate_coverage()
-    compare_obj.truth_genefile.find_number_of_spliceforms()
-    compare_obj.truth_genefile.determine_false_negatives(5000)
-    compare_obj.statistics_fpkm()
+    if options[:saved_truth] 
+      compare_obj.truth_genefile = load_from(options[:saved_truth])
+      compare_obj.truth_genefile.reopen()
+    else
+      compare_obj.truth_genefile.create_index()
+      compare_obj.truth_genefile.calculate_M()
+      #compare_obj.truth_genefile.calculate_coverage(50)
+      compare_obj.truth_genefile.calculate_coverage()
+      compare_obj.truth_genefile.find_number_of_spliceforms()
+      compare_obj.truth_genefile.determine_false_negatives(5000)
+      compare_obj.statistics_fpkm()
+    end
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
@@ -173,11 +183,16 @@ when "gfffq"
     geneinfo = ARGV[2]
     compare_obj = CompareGenesFQGFF.new(geneinfo,transcripts)
     compare_obj.compare_file.create_index()
-    compare_obj.truth_genefile.create_index()
-    compare_obj.truth_genefile.calculate_M()
-    compare_obj.truth_genefile.calculate_coverage()
-    compare_obj.truth_genefile.find_number_of_spliceforms()
-    compare_obj.truth_genefile.determine_false_negatives(5000)
+    if options[:saved_truth] 
+      compare_obj.truth_genefile = load_from(options[:saved_truth])
+      compare_obj.truth_genefile.reopen()
+    else
+      compare_obj.truth_genefile.create_index()
+      compare_obj.truth_genefile.calculate_M()
+      compare_obj.truth_genefile.calculate_coverage()
+      compare_obj.truth_genefile.find_number_of_spliceforms()
+      compare_obj.truth_genefile.determine_false_negatives(5000)
+    end
   else
     STDERR.puts "Please specify files"
     STDERR.puts opt_parser
@@ -190,11 +205,16 @@ when "bedfq"
     compare_obj = CompareGenesFQBED.new(geneinfo,transcripts)
     compare_obj.compare_file.create_index()
     compare_obj.compare_file.calculate_coverage()
-    compare_obj.truth_genefile.create_index()
-    compare_obj.truth_genefile.calculate_M()
-    compare_obj.truth_genefile.calculate_coverage()
-    compare_obj.truth_genefile.find_number_of_spliceforms()
-    compare_obj.truth_genefile.determine_false_negatives(5000)
+    if options[:saved_truth] 
+      compare_obj.truth_genefile = load_from(options[:saved_truth])
+      compare_obj.truth_genefile.reopen()
+    else
+      compare_obj.truth_genefile.create_index()
+      compare_obj.truth_genefile.calculate_M()
+      compare_obj.truth_genefile.calculate_coverage()
+      compare_obj.truth_genefile.find_number_of_spliceforms()
+      compare_obj.truth_genefile.determine_false_negatives(5000)
+    end
     compare_obj.statistics_fpkm()
   else
     STDERR.puts "Please specify files"
