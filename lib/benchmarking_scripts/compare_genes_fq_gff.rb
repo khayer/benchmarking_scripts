@@ -8,8 +8,14 @@ class CompareGenesFQGFF < CompareGenes
     @weak_TP_by_cov = []
     @all_FP_by_cov = []
     @false_negatives_by_cov = []
+    @strong_TP_by_x_cov = []
+    @weak_TP_by_x_cov = []
+    @all_FP_by_x_cov = []
+    @false_negatives_by_x_cov = []
   end
 
-  attr_accessor :strong_TP_by_cov, :weak_TP_by_cov, :all_FP_by_cov, :false_negatives_by_cov
+  attr_accessor :strong_TP_by_cov, :weak_TP_by_cov, :all_FP_by_cov, :false_negatives_by_cov,
+  :strong_TP_by_x_cov,
+  :weak_TP_by_x_cov, :all_FP_by_x_cov, :false_negatives_by_x_cov
 
 end

@@ -103,6 +103,13 @@ class CompareGenes
       puts (["# Weak TP"] + @weak_TP_by_cov).join("\t")
       puts (["# All FP"] + @all_FP_by_cov).join("\t")
       puts (["# All FN"] + @false_negatives_by_cov).join("\t")
+      puts ""
+      puts ["x_coverage","0-10X","10-100X","100X and more" ].join("\t")
+      puts "---------------------------------------------------------------------------------------------------------"
+      puts (["#Strong TP"] + @strong_TP_by_x_cov).join("\t")
+      puts (["# Weak TP"] + @weak_TP_by_x_cov).join("\t")
+      puts (["# All FP"] + @all_FP_by_x_cov).join("\t")
+      puts (["# All FN"] + @false_negatives_by_x_cov).join("\t")
     end
     if @truth_genefile.kind_of?(GeneInfo)
       puts ""
@@ -173,7 +180,28 @@ class CompareGenes
             @weak_TP_by_cov[coverage] += 1
             coverage -= 1
           end
+          # By x cov
+          # 0-10, 10-100, 100-inf
+          x_cov = @truth_genefile.x_coverage[key]
+          logger.info("#{x_cov}")
+          if x_cov < 10
+            @strong_TP_by_x_cov[0] = 0 unless @strong_TP_by_x_cov[0]
+            @strong_TP_by_x_cov[0] += 1
+            @weak_TP_by_x_cov[0] = 0 unless @weak_TP_by_x_cov[0]
+            @weak_TP_by_x_cov[0] += 1
+          elsif x_cov < 100
+            @strong_TP_by_x_cov[1] = 0 unless @strong_TP_by_x_cov[1]
+            @strong_TP_by_x_cov[1] += 1
+            @weak_TP_by_x_cov[1] = 0 unless @weak_TP_by_x_cov[1]
+            @weak_TP_by_x_cov[1] += 1
+          else
+            @strong_TP_by_x_cov[2] = 0 unless @strong_TP_by_x_cov[2]
+            @strong_TP_by_x_cov[2] += 1
+            @weak_TP_by_x_cov[2] = 0 unless @weak_TP_by_x_cov[2]
+            @weak_TP_by_x_cov[2] += 1
+          end
         end
+        
         compare_key = @compare_transcripts.key(value)
         @compare_transcripts.delete(compare_key)
         @truth_transcripts.delete(key)
@@ -212,6 +240,18 @@ class CompareGenes
             @weak_TP_by_cov[coverage] = 0 unless @weak_TP_by_cov[coverage]
             @weak_TP_by_cov[coverage] += 1
             coverage -= 1
+          end
+          x_cov = @truth_genefile.x_coverage[key]
+          logger.info("#{x_cov}")
+          if x_cov < 10
+            @weak_TP_by_x_cov[0] = 0 unless @weak_TP_by_x_cov[0]
+            @weak_TP_by_x_cov[0] += 1
+          elsif x_cov < 100
+            @weak_TP_by_x_cov[1] = 0 unless @weak_TP_by_x_cov[1]
+            @weak_TP_by_x_cov[1] += 1
+          else
+            @weak_TP_by_x_cov[2] = 0 unless @weak_TP_by_x_cov[2]
+            @weak_TP_by_x_cov[2] += 1
           end
         end
         compare_key = @compare_transcripts.key(value)
@@ -260,6 +300,18 @@ class CompareGenes
               @all_FP_by_cov[coverage] += 1
               coverage -= 1
             end
+            x_cov = @truth_genefile.x_coverage[key]
+            logger.info("#{x_cov}")
+            if x_cov < 10
+              @all_FP_by_x_cov[0] = 0 unless @all_FP_by_x_cov[0]
+              @all_FP_by_x_cov[0] += 1
+            elsif x_cov < 100
+              @all_FP_by_x_cov[1] = 0 unless @all_FP_by_x_cov[1]
+              @all_FP_by_x_cov[1] += 1
+            else
+              @all_FP_by_x_cov[2] = 0 unless @all_FP_by_x_cov[2]
+              @all_FP_by_x_cov[2] += 1
+            end
           end
           @compare_transcripts.delete(compare_key)
           @truth_transcripts.delete(key)
@@ -300,6 +352,18 @@ class CompareGenes
           @false_negatives_by_cov[coverage] = 0 unless @false_negatives_by_cov[coverage]
           @false_negatives_by_cov[coverage] += 1
           coverage -= 1
+        end
+        x_cov = @truth_genefile.x_coverage[key]
+        logger.info("#{x_cov}")
+        if x_cov < 10
+          @false_negatives_by_x_cov[0] = 0 unless @false_negatives_by_x_cov[0]
+          @false_negatives_by_x_cov[0] += 1
+        elsif x_cov < 100
+          @false_negatives_by_x_cov[1] = 0 unless @false_negatives_by_x_cov[1]
+          @false_negatives_by_x_cov[1] += 1
+        else
+          @false_negatives_by_x_cov[2] = 0 unless @false_negatives_by_x_cov[2]
+          @false_negatives_by_x_cov[2] += 1
         end
       end
     end

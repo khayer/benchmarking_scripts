@@ -162,12 +162,14 @@ when "gtffq"
     compare_obj.compare_file.calculate_coverage()
     if options[:saved_truth] 
       compare_obj.truth_genefile = load_from(options[:saved_truth])
+      compare_obj.truth_genefile.filename = geneinfo
       compare_obj.truth_genefile.reopen()
     else
       compare_obj.truth_genefile.create_index()
       compare_obj.truth_genefile.calculate_M()
       #compare_obj.truth_genefile.calculate_coverage(50)
       compare_obj.truth_genefile.calculate_coverage()
+      compare_obj.truth_genefile.calculate_x_coverage()
       compare_obj.truth_genefile.find_number_of_spliceforms()
       compare_obj.truth_genefile.determine_false_negatives(5000)
       compare_obj.statistics_fpkm()
@@ -185,11 +187,13 @@ when "gfffq"
     compare_obj.compare_file.create_index()
     if options[:saved_truth] 
       compare_obj.truth_genefile = load_from(options[:saved_truth])
+      compare_obj.truth_genefile.filename = geneinfo
       compare_obj.truth_genefile.reopen()
     else
       compare_obj.truth_genefile.create_index()
       compare_obj.truth_genefile.calculate_M()
       compare_obj.truth_genefile.calculate_coverage()
+      compare_obj.truth_genefile.calculate_x_coverage()
       compare_obj.truth_genefile.find_number_of_spliceforms()
       compare_obj.truth_genefile.determine_false_negatives(5000)
     end
@@ -207,11 +211,13 @@ when "bedfq"
     compare_obj.compare_file.calculate_coverage()
     if options[:saved_truth] 
       compare_obj.truth_genefile = load_from(options[:saved_truth])
+      compare_obj.truth_genefile.filename = geneinfo
       compare_obj.truth_genefile.reopen()
     else
       compare_obj.truth_genefile.create_index()
       compare_obj.truth_genefile.calculate_M()
       compare_obj.truth_genefile.calculate_coverage()
+      compare_obj.truth_genefile.calculate_x_coverage()
       compare_obj.truth_genefile.find_number_of_spliceforms()
       compare_obj.truth_genefile.determine_false_negatives(5000)
     end

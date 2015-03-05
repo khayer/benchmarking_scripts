@@ -12,10 +12,15 @@ class CompareGenesFQBED < CompareGenes
     @weak_TP_by_cov = []
     @all_FP_by_cov = []
     @false_negatives_by_cov = []
+    @strong_TP_by_x_cov = []
+    @weak_TP_by_x_cov = []
+    @all_FP_by_x_cov = []
+    @false_negatives_by_x_cov = []
   end
 
   attr_accessor :fpkm_values, :strong_TP_by_cov, :weak_TP_by_cov,
-    :all_FP_by_cov, :false_negatives_by_cov
+    :all_FP_by_cov, :false_negatives_by_cov, :strong_TP_by_x_cov,
+    :weak_TP_by_x_cov, :all_FP_by_x_cov, :false_negatives_by_x_cov
 
   def statistics_fpkm()
     compare_transcripts = Hash.new
