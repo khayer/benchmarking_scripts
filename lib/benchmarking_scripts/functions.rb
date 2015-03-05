@@ -49,4 +49,13 @@ module Functions
     tp = tp.to_f
     fp/(fp+tp)
   end
+
+  def save_as(filename,object)
+    object.close()
+    File.open(filename, 'w') {|f| f.write(Marshal.dump(object)) }
+  end 
+
+  def load_from(filename)
+    Marshal.load(File.read(filename))
+  end
 end

@@ -10,6 +10,18 @@ class FileFormats
   def create_index()
   end
 
+  def reopen()
+    @filehandle = File.open(@filename)
+  end
+
+  def close()
+    @filehandle.close()
+    @filehandle = nil
+    if @logger 
+      @logger =nil
+    end
+  end  
+
   def transcript(chr,pos,id)
   end
 
