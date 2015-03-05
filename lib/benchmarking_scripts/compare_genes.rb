@@ -70,7 +70,7 @@ class CompareGenes
     logger.info("Statistics for false positives started!")
     statistics_fp
     logger.debug("#{@already_counted}")
-    logger.info("#{@false_positives_per_gene}")
+    logger.debug("#{@false_positives_per_gene}")
     logger.info("Statistics for false negatives started!")
 
     statistics_fn
@@ -183,7 +183,7 @@ class CompareGenes
           # By x cov
           # 0-10, 10-100, 100-inf
           x_cov = @truth_genefile.x_coverage[key]
-          logger.info("#{x_cov}")
+          logger.debug("#{x_cov}")
           if x_cov < 10
             @strong_TP_by_x_cov[0] = 0 unless @strong_TP_by_x_cov[0]
             @strong_TP_by_x_cov[0] += 1
@@ -242,7 +242,7 @@ class CompareGenes
             coverage -= 1
           end
           x_cov = @truth_genefile.x_coverage[key]
-          logger.info("#{x_cov}")
+          logger.debug("#{x_cov}")
           if x_cov < 10
             @weak_TP_by_x_cov[0] = 0 unless @weak_TP_by_x_cov[0]
             @weak_TP_by_x_cov[0] += 1
@@ -301,7 +301,7 @@ class CompareGenes
               coverage -= 1
             end
             x_cov = @truth_genefile.x_coverage[key]
-            logger.info("#{x_cov}")
+            logger.debug("#{x_cov}")
             if x_cov < 10
               @all_FP_by_x_cov[0] = 0 unless @all_FP_by_x_cov[0]
               @all_FP_by_x_cov[0] += 1
@@ -354,7 +354,7 @@ class CompareGenes
           coverage -= 1
         end
         x_cov = @truth_genefile.x_coverage[key]
-        logger.info("#{x_cov}")
+        logger.debug("#{x_cov}")
         if x_cov < 10
           @false_negatives_by_x_cov[0] = 0 unless @false_negatives_by_x_cov[0]
           @false_negatives_by_x_cov[0] += 1
