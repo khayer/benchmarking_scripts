@@ -5,7 +5,7 @@ require 'optparse'
 
 # Algorithm Aligner GenomeGuided  Annotation  FDR FNR Number of Spliceforms DataSet
 options = {:logout => STDERR, :aligner => "none",
-  :aligner_genome_guided => false, :zero=> false}
+  :aligner_genome_guided => false, :zero=> false, :x_coverage=> false}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} [options] Algorithm GenomeGuided Annotation DataSet StatsFile"
@@ -30,6 +30,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-z","--zero","Do not seperate by spliceforms!") do |file|
     options[:zero] = true
+  end
+
+  opt.on("-x","--x_coverage","Use x coverage results") do |file|
+    options[:x_coverage] = true
   end
 
   #opt.on("-e","--exclude FILE","File with gene names to ignore.") do |file|
@@ -79,6 +83,10 @@ results_by_spliceform[0] = 0
 File.open(stats_file).each do |line|
   line.chomp!
   fields = line.split("\t")
+  if fields[:x_coverage]
+    fields[:x_coverage] = false if fields[0] == "x_coverage"
+    next
+  end
   if fields[0] == "# Weak TP" # /Weak/
 
     for i in 1..fields.length
