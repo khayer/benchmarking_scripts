@@ -17,7 +17,7 @@ class TestCompareFQGFF < Test::Unit::TestCase
     end
     compare_obj.truth_genefile.calculate_coverage(50)
     compare_obj.truth_genefile.calculate_x_coverage()
-    compare_obj.truth_genefile.determine_false_negatives()
+    compare_obj.truth_genefile.determine_false_negatives(500)
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[6, 3, 1, 1, 1, 0, 0, 0, 0, 0, 0])
