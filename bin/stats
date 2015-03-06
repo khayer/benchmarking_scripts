@@ -171,7 +171,7 @@ when "gtffq"
       compare_obj.truth_genefile.calculate_coverage()
       compare_obj.truth_genefile.calculate_x_coverage()
       compare_obj.truth_genefile.find_number_of_spliceforms()
-      compare_obj.truth_genefile.determine_false_negatives(5000)
+      compare_obj.truth_genefile.determine_false_negatives()
       compare_obj.statistics_fpkm()
     end
   else
@@ -195,7 +195,7 @@ when "gfffq"
       compare_obj.truth_genefile.calculate_coverage()
       compare_obj.truth_genefile.calculate_x_coverage()
       compare_obj.truth_genefile.find_number_of_spliceforms()
-      compare_obj.truth_genefile.determine_false_negatives(5000)
+      compare_obj.truth_genefile.determine_false_negatives()
     end
   else
     STDERR.puts "Please specify files"
@@ -219,7 +219,7 @@ when "bedfq"
       compare_obj.truth_genefile.calculate_coverage()
       compare_obj.truth_genefile.calculate_x_coverage()
       compare_obj.truth_genefile.find_number_of_spliceforms()
-      compare_obj.truth_genefile.determine_false_negatives(5000)
+      compare_obj.truth_genefile.determine_false_negatives()
     end
     compare_obj.statistics_fpkm()
   else

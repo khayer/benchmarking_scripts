@@ -133,7 +133,8 @@ class FeatureQuantifications < FileFormats
     logger.info("M is #{@m}")
   end
 
-  def determine_false_negatives(cutoff=500)
+  def determine_false_negatives(cutoff=0)
+    cutoff = @coverage.values.length if cutoff == 0
     @number_of_false_negatives = cutoff
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
