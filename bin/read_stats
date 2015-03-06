@@ -83,8 +83,8 @@ results_by_spliceform[0] = 0
 File.open(stats_file).each do |line|
   line.chomp!
   fields = line.split("\t")
-  if fields[:x_coverage]
-    fields[:x_coverage] = false if fields[0] == "x_coverage"
+  if options[:x_coverage]
+    options[:x_coverage] = false if fields[0] == "x_coverage"
     next
   end
   if fields[0] == "# Weak TP" # /Weak/
