@@ -29,6 +29,8 @@ class FeatureQuantifications < FileFormats
         chr = fields[1].split(":")[0]
         pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
         num_of_fragments = fields[-1].to_f
+        pos_chr_end = fields[1].split(":")[1].split("-")[1].to_i
+        next if pos_chr_end - pos_chr < 200
         @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i] if (($EXCLUDE_GENES.select {|e| last_gene.match(e)}).empty? && (num_of_fragments > 0.0)) #$EXCLUDE_GENES.include?(last_gene) #if num_of_fragments > 0.0
       end
     end
