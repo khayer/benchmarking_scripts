@@ -5,7 +5,7 @@ require 'optparse'
 
 # Algorithm Aligner GenomeGuided  Annotation  FDR FNR Number of Spliceforms DataSet
 options = {:logout => STDERR, :aligner => "none",
-  :aligner_genome_guided => false, :zero=> false}
+  :aligner_genome_guided => false, :zero=> false, :x_coverage=> false}
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} [options] Algorithm GenomeGuided Annotation DataSet StatsFile"
@@ -30,6 +30,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-z","--zero","Do not seperate by spliceforms!") do |file|
     options[:zero] = true
+  end
+
+  opt.on("-x","--x_coverage","Use x coverage results") do |file|
+    options[:x_coverage] = true
   end
 
   #opt.on("-e","--exclude FILE","File with gene names to ignore.") do |file|
@@ -76,9 +80,15 @@ results_by_spliceform = {}
 # Placeholder
 results_by_spliceform[0] = 0
 
+wait_for_x_coverage = options[:x_coverage]
+
 File.open(stats_file).each do |line|
   line.chomp!
   fields = line.split("\t")
+  if wait_for_x_coverage
+    wait_for_x_coverage = false if fields[0] == "x_coverage"
+    next
+  end
   if fields[0] == "# Weak TP" # /Weak/
 
     for i in 1..fields.length
@@ -165,21 +175,31 @@ results_by_spliceform.keys.sort.each do |num_of_splice|
   logger.debug("fn #{fn}")
   precision = tp/(tp+fp)
   recall = tp / (tp+fn)
+  fdr ||= fp/(fp+tp)
+  fnr ||= fn/(fn+tp)
   logger.debug("precision #{precision}")
   logger.debug("recall #{recall}")
 
   splice_event = "none"
   case num_of_splice
+  when 0 
+     splice_event = "0-10X" if options[:x_coverage]
   when 1,14
-    splice_event = "Skipped Exons"
-    puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
-    splice_event = "Different exon starts/ends"
-    puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
-    splice_event = "Truncation"
-    puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
-    next
+    if options[:x_coverage]
+      splice_event = "10-100X"
+    else
+      splice_event = "Skipped Exons"
+      puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
+      splice_event = "Different exon starts/ends"
+      puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
+      splice_event = "Truncation"
+      puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
+      next
+    end
+    
   when 2,3,4,5,15,16,17,18
     splice_event = "Skipped Exons"
+    splice_event = "100X_and_more" if options[:x_coverage]
   when 6,7,8,9,19,20,21,22
     splice_event = "Different exon starts/ends"
   when 10,11,12,13,23,24,25,26

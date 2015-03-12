@@ -4,13 +4,14 @@ class FeatureQuantifications < FileFormats
     super(filename)
     @number_of_spliceforms = Hash.new()
     @coverage = Hash.new()
+    @x_coverage = Hash.new()
     @m = 0
     @false_negatives = Hash.new()
     @number_of_false_negatives = nil
     @counts = Hash.new()
   end
 
-  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives, :counts
+  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives, :counts, :x_coverage
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -90,6 +91,20 @@ class FeatureQuantifications < FileFormats
     end
   end
 
+  def calculate_x_coverage()
+    @index.each_pair do |key,value|
+      cov = calc_x_coverage(transcript(key),value[1])
+      @x_coverage[key] = cov #if cov > 0
+    end
+  end
+
+  def print_x_coverage()
+    x_cov = @x_coverage.values.sort.reverse
+    x_cov.each do |value|
+      puts "#{value}"
+    end
+  end
+
   def transcript(key)
     transcript = []
     value = @index[key]
@@ -120,7 +135,8 @@ class FeatureQuantifications < FileFormats
     logger.info("M is #{@m}")
   end
 
-  def determine_false_negatives(cutoff=500)
+  def determine_false_negatives(cutoff=0)
+    cutoff = @coverage.values.length if cutoff == 0
     @number_of_false_negatives = cutoff
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
@@ -144,6 +160,11 @@ class FeatureQuantifications < FileFormats
     trans_length = calc_length(transcript)
     raise "M needs to be definied!" if mio_reads == 0
     fpkm(fragment,trans_length,mio_reads)
+  end
+
+  def calc_x_coverage(transcript,fragment)
+    trans_length = calc_length(transcript)
+    x_cov(fragment,trans_length)
   end
 
 end

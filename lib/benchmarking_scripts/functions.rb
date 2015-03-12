@@ -7,6 +7,10 @@ module Functions
     #(fragment.to_f/number_mio_of_reads.to_f).to_f
   end
 
+  def x_cov(fragment,trans_length)
+    (fragment.to_f*200.0)/(trans_length.to_f)
+  end
+
   def calc_length(transcript)
     length = 0
     #logger.debug(transcript.join("::"))
@@ -44,5 +48,14 @@ module Functions
     fp = fp.to_f
     tp = tp.to_f
     fp/(fp+tp)
+  end
+
+  def save_as(filename,object)
+    object.close()
+    File.open(filename, 'w') {|f| f.write(Marshal.dump(object)) }
+  end 
+
+  def load_from(filename)
+    Marshal.load(File.read(filename))
   end
 end
