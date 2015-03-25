@@ -156,4 +156,3 @@ class CompareFPKM
     end
   end
 end
-end
