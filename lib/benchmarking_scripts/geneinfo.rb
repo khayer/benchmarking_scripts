@@ -16,7 +16,7 @@ class GeneInfo < FileFormats
       line.chomp!
       fields = line.split(" ")
       id = fields[-1]
-      @index[[fields[0],fields[2].to_i,id]] = previous_position
+      @index[[fields[0],fields[2].to_i,id]] = previous_position if ($EXCLUDE_GENES.select {|e| id.match(e)}).empty? #$EXCLUDE_GENES.include?(id)
       previous_position = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")

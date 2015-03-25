@@ -1,12 +1,15 @@
+$EXCLUDE_GENES ||= []
+
 class Bed < FileFormats
 
   def initialize(filename)
     super(filename)
     @false_negatives = {}
     @number_of_spliceforms = Hash.new()
+    @coverage = Hash.new()
   end
 
-  attr_accessor :false_negatives, :number_of_spliceforms
+  attr_accessor :false_negatives, :number_of_spliceforms, :coverage
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -17,7 +20,7 @@ class Bed < FileFormats
       line.chomp!
       fields = line.split("\t")
       id = fields[3]
-      @index[[fields[0],fields[1].to_i,id]] = previous_position
+      @index[[fields[0],fields[1].to_i,id]] = previous_position if ($EXCLUDE_GENES.select {|e| id.match(e)}).empty?
       previous_position = @filehandle.pos
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
@@ -37,7 +40,7 @@ class Bed < FileFormats
       transcript << current_start
       transcript << current_start + current_length.to_i
     end
-    ende = fields[7].to_i
+    ende = fields[2].to_i
     raise "Endposition (#{ende}) does not match calculated end position (#{transcript[-1]})" unless ende == transcript[-1]
     transcript.sort!
   end
@@ -55,12 +58,14 @@ class Bed < FileFormats
       id = fields[3]
       key = [fields[0],fields[1].to_i,id]
       trans = transcript(key)
-      logger.debug("#{fields[0]}\t#{last_chr}\t#{trans[0]}\t#{last_highest}")
+      #logger.debug("#{fields[0]}\t#{last_chr}\t#{trans[0]}\t#{last_highest}")
+
       if fields[0] != last_chr || trans[0] > last_highest
-        logger.debug("YES")
+        #logger.debug("YES")
         if current_number_of_spliceforms >= 1
           current_transcripts.each do |key2|
             @number_of_spliceforms[key2] = current_number_of_spliceforms
+            logger.debug("#{key2}\t#{current_number_of_spliceforms}") if current_number_of_spliceforms>5
           end
         end
         current_number_of_spliceforms = 0
@@ -79,7 +84,24 @@ class Bed < FileFormats
     logger.debug(@number_of_spliceforms)
   end
 
+  def calculate_coverage()
+    @index.each_pair do |key,value|
+      @coverage[key] = fpkm_value(key)
+    end
+  end
 
+  def fpkm_value(key)
+    pos_in_file = @index[key]
+    @filehandle.pos = pos_in_file
+    fpkm_value_out = 0
+    @filehandle.each do |line|
+      fields = line.split("\t")
+      fpkm_value_out = fields[4]
+      break
+    end
+    #logger.info("fpkm_value is #{fpkm_value_out} for key #{key}")
+    fpkm_value_out.to_f
+  end
 
   def determine_false_negatives()
     @false_negatives = @index.dup

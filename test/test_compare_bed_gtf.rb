@@ -16,9 +16,9 @@ class TestCompareBedGTF < Test::Unit::TestCase
     compare_obj.truth_genefile.find_number_of_spliceforms()
     compare_obj.statistics()
     assert_equal(compare_obj.strong_TP,[1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.weak_TP,[2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.all_FP,[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    assert_equal(compare_obj.false_negatives,[8, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.weak_TP,[1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.all_FP,[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    assert_equal(compare_obj.false_negatives,[9, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0])
   end
 
 end

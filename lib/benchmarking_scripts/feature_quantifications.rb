@@ -4,12 +4,14 @@ class FeatureQuantifications < FileFormats
     super(filename)
     @number_of_spliceforms = Hash.new()
     @coverage = Hash.new()
+    @x_coverage = Hash.new()
     @m = 0
     @false_negatives = Hash.new()
     @number_of_false_negatives = nil
+    @counts = Hash.new()
   end
 
-  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives
+  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives, :counts, :x_coverage
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}
@@ -28,7 +30,9 @@ class FeatureQuantifications < FileFormats
         chr = fields[1].split(":")[0]
         pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
         num_of_fragments = fields[-1].to_f
-        @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i] #if num_of_fragments > 0.0
+        pos_chr_end = fields[1].split(":")[1].split("-")[1].to_i
+        next if pos_chr_end - pos_chr < 200
+        @index[[chr,pos_chr,last_gene]] = [last_position,fields[-1].to_i] if (($EXCLUDE_GENES.select {|e| last_gene.match(e)}).empty? && (num_of_fragments > 0.0)) #$EXCLUDE_GENES.include?(last_gene) #if num_of_fragments > 0.0
       end
     end
     logger.info("Indexing of #{@index.length} transcripts complete")
@@ -40,7 +44,6 @@ class FeatureQuantifications < FileFormats
     last_chr = ""
     last_highest_end = 0
     last_highest = 0
-    last_position = 0
     current_number_of_spliceforms = 0
     current_transcripts = []
     @filehandle.rewind
@@ -48,7 +51,6 @@ class FeatureQuantifications < FileFormats
       line.chomp!
       if line =~ /GENE/
         last_gene = line.split("\t")[0]
-        last_position = @filehandle.pos
       end
       if line =~ /transcript/
         fields = line.split("\t")
@@ -67,7 +69,11 @@ class FeatureQuantifications < FileFormats
           end
           current_transcripts = [dummy]
           current_number_of_spliceforms = 0
+          #if chr != last_chr
+          last_highest = pos_chr_end
+          last_highest_end = pos_chr_end
           last_chr = chr
+        else
           last_highest = last_highest_end
         end
       end
@@ -80,7 +86,22 @@ class FeatureQuantifications < FileFormats
   def calculate_coverage(mio_reads=@m)
     @index.each_pair do |key,value|
       cov = fpkm_value(transcript(key),value[1],mio_reads)
+      @counts[key] = value[1].to_i
       @coverage[key] = cov #if cov > 0
+    end
+  end
+
+  def calculate_x_coverage()
+    @index.each_pair do |key,value|
+      cov = calc_x_coverage(transcript(key),value[1])
+      @x_coverage[key] = cov #if cov > 0
+    end
+  end
+
+  def print_x_coverage()
+    x_cov = @x_coverage.values.sort.reverse
+    x_cov.each do |value|
+      puts "#{value}"
     end
   end
 
@@ -114,7 +135,8 @@ class FeatureQuantifications < FileFormats
     logger.info("M is #{@m}")
   end
 
-  def determine_false_negatives(cutoff=500)
+  def determine_false_negatives(cutoff=0)
+    cutoff = @coverage.values.length if cutoff == 0
     @number_of_false_negatives = cutoff
     fn = @coverage.values.sort.reverse[0..cutoff]
     @coverage.each_pair do |key,value|
@@ -138,6 +160,11 @@ class FeatureQuantifications < FileFormats
     trans_length = calc_length(transcript)
     raise "M needs to be definied!" if mio_reads == 0
     fpkm(fragment,trans_length,mio_reads)
+  end
+
+  def calc_x_coverage(transcript,fragment)
+    trans_length = calc_length(transcript)
+    x_cov(fragment,trans_length)
   end
 
 end
