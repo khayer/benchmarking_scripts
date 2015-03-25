@@ -9,6 +9,7 @@ class FeatureQuantifications < FileFormats
     @false_negatives = Hash.new()
     @number_of_false_negatives = nil
     @counts = Hash.new()
+    @coverage_quantifiers = Hash.new()
   end
 
   attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives, :counts, :x_coverage
@@ -88,6 +89,7 @@ class FeatureQuantifications < FileFormats
       cov = fpkm_value(transcript(key),value[1],mio_reads)
       @counts[key] = value[1].to_i
       @coverage[key] = cov #if cov > 0
+      @coverage_quantifiers[key[-1]] = 0
     end
   end
 
