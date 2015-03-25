@@ -2,6 +2,10 @@
 
 This repository provides scripts to analyze algorithms for determining expressed full length mRNA splice forms from RNA-Seq data.
 
+### License ###
+
+This source code is licensed under the GNU General Public License [GPL-2.0](http://opensource.org/licenses/gpl-2.0.php).
+
 ### Obtaining the scripts ###
 
 To use the code, you can clone the repository to your computer. This will give you the last most stable release.
