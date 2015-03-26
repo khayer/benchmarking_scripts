@@ -90,7 +90,7 @@ class FeatureQuantifications < FileFormats
       cov = fpkm_value(transcript(key),value[1],mio_reads)
       @counts[key] = value[1].to_i
       @coverage[key] = cov #if cov > 0
-      @coverage_quantifiers[key[-1]] = 0
+      @coverage_quantifiers[key[-1]] = cov
     end
   end
 

@@ -18,6 +18,7 @@ class CompareFPKM
   def statistics_fpkm()
     @compare_file.coverage_quantifiers.each_pair do |key,value|
       fpkm1 = @truth_genefile.coverage_quantifiers[key]
+      fpkm1 ||= 0.0
       fpkm2 = value
       @fpkm_values << [key,fpkm1,fpkm2]
     end
