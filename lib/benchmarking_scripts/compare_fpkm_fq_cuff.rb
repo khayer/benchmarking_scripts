@@ -1,5 +1,5 @@
 require 'gnuplot'
-class CompareFPKMFQCUFF < CompareGenes
+class CompareFPKMFQCUFF < CompareFPKM
 
   def initialize(feature_quant_file,cuff_file)
     super()
