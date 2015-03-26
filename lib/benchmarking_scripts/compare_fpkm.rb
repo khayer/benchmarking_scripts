@@ -25,10 +25,11 @@ class CompareFPKM
   end
 
   def print_fpkm()
-    puts "Gene\tTruth\tEstimate"
+    k = "Gene\tTruth\tEstimate\n"
     @fpkm_values.each do |array|
-      puts array.join("\t")
+      k += array.join("\t") + "\n"
     end
+    k
   end
 
 
