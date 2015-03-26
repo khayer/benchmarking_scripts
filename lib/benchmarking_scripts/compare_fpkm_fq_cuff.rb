@@ -19,3 +19,4 @@ class CompareFPKMFQCUFF < CompareGenes
   end
 
   #attr_accessor :fpkm_values
+end
