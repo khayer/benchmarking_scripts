@@ -12,7 +12,8 @@ class FeatureQuantifications < FileFormats
     @coverage_quantifiers = Hash.new()
   end
 
-  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives, :number_of_false_negatives, :counts, :x_coverage
+  attr_accessor :number_of_spliceforms, :coverage, :m, :false_negatives,
+    :number_of_false_negatives, :counts, :x_coverage, :coverage_quantifiers
 
   def create_index()
     raise "#{@filename} is already indexed" unless @index == {}

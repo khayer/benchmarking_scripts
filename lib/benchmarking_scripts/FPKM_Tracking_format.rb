@@ -5,7 +5,7 @@ class FPKMTrackingFormat < FileFormats
     @coverage_quantifiers = Hash.new()
   end
 
-  attr_accessor :coverage
+  attr_accessor :coverage, :coverage_quantifiers
 
   def create_index()
     @index = {}
