@@ -185,23 +185,23 @@ class CompareGenes
           x_cov = @truth_genefile.x_coverage[key]
           logger.debug("#{x_cov}")
           if x_cov < 10
-            @strong_TP_by_x_cov[0] = 0 unless @strong_TP_by_x_cov[0]
-            @strong_TP_by_x_cov[0] += 1
-            @weak_TP_by_x_cov[0] = 0 unless @weak_TP_by_x_cov[0]
-            @weak_TP_by_x_cov[0] += 1
+            k = 0
           elsif x_cov < 100
-            @strong_TP_by_x_cov[1] = 0 unless @strong_TP_by_x_cov[1]
-            @strong_TP_by_x_cov[1] += 1
-            @weak_TP_by_x_cov[1] = 0 unless @weak_TP_by_x_cov[1]
-            @weak_TP_by_x_cov[1] += 1
+            k = 1
           else
-            @strong_TP_by_x_cov[2] = 0 unless @strong_TP_by_x_cov[2]
-            @strong_TP_by_x_cov[2] += 1
-            @weak_TP_by_x_cov[2] = 0 unless @weak_TP_by_x_cov[2]
-            @weak_TP_by_x_cov[2] += 1
+            k = 2
           end
+          if $ANNOTATION
+            if $ANNOTATION[key]
+              k += 3
+            end
+          end
+          @strong_TP_by_x_cov[k] = 0 unless @strong_TP_by_x_cov[k]
+          @strong_TP_by_x_cov[k] += 1
+          @weak_TP_by_x_cov[k] = 0 unless @weak_TP_by_x_cov[k]
+          @weak_TP_by_x_cov[k] += 1
         end
-        
+
         compare_key = @compare_transcripts.key(value)
         @compare_transcripts.delete(compare_key)
         @truth_transcripts.delete(key)
@@ -244,15 +244,19 @@ class CompareGenes
           x_cov = @truth_genefile.x_coverage[key]
           logger.debug("#{x_cov}")
           if x_cov < 10
-            @weak_TP_by_x_cov[0] = 0 unless @weak_TP_by_x_cov[0]
-            @weak_TP_by_x_cov[0] += 1
+            k = 0
           elsif x_cov < 100
-            @weak_TP_by_x_cov[1] = 0 unless @weak_TP_by_x_cov[1]
-            @weak_TP_by_x_cov[1] += 1
+            k = 1
           else
-            @weak_TP_by_x_cov[2] = 0 unless @weak_TP_by_x_cov[2]
-            @weak_TP_by_x_cov[2] += 1
+            k = 2
           end
+          if $ANNOTATION
+            if $ANNOTATION[key]
+              k += 3
+            end
+          end
+          @weak_TP_by_x_cov[k] = 0 unless @weak_TP_by_x_cov[k]
+          @weak_TP_by_x_cov[k] += 1
         end
         compare_key = @compare_transcripts.key(value)
         @compare_transcripts.delete(compare_key)
@@ -303,15 +307,19 @@ class CompareGenes
             x_cov = @truth_genefile.x_coverage[key]
             logger.debug("#{x_cov}")
             if x_cov < 10
-              @all_FP_by_x_cov[0] = 0 unless @all_FP_by_x_cov[0]
-              @all_FP_by_x_cov[0] += 1
+              k=0
             elsif x_cov < 100
-              @all_FP_by_x_cov[1] = 0 unless @all_FP_by_x_cov[1]
-              @all_FP_by_x_cov[1] += 1
+              k=1
             else
-              @all_FP_by_x_cov[2] = 0 unless @all_FP_by_x_cov[2]
-              @all_FP_by_x_cov[2] += 1
+              k=2
             end
+            if $ANNOTATION
+              if $ANNOTATION[key]
+                k += 3
+              end
+            end
+            @all_FP_by_x_cov[k] = 0 unless @all_FP_by_x_cov[k]
+            @all_FP_by_x_cov[k] += 1
           end
           @compare_transcripts.delete(compare_key)
           @truth_transcripts.delete(key)
@@ -356,15 +364,19 @@ class CompareGenes
         x_cov = @truth_genefile.x_coverage[key]
         logger.debug("#{x_cov}")
         if x_cov < 10
-          @false_negatives_by_x_cov[0] = 0 unless @false_negatives_by_x_cov[0]
-          @false_negatives_by_x_cov[0] += 1
+          k=0
         elsif x_cov < 100
-          @false_negatives_by_x_cov[1] = 0 unless @false_negatives_by_x_cov[1]
-          @false_negatives_by_x_cov[1] += 1
+          k=1
         else
-          @false_negatives_by_x_cov[2] = 0 unless @false_negatives_by_x_cov[2]
-          @false_negatives_by_x_cov[2] += 1
+          k=2
         end
+        if $ANNOTATION
+          if $ANNOTATION[key]
+            k += 3
+          end
+        end
+        @false_negatives_by_x_cov[k] = 0 unless @false_negatives_by_x_cov[k]
+        @false_negatives_by_x_cov[k] += 1
       end
     end
   end
