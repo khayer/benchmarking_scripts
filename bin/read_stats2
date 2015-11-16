@@ -1,0 +1,211 @@
+#!/usr/bin/env ruby
+require "benchmarking_scripts"
+require 'optparse'
+
+
+# Algorithm Aligner GenomeGuided  Annotation  FDR FNR Number of Spliceforms DataSet
+options = {:logout => STDERR, :aligner => "none",
+  :aligner_genome_guided => false, :zero=> false, :x_coverage=> false}
+
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: #{$0} [options] Algorithm GenomeGuided Annotation DataSet Library StatsFile"
+  opt.separator  ""
+  opt.separator  "     Algorithm : e.g. cufflinks"
+  opt.separator  "  GenomeGuided : Was the assembly genome guided? true/false"
+  opt.separator  "    Annotation : Did the assembly use annotation? true/false"
+  opt.separator  "       DataSet : Name of the data set"
+  opt.separator  "       Library : Either RiboZ or PolyA"
+  opt.separator  "     StatsFile : file produced with stats binary"
+  opt.separator  ""
+  opt.on("-l","--log_file LEVEL","Can also be STDOUT or STDERR") do |file|
+    options[:logout] = file if file
+  end
+
+  opt.on("-a","--aligner NAME","Name of the aligner. Default: NONE") do |name|
+    options[:aligner] = name if name
+  end
+
+  opt.on("-g","--aligner_genome_guided","Was the assembly genome guided? Default: FALSE") do |file|
+    options[:aligner_genome_guided] = true
+  end
+
+  opt.on("-z","--zero","Do not seperate by spliceforms!") do |file|
+    options[:zero] = true
+  end
+
+  opt.on("-x","--x_coverage","Use x coverage results") do |file|
+    options[:x_coverage] = true
+  end
+
+  #opt.on("-e","--exclude FILE","File with gene names to ignore.") do |file|
+  #  options[:exclude] = file
+  #end
+#
+  opt.on("-d","--debug","running in debug mode?") do
+    options[:debug] = true
+  end
+
+  opt.on("-h","--help","help") do
+    STDERR.puts opt_parser
+    exit
+  end
+end
+
+
+
+opt_parser.parse!
+options_for_logger = {}
+if options[:debug]
+  options_for_logger["log_level"] = Logger::DEBUG
+else
+  options_for_logger["log_level"] = Logger::INFO
+end
+options_for_logger["logout"] = options[:logout]
+#STDERR.puts options_for_logger
+
+Logging.configure(options_for_logger)
+logger.info("Arguments are: #{ARGV.join(";")}")
+logger.info("Options are: #{options}")
+
+abort("Not enough arguments! (Please run with -h flag for details)") if ARGV.length != 5
+
+algorithm = ARGV[0]
+genome_guided = ARGV[1] == "true"
+logger.debug("GenomeGuided? #{genome_guided}")
+annotation = ARGV[2] == "true"
+logger.debug("Annotation? #{annotation}")
+data_set = ARGV[3]
+library = ARGV[4]
+stats_file = ARGV[5]
+
+results_by_spliceform = {}
+# Placeholder
+results_by_spliceform[0] = 0
+
+wait_for_x_coverage = options[:x_coverage]
+
+File.open(stats_file).each do |line|
+  line.chomp!
+  fields = line.split("\t")
+  if wait_for_x_coverage
+    wait_for_x_coverage = false if fields[0] == "x_coverage"
+    next
+  end
+  if fields[0] == "# Weak TP" # /Weak/
+
+    for i in 1..fields.length
+
+      if fields[i] != ""
+        results_by_spliceform[i-1] = []
+        results_by_spliceform[i-1] << fields[i].to_i
+
+        #puts (i-1).to_s + ":" + fields[i].to_s
+      end
+      break if options[:zero]
+    end
+
+    next
+  end
+
+
+  if fields[0] == "# All FP"
+
+    for i in 1..fields.length
+
+      if fields[i] != ""
+        #puts (i-1).to_s + ":" + fields[i].to_s
+        results_by_spliceform[i-1] ||= [0]
+        results_by_spliceform[i-1] << fields[i].to_i
+        logger.debug("FIELDS #{fields[i]}")
+      end
+      break if options[:zero]
+
+    end
+    next
+  end
+
+  if fields[0] == "# All FN"
+
+    for i in 1..fields.length
+
+      if fields[i] != ""
+        #puts (i-1).to_s + ":" + fields[i].to_s
+        results_by_spliceform[i-1] ||= [0,0]
+        results_by_spliceform[i-1] << fields[i].to_i
+
+      end
+      break if options[:zero]
+
+    end
+    next
+  end
+  if fields[0] == "# All FDR"
+
+    for i in 1..fields.length
+      if results_by_spliceform[i-1]
+        results_by_spliceform[i-1] << fields[i].to_f
+      end
+      break if options[:zero]
+
+    end
+    next
+  end
+
+  if fields[0] == "# All FNR"
+
+    for i in 1..fields.length
+
+      if results_by_spliceform[i-1]
+        results_by_spliceform[i-1] << fields[i].to_f
+      end
+      break if options[:zero]
+
+    end
+    break
+  end
+
+end
+
+results_by_spliceform.keys.sort.each do |num_of_splice|
+  fdr = results_by_spliceform[num_of_splice][-2]
+  fnr = results_by_spliceform[num_of_splice][-1]
+  tp = results_by_spliceform[num_of_splice][0].to_f
+  fp = results_by_spliceform[num_of_splice][1].to_f
+  fn = results_by_spliceform[num_of_splice][2].to_f
+  logger.debug("tp #{tp}")
+  logger.debug("fp #{fp}")
+  logger.debug("fn #{fn}")
+  precision = tp/(tp+fp)
+  recall = tp / (tp+fn)
+  fdr ||= fp/(fp+tp)
+  fnr ||= fn/(fn+tp)
+  logger.debug("precision #{precision}")
+  logger.debug("recall #{recall}")
+
+  splice_event = "none"
+  case num_of_splice
+  when 0
+     splice_event = "0-10X" if options[:x_coverage]
+  when 1,14
+    if options[:x_coverage]
+      splice_event = "10-100X"
+    else
+      splice_event = "Skipped Exons"
+      puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
+      splice_event = "Different exon starts/ends"
+      puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
+      splice_event = "Truncation"
+      puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}"
+      next
+    end
+
+  when 2,3,4,5,15,16,17,18
+    splice_event = "Skipped Exons"
+    splice_event = "100X_and_more" if options[:x_coverage]
+  when 6,7,8,9,19,20,21,22
+    splice_event = "Different exon starts/ends"
+  when 10,11,12,13,23,24,25,26
+    splice_event = "Truncation"
+  end
+  puts "#{algorithm}\t#{options[:aligner]}\t#{options[:aligner_genome_guided]}\t#{genome_guided}\t#{annotation}\t#{fdr}\t#{fnr}\t#{num_of_splice}\t#{data_set}\t#{precision}\t#{recall}\t#{splice_event}\t#{library}"
+end
