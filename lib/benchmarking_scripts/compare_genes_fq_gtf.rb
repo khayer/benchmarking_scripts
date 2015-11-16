@@ -23,6 +23,7 @@ class CompareGenesFQGTF < CompareGenes
     :weak_TP_by_x_cov, :all_FP_by_x_cov, :false_negatives_by_x_cov
 
   def statistics_fpkm()
+    logger.info("statistics_fpkm FQGTF just started!")
     compare_transcripts = Hash.new
     @compare_file.index.each_key do |key|
       compare_transcripts[key] = @compare_file.transcript(key)
