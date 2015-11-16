@@ -34,6 +34,7 @@ class CompareGenes
 
   # Statistics for strong true positives
   def statistics()
+    logger.info("Starting statistics now!")
     @truth_genefile.index.each_key do |key|
       @truth_transcripts[key] = @truth_genefile.transcript(key)
     end

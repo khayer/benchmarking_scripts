@@ -53,7 +53,7 @@ module Functions
   def save_as(filename,object)
     object.close()
     File.open(filename, 'w') {|f| f.write(Marshal.dump(object)) }
-  end 
+  end
 
   def load_from(filename)
     Marshal.load(File.read(filename))
