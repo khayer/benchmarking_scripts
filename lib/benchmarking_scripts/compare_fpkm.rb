@@ -16,6 +16,7 @@ class CompareFPKM
   attr_accessor :compare_file, :truth_genefile, :fpkm_values
 
   def statistics_fpkm()
+    logger.info("statistics_fpkm just started!")
     @compare_file.coverage_quantifiers.each_pair do |key,value|
       fpkm1 = @truth_genefile.coverage_quantifiers[key]
       fpkm1 ||= 0.0
