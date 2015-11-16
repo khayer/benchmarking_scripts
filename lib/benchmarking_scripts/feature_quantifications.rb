@@ -183,7 +183,7 @@ class FeatureQuantifications < FileFormats
 
   def calc_x_coverage(transcript,fragment)
     trans_length = calc_length(transcript)
-    x_cov(fragment,trans_length)/1000.0
+    x_cov(fragment,trans_length)/100.0
   end
 
 end
