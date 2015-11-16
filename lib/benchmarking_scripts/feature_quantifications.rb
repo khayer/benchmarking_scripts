@@ -156,7 +156,7 @@ class FeatureQuantifications < FileFormats
     logger.info("determine_false_negatives for fq file!")
     cutoff = @coverage.values.length if cutoff == 0
     @number_of_false_negatives = cutoff
-    fn = @coverage.values.sort.reverse[0..cutoff]
+    fn = @coverage.values.sort { |x,y| y <=> x }[0..cutoff]
     @coverage.each_pair do |key,value|
       @false_negatives[key] = value if fn.include?(value)
     end
