@@ -7,11 +7,16 @@ $EXCLUDE_GENES = []
 $ANNOTATION = nil
 $PRINT_TP = false
 
-options = {:logout => STDERR,
+options = {
+  :logout => STDERR,
   :png_file => "fpkm.png",
   :fpkm_values => "fpkm_values.txt",
-  :exclude => "", :annotation => "", :print_TP => false,
-  :saved_truth => nil }
+  :exclude => "", 
+  :annotation => "", 
+  :print_TP => false,
+  :saved_truth => nil,
+  :num_isofoms => nil
+  }
 
 opt_parser = OptionParser.new do |opt|
   opt.banner = "Usage: #{$0} CMD file1 file2 [OPTIONS]"
@@ -53,6 +58,11 @@ opt_parser = OptionParser.new do |opt|
     options[:saved_truth] = file
   end
 
+  opt.on("-n","--num_isofoms FILE","File with number of isoforms") do |file|
+    options[:num_isofoms] = file
+  end
+  opt.separator  "\tthe header should be:"
+  opt.separator  "\tGENEID trans_id  gene_id length  #exons  effective_length  FPKM  TPM #isoforms"
   opt.on("-t","--print_TP","Print all TP's?") do
     options[:print_TP] = true
   end
@@ -170,7 +180,7 @@ when "gtffq"
       #compare_obj.truth_genefile.calculate_coverage(50)
       compare_obj.truth_genefile.calculate_coverage()
       compare_obj.truth_genefile.calculate_x_coverage()
-      compare_obj.truth_genefile.find_number_of_spliceforms()
+      compare_obj.truth_genefile.find_number_of_spliceforms(options[:num_isofoms])
       compare_obj.truth_genefile.determine_false_negatives()
       compare_obj.statistics_fpkm()
     end

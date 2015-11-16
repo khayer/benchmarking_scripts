@@ -41,6 +41,19 @@ class TestFeatureQuantifications < Test::Unit::TestCase
     num_splice_forms = feature_quant_file.number_of_spliceforms[["chr1",157692093,"GENE.1169"]]
     assert_equal(num_splice_forms,2)
   end
+  def test_find_number_of_spliceforms2()
+    feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
+    feature_quant_file.create_index
+    #feature_quant_file.calculate_M
+    feature_quant_file.calculate_coverage(50)
+    feature_quant_file.find_number_of_spliceforms("test/data/num_spliceform.txt")
+    num_splice_forms = feature_quant_file.number_of_spliceforms[["chr1",4763278,"GENE.5"]]
+    assert_equal(num_splice_forms,10)
+    num_splice_forms = feature_quant_file.number_of_spliceforms[["chr1",12657643,"GENE.53"]]
+    assert_equal(num_splice_forms,2)
+    num_splice_forms = feature_quant_file.number_of_spliceforms[["chr1",157692093,"GENE.1169"]]
+    assert_equal(num_splice_forms,9)
+  end
   def test_determine_false_negatives()
     feature_quant_file = FeatureQuantifications.new("test/data/test_feature_quant.txt")
     feature_quant_file.create_index

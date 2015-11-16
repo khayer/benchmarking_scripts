@@ -40,47 +40,60 @@ class FeatureQuantifications < FileFormats
     logger.info("Indexing of #{@index.length} transcripts complete")
   end
 
-  def find_number_of_spliceforms()
+  def find_number_of_spliceforms(num_isoforms = nil)
     logger.info("Searching for number of spliceforms for #{@filename}")
-    last_gene = "unknown"
-    last_chr = ""
-    last_highest_end = 0
-    last_highest = 0
-    current_number_of_spliceforms = 0
-    current_transcripts = []
-    @filehandle.rewind
-    @filehandle.each do |line|
-      line.chomp!
-      if line =~ /GENE/
-        last_gene = line.split("\t")[0]
-      end
-      if line =~ /transcript/
+    if num_isoforms
+      num_iso = {}
+      File.open(num_isoforms).each do |line|
+        line.chomp!
         fields = line.split("\t")
-        chr = fields[1].split(":")[0]
-        pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
-        pos_chr_end = fields[1].split("-")[1].split("\t")[0].to_i
-        current_transcripts << [chr,pos_chr,last_gene]
-        current_number_of_spliceforms += 1
-        if pos_chr_end > last_highest_end
-          last_highest_end = pos_chr_end
-        end
-        if pos_chr > last_highest || chr != last_chr
-          dummy = current_transcripts.delete_at(-1)
-          current_transcripts.each do |transcript|
-            @number_of_spliceforms[transcript] = current_number_of_spliceforms
-          end
-          current_transcripts = [dummy]
-          current_number_of_spliceforms = 0
-          #if chr != last_chr
-          last_highest = pos_chr_end
-          last_highest_end = pos_chr_end
-          last_chr = chr
-        else
-          last_highest = last_highest_end
-        end
+        num_iso[fields[0]] = fields[-1].to_i
       end
-      current_transcripts.each do |transcript|
-        @number_of_spliceforms[transcript] = current_number_of_spliceforms+1
+      @index.each_pair do |key,value|
+        @number_of_spliceforms[key]  = num_iso[key[-1]]
+      end
+    else
+
+      last_gene = "unknown"
+      last_chr = ""
+      last_highest_end = 0
+      last_highest = 0
+      current_number_of_spliceforms = 0
+      current_transcripts = []
+      @filehandle.rewind
+      @filehandle.each do |line|
+        line.chomp!
+        if line =~ /GENE/
+          last_gene = line.split("\t")[0]
+        end
+        if line =~ /transcript/
+          fields = line.split("\t")
+          chr = fields[1].split(":")[0]
+          pos_chr = fields[1].split(":")[1].split("-")[0].to_i-1
+          pos_chr_end = fields[1].split("-")[1].split("\t")[0].to_i
+          current_transcripts << [chr,pos_chr,last_gene]
+          current_number_of_spliceforms += 1
+          if pos_chr_end > last_highest_end
+            last_highest_end = pos_chr_end
+          end
+          if pos_chr > last_highest || chr != last_chr
+            dummy = current_transcripts.delete_at(-1)
+            current_transcripts.each do |transcript|
+              @number_of_spliceforms[transcript] = current_number_of_spliceforms
+            end
+            current_transcripts = [dummy]
+            current_number_of_spliceforms = 0
+            #if chr != last_chr
+            last_highest = pos_chr_end
+            last_highest_end = pos_chr_end
+            last_chr = chr
+          else
+            last_highest = last_highest_end
+          end
+        end
+        current_transcripts.each do |transcript|
+          @number_of_spliceforms[transcript] = current_number_of_spliceforms+1
+        end
       end
     end
   end
