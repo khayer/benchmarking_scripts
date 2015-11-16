@@ -67,7 +67,7 @@ Logging.configure(options_for_logger)
 logger.info("Arguments are: #{ARGV.join(";")}")
 logger.info("Options are: #{options}")
 
-abort("Not enough arguments! (Please run with -h flag for details)") if ARGV.length != 5
+abort("Not enough arguments! (Please run with -h flag for details)") if ARGV.length != 6
 
 algorithm = ARGV[0]
 genome_guided = ARGV[1] == "true"
