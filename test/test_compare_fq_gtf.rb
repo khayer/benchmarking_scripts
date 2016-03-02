@@ -26,7 +26,7 @@ class TestCompareFQGTF < Test::Unit::TestCase
     assert_equal(compare_obj.weak_TP_by_cov,[564, 438, 208, 71, 22, 10, 1])
     assert_equal(compare_obj.all_FP_by_cov,[125, 70, 29, 14])
     assert_equal(compare_obj.false_negatives_by_cov,[59, 57, 30, 7, 1])
-    assert_equal(compare_obj.weak_TP_by_x_cov,[10, 170, 384])
+    assert_equal(compare_obj.weak_TP_by_x_cov,[512, 49, 3])
   end
 
   def test_statistics_plot()

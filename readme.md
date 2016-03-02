@@ -6,6 +6,11 @@ This repository provides scripts to analyze algorithms for determining expressed
 
 This source code is licensed under the GNU General Public License [GPL-2.0](http://opensource.org/licenses/gpl-2.0.php).
 
+### Dependencies
+Install gnuplot. (With homebrew: `brew install gnuplot`)
+
+    gem install gnuplot
+
 ### Obtaining the scripts ###
 
 To use the code, you can clone the repository to your computer. This will give you the last most stable release.

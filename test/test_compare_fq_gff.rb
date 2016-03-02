@@ -28,7 +28,7 @@ class TestCompareFQGFF < Test::Unit::TestCase
     assert_equal(compare_obj.weak_TP_by_cov,[44, 43, 39, 24, 16, 5, 2])
     assert_equal(compare_obj.all_FP_by_cov,[112, 77, 66, 34, 9])
     assert_equal(compare_obj.false_negatives_by_cov,[462, 462, 462, 270, 106, 32, 14, 2])
-    assert_equal(compare_obj.weak_TP_by_x_cov,[1, 9, 34])
+    assert_equal(compare_obj.weak_TP_by_x_cov,[35, 9])
   end
 
 end
